@@ -32,8 +32,10 @@ func apply_gravity(delta):
 		velocity.y += gravity * movement_data.gravity_scale * delta
 
 func handle_wall_jump():
-	if not is_on_wall_only(): return
-	var wall_normal = get_wall_normal()
+	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
+		return
+	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
+	print(wall_normal)
 	if Input.is_action_just_pressed("ui_up"):
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
