@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var coyotejump_timer = $CoyoteJumpTimer
+@onready var starting_position = global_position
 
 func _physics_process(delta):
 	apply_gravity(delta)
@@ -83,3 +84,7 @@ func update_animation(input_axis):
 	
 	if Input.is_action_pressed("ui_down") and is_on_floor():
 		animated_sprite_2d.play("crouch")
+
+
+func _on_hazard_detector_area_entered(area):
+	global_position = starting_position
