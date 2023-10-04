@@ -29,18 +29,20 @@ func _physics_process(delta):
 
 func apply_gravity(delta):
 	if not is_on_floor():
-		velocity.y += gravity * movement_data.gravity_scale * delta
+		if is_on_wall() and velocity.y + (gravity * movement_data.gravity_scale * delta) > 0:
+			velocity.y = 40
+		else:
+			velocity.y += gravity * movement_data.gravity_scale * delta
 
 func handle_wall_jump():
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
 		return
 	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
-	print(wall_normal)
 	if Input.is_action_just_pressed("ui_up"):
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
 		just_wall_jumped = true
-	
+
 func handle_jump():
 	if is_on_floor(): air_jump = true
 	
@@ -68,7 +70,7 @@ func handle_air_acceleration(input_axis, delta):
 func apply_friction(input_axis, delta):
 	if (input_axis == 0 or Input.is_action_pressed("ui_down")) and is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, movement_data.friction * delta)
-
+		
 
 func apply_air_resistance(input_axis, delta):
 	if input_axis == 0 and not is_on_floor():
