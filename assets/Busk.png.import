@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc212q4ymw5ia"
-path="res://.godot/imported/slopes.png-485c2bbd42e8cc41abcb9401b0597408.ctex"
+uid="uid://d0on0uojked2p"
+path="res://.godot/imported/Busk.png-8c22e7afe10dfafe892936b072176c1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://slopes.png"
-dest_files=["res://.godot/imported/slopes.png-485c2bbd42e8cc41abcb9401b0597408.ctex"]
+source_file="res://assets/Busk.png"
+dest_files=["res://.godot/imported/Busk.png-8c22e7afe10dfafe892936b072176c1a.ctex"]
 
 [params]
 

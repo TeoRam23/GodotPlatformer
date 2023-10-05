@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvw8xn4ess4ap"]
 
-[ext_resource type="Texture2D" uid="uid://dwj7rcv0utv65" path="res://mytileset.png" id="1_0iq6s"]
-[ext_resource type="Texture2D" uid="uid://b5xftc62p7jip" path="res://myslopes.png" id="2_4rxra"]
-[ext_resource type="Texture2D" uid="uid://y5cx0runxlaf" path="res://myslopes_flipped.png" id="3_6ghf3"]
+[ext_resource type="Texture2D" uid="uid://dwj7rcv0utv65" path="res://assets/mytileset.png" id="1_a1tx4"]
+[ext_resource type="Texture2D" uid="uid://b5xftc62p7jip" path="res://assets/myslopes.png" id="2_pyqbr"]
+[ext_resource type="Texture2D" uid="uid://y5cx0runxlaf" path="res://assets/myslopes_flipped.png" id="3_wqgj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35n2b"]
 resource_name = "autotile"
-texture = ExtResource("1_0iq6s")
+texture = ExtResource("1_a1tx4")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -479,7 +479,7 @@ texture = ExtResource("1_0iq6s")
 8:4/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lgpml"]
-texture = ExtResource("2_4rxra")
+texture = ExtResource("2_pyqbr")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -510,7 +510,7 @@ texture = ExtResource("2_4rxra")
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cv5x"]
-texture = ExtResource("3_6ghf3")
+texture = ExtResource("3_wqgj6")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0

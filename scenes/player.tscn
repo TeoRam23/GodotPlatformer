@@ -1,35 +1,35 @@
 [gd_scene load_steps=14 format=3 uid="uid://ngj3qa1yihrq"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_u3ypr"]
-[ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://DeafultMovementData.tres" id="2_w3237"]
-[ext_resource type="Texture2D" uid="uid://btyt7tei7omda" path="res://JeffreySprite.png" id="3_s08om"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
+[ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
+[ext_resource type="Texture2D" uid="uid://btyt7tei7omda" path="res://assets/JeffreySprite.png" id="3_v30qj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyipa"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(105, 0, 21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ffr0"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(0, 0, 21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uk8ua"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(63, 0, 21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56opl"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(21, 0, 21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o5id"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(0, 0, 21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe4rg"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(42, 0, 21, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncig8"]
-atlas = ExtResource("3_s08om")
+atlas = ExtResource("3_v30qj")
 region = Rect2(84, 0, 21, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uicba"]
@@ -88,8 +88,8 @@ floor_constant_speed = true
 floor_max_angle = 1.309
 floor_snap_length = 3.0
 safe_margin = 0.1
-script = ExtResource("1_u3ypr")
-movement_data = ExtResource("2_w3237")
+script = ExtResource("1_7n2kp")
+movement_data = ExtResource("2_tf3sn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.762, 0.762)

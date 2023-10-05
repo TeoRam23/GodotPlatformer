@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyxjb50pl5mbj"]
+[gd_scene load_steps=5 format=3 uid="uid://cyxjb50pl5mbj"]
 
-[ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://world.tscn" id="1_dvkov"]
-[ext_resource type="PackedScene" uid="uid://cgjq00nlnardn" path="res://spikes.tscn" id="3_7l3wk"]
-[ext_resource type="PackedScene" uid="uid://440shhf5t514" path="res://chick.tscn" id="3_kt5mw"]
+[ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_dvkov"]
+[ext_resource type="PackedScene" uid="uid://cgjq00nlnardn" path="res://scenes/spikes.tscn" id="3_7l3wk"]
+[ext_resource type="PackedScene" uid="uid://440shhf5t514" path="res://scenes/chick.tscn" id="3_kt5mw"]
+[ext_resource type="PackedScene" uid="uid://cbxqq32yifndf" path="res://scenes/enemy.tscn" id="4_ortw7"]
 
 [node name="LevelTwo" instance=ExtResource("1_dvkov")]
 
@@ -31,20 +32,17 @@ position = Vector2(494, -84)
 [node name="Chick7" parent="." index="9" instance=ExtResource("3_kt5mw")]
 position = Vector2(496, -216)
 
-[node name="Spikes" parent="." index="10" instance=ExtResource("3_7l3wk")]
-position = Vector2(144, -80)
-
-[node name="Spikes2" parent="." index="11" instance=ExtResource("3_7l3wk")]
-position = Vector2(160, -80)
-
-[node name="Spikes3" parent="." index="12" instance=ExtResource("3_7l3wk")]
+[node name="Spikes3" parent="." index="10" instance=ExtResource("3_7l3wk")]
 position = Vector2(224, 0)
 
-[node name="Spikes4" parent="." index="13" instance=ExtResource("3_7l3wk")]
+[node name="Spikes4" parent="." index="11" instance=ExtResource("3_7l3wk")]
 position = Vector2(240, 0)
 
-[node name="Spikes5" parent="." index="14" instance=ExtResource("3_7l3wk")]
+[node name="Spikes5" parent="." index="12" instance=ExtResource("3_7l3wk")]
 position = Vector2(256, 0)
 
-[node name="Spikes6" parent="." index="15" instance=ExtResource("3_7l3wk")]
+[node name="Spikes6" parent="." index="13" instance=ExtResource("3_7l3wk")]
 position = Vector2(272, 0)
+
+[node name="Enemy" parent="." index="14" instance=ExtResource("4_ortw7")]
+position = Vector2(163, -80)

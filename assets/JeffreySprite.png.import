@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5xftc62p7jip"
-path="res://.godot/imported/myslopes.png-b1c4a47f010aacd86beda780962c9f38.ctex"
+uid="uid://btyt7tei7omda"
+path="res://.godot/imported/JeffreySprite.png-3ad466116d24361b2f277a479b186750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://myslopes.png"
-dest_files=["res://.godot/imported/myslopes.png-b1c4a47f010aacd86beda780962c9f38.ctex"]
+source_file="res://assets/JeffreySprite.png"
+dest_files=["res://.godot/imported/JeffreySprite.png-3ad466116d24361b2f277a479b186750.ctex"]
 
 [params]
 

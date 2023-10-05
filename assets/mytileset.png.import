@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2r8fd5a4226"
-path="res://.godot/imported/Kylling.png-090aeab88330c4e02ca655972c78965d.ctex"
+uid="uid://dwj7rcv0utv65"
+path="res://.godot/imported/mytileset.png-5fb263f6170ad228884e9448a07e0d5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Kylling.png"
-dest_files=["res://.godot/imported/Kylling.png-090aeab88330c4e02ca655972c78965d.ctex"]
+source_file="res://assets/mytileset.png"
+dest_files=["res://.godot/imported/mytileset.png-5fb263f6170ad228884e9448a07e0d5d.ctex"]
 
 [params]
 

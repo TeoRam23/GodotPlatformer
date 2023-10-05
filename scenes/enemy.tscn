@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbxqq32yifndf"]
+
+[ext_resource type="Texture2D" uid="uid://0kpkx0rarxfe" path="res://assets/Busk2.png" id="1_8k3te"]
+[ext_resource type="Texture2D" uid="uid://d0on0uojked2p" path="res://assets/Busk.png" id="2_xy2pl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxoej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8k3te")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xy2pl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb6fg"]
+size = Vector2(14, 11.9998)
+
+[node name="Enemy" type="CharacterBody2D"]
+floor_max_angle = 1.309
+floor_snap_length = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -6)
+scale = Vector2(0.762, 0.762)
+sprite_frames = SubResource("SpriteFrames_mxoej")
+frame = 1
+frame_progress = 0.255844
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 0.00741942
+shape = SubResource("RectangleShape2D_cb6fg")
