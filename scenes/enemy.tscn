@@ -64,9 +64,17 @@ rotation = 0.00741942
 shape = SubResource("RectangleShape2D_cb6fg")
 
 [node name="MovementTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 1.5
 one_shot = true
 
 [node name="WaitTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.25
 one_shot = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-1, 0)
+target_position = Vector2(0, 7)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(1, 0)
+target_position = Vector2(0, 7)
