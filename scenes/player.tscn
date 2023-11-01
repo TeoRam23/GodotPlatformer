@@ -84,6 +84,7 @@ size = Vector2(8, 14)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+up_direction = Vector2(1, 0)
 floor_constant_speed = true
 floor_max_angle = 1.309
 floor_snap_length = 3.0
@@ -92,13 +93,15 @@ script = ExtResource("1_7n2kp")
 movement_data = ExtResource("2_tf3sn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 7)
 scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_uicba")
 animation = &"idle"
 offset = Vector2(0, -10.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_71l0s")
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
@@ -106,16 +109,29 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -32)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="HazardDetector" type="Area2D" parent="."]
+position = Vector2(0, 7)
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ck58h")
+
+[node name="GravityDetector" type="Area2D" parent="."]
+position = Vector2(0, 7)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityDetector"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_ck58h")
+
+[node name="RotationTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
