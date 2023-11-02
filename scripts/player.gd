@@ -32,28 +32,33 @@ func _physics_process(delta):
 	apply_air_resistance(input_axis, delta)
 	update_animation(input_axis)
 	var was_on_floor = is_on_floor()
-	if gravity_direction == 1:
-		up_direction = Vector2(1, 0)
-		velocity.x = -prevelocity.y
-		velocity.y = prevelocity.x
-		wanted_rotation = 90
-	elif gravity_direction == 2:
-		up_direction = Vector2(0, 1)
-		velocity.x = prevelocity.x
-		velocity.y = -prevelocity.y
-		wanted_rotation = 179.99
-	elif gravity_direction == 3:
-		up_direction = Vector2(-1, 0)
-		velocity.x = prevelocity.y
-		velocity.y = -prevelocity.x
-		wanted_rotation = -90
-	else:
-		up_direction = Vector2(0, -1)
-		velocity.x = prevelocity.x
-		velocity.y = prevelocity.y
-		wanted_rotation = 0
+#	if gravity_direction == 1:
+#		up_direction = Vector2(1, 0)
+#		velocity.x = -prevelocity.y
+#		velocity.y = prevelocity.x
+#		wanted_rotation = 90
+#	elif gravity_direction == 2:
+#		up_direction = Vector2(0, 1)
+#		velocity.x = prevelocity.x
+#		velocity.y = -prevelocity.y
+#		wanted_rotation = 179.99
+#	elif gravity_direction == 3:
+#		up_direction = Vector2(-1, 0)
+#		velocity.x = prevelocity.y
+#		velocity.y = -prevelocity.x
+#		wanted_rotation = -90
+#	else:
+#		up_direction = Vector2(0, -1)
+#		velocity.x = prevelocity.x
+#		velocity.y = prevelocity.y
+#		wanted_rotation = 0
+	var radians = deg_to_rad(gravity_direction)
+	
+	up_direction = Vector2(sin(radians), -cos(radians))
+	velocity.x = prevelocity.x * cos(radians) - prevelocity.y * sin(radians)
+	velocity.y = prevelocity.x * sin(radians) + prevelocity.y * cos(radians)
 		
-	rotation_degrees = move_toward(rotation_degrees, wanted_rotation, rotation_speed)
+	rotation_degrees = move_toward(rotation_degrees, gravity_direction, rotation_speed)
 	
 	move_and_slide()
 	var just_left_ledge = was_on_floor and not is_on_floor() and prevelocity.y >= 0
@@ -173,30 +178,44 @@ func gravity_check():
 	if gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
 		
-		if rotation_degrees > wanted_rotation - 0.01 and rotation_degrees < wanted_rotation + 0.01:
+		if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
 			gravity_direction = entered_area2d.area_direction
-		if gravity_direction == 1:
-			prevelocity.x = velocity.y
-			prevelocity.y = -velocity.x
-		elif gravity_direction == 2:
-			prevelocity.y = -velocity.y
-			prevelocity.x = velocity.x
-		elif gravity_direction == 3:
-			prevelocity.x = -velocity.y
-			prevelocity.y = velocity.x
-		else:
-			prevelocity.x = velocity.x
-			prevelocity.y = velocity.y
+		
+		var radians = deg_to_rad(gravity_direction)
+		# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
+#		print("1, ",prevelocity)
+#
+#		prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+#
+#		prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
+#		print("2, ",prevelocity)
+#
+#		if gravity_direction == 90:
+#			prevelocity.x = velocity.y
+#			prevelocity.y = -velocity.x
+#		elif gravity_direction == 2:
+#			prevelocity.y = -velocity.y
+#			prevelocity.x = velocity.x
+#		elif gravity_direction == 3:
+#			prevelocity.x = -velocity.y
+#			prevelocity.y = velocity.x
+#		else:
+#			prevelocity.x = velocity.x
+#			prevelocity.y = velocity.y
 			
 	else:
 		var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
-		if gravity_direction == 1:
-			prevelocity.x = -oldprevelocity.y
-			prevelocity.y = oldprevelocity.x
-		elif gravity_direction == 2:
-			prevelocity.y = -oldprevelocity.y
-			prevelocity.x = oldprevelocity.x
-		elif gravity_direction == 3:
-			prevelocity.x = oldprevelocity.y
-			prevelocity.y = -oldprevelocity.x
+		var radians = deg_to_rad(gravity_direction)
+		
+		prevelocity.x = oldprevelocity.x * cos(radians) - oldprevelocity.y * sin(radians)
+		prevelocity.y = oldprevelocity.x * sin(radians) + oldprevelocity.y * cos(radians)
+#		if gravity_direction == 1:
+#			prevelocity.x = -oldprevelocity.y
+#			prevelocity.y = oldprevelocity.x
+#		elif gravity_direction == 2:
+#			prevelocity.y = -oldprevelocity.y
+#			prevelocity.x = oldprevelocity.x
+#		elif gravity_direction == 3:
+#			prevelocity.x = oldprevelocity.y
+#			prevelocity.y = -oldprevelocity.x
 		gravity_direction = 0
