@@ -21,7 +21,9 @@ var prevelocity = Vector2(0.0, 0.0)
 var debug = true
 
 func _physics_process(delta):
+	print("1, ",prevelocity)
 	gravity_check()
+	print("2, ",prevelocity)
 	apply_gravity(delta)
 	handle_wall_jump()
 	handle_jump()
@@ -55,6 +57,7 @@ func _physics_process(delta):
 	var radians = deg_to_rad(gravity_direction)
 	
 	up_direction = Vector2(sin(radians), -cos(radians))
+	print(up_direction)
 	velocity.x = prevelocity.x * cos(radians) - prevelocity.y * sin(radians)
 	velocity.y = prevelocity.x * sin(radians) + prevelocity.y * cos(radians)
 		
@@ -180,23 +183,22 @@ func gravity_check():
 		
 		if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
 			gravity_direction = entered_area2d.area_direction
+		var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
 		
 		var radians = deg_to_rad(gravity_direction)
+		print("Radians: ", radians)
 		# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
-#		print("1, ",prevelocity)
-#
-#		prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
-#
-#		prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
-#		print("2, ",prevelocity)
-#
+
+		prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+		prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
+
 #		if gravity_direction == 90:
 #			prevelocity.x = velocity.y
 #			prevelocity.y = -velocity.x
-#		elif gravity_direction == 2:
+#		elif gravity_direction == 180:
 #			prevelocity.y = -velocity.y
-#			prevelocity.x = velocity.x
-#		elif gravity_direction == 3:
+#			prevelocity.x = -velocity.x
+#		elif gravity_direction == -90:
 #			prevelocity.x = -velocity.y
 #			prevelocity.y = velocity.x
 #		else:

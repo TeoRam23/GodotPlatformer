@@ -47,22 +47,21 @@ position = Vector2(38, -16)
 [node name="gravity" parent="." index="12" instance=ExtResource("6_apjpk")]
 position = Vector2(32, -48)
 scale = Vector2(8, 6)
-area_direction = 90
+area_direction = 90.0
 
 [node name="gravity2" parent="." index="13" instance=ExtResource("6_apjpk")]
 position = Vector2(136, -80)
 scale = Vector2(4, 2)
-area_direction = 180
+area_direction = 179.99
 
 [node name="gravity3" parent="." index="14" instance=ExtResource("6_apjpk")]
 position = Vector2(304, 32)
 scale = Vector2(8, 8)
-area_direction = -90
+area_direction = -90.0
 
 [node name="gravity4" parent="." index="15" instance=ExtResource("6_apjpk")]
 position = Vector2(64, 248)
 scale = Vector2(4, 6)
-area_direction = 2
 
 [node name="gravity5" parent="." index="16" instance=ExtResource("6_apjpk")]
 position = Vector2(136, -48)
