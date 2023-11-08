@@ -23,9 +23,6 @@ var prevelocity = Vector2(0.0, 0.0)
 var debug = true
 
 func _physics_process(delta):
-	print("1, ",prevelocity)
-	gravity_check()
-	print("2, ",prevelocity)
 	apply_gravity(delta)
 	handle_wall_jump()
 	handle_jump()
@@ -37,9 +34,12 @@ func _physics_process(delta):
 	update_animation(input_axis)
 	var was_on_floor = is_on_floor()
 
+	print("1, ",velocity, " og ", prevelocity)
+	gravity_check()
 	gravity_calculation()
 	
 	move_and_slide()
+	print("2, ",velocity, " og ", prevelocity)
 	var just_left_ledge = was_on_floor and not is_on_floor() and prevelocity.y >= 0
 	if just_left_ledge:
 		coyotejump_timer.start()
@@ -158,23 +158,38 @@ func gravity_check():
 
 		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
 #
-#		if last_area != entered_area2d:
-#			last_area = entered_area2d
-#			print("ENTERED")
 #
-		if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
-			gravity_direction = entered_area2d.area_direction
+		#if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
+		gravity_direction = entered_area2d.area_direction
 #			var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
 #
+		var radians = deg_to_rad(gravity_direction)
+		
+		if last_area != entered_area2d:
+			last_area = entered_area2d
+			print("#######################################################################ENTERED#######################################################################")
+			if abs(gravity_direction) == abs(90):
+				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
+			elif abs(gravity_direction) == abs(180) or gravity_direction == 0:
+				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * 1
+				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * 1
+			elif abs(gravity_direction) == abs(45):
+				prevelocity.x = (-1 *(velocity.x * cos(radians)) - velocity.y * sin(radians)) * -0.707107
+				prevelocity.y = (velocity.x * sin(radians) - velocity.y * cos(radians)) * -0.707107 #ÆÆÆ
+			elif abs(gravity_direction) == abs(135):
+				pass
+			else:
+				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * 0.707107
+				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * 0.707107
+	#
+			print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
+			print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
+			print(prevelocity, ", velelv, ", velocity)
+				# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
+#				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+#				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
 #
-#
-#			var radians = deg_to_rad(gravity_direction)
-#	#		prevelocity = velocity.rotated(radians) * 0.707107
-#			print("Radians: ", radians)
-#			# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
-#
-#			prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
-#			prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
 			#90up = (-1, 0)
 			
 #			prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * 1
@@ -193,6 +208,8 @@ func gravity_check():
 #			prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -0.258819
 			#75up = (0.965926, -0.258819)
 			
+#			prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.642788
+#			prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * 0.766044 nopp
 			#140up = (0.642788, 0.766044)
 			
 			#230up = (-0.766044, 0.642788)
@@ -211,10 +228,10 @@ func gravity_check():
 	#			prevelocity.y = velocity.y
 			
 	else:
-		var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
+		gravity_direction = 0
 		var radians = deg_to_rad(gravity_direction)
 		
-		prevelocity = oldprevelocity.rotated(radians)
+		prevelocity = prevelocity.rotated(radians)
 		last_area = Area2D
 #		if gravity_direction == 1:
 #			prevelocity.x = -oldprevelocity.y
@@ -225,7 +242,6 @@ func gravity_check():
 #		elif gravity_direction == 3:
 #			prevelocity.x = oldprevelocity.y
 #			prevelocity.y = -oldprevelocity.x
-		gravity_direction = 0
 
 
 func gravity_calculation():
@@ -252,23 +268,21 @@ func gravity_calculation():
 
 	var radians = deg_to_rad(gravity_direction)
 	
-	if gravity_detector.get_overlapping_areas():
-		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
-		
-		if last_area != entered_area2d:
-			last_area = entered_area2d
-			print("ENTERED")
-			velocity = prevelocity
-		else:
-			velocity = prevelocity.rotated(radians)
+#	if gravity_detector.get_overlapping_areas():
+#		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
+#		if last_area != entered_area2d:
+#			last_area = entered_area2d
+	velocity = prevelocity.rotated(radians)
 	
-	else:
-		velocity = prevelocity
+#	else:
+#		velocity = prevelocity
+#		print("")
 	
 	up_direction = Vector2(sin(radians), -cos(radians))
 	print(up_direction)
 	
 #	velocity.x = prevelocity.x * cos(radians) - prevelocity.y * sin(radians)
 #	velocity.y = prevelocity.x * sin(radians) + prevelocity.y * cos(radians)
+
 		
-	rotation_degrees = move_toward(rotation_degrees, gravity_direction, rotation_speed)
+	#rotation_degrees = move_toward(rotation_degrees, gravity_direction, rotation_speed)
