@@ -168,18 +168,19 @@ func gravity_check():
 			if last_area != entered_area2d:
 				last_area = entered_area2d
 				print("#######################################################################ENTERED#######################################################################")
-				if abs(gravity_direction) == abs(90):
+				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
 					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
 					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
-				elif abs(gravity_direction) == abs(180):
-					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * 1
-					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * 1
-				elif abs(gravity_direction) == abs(45) or abs(gravity_direction) == abs(135):
+					print("hæ")
+					
+				elif gravity_direction == clamp(gravity_direction, 22.5, 67.5) or gravity_direction == clamp(gravity_direction, -67.5, -22.5) or gravity_direction == clamp(gravity_direction, 112.5, 157.5) or gravity_direction == clamp(gravity_direction, -157.5, -112.5):
 					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.707107
 					prevelocity.y = (velocity.x * sin(radians) - velocity.y * cos(radians)) * -0.707107
+					
 				else:
 					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians))
 					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians))
+					print("hoo")
 		#
 				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
 				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
