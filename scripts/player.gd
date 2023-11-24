@@ -168,7 +168,7 @@ func gravity_check():
 			if last_area != entered_area2d:
 				last_area = entered_area2d
 				print("#######################################################################ENTERED#######################################################################")
-				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
+				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5) or gravity_direction == clamp(gravity_direction, 247.5, 292.5):
 					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
 					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
 					print("hæ")

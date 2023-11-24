@@ -5,12 +5,16 @@ extends Area2D
 @export var area_direction = 0.0
 
 func _ready():
+	if area_direction > 180 or area_direction < -180:
+		area_direction -= 180 * sign(area_direction)
+		area_direction *= -1
+	print(area_direction)
 	var area_color = (area_direction + 90)/360
-	if area_color < 0:
-		area_color *= -1
-		area_color += 0.5
-	if area_color > 1:
-		area_color -= 1
+#	if area_color < 0:
+#		area_color *= -1
+#		area_color += 0.5
+#	if area_color > 1:
+#		area_color -= 1
 		
 	area_color *= 0.75
 	
