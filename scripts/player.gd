@@ -34,12 +34,12 @@ func _physics_process(delta):
 	update_animation(input_axis)
 	var was_on_floor = is_on_floor()
 
-	print("1, ",velocity, " og ", prevelocity)
+#	print("1, ",velocity, " og ", prevelocity)
 	gravity_check()
 	gravity_calculation()
 	
 	move_and_slide()
-	print("2, ",velocity, " og ", prevelocity)
+#	print("2, ",velocity, " og ", prevelocity)
 	var just_left_ledge = was_on_floor and not is_on_floor() and prevelocity.y >= 0
 	if just_left_ledge:
 		coyotejump_timer.start()
@@ -171,7 +171,7 @@ func gravity_check():
 				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5) or gravity_direction == clamp(gravity_direction, 247.5, 292.5):
 					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
 					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
-					print("hæ")
+#					print("hæ")
 					
 				elif gravity_direction == clamp(gravity_direction, 22.5, 67.5) or gravity_direction == clamp(gravity_direction, -67.5, -22.5) or gravity_direction == clamp(gravity_direction, 112.5, 157.5) or gravity_direction == clamp(gravity_direction, -157.5, -112.5):
 					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.707107
@@ -180,11 +180,11 @@ func gravity_check():
 				else:
 					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians))
 					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians))
-					print("hoo")
+#					print("hoo")
 		#
-				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
-				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
-				print(prevelocity, ", velelv, ", velocity)
+#				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
+#				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
+#				print(prevelocity, ", velelv, ", velocity)
 				# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
 #				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
 #				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
@@ -247,8 +247,13 @@ func gravity_calculation():
 	var radians = deg_to_rad(gravity_direction)
 	velocity = prevelocity.rotated(radians)
 	up_direction = Vector2(sin(radians), -cos(radians))
-	print(up_direction)
+#	print(up_direction)
 	# kanskje gjøre noe som gjør at den alltid gjør minimal spinning? aner ikke hvordan da
+	var differanse = abs(abs(rotation_degrees)-abs(gravity_direction))
+	if differanse != 0:
+		print(differanse)
+	if differanse > 180:
+		print("oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo")
 	rotation_degrees = move_toward(rotation_degrees, gravity_direction, rotation_speed)
 	
 #	if gravity_direction == 1:

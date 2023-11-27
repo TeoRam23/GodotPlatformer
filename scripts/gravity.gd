@@ -5,6 +5,8 @@ extends Area2D
 @export var area_direction = 0.0
 
 func _ready():
+	if area_direction == 180 or area_direction == -180:
+		area_direction = 179.999
 	if area_direction > 180 or area_direction < -180:
 		area_direction -= 180 * sign(area_direction)
 		area_direction *= -1
