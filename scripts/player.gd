@@ -23,10 +23,12 @@ var prevelocity = Vector2(0.0, 0.0)
 var debug = true
 
 func _physics_process(delta):
-	apply_gravity(delta)
-	handle_wall_jump()
-	handle_jump()
 	var input_axis = Input.get_axis("left", "right")
+	apply_gravity(delta)
+	handle_wall_jump(input_axis)
+	handle_jump()
+	if debug and Input.is_key_pressed(KEY_SPACE):
+		prevelocity.y = movement_data.jump_velocity * 0.5
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
@@ -44,6 +46,10 @@ func _physics_process(delta):
 	if just_left_ledge:
 		coyotejump_timer.start()
 	just_wall_jumped = false
+	
+	if position.y > 1350:
+		position = starting_position
+		prevelocity = Vector2(0, 0)
 
 func apply_gravity(delta):
 	if is_on_floor():
@@ -53,15 +59,17 @@ func apply_gravity(delta):
 		if is_on_wall() and prevelocity.y > 0:
 			prevelocity.y = 40
 
-func handle_wall_jump():
+func handle_wall_jump(input_axis):
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
 		return
 	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
 	if Input.is_action_just_pressed("jump"):
-		if gravity_direction == 1:
-			prevelocity.x = wall_normal.y * movement_data.speed
-		elif gravity_direction == 3:
-			prevelocity.x = -wall_normal.y * movement_data.speed
+		if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
+			prevelocity.x = wall_normal.y * movement_data.speed * sign(gravity_direction)
+#		elif gravity_direction == clamp(gravity_direction, -112.5, -67.5):
+#			prevelocity.x = -wall_normal.y * movement_data.speed
+		elif gravity_direction == clamp(gravity_direction, 157.5, 180):
+			prevelocity.x = wall_normal.x * movement_data.speed * -1
 		else:
 			prevelocity.x = wall_normal.x * movement_data.speed
 		prevelocity.y = movement_data.jump_velocity
@@ -86,10 +94,13 @@ func handle_acceleration(input_axis, delta):
 	if not is_on_floor() or Input.is_action_pressed("down"): return
 	if input_axis != 0:
 		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
+		
 
 func handle_air_acceleration(input_axis, delta):
 	if is_on_floor(): return
-	if input_axis != 0:
+	if input_axis > 0 and prevelocity.x <= movement_data.speed * input_axis:
+		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.air_acceleration * delta)
+	elif input_axis < 0 and prevelocity.x >= movement_data.speed * input_axis:
 		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.air_acceleration * delta)
 
 func apply_friction(input_axis, delta):
@@ -155,8 +166,7 @@ func _on_hazard_detector_area_entered(area):
 
 func gravity_check():
 	if gravity_detector.get_overlapping_areas():
-
-		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
+		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
 #
 #
 		if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
@@ -168,8 +178,8 @@ func gravity_check():
 			if last_area != entered_area2d:
 				last_area = entered_area2d
 				print("#######################################################################ENTERED#######################################################################")
-				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5) or gravity_direction == clamp(gravity_direction, 247.5, 292.5):
-					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
+					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
 					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
 #					print("hæ")
 					
@@ -248,13 +258,42 @@ func gravity_calculation():
 	velocity = prevelocity.rotated(radians)
 	up_direction = Vector2(sin(radians), -cos(radians))
 #	print(up_direction)
-	# kanskje gjøre noe som gjør at den alltid gjør minimal spinning? aner ikke hvordan da
-	var differanse = abs(abs(rotation_degrees)-abs(gravity_direction))
-	if differanse != 0:
-		print(differanse)
-	if differanse > 180:
-		print("oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo")
-	rotation_degrees = move_toward(rotation_degrees, gravity_direction, rotation_speed)
+#	var differanse = abs(abs(rotation_degrees)-abs(gravity_direction))
+
+
+
+#	var differanse
+#	var rotation_aim
+#	if rotation_degrees > gravity_direction:
+#		differanse = rotation_degrees - gravity_direction
+#	else:
+#		differanse = gravity_direction - rotation_degrees
+#
+#	if differanse != 0:
+#		print(differanse)
+#	if differanse > 180:
+#		print("oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo")
+#		rotation_aim = gravity_direction * -1
+#	else:
+#		rotation_aim = gravity_direction
+#	rotation_degrees = move_toward(rotation_degrees, rotation_aim, rotation_speed)
+	
+	
+	var target_angle = gravity_direction
+	var current_angle = rotation_degrees
+
+	var diff = target_angle - current_angle
+
+	if diff > 180:
+		diff -= 360
+	elif diff < -180:
+		diff += 360
+
+	# Limit the rotation to a maximum of 45 degrees
+	var move_rotation = clamp(diff, -rotation_speed, rotation_speed)
+
+	# Apply the rotation
+	rotation_degrees += move_rotation
 	
 #	if gravity_direction == 1:
 #		up_direction = Vector2(1, 0)

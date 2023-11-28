@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/gravity.gd" id="1_efsg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx74o"]
-size = Vector2(20, 20)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7ulbw"]
 specular_color = Color(0, 0.909804, 0.211765, 1)
 
-[node name="gravity" type="Area2D"]
+[node name="gravity" type="Area2D" groups=["gravity_group"]]
+z_index = -1
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_efsg4")
@@ -17,8 +17,7 @@ script = ExtResource("1_efsg4")
 position = Vector2(10, -10)
 shape = SubResource("RectangleShape2D_tx74o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 modulate = Color(0, 0.909804, 0.211765, 0.454902)
-position = Vector2(10, -10)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_7ulbw")

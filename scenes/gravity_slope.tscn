@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://hf8kpibst4e4"]
+
+[ext_resource type="Script" path="res://scripts/gravity.gd" id="1_qtm2w"]
+
+[node name="GravityPolygon" type="Area2D" groups=["gravity_group"]]
+z_index = -1
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_qtm2w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, -20, 20, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+modulate = Color(0, 0.909804, 0.211765, 0.454902)
+polygon = PackedVector2Array(0, 0, 0, -20, 20, 0)
