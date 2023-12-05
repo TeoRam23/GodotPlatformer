@@ -11,8 +11,8 @@ func _ready():
 	
 func show_level_completed():
 	level_completed.show() #gjør level_complete synlig
-	get_tree().paused = true #setter alt i world på pause	
-	if not next_level is PackedScene: 
+	get_tree().paused = true #setter alt i world på pause
+	if not next_level is PackedScene:
 		return
 	get_tree().paused = true
 	await LevelTransition.fade_to_black()
