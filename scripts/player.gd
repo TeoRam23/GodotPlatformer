@@ -63,6 +63,7 @@ func handle_wall_jump(input_axis):
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
 		return
 	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
+	prevelocity.x = 0
 	if Input.is_action_just_pressed("jump"):
 		if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
 			prevelocity.x = wall_normal.y * movement_data.speed * sign(gravity_direction)
@@ -82,11 +83,15 @@ func handle_jump():
 		if Input.is_action_just_pressed("jump"):
 			prevelocity.y = movement_data.jump_velocity
 	elif not is_on_floor():
-		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2:
-			prevelocity.y = movement_data.jump_velocity / 2
+#		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2:
+#			prevelocity.y = movement_data.jump_velocity / 2 # aner ikke hvorfor dette var her?
 	
 		if Input.is_action_just_pressed("jump") and air_jump and not just_wall_jumped:
-			prevelocity.y = movement_data.jump_velocity * 0.8
+			if prevelocity.y < movement_data.jump_velocity * 0.8:
+				prevelocity.y += movement_data.jump_velocity * 0.1
+			else:
+				prevelocity.y = movement_data.jump_velocity * 0.8
+				print("less :)")
 			if not debug:
 				air_jump = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=15 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -82,6 +82,10 @@ size = Vector2(10, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck58h"]
 size = Vector2(8, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p1sq"]
+atlas = ExtResource("3_v30qj")
+region = Rect2(105, 0, 21, 21)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 floor_constant_speed = true
@@ -134,5 +138,16 @@ shape = SubResource("RectangleShape2D_ck58h")
 [node name="RotationTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+lifetime = 2.0
+speed_scale = 5.0
+texture = SubResource("AtlasTexture_1p1sq")
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.3
+scale_amount_max = 0.3
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
