@@ -36,7 +36,7 @@ func _physics_process(delta):
 	update_animation(input_axis)
 	var was_on_floor = is_on_floor()
 
-#	print("1, ",velocity, " og ", prevelocity)
+#	print("1, ",velocity, " og ", prevelocity) 
 	gravity_check()
 	gravity_calculation()
 	
