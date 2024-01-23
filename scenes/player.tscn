@@ -87,6 +87,7 @@ atlas = ExtResource("3_v30qj")
 region = Rect2(105, 0, 21, 21)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.309
@@ -140,6 +141,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+z_index = 1
 amount = 20
 lifetime = 2.0
 speed_scale = 5.0

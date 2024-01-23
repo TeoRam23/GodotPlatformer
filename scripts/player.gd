@@ -173,36 +173,64 @@ func gravity_check():
 	if gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
 #
-#
+		
 		if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
 			gravity_direction = entered_area2d.area_direction
+			
+			if gravity_direction == 123456:
+				var relative_position = entered_area2d.global_position - global_position
+				var angle_to_target = relative_position.angle()
+				gravity_direction = angle_to_target
+				print(gravity_direction)
+
+				# The angle is given in radians, you may convert it to degrees if needed
+				var cuisine = cos(gravity_direction)
+				var sine = sin(gravity_direction)
+				prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
+				prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
+			else:
 	#			var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
 	#
-			var radians = deg_to_rad(gravity_direction)
-			
-			if last_area != entered_area2d:
-				last_area = entered_area2d
-				print("#######################################################################ENTERED#######################################################################")
-				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
-					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
-					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
-#					print("hæ")
+				var radians = deg_to_rad(gravity_direction)
+				
+				if last_area != entered_area2d:
+					last_area = entered_area2d
 					
-				elif gravity_direction == clamp(gravity_direction, 22.5, 67.5) or gravity_direction == clamp(gravity_direction, -67.5, -22.5) or gravity_direction == clamp(gravity_direction, 112.5, 157.5) or gravity_direction == clamp(gravity_direction, -157.5, -112.5):
-					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.707107
-					prevelocity.y = (velocity.x * sin(radians) - velocity.y * cos(radians)) * -0.707107
 					
-				else:
-					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians))
-					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians))
-#					print("hoo")
-		#
-#				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
-#				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
-#				print(prevelocity, ", velelv, ", velocity)
-				# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
-#				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
-#				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
+					print("#######################################################################ENTERED#######################################################################")
+	#				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
+	#					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+	#					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
+	##					print("hæ")
+	#
+	#				elif gravity_direction == clamp(gravity_direction, 22.5, 67.5) or gravity_direction == clamp(gravity_direction, -67.5, -22.5) or gravity_direction == clamp(gravity_direction, 112.5, 157.5) or gravity_direction == clamp(gravity_direction, -157.5, -112.5):
+	#					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.707107
+	#					prevelocity.y = (velocity.x * sin(radians) - velocity.y * cos(radians)) * -0.707107
+	#
+	#				else:
+	#					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians))
+	#					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians))
+						
+						
+	#					print("hoo")
+					
+					var cuisine = cos(radians)
+					var sine = sin(radians)
+	#				cuisine = -cuisine
+					print("cuisine: ", cuisine, " & sine: ", sine, "
+vel.x: ", velocity.x, " & vel.y: ", velocity.y)
+					
+					prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
+					prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
+					
+					print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
+			#
+	#				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
+	#				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
+	#				print(prevelocity, ", velelv, ", velocity)
+					# ÆÆÆÆÆÆÆÆÆÆÆÆ chatgpt help me
+	#				prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+	#				prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
 #
 			#90up = (-1, 0)
 			

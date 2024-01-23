@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var sprite_2d = $CollisionShape2D/Sprite2D
+#@onready var sprite_2d = $CollisionShape2D/Sprite2D
 @onready var polygon_2d = $CollisionPolygon2D/Polygon2D
 
 @export var area_direction = 0.0
@@ -21,10 +21,10 @@ func _ready():
 		
 	area_color *= 0.75
 #	sprite_2d.modulate = Color.from_hsv(area_color, 1, 1, 0.75)
-	if sprite_2d:
-		sprite_2d.modulate = Color.from_hsv(area_color, 1, 1, 0.5)
-		print("box")
-	elif polygon_2d:
+#	if sprite_2d:
+#		sprite_2d.modulate = Color.from_hsv(area_color, 1, 1, 0.5)
+#		print("box")
+	if polygon_2d:
 		polygon_2d.modulate = Color.from_hsv(area_color, 1, 1, 0.5)
 		print("polygon")
 	

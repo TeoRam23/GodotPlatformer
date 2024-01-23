@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b82i5r7ca5rnh"]
+[gd_scene load_steps=9 format=3 uid="uid://b82i5r7ca5rnh"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_qjpkg"]
 [ext_resource type="PackedScene" uid="uid://cyxjb50pl5mbj" path="res://scenes/level_two.tscn" id="2_v0qul"]
 [ext_resource type="PackedScene" uid="uid://cgjq00nlnardn" path="res://scenes/spikes.tscn" id="3_v4dt7"]
 [ext_resource type="PackedScene" uid="uid://440shhf5t514" path="res://scenes/chick.tscn" id="4_ktd42"]
 [ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="5_ho688"]
-[ext_resource type="PackedScene" uid="uid://bx2ctcj21r38t" path="res://scenes/gravity_box.tscn" id="6_apjpk"]
-[ext_resource type="PackedScene" uid="uid://hf8kpibst4e4" path="res://scenes/gravity_slope.tscn" id="7_q501n"]
+[ext_resource type="PackedScene" uid="uid://co7wx4c1r81qr" path="res://gravity/scenes/gravity_box.tscn" id="6_apjpk"]
+[ext_resource type="PackedScene" uid="uid://hf8kpibst4e4" path="res://gravity/scenes/gravity_slope.tscn" id="7_q501n"]
+[ext_resource type="PackedScene" uid="uid://n7sgjhrn215g" path="res://gravity/scenes/gravity_sphere.tscn" id="8_ym2ab"]
 
 [node name="LevelOne" instance=ExtResource("1_qjpkg")]
 next_level = ExtResource("2_v0qul")
@@ -48,7 +49,7 @@ position = Vector2(38, -16)
 [node name="gravity" parent="." index="12" instance=ExtResource("6_apjpk")]
 position = Vector2(-48, 32)
 scale = Vector2(8, 8)
-area_direction = 90.0
+area_direction = 110.0
 
 [node name="gravity2" parent="." index="13" instance=ExtResource("6_apjpk")]
 position = Vector2(96, -56)
@@ -70,12 +71,12 @@ position = Vector2(96, -24)
 scale = Vector2(4, 2)
 
 [node name="gravity7" parent="." index="17" instance=ExtResource("6_apjpk")]
-position = Vector2(268, -228)
+position = Vector2(386, -228)
 scale = Vector2(5, 5)
 area_direction = 135.0
 
 [node name="gravity9" parent="." index="18" instance=ExtResource("6_apjpk")]
-position = Vector2(268, -328)
+position = Vector2(386, -328)
 scale = Vector2(5, 5)
 area_direction = 45.0
 
@@ -104,12 +105,12 @@ position = Vector2(-120, -272)
 scale = Vector2(5, 5)
 
 [node name="gravity16" parent="." index="24" instance=ExtResource("6_apjpk")]
-position = Vector2(168, -228)
+position = Vector2(286, -228)
 scale = Vector2(5, 5)
 area_direction = -135.0
 
 [node name="gravity17" parent="." index="25" instance=ExtResource("6_apjpk")]
-position = Vector2(168, -328)
+position = Vector2(286, -328)
 scale = Vector2(5, 5)
 area_direction = -45.0
 
@@ -255,3 +256,7 @@ position = Vector2(1764, -172)
 rotation = 2.35619
 scale = Vector2(52, 52)
 area_direction = 180.0
+
+[node name="gravity_sphere" parent="." index="53" instance=ExtResource("8_ym2ab")]
+position = Vector2(176, -272)
+scale = Vector2(4, 4)
