@@ -20,9 +20,14 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var starting_position = global_position
 @onready var gravity_detector = $GravityDetector
 
+@onready var camera = $Camera2D
+
+
 var debug = true
 
 func _physics_process(delta):
+	button_presses()
+	
 	var input_axis = Input.get_axis("left", "right")
 	apply_gravity(delta)
 	handle_wall_jump(input_axis)
@@ -91,7 +96,7 @@ func handle_jump():
 				prevelocity.y += movement_data.jump_velocity * 0.1
 			else:
 				prevelocity.y = movement_data.jump_velocity * 0.8
-				print("less :)")
+#				print("less :)")
 			if not debug:
 				air_jump = false
 
@@ -126,6 +131,7 @@ func update_animation(input_axis):
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
+		
 	
 	if not is_on_floor():
 		animated_sprite_2d.play("jump")
@@ -172,22 +178,34 @@ func _on_hazard_detector_area_entered(area):
 func gravity_check():
 	if gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
-#
 		
-		if rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01:
+		if gravity_direction > 180:
+			gravity_direction -= 360
+		elif gravity_direction < -180:
+			gravity_direction += 360
+		if (rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01):
 			gravity_direction = entered_area2d.area_direction
 			
 			if gravity_direction == 123456:
 				var relative_position = entered_area2d.global_position - global_position
 				var angle_to_target = relative_position.angle()
-				gravity_direction = angle_to_target
-				print(gravity_direction)
+				var radian_direction = angle_to_target
+				gravity_direction = rad_to_deg(radian_direction) - 90
+				radian_direction = deg_to_rad(gravity_direction)
+#				print("Dir: ", gravity_direction)
 
-				# The angle is given in radians, you may convert it to degrees if needed
-				var cuisine = cos(gravity_direction)
-				var sine = sin(gravity_direction)
-				prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
-				prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
+				if last_area != entered_area2d:
+					last_area = entered_area2d
+					
+					var cuisine = cos(radian_direction)
+					var sine = sin(radian_direction)
+					print("cuisine: ", cuisine, " & sine: ", sine, "
+vel.x: ", velocity.x, " & vel.y: ", velocity.y)
+
+					prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
+					prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
+					
+					print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
 			else:
 	#			var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
 	#
@@ -290,6 +308,7 @@ func gravity_calculation():
 	var radians = deg_to_rad(gravity_direction)
 	velocity = prevelocity.rotated(radians)
 	up_direction = Vector2(sin(radians), -cos(radians))
+#	print("UP: ", up_direction)
 #	print(up_direction)
 #	var differanse = abs(abs(rotation_degrees)-abs(gravity_direction))
 
@@ -363,3 +382,26 @@ func gravity_calculation():
 #	velocity.x = prevelocity.x * cos(radians) - prevelocity.y * sin(radians)
 #	velocity.y = prevelocity.x * sin(radians) + prevelocity.y * cos(radians)
 
+
+
+
+
+func button_presses():
+	if Input.is_action_just_pressed("rotate"):
+		if camera.ignore_rotation == true:
+			camera.ignore_rotation = false
+		else:
+			camera.ignore_rotation = true
+	elif Input.is_action_just_pressed("pluss"):
+		if camera.zoom < Vector2(1, 1):
+			camera.zoom += Vector2(0.1, 0.1)
+		else:
+			camera.zoom += Vector2(1, 1)
+		print(camera.zoom)
+	
+	elif Input.is_action_just_pressed("minus"):
+		if camera.zoom <= Vector2(1, 1):
+			camera.zoom -= Vector2(0.1, 0.1)
+		else:
+			camera.zoom -= Vector2(1, 1)
+		print(camera.zoom)
