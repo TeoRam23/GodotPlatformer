@@ -113,7 +113,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-ignore_rotation = false
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 rotation_smoothing_enabled = true
@@ -136,10 +135,6 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravityDetector"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ck58h")
-
-[node name="RotationTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 show_behind_parent = true

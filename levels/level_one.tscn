@@ -264,3 +264,13 @@ scale = Vector2(4, 4)
 [node name="gravity_sphere2" parent="." index="54" instance=ExtResource("8_1jkel")]
 position = Vector2(184, -552)
 scale = Vector2(8, 8)
+
+[node name="gravity29" parent="." index="55" instance=ExtResource("6_c1ffr")]
+position = Vector2(-671, 252)
+scale = Vector2(15, 30)
+area_direction = 90.0
+
+[node name="gravity30" parent="." index="56" instance=ExtResource("6_c1ffr")]
+position = Vector2(-971, 252)
+scale = Vector2(15, 30)
+area_direction = -90.0

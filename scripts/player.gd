@@ -3,20 +3,23 @@ extends CharacterBody2D
 @export var movement_data : PlayerMovementData
 
 var air_jump = false
+var can_dash = true
 var just_wall_jumped = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var dashing = 250
 
 var gravity_direction = 0
 var rotation_speed = 15
 var wanted_rotation = 0
 
 var last_area
+var last_grav
 
 var prevelocity = Vector2(0.0, 0.0)
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var coyotejump_timer = $CoyoteJumpTimer
-@onready var rotation_timer = $RotationTimer
 @onready var starting_position = global_position
 @onready var gravity_detector = $GravityDetector
 
@@ -26,6 +29,7 @@ var prevelocity = Vector2(0.0, 0.0)
 var debug = true
 
 func _physics_process(delta):
+	gravity_check()
 	button_presses()
 	
 	var input_axis = Input.get_axis("left", "right")
@@ -34,6 +38,7 @@ func _physics_process(delta):
 	handle_jump()
 	if debug and Input.is_key_pressed(KEY_SPACE):
 		prevelocity.y = movement_data.jump_velocity * 0.5
+	handle_dash()
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
@@ -42,7 +47,6 @@ func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 
 #	print("1, ",velocity, " og ", prevelocity) 
-	gravity_check()
 	gravity_calculation()
 	
 	move_and_slide()
@@ -99,6 +103,17 @@ func handle_jump():
 #				print("less :)")
 			if not debug:
 				air_jump = false
+
+func handle_dash():
+	if is_on_floor(): can_dash = true
+	
+	elif not is_on_floor() and can_dash:
+		var dash_axis = Input.get_axis("dashL", "dashR")
+		if Input.is_action_just_pressed("dashL") or Input.is_action_just_pressed("dashR"):
+			prevelocity.x += dashing * dash_axis
+			if not debug:
+				can_dash = false
+
 
 func handle_acceleration(input_axis, delta):
 	if not is_on_floor() or Input.is_action_pressed("down"): return
@@ -175,6 +190,7 @@ func _on_hazard_detector_area_entered(area):
 #			prevelocity.y = -oldprevelocity.x
 #		gravity_direction = 0
 
+
 func gravity_check():
 	if gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
@@ -192,20 +208,15 @@ func gravity_check():
 				var radian_direction = angle_to_target
 				gravity_direction = rad_to_deg(radian_direction) - 90
 				radian_direction = deg_to_rad(gravity_direction)
-#				print("Dir: ", gravity_direction)
 
-				if last_area != entered_area2d:
+				if last_area != entered_area2d or last_grav != gravity_direction:
 					last_area = entered_area2d
+					last_grav = gravity_direction
 					
 					var cuisine = cos(radian_direction)
 					var sine = sin(radian_direction)
-					print("cuisine: ", cuisine, " & sine: ", sine, "
-vel.x: ", velocity.x, " & vel.y: ", velocity.y)
-
 					prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
 					prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
-					
-					print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
 			else:
 	#			var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
 	#
@@ -307,7 +318,25 @@ vel.x: ", velocity.x, " & vel.y: ", velocity.y)
 func gravity_calculation():
 	var radians = deg_to_rad(gravity_direction)
 	velocity = prevelocity.rotated(radians)
-	up_direction = Vector2(sin(radians), -cos(radians))
+#	up_direction = Vector2(sin(radians), -cos(radians))
+	up_direction = Vector2.UP.rotated(radians)
+	
+	
+	var target_angle = gravity_direction
+	var current_angle = rotation_degrees
+
+	var diff = target_angle - current_angle
+
+	if diff > 180:
+		diff -= 360
+	elif diff < -180:
+		diff += 360
+
+	# Limit the rotation to a maximum of 45 degrees
+	var move_rotation = clamp(diff, -rotation_speed, rotation_speed)
+
+	# Apply the rotation
+	rotation_degrees += move_rotation
 #	print("UP: ", up_direction)
 #	print(up_direction)
 #	var differanse = abs(abs(rotation_degrees)-abs(gravity_direction))
@@ -331,21 +360,6 @@ func gravity_calculation():
 #	rotation_degrees = move_toward(rotation_degrees, rotation_aim, rotation_speed)
 	
 	
-	var target_angle = gravity_direction
-	var current_angle = rotation_degrees
-
-	var diff = target_angle - current_angle
-
-	if diff > 180:
-		diff -= 360
-	elif diff < -180:
-		diff += 360
-
-	# Limit the rotation to a maximum of 45 degrees
-	var move_rotation = clamp(diff, -rotation_speed, rotation_speed)
-
-	# Apply the rotation
-	rotation_degrees += move_rotation
 	
 #	if gravity_direction == 1:
 #		up_direction = Vector2(1, 0)
@@ -392,16 +406,30 @@ func button_presses():
 			camera.ignore_rotation = false
 		else:
 			camera.ignore_rotation = true
-	elif Input.is_action_just_pressed("pluss"):
-		if camera.zoom < Vector2(1, 1):
+	if Input.is_action_just_pressed("pluss"):
+		if camera.zoom < Vector2(0.0999, 0.0999):
+			camera.zoom = Vector2(camera.zoom.x * 1.25, camera.zoom.x * 1.25)
+		elif camera.zoom < Vector2(1, 1):
 			camera.zoom += Vector2(0.1, 0.1)
 		else:
 			camera.zoom += Vector2(1, 1)
 		print(camera.zoom)
 	
 	elif Input.is_action_just_pressed("minus"):
-		if camera.zoom <= Vector2(1, 1):
+		if camera.zoom <= Vector2(0.1, 0.1):
+			camera.zoom = Vector2(camera.zoom.x * 0.8, camera.zoom.x * 0.8)
+		elif camera.zoom <= Vector2(1, 1):
 			camera.zoom -= Vector2(0.1, 0.1)
 		else:
 			camera.zoom -= Vector2(1, 1)
 		print(camera.zoom)
+	
+	if Input.is_key_pressed(KEY_Z):
+		camera.zoom = Vector2(1, 1)
+
+	if Input.is_key_pressed(KEY_G):
+		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
+		var center = entered_area2d.global_position
+		var distance = center.distance_to(global_position)
+		prevelocity.x = (gravity * movement_data.gravity_scale) / distance
+		print(prevelocity.x)

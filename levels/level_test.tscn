@@ -32,3 +32,7 @@ scale = Vector2(10, 10)
 position = Vector2(-240, -16)
 scale = Vector2(6.59143, 6.54743)
 area_direction = -45.0
+
+[node name="gravity_sphere2" parent="." instance=ExtResource("5_xwxsa")]
+position = Vector2(7.99997, -440)
+scale = Vector2(10, 10)
