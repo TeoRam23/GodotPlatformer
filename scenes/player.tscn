@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=16 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
 [ext_resource type="Texture2D" uid="uid://btyt7tei7omda" path="res://assets/JeffreySprite.png" id="3_v30qj"]
+[ext_resource type="PackedScene" uid="uid://cdoim1kpn0tlp" path="res://scenes/Framer.tscn" id="4_1icg4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyipa"]
 atlas = ExtResource("3_v30qj")
@@ -54,7 +55,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uk8ua")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -101,7 +102,8 @@ z_index = 1
 position = Vector2(0, 7)
 scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_uicba")
-animation = &"idle"
+animation = &"jump"
+frame_progress = 1.0
 offset = Vector2(0, -10.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -148,5 +150,10 @@ spread = 0.0
 gravity = Vector2(0, 0)
 scale_amount_min = 0.3
 scale_amount_max = 0.3
+
+[node name="Framer" parent="." instance=ExtResource("4_1icg4")]
+process_mode = 3
+
+[node name="FallAnimationDelay" type="Timer" parent="."]
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

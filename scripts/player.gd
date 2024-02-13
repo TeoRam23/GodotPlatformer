@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_data : PlayerMovementData
 
-var air_jump = false
+var air_jump = true
 var can_dash = true
 var just_wall_jumped = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,14 +30,17 @@ var debug = true
 
 func _physics_process(delta):
 	gravity_check()
-	button_presses()
+	button_presses(delta)
 	
 	var input_axis = Input.get_axis("left", "right")
 	apply_gravity(delta)
 	handle_wall_jump(input_axis)
 	handle_jump()
 	if debug and Input.is_key_pressed(KEY_SPACE):
-		prevelocity.y = movement_data.jump_velocity * 0.5
+		if Input.is_key_pressed(KEY_CTRL):
+			prevelocity.y = movement_data.jump_velocity
+		else:
+			prevelocity.y = movement_data.jump_velocity * 0.5
 	handle_dash()
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
@@ -47,6 +50,8 @@ func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 
 #	print("1, ",velocity, " og ", prevelocity) 
+	if debug and Input.is_key_pressed(KEY_ALT):
+		prevelocity.y = 0
 	gravity_calculation()
 	
 	move_and_slide()
@@ -67,6 +72,8 @@ func apply_gravity(delta):
 		prevelocity.y += gravity * movement_data.gravity_scale * delta
 		if is_on_wall() and prevelocity.y > 0:
 			prevelocity.y = 40
+	if is_on_ceiling() and not is_on_wall():
+		prevelocity.y = 0.1
 
 func handle_wall_jump(input_axis):
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
@@ -92,8 +99,9 @@ func handle_jump():
 		if Input.is_action_just_pressed("jump"):
 			prevelocity.y = movement_data.jump_velocity
 	elif not is_on_floor():
-#		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2:
-#			prevelocity.y = movement_data.jump_velocity / 2 # aner ikke hvorfor dette var her?
+		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2:
+			prevelocity.y = movement_data.jump_velocity / 2 # aner ikke hvorfor dette var her? 
+															# dette er her for å kunne hoppe lavere, dumme yngre meg
 	
 		if Input.is_action_just_pressed("jump") and air_jump and not just_wall_jumped:
 			if prevelocity.y < movement_data.jump_velocity * 0.8:
@@ -400,7 +408,11 @@ func gravity_calculation():
 
 
 
-func button_presses():
+func button_presses(delta):
+#	if is_on_wall():
+#		print("WALL!")
+#	else:
+#		print("no wall :[")
 	if Input.is_action_just_pressed("rotate"):
 		if camera.ignore_rotation == true:
 			camera.ignore_rotation = false
@@ -414,6 +426,13 @@ func button_presses():
 		else:
 			camera.zoom += Vector2(1, 1)
 		print(camera.zoom)
+		
+		if camera.zoom >= Vector2(2, 2):
+			camera.position_smoothing_enabled = false
+			camera.rotation_smoothing_enabled = false
+		else:
+			camera.position_smoothing_enabled = true
+			camera.rotation_smoothing_enabled = true
 	
 	elif Input.is_action_just_pressed("minus"):
 		if camera.zoom <= Vector2(0.1, 0.1):
@@ -423,13 +442,33 @@ func button_presses():
 		else:
 			camera.zoom -= Vector2(1, 1)
 		print(camera.zoom)
+		
+		if camera.zoom >= Vector2(2, 2):
+			camera.position_smoothing_enabled = false
+			camera.rotation_smoothing_enabled = false
+		else:
+			camera.position_smoothing_enabled = true
+			camera.rotation_smoothing_enabled = true
 	
 	if Input.is_key_pressed(KEY_Z):
 		camera.zoom = Vector2(1, 1)
 
 	if Input.is_key_pressed(KEY_G):
+		if gravity_detector.get_overlapping_areas():
+			var entered_area2d = gravity_detector.get_overlapping_areas()[0]
+			var center = entered_area2d.global_position
+			var distance = center.distance_to(global_position)
+			var multiplier
+			if prevelocity.x <= 0:
+				multiplier = -1
+			else: 
+				multiplier = 1
+			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * multiplier
+			prevelocity.y = 0
+			print(prevelocity.x)
+			print("Gravity: ", gravity * movement_data.gravity_scale * 0.017, ", Delta: ", delta)
+	if Input.is_key_pressed(KEY_H) and gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
 		var center = entered_area2d.global_position
 		var distance = center.distance_to(global_position)
-		prevelocity.x = (gravity * movement_data.gravity_scale) / distance
-		print(prevelocity.x)
+		print(distance)

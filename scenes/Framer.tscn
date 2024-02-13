@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdoim1kpn0tlp"]
+
+[ext_resource type="Script" path="res://scripts/framer.gd" id="1_goyxa"]
+
+[node name="Framer" type="Node"]
+script = ExtResource("1_goyxa")
