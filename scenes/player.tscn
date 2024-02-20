@@ -99,12 +99,12 @@ movement_data = ExtResource("2_tf3sn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, 7)
+position = Vector2(0, -1)
 scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_uicba")
 animation = &"jump"
 frame_progress = 1.0
-offset = Vector2(0, -10.5)
+offset = Vector2(0, -0.00131321)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -154,6 +154,8 @@ scale_amount_max = 0.3
 [node name="Framer" parent="." instance=ExtResource("4_1icg4")]
 process_mode = 3
 
-[node name="FallAnimationDelay" type="Timer" parent="."]
+[node name="DashChargeTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

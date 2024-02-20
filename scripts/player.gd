@@ -4,8 +4,11 @@ extends CharacterBody2D
 
 var air_jump = true
 var can_dash = true
+var can_gigadash = true
 var just_wall_jumped = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gonnadash = false
+var sprite_rotation_speed = 100
 
 var dashing = 250
 
@@ -22,6 +25,7 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var coyotejump_timer = $CoyoteJumpTimer
 @onready var starting_position = global_position
 @onready var gravity_detector = $GravityDetector
+@onready var dash_charge_timer = $DashChargeTimer
 
 @onready var camera = $Camera2D
 
@@ -46,6 +50,7 @@ func _physics_process(delta):
 	handle_air_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
 	apply_air_resistance(input_axis, delta)
+	handle_gigadash(delta, input_axis)
 	update_animation(input_axis)
 	var was_on_floor = is_on_floor()
 
@@ -63,7 +68,7 @@ func _physics_process(delta):
 	
 	if position.y > 1350:
 		position = starting_position
-		prevelocity = Vector2(0, 0)
+		velocity = Vector2(0, 0)
 
 func apply_gravity(delta):
 	if is_on_floor():
@@ -99,9 +104,10 @@ func handle_jump():
 		if Input.is_action_just_pressed("jump"):
 			prevelocity.y = movement_data.jump_velocity
 	elif not is_on_floor():
-		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2:
+		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2 and prevelocity.y > movement_data.jump_velocity:
 			prevelocity.y = movement_data.jump_velocity / 2 # aner ikke hvorfor dette var her? 
 															# dette er her for å kunne hoppe lavere, dumme yngre meg
+			print("minileep")
 	
 		if Input.is_action_just_pressed("jump") and air_jump and not just_wall_jumped:
 			if prevelocity.y < movement_data.jump_velocity * 0.8:
@@ -121,6 +127,34 @@ func handle_dash():
 			prevelocity.x += dashing * dash_axis
 			if not debug:
 				can_dash = false
+				
+
+func handle_gigadash(delta, input_axis):
+	if is_on_floor(): can_gigadash = true
+	
+	elif not is_on_floor() and Input.is_action_just_pressed("down") and can_gigadash:
+		gonnadash = true
+		dash_charge_timer.start()
+		animated_sprite_2d.rotation_degrees = 0
+		if not debug:
+			can_gigadash = false
+	if gonnadash:
+		prevelocity = Vector2(0, 0)
+		animated_sprite_2d.rotation_degrees += 400 * input_axis * delta
+		if animated_sprite_2d.rotation_degrees > 180:
+				animated_sprite_2d.rotation_degrees -= 360
+		elif animated_sprite_2d.rotation_degrees < -180:
+				animated_sprite_2d.rotation_degrees += 360
+				
+		if dash_charge_timer.is_stopped() or Input.is_action_just_pressed("jump"):
+			prevelocity = Vector2(0,movement_data.jump_velocity).rotated(animated_sprite_2d.rotation)
+			
+#			animated_sprite_2d.rotation_degrees = 0
+			gonnadash = false
+			
+			sprite_rotation_speed = abs(animated_sprite_2d.rotation_degrees) * 5
+	elif animated_sprite_2d.rotation_degrees != 0:
+		animated_sprite_2d.rotation_degrees = move_toward(animated_sprite_2d.rotation_degrees, 0, sprite_rotation_speed * delta)
 
 
 func handle_acceleration(input_axis, delta):
@@ -159,12 +193,14 @@ func update_animation(input_axis):
 	if not is_on_floor():
 		animated_sprite_2d.play("jump")
 	
-	if Input.is_action_pressed("down") and is_on_floor():
+	if (Input.is_action_pressed("down") and is_on_floor()) or gonnadash:
 		animated_sprite_2d.play("crouch")
 
 
 func _on_hazard_detector_area_entered(area):
 	global_position = starting_position
+	prevelocity = Vector2(0, 0)
+	
 
 
 #func _on_gravity_detector_area_entered(area):
@@ -423,6 +459,8 @@ func button_presses(delta):
 			camera.zoom = Vector2(camera.zoom.x * 1.25, camera.zoom.x * 1.25)
 		elif camera.zoom < Vector2(1, 1):
 			camera.zoom += Vector2(0.1, 0.1)
+		elif camera.zoom >= Vector2(10, 10):
+			camera.zoom += Vector2(10, 10)
 		else:
 			camera.zoom += Vector2(1, 1)
 		print(camera.zoom)
@@ -439,6 +477,8 @@ func button_presses(delta):
 			camera.zoom = Vector2(camera.zoom.x * 0.8, camera.zoom.x * 0.8)
 		elif camera.zoom <= Vector2(1, 1):
 			camera.zoom -= Vector2(0.1, 0.1)
+		elif camera.zoom > Vector2(10, 10):
+			camera.zoom -= Vector2(10, 10)
 		else:
 			camera.zoom -= Vector2(1, 1)
 		print(camera.zoom)

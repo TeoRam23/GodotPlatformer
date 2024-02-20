@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx386bkr51b7w"]
+[gd_scene load_steps=10 format=3 uid="uid://dx386bkr51b7w"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_lom11"]
 [ext_resource type="PackedScene" uid="uid://cyxjb50pl5mbj" path="res://levels/level_two.tscn" id="2_0nyi1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://co7wx4c1r81qr" path="res://gravity/scenes/gravity_box.tscn" id="6_c1ffr"]
 [ext_resource type="PackedScene" uid="uid://hf8kpibst4e4" path="res://gravity/scenes/gravity_slope.tscn" id="7_okesb"]
 [ext_resource type="PackedScene" uid="uid://n7sgjhrn215g" path="res://gravity/scenes/gravity_sphere.tscn" id="8_1jkel"]
+[ext_resource type="PackedScene" uid="uid://b4a5o84456fe4" path="res://scenes/collision_sphere.tscn" id="9_vb12r"]
 
 [node name="LevelOne" instance=ExtResource("1_lom11")]
 next_level = ExtResource("2_0nyi1")
@@ -274,3 +275,11 @@ area_direction = 90.0
 position = Vector2(-971, 252)
 scale = Vector2(15, 30)
 area_direction = -90.0
+
+[node name="gravity_sphere3" parent="." index="57" instance=ExtResource("8_1jkel")]
+position = Vector2(-50, -528)
+scale = Vector2(4, 4)
+
+[node name="CollisionSphere" parent="." index="58" instance=ExtResource("9_vb12r")]
+position = Vector2(-50, -528)
+sides = 100
