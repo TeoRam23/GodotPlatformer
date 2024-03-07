@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqqrywkbetcwu"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_5j1ru"]
+[ext_resource type="PackedScene" uid="uid://ngj3qa1yihrq" path="res://scenes/player.tscn" id="2_7uxix"]
+[ext_resource type="PackedScene" uid="uid://bir4jub48arg0" path="res://scenes/level_completed.tscn" id="3_gxgfi"]
+[ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="4_wo1af"]
+[ext_resource type="PackedScene" uid="uid://bv8jw8v5ov1li" path="res://life/scenes/life_gridder.tscn" id="5_j4r2r"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_5j1ru")
+
+[node name="Player" parent="." instance=ExtResource("2_7uxix")]
+position = Vector2(2, -30)
+debug = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("3_gxgfi")]
+visible = false
+
+[node name="LevelTileMap" parent="." instance=ExtResource("4_wo1af")]
+layer_0/tile_data = PackedInt32Array(131071, 0, 0, 65536, 131072, 0, 131072, 131072, 1, 196607, 0, 1, 1048576, 131072, 1, 983040, 131072, 1, 917504, 131072, 1, 851968, 131072, 1, 786432, 131072, 1, 720896, 131072, 1, 655360, 131072, 1, 589824, 131072, 1, 524288, 131072, 1, 458752, 131072, 1, 393216, 131072, 1, 327680, 131072, 1, 262144, 131072, 1, 196608, 131072, 1, 1114111, 0, 1, 1048575, 0, 1, 983039, 0, 1, 917503, 0, 1, 851967, 0, 1, 786431, 0, 1, 720895, 0, 1, 655359, 0, 1, 589823, 0, 1, 524287, 0, 1, 458751, 0, 1, 393215, 0, 1, 327679, 0, 1, 262143, 0, 1, 2031616, 131072, 2, 1966080, 131072, 1, 1900544, 131072, 1, 1835008, 131072, 1, 1769472, 131072, 1, 1703936, 131072, 1, 1638400, 131072, 1, 1572864, 131072, 1, 1507328, 131072, 1, 1441792, 131072, 1, 1376256, 131072, 1, 1310720, 131072, 1, 1245184, 131072, 1, 1179648, 131072, 1, 1114112, 131072, 1, 2097151, 0, 2, 2031615, 0, 1, 1966079, 0, 1, 1900543, 0, 1, 1835007, 0, 1, 1769471, 0, 1, 1703935, 0, 1, 1638399, 0, 1, 1572863, 0, 1, 1507327, 0, 1, 1441791, 0, 1, 1376255, 0, 1, 1310719, 0, 1, 1245183, 0, 1, 1179647, 0, 1)
+
+[node name="LifeGridder" parent="." instance=ExtResource("5_j4r2r")]
+position = Vector2(32, 19)
+width = 50
+height = 50
+size = 14
+set_time = 1.0

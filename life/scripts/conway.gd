@@ -53,9 +53,11 @@ func change_state():
 	ALIVE = !ALIVE
 	if ALIVE:
 		modulate = Color(0.604, 0.871, 0.557)
+		set_collision_layer_value(1, true)
+		
 	if !ALIVE:
 		modulate = Color(0.87, 0.87, 0.87)
-
+		set_collision_layer_value(1, false)
 
 
 func set_population():

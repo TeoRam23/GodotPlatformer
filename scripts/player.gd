@@ -30,7 +30,7 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var camera = $Camera2D
 
 
-var debug = true
+@export var debug = true
 
 func _physics_process(delta):
 	gravity_check()
@@ -40,7 +40,7 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	handle_wall_jump(input_axis)
 	handle_jump()
-	if debug and Input.is_key_pressed(KEY_SPACE):
+	if debug and Input.is_key_pressed(KEY_F):
 		if Input.is_key_pressed(KEY_CTRL):
 			prevelocity.y = movement_data.jump_velocity
 		else:

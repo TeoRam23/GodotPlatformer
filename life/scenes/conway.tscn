@@ -13,7 +13,7 @@ size = Vector2(1, 1)
 [node name="Conway" type="StaticBody2D"]
 modulate = Color(0.87, 0.87, 0.87, 1)
 z_index = -1
-collision_layer = 17
+collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_svwjf")
 
@@ -32,13 +32,6 @@ shape = SubResource("RectangleShape2D_ou0if")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5, 0.5)
-texture = SubResource("CanvasTexture_ucjvn")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.603922, 0.870588, 0.556863, 1)
-position = Vector2(0.5, 0.5)
-scale = Vector2(0.9, 0.9)
 texture = SubResource("CanvasTexture_ucjvn")
 
 [node name="Control" type="Control" parent="."]
