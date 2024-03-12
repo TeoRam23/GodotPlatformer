@@ -10,6 +10,8 @@ var pausing = true
 @export var height = 12
 @export var size = 16
 @export var set_time = 0.5
+@export var alive = false
+@export var random = false
 
 
 signal toggle_life()
@@ -43,6 +45,10 @@ func place_grid():
 			new_square.position.y = y * size
 			new_square.scale.x = size
 			new_square.scale.y = size
+			
+			var rand_pick = randi_range(0, 2)
+			if alive or rand_pick == 1:
+				new_square.change_state()
 			
 			add_child(new_square)
 

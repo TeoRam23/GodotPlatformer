@@ -68,7 +68,7 @@ func _physics_process(delta):
 	
 	if position.y > 1350:
 		position = starting_position
-		velocity = Vector2(0, 0)
+		prevelocity = Vector2(0, 0)
 
 func apply_gravity(delta):
 	if is_on_floor():

@@ -23,7 +23,7 @@ layer_0/tile_data = PackedInt32Array(131071, 0, 0, 65536, 131072, 0, 131072, 131
 
 [node name="LifeGridder" parent="." instance=ExtResource("5_j4r2r")]
 position = Vector2(32, 19)
-width = 50
-height = 50
-size = 14
-set_time = 1.0
+width = 40
+height = 40
+size = 17
+set_time = 0.8
