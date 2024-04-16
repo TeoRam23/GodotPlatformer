@@ -11,7 +11,6 @@ script = ExtResource("1_5j1ru")
 
 [node name="Player" parent="." instance=ExtResource("2_7uxix")]
 position = Vector2(2, -30)
-debug = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

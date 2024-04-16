@@ -64,10 +64,19 @@ sources/0 = SubResource("TileSetAtlasSource_5hi6p")
 sources/1 = SubResource("TileSetScenesCollectionSource_n0js5")
 
 [node name="LifeGrid" type="Node2D"]
+script = ExtResource("3_vy23r")
+start_rows = 60
+start_cols = 106
+size = 3.0
+set_time = 0.05
+line = 2.5
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
 tile_set = SubResource("TileSet_l6nsq")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1, 1, 131072)
-script = ExtResource("3_vy23r")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

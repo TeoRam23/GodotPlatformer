@@ -4,7 +4,6 @@
 
 [node name="LifeGridder" type="Node2D"]
 script = ExtResource("1_1last")
-height = 11
 
 [node name="LifeTime" type="Timer" parent="."]
 wait_time = 0.5
