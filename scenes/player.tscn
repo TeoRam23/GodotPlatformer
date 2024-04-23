@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=17 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
 [ext_resource type="Texture2D" uid="uid://btyt7tei7omda" path="res://assets/JeffreySprite.png" id="3_v30qj"]
 [ext_resource type="PackedScene" uid="uid://cdoim1kpn0tlp" path="res://scenes/Framer.tscn" id="4_1icg4"]
+[ext_resource type="PackedScene" uid="uid://cf4digijrb32k" path="res://scenes/Liner.tscn" id="5_fplat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyipa"]
 atlas = ExtResource("3_v30qj")
@@ -138,7 +139,15 @@ collision_mask = 8
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ck58h")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Framer" parent="." instance=ExtResource("4_1icg4")]
+process_mode = 3
+
+[node name="DashChargeTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="MiniPlayers" type="CPUParticles2D" parent="."]
+visible = false
 show_behind_parent = true
 z_index = 1
 amount = 20
@@ -151,11 +160,8 @@ gravity = Vector2(0, 0)
 scale_amount_min = 0.3
 scale_amount_max = 0.3
 
-[node name="Framer" parent="." instance=ExtResource("4_1icg4")]
-process_mode = 3
-
-[node name="DashChargeTimer" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
+[node name="Liner" parent="." instance=ExtResource("5_fplat")]
+color = Color(0.913725, 0.32549, 0.341176, 1)
+length = 500
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

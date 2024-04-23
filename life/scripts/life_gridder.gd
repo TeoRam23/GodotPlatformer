@@ -46,7 +46,7 @@ func place_grid():
 			new_square.scale.x = size
 			new_square.scale.y = size
 			
-			var rand_pick = randi_range(0, 2)
+			var rand_pick = randi_range(0, 2) if random else 0
 			if alive or rand_pick == 1:
 				new_square.change_state()
 			

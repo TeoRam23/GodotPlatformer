@@ -65,9 +65,9 @@ sources/1 = SubResource("TileSetScenesCollectionSource_n0js5")
 
 [node name="LifeGrid" type="Node2D"]
 script = ExtResource("3_vy23r")
-start_rows = 60
-start_cols = 106
-size = 3.0
+start_rows = 45
+start_cols = 75
+size = 4.0
 set_time = 0.05
 line = 2.5
 

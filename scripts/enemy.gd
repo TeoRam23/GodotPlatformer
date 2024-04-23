@@ -41,10 +41,10 @@ func handle_movement(delta):
 		var direction = randi_range(0,9)
 		if direction <= 3:
 			velocity.x = SPEED * sign(player.position.x - position.x) * delta
-			print("agrip")
+#			print("agrip")
 		elif direction == 4 or direction == 5:
 			velocity.x = SPEED * sign(position.x - player.position.x) * delta
-			print("retrett")
+#			print("retrett")
 		elif direction >= 7:
 			handle_jump()
 		start_moving = false

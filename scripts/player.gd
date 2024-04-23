@@ -55,7 +55,7 @@ func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 
 #	print("1, ",velocity, " og ", prevelocity) 
-	if debug and Input.is_key_pressed(KEY_ALT):
+	if debug and Input.is_key_pressed(KEY_V):
 		prevelocity.y = 0
 	gravity_calculation()
 	
@@ -107,7 +107,6 @@ func handle_jump():
 		if Input.is_action_just_released("jump") and prevelocity.y <  movement_data.jump_velocity / 2 and prevelocity.y > movement_data.jump_velocity:
 			prevelocity.y = movement_data.jump_velocity / 2 # aner ikke hvorfor dette var her? 
 															# dette er her for å kunne hoppe lavere, dumme yngre meg
-			print("minileep")
 	
 		if Input.is_action_just_pressed("jump") and air_jump and not just_wall_jumped:
 			if prevelocity.y < movement_data.jump_velocity * 0.8:
@@ -492,6 +491,8 @@ func button_presses(delta):
 	
 	if Input.is_key_pressed(KEY_Z):
 		camera.zoom = Vector2(1, 1)
+		camera.position_smoothing_enabled = true
+		camera.rotation_smoothing_enabled = true
 
 	if Input.is_key_pressed(KEY_G):
 		if gravity_detector.get_overlapping_areas():
