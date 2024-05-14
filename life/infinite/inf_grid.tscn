@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxoimu6uqii7e"]
+
+[ext_resource type="Script" path="res://life/infinite/inf_grid.gd" id="1_nguvi"]
+
+[node name="inf_grid" type="Node2D"]
+script = ExtResource("1_nguvi")
+
+[node name="LifeTimeI" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="LifeTimeI" to="." method="_on_life_time_i_timeout"]

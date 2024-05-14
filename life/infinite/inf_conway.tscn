@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://crpuj10c8s8ea"]
+
+[ext_resource type="Script" path="res://life/infinite/inf_conway.gd" id="1_u0k27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2gn4"]
+size = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkbp3"]
+size = Vector2(1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2ppil"]
+
+[node name="inf_conway" type="StaticBody2D" groups=["grp_conways"]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_u0k27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_b2gn4")
+
+[node name="ConwayDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+collision_priority = 0.5
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ConwayDetector"]
+position = Vector2(0.5, 0.5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_gkbp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.388235)
+position = Vector2(0.5, 0.5)
+texture = SubResource("CanvasTexture_2ppil")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
