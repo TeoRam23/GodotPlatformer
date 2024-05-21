@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3yrrm2c73cqm"]
+[gd_scene load_steps=9 format=3 uid="uid://d3yrrm2c73cqm"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_mdeul"]
 [ext_resource type="PackedScene" uid="uid://ngj3qa1yihrq" path="res://scenes/player.tscn" id="2_r0f6n"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://n7sgjhrn215g" path="res://gravity/scenes/gravity_sphere.tscn" id="5_xwxsa"]
 [ext_resource type="PackedScene" uid="uid://co7wx4c1r81qr" path="res://gravity/scenes/gravity_box.tscn" id="6_0kym1"]
 [ext_resource type="PackedScene" uid="uid://b4a5o84456fe4" path="res://scenes/collision_sphere.tscn" id="7_u3kch"]
+[ext_resource type="PackedScene" uid="uid://dxoimu6uqii7e" path="res://life/infinite/inf_grid.tscn" id="8_jh5ql"]
 
 [node name="World" type="Node2D"]
 position = Vector2(0, -1)
@@ -42,3 +43,7 @@ scale = Vector2(10, 10)
 position = Vector2(176, -48)
 scale = Vector2(1.2, 1.2)
 sides = 128
+
+[node name="inf_grid" parent="." instance=ExtResource("8_jh5ql")]
+position = Vector2(-32, -48)
+size = 10

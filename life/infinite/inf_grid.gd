@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var life_time = $LifeTimeI
 
-var SQAR = preload("res://life/infinite/inf_conway.tscn")
+var SQAR = preload("res://life/infinite/inf_conway2.tscn")
 
 var pausing = true
 
@@ -19,9 +19,10 @@ signal inf_update_please()
 signal inf_lets_carcass()
 
 
+# Dette må nesten opptimaliseres! hvis jeg gidder fremtidsmeg
 func _ready():
 	if set_time <= 0.01:
-		set_time = 0.02
+		set_time = 0.15
 	life_time.wait_time = set_time
 #	place_grid()
 
@@ -36,8 +37,10 @@ func _process(delta):
 			life_time.start()
 			
 	if pausing:
-		if Input.is_action_just_pressed("LMB"):
+		if Input.is_action_pressed("LMB"):
 			var mouse_position = get_local_mouse_position()
+			if mouse_position.x < 0: mouse_position.x -= size
+			if mouse_position.y < 0: mouse_position.y -= size
 			var pos_x = int(mouse_position.x / size)
 			var pos_y = int(mouse_position.y / size)
 			print(pos_x, ", ", pos_y)
@@ -56,6 +59,8 @@ func place_conway(x, y):
 #			print("Lest split up gang")
 			continue
 		elif kid.position == Vector2(x * size, y * size):
+			if !kid.ALIVE:
+				kid.change_state()
 #			print("WOAH")
 			return
 	var new_square = SQAR.instantiate()
@@ -84,9 +89,18 @@ func place_conway(x, y):
 #
 #		draw_polyline_colors(points, color, 0.3)
 		
+#func everybody_carcass():
+#	var children = get_children()
+#	for kid in children:
+#		if kid.is_in_group("grp_conways"):
+#			kid.place_carcass()
+#			1 + 1
+##			print("shouldve carced by now")
+##			print("MA KIDS: ", get_children())
 
 
 func _on_life_time_i_timeout():
-	print("here we go folks")
+#	print("here we go folks")
 	inf_update_please.emit()
+#	everybody_carcass()
 	inf_lets_carcass.emit()

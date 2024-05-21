@@ -161,6 +161,8 @@ scale_amount_min = 0.3
 scale_amount_max = 0.3
 
 [node name="Liner" parent="." instance=ExtResource("5_fplat")]
+z_index = -1
+z_as_relative = false
 color = Color(0.913725, 0.32549, 0.341176, 1)
 length = 500
 

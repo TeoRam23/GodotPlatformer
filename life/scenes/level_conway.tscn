@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqqrywkbetcwu"]
+[gd_scene load_steps=7 format=3 uid="uid://bqqrywkbetcwu"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_5j1ru"]
 [ext_resource type="PackedScene" uid="uid://ngj3qa1yihrq" path="res://scenes/player.tscn" id="2_7uxix"]
 [ext_resource type="PackedScene" uid="uid://bir4jub48arg0" path="res://scenes/level_completed.tscn" id="3_gxgfi"]
 [ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="4_wo1af"]
 [ext_resource type="PackedScene" uid="uid://bv8jw8v5ov1li" path="res://life/scenes/life_gridder.tscn" id="5_j4r2r"]
+[ext_resource type="PackedScene" uid="uid://dxoimu6uqii7e" path="res://life/infinite/inf_grid.tscn" id="6_at48i"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_5j1ru")
@@ -26,3 +27,7 @@ width = 40
 height = 40
 size = 17
 set_time = 0.8
+
+[node name="inf_grid" parent="." instance=ExtResource("6_at48i")]
+position = Vector2(-48, 19)
+size = 4

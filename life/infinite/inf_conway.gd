@@ -11,22 +11,31 @@ var size = 0
 @onready var sprite = $Sprite2D
 @onready var conway_detector = $ConwayDetector
 
-var CARC = preload("res://life/infinite/inf_conway.tscn")
+var CARC = preload("res://life/infinite/inf_conway2.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+#	print("I AM READY")
 	get_parent().inf_toggle_life.connect(tole_life)
 	get_parent().inf_update_please.connect(lets_update)
 	get_parent().inf_lets_carcass.connect(place_carcass)
+	kill_twin()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	if !ALIVE:
+#		print("we are the carc")
+#		kill_twin()
 	conway_detector.set_collision_mask_value(5, true)
 	if pausing:
 		set_population()
 	else:
 		do_the_conway()
+			
+		place_carcass()
+	kill_twin()
 
 
 func do_the_conway():
@@ -58,15 +67,20 @@ func do_the_conway():
 func lets_update():
 	if gonna_change:
 		change_state()
+	
+	check_death()
 
 
 func change_state():
+#	print("and NOW WE CHANGE")
 	ALIVE = !ALIVE
 	if ALIVE:
-		modulate = Color(0.604, 0.871, 0.557, 0.999)
+#		print("we're so back")
+		modulate = Color(0.604, 0.871, 0.557)#, 1)
 		set_collision_layer_value(1, true)
 
 	if !ALIVE:
+#		print("we're so ded")
 		queue_free()
 
 
@@ -98,8 +112,11 @@ func place_carcass():
 			var new_y = position.y - size + (size * y)
 			
 			if conway_detector.get_overlapping_bodies():
+				conway_detector.set_collision_mask_value(5, true)
 				var bean = false
 				var neighbors = conway_detector.get_overlapping_bodies()
+				if neighbors.size() == 9:
+					return
 				for bro in neighbors:
 					if bro.position == Vector2(new_x, new_y):
 						bean = true
@@ -116,11 +133,42 @@ func place_carcass():
 			new_carcass.scale.x = size
 			new_carcass.scale.y = size
 			new_carcass.size = size
+			new_carcass.pausing = false
+			new_carcass.set_collision_layer_value(5, true)
 			
 			
 			get_parent().add_child(new_carcass)
+#			print("DID IIIIIIIIITTTTTTT WOOOOOOOOOOOOOOOOO CARCASSES")
+#	if conway_detector.get_overlapping_bodies():
+#		print(conway_detector.get_overlapping_bodies())
 
 
+func kill_twin():
+	conway_detector.set_collision_mask_value(5, true)
+	if conway_detector.get_overlapping_bodies():
+		conway_detector.set_collision_mask_value(5, true)
+		var neighbors = conway_detector.get_overlapping_bodies()
+		
+		for bro in neighbors:
+			if bro != self:
+#				print(bro.position, ", ", position, ":	", self)
+				if bro.position == position:
+#					print("we kll")
+#					print("letsago I murder bro")
+					bro.free()
+					
 
+func check_death():
+	if !ALIVE:
+		if conway_detector.get_overlapping_bodies():
+			conway_detector.set_collision_mask_value(5, true)
+			var neighbors = conway_detector.get_overlapping_bodies()
+			for bro in neighbors:
+				if bro.ALIVE:
+					return
+		queue_free()
+		
+		
 func tole_life():
 	pausing = !pausing
+	place_carcass()
