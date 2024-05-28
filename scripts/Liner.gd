@@ -8,6 +8,7 @@ var colorArray = []
 @export var color = Color()
 @export var line_width = 5.0
 @export var length = 5
+@export var exists = true
 
 var color1
 var color2 = [ Color(1, 1, 1), Color(1, 1, 1),  Color(1, 1, 1)]
@@ -21,6 +22,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("L"):
+		exists = !exists
 	global_rotation_degrees = 0
 	currentPos = global_position
 	queue_redraw()
@@ -32,7 +35,8 @@ func _draw():
 	var line_color = [color, Color(1, 1, 1), color, Color(1, 1, 1), color, Color(1, 1, 1), color, Color(1, 1, 1), color, Color(1, 1, 1), color, Color(1, 1, 1), color, Color(1, 1, 1), color, Color(1, 1, 1), color]
 	points = points.duplicate()
 	points.reverse()
-	draw_polyline_colors(points, colorArray, line_width)
+	if exists:
+		draw_polyline_colors(points, colorArray, line_width)
 	for i in range(posArray.size()-1, -1, -1):
 		if i != 0:
 			posArray[i] = posArray[i-1]

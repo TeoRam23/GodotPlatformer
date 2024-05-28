@@ -236,20 +236,28 @@ func _on_hazard_detector_area_entered(area):
 
 func gravity_check():
 	if gravity_detector.get_overlapping_areas():
-		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
+		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
 		
 		if gravity_direction > 180:
 			gravity_direction -= 360
 		elif gravity_direction < -180:
 			gravity_direction += 360
 		if (rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01):
+#		if 1 == 1:
 			gravity_direction = entered_area2d.area_direction
 			
-			if gravity_direction == 123456:
+			if gravity_direction == 123456 or gravity_direction == -123456:
+				
+#				for area in gravity_detector.get_overlapping_areas():
+#					if (area.area_direction == -123456 or area.area_direction == 123456) and area != entered_area2d:
+#						entered_area2d = area
+#						gravity_direction = area.area_direction
+#						break
 				var relative_position = entered_area2d.global_position - global_position
 				var angle_to_target = relative_position.angle()
 				var radian_direction = angle_to_target
-				gravity_direction = rad_to_deg(radian_direction) - 90
+#				print(gravity_direction / 123456)
+				gravity_direction = rad_to_deg(radian_direction) -  (90 * (gravity_direction / 123456))
 				radian_direction = deg_to_rad(gravity_direction)
 
 				if last_area != entered_area2d or last_grav != gravity_direction:
@@ -499,12 +507,13 @@ func button_presses(delta):
 			var entered_area2d = gravity_detector.get_overlapping_areas()[0]
 			var center = entered_area2d.global_position
 			var distance = center.distance_to(global_position)
-			var multiplier
-			if prevelocity.x <= 0:
-				multiplier = -1
-			else: 
-				multiplier = 1
-			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * multiplier
+#			var multiplier
+#			if prevelocity.x <= 0:
+#				multiplier = -1
+#			else: 
+#				multiplier = 1
+#			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * multiplier
+			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * prevelocity.x / abs(prevelocity.x)
 			prevelocity.y = 0
 			print(prevelocity.x)
 			print("Gravity: ", gravity * movement_data.gravity_scale * 0.017, ", Delta: ", delta)
