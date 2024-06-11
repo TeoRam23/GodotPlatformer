@@ -8,7 +8,7 @@ var colorArray = []
 @export var color = Color()
 @export var line_width = 5.0
 @export var length = 5
-@export var exists = true
+@export var exists = false
 
 var color1
 var color2 = [ Color(1, 1, 1), Color(1, 1, 1),  Color(1, 1, 1)]

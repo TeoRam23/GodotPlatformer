@@ -16,6 +16,8 @@ var gravity_direction = 0
 var rotation_speed = 15
 var wanted_rotation = 0
 
+var rotation_divider = 15
+
 var last_area
 var last_grav
 
@@ -26,6 +28,8 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var starting_position = global_position
 @onready var gravity_detector = $GravityDetector
 @onready var dash_charge_timer = $DashChargeTimer
+@onready var collision_rect = $CollisionRect
+@onready var collision_sphere = $CollisionSphere
 
 @onready var camera = $Camera2D
 
@@ -236,74 +240,78 @@ func _on_hazard_detector_area_entered(area):
 
 func gravity_check():
 	if gravity_detector.get_overlapping_areas():
-		var entered_area2d = gravity_detector.get_overlapping_areas()[-1]
+		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
+		for area in gravity_detector.get_overlapping_areas():
+			if area.on_top:
+				entered_area2d = area
+				
 		
 		if gravity_direction > 180:
 			gravity_direction -= 360
 		elif gravity_direction < -180:
 			gravity_direction += 360
-		if (rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01):
-#		if 1 == 1:
-			gravity_direction = entered_area2d.area_direction
 			
-			if gravity_direction == 123456 or gravity_direction == -123456:
-				
+			
+		gravity_direction = entered_area2d.area_direction
+		
+		if gravity_direction == 123456 or gravity_direction == -123456:
+			
 #				for area in gravity_detector.get_overlapping_areas():
 #					if (area.area_direction == -123456 or area.area_direction == 123456) and area != entered_area2d:
 #						entered_area2d = area
 #						gravity_direction = area.area_direction
 #						break
-				var relative_position = entered_area2d.global_position - global_position
-				var angle_to_target = relative_position.angle()
-				var radian_direction = angle_to_target
+			var relative_position = entered_area2d.global_position - global_position
+			var angle_to_target = relative_position.angle()
+			var radian_direction = angle_to_target
 #				print(gravity_direction / 123456)
-				gravity_direction = rad_to_deg(radian_direction) -  (90 * (gravity_direction / 123456))
-				radian_direction = deg_to_rad(gravity_direction)
+			gravity_direction = rad_to_deg(radian_direction) -  (90 * (gravity_direction / 123456))
+			radian_direction = deg_to_rad(gravity_direction)
 
-				if last_area != entered_area2d or last_grav != gravity_direction:
-					last_area = entered_area2d
-					last_grav = gravity_direction
-					
-					var cuisine = cos(radian_direction)
-					var sine = sin(radian_direction)
-					prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
-					prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
-			else:
-	#			var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
-	#
-				var radians = deg_to_rad(gravity_direction)
+			if last_area != entered_area2d or last_grav != gravity_direction:
+				last_area = entered_area2d
+				last_grav = gravity_direction
 				
-				if last_area != entered_area2d:
-					last_area = entered_area2d
+				var cuisine = cos(radian_direction)
+				var sine = sin(radian_direction)
+				prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
+				prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
+		else:
+#			var oldprevelocity = Vector2(prevelocity.x, prevelocity.y)
+			var radians = deg_to_rad(gravity_direction)
+			
+			if last_area != entered_area2d:
+				last_area = entered_area2d
+				
+				print("#######################################################################ENTERED#######################################################################")
+#				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
+#					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
+#					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
+##					print("hæ")
+#
+#				elif gravity_direction == clamp(gravity_direction, 22.5, 67.5) or gravity_direction == clamp(gravity_direction, -67.5, -22.5) or gravity_direction == clamp(gravity_direction, 112.5, 157.5) or gravity_direction == clamp(gravity_direction, -157.5, -112.5):
+#					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.707107
+#					prevelocity.y = (velocity.x * sin(radians) - velocity.y * cos(radians)) * -0.707107
+#
+#				else:
+#					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians))
+#					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians))
 					
 					
-					print("#######################################################################ENTERED#######################################################################")
-	#				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
-	#					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
-	#					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
-	##					print("hæ")
-	#
-	#				elif gravity_direction == clamp(gravity_direction, 22.5, 67.5) or gravity_direction == clamp(gravity_direction, -67.5, -22.5) or gravity_direction == clamp(gravity_direction, 112.5, 157.5) or gravity_direction == clamp(gravity_direction, -157.5, -112.5):
-	#					prevelocity.x = (-1 * velocity.x * cos(radians) - velocity.y * sin(radians)) * -0.707107
-	#					prevelocity.y = (velocity.x * sin(radians) - velocity.y * cos(radians)) * -0.707107
-	#
-	#				else:
-	#					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians))
-	#					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians))
-						
-						
-	#					print("hoo")
-					
-					var cuisine = cos(radians)
-					var sine = sin(radians)
-	#				cuisine = -cuisine
-					print("cuisine: ", cuisine, " & sine: ", sine, "
+#					print("hoo")
+#				rotation_speed = abs(abs(rotation_degrees) - abs(gravity_direction))# / rotation_divider
+				
+				
+				var cuisine = cos(radians)
+				var sine = sin(radians)
+#				cuisine = -cuisine
+				print("cuisine: ", cuisine, " & sine: ", sine, "
 vel.x: ", velocity.x, " & vel.y: ", velocity.y)
-					
-					prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
-					prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
-					
-					print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
+				
+				prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
+				prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
+				
+				print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
 			#
 	#				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
 	#				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
@@ -348,6 +356,10 @@ vel.x: ", velocity.x, " & vel.y: ", velocity.y)
 	#		else:
 	#			prevelocity.x = velocity.x
 	#			prevelocity.y = velocity.y
+		if gravity_direction > 180:
+			gravity_direction -= 360
+		elif gravity_direction < -180:
+			gravity_direction += 360
 			
 	else:
 		var radians = deg_to_rad(gravity_direction)
@@ -374,7 +386,7 @@ func gravity_calculation():
 	
 	
 	var target_angle = gravity_direction
-	var current_angle = rotation_degrees
+	var current_angle = animated_sprite_2d.rotation_degrees
 
 	var diff = target_angle - current_angle
 
@@ -387,7 +399,18 @@ func gravity_calculation():
 	var move_rotation = clamp(diff, -rotation_speed, rotation_speed)
 
 	# Apply the rotation
-	rotation_degrees += move_rotation
+	rotation_degrees = target_angle
+	animated_sprite_2d.rotation_degrees += move_rotation #Gjør dette bra bedre!
+	# Og forresten så blir det problemer når du går inn i area og hodet blir rotert inn i et tak. fiks det også!
+	
+#	if (rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01):
+#		print("IIIIIIIIIIIIIIIIII")
+#		collision_rect.disabled = false
+#		collision_sphere.disabled = true
+#	else:
+#		print("OOOOOOOOOOOOOOOOOOOOOO")
+#		collision_rect.disabled = true
+#		collision_sphere.disabled = false
 #	print("UP: ", up_direction)
 #	print(up_direction)
 #	var differanse = abs(abs(rotation_degrees)-abs(gravity_direction))
@@ -513,7 +536,7 @@ func button_presses(delta):
 #			else: 
 #				multiplier = 1
 #			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * multiplier
-			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * prevelocity.x / abs(prevelocity.x)
+			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * sign(prevelocity.x)
 			prevelocity.y = 0
 			print(prevelocity.x)
 			print("Gravity: ", gravity * movement_data.gravity_scale * 0.017, ", Delta: ", delta)
@@ -522,3 +545,11 @@ func button_presses(delta):
 		var center = entered_area2d.global_position
 		var distance = center.distance_to(global_position)
 		print(distance)
+	
+	
+	if Input.is_key_pressed(KEY_U):
+		rotation_degrees += 5
+		print(position)
+	if Input.is_key_pressed(KEY_Y):
+		rotation_degrees -= 5
+		print(position)

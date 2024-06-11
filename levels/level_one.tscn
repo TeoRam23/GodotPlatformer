@@ -296,3 +296,4 @@ scale = Vector2(8, 8)
 [node name="gravity_sphere6" parent="." index="61" instance=ExtResource("10_uhn1t")]
 position = Vector2(-341, -654)
 scale = Vector2(4, 4)
+on_top = true

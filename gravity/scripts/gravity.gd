@@ -4,6 +4,7 @@ extends Area2D
 @onready var polygon_2d = $CollisionPolygon2D/Polygon2D
 
 @export var area_direction = 0.0
+@export var on_top = false
 
 func _ready():
 #	if area_direction == 180 or area_direction == -180:
