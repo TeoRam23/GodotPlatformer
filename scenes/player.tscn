@@ -81,14 +81,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71l0s"]
 size = Vector2(10, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1in1s"]
+size = Vector2(10, 10)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w03xi"]
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck58h"]
 size = Vector2(8, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1in1s"]
-size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1p1sq"]
 atlas = ExtResource("3_v30qj")
@@ -104,17 +104,27 @@ safe_margin = 0.1
 script = ExtResource("1_7n2kp")
 movement_data = ExtResource("2_tf3sn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="SpriteHolder" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="SpriteHolder"]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 7.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteHolder"]
 z_index = 1
 position = Vector2(0, -3)
 scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_uicba")
 animation = &"idle"
-offset = Vector2(0, -0.00131321)
 
 [node name="CollisionRect" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_71l0s")
+
+[node name="CollisionCube" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1in1s")
 
 [node name="CollisionSphere" type="CollisionShape2D" parent="."]
 visible = false
@@ -125,12 +135,6 @@ disabled = true
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
-rotation_smoothing_enabled = true
-rotation_smoothing_speed = 7.0
 
 [node name="HazardDetector" type="Area2D" parent="."]
 position = Vector2(0.0010004, 5.002)

@@ -12,7 +12,6 @@ func _ready():
 	if area_direction > 180 or area_direction < -180:
 		area_direction = (area_direction - 360) * sign(-area_direction)
 		area_direction *= -1
-	print(area_direction)
 	var area_color = (area_direction + 90)/360
 #	if area_color < 0:
 #		area_color *= -1
@@ -27,7 +26,6 @@ func _ready():
 #		print("box")
 	if polygon_2d:
 		polygon_2d.modulate = Color.from_hsv(area_color, 1, 1, 0.5)
-		print("polygon")
 	
 #	if area_direction == 90:
 #		sprite_2d.modulate = Color(0, 0.91, 0.212, 0.455)

@@ -23,15 +23,15 @@ var last_grav
 
 var prevelocity = Vector2(0.0, 0.0)
 
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var sprite_holder = $SpriteHolder
+@onready var animated_sprite_2d = $SpriteHolder/AnimatedSprite2D
 @onready var coyotejump_timer = $CoyoteJumpTimer
 @onready var starting_position = global_position
 @onready var gravity_detector = $GravityDetector
 @onready var dash_charge_timer = $DashChargeTimer
 @onready var collision_rect = $CollisionRect
-@onready var collision_sphere = $CollisionSphere
 
-@onready var camera = $Camera2D
+@onready var camera = $SpriteHolder/Camera2D
 
 
 @export var debug = true
@@ -269,8 +269,11 @@ func gravity_check():
 			radian_direction = deg_to_rad(gravity_direction)
 
 			if last_area != entered_area2d or last_grav != gravity_direction:
+				find_diff_rotate(gravity_direction)
+				
 				last_area = entered_area2d
 				last_grav = gravity_direction
+				
 				
 				var cuisine = cos(radian_direction)
 				var sine = sin(radian_direction)
@@ -282,8 +285,16 @@ func gravity_check():
 			
 			if last_area != entered_area2d:
 				last_area = entered_area2d
+				find_diff_rotate(gravity_direction)
 				
 				print("#######################################################################ENTERED#######################################################################")
+				
+				
+#				if gravity_direction > 180:
+#					gravity_direction -= 360
+#				elif gravity_direction < -180:
+#					gravity_direction += 360
+					
 #				if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
 #					prevelocity.x = (velocity.x * cos(radians) - velocity.y * sin(radians)) * -1
 #					prevelocity.y = (velocity.x * sin(radians) + velocity.y * cos(radians)) * -1
@@ -365,7 +376,15 @@ vel.x: ", velocity.x, " & vel.y: ", velocity.y)
 		var radians = deg_to_rad(gravity_direction)
 		prevelocity = prevelocity.rotated(radians)
 		gravity_direction = 0
+		if last_area != Area2D:
+			find_diff_rotate(0)
 		last_area = Area2D
+	
+	# fjerner kollisjon fra rektangelet mens sprite roterer for å hindre rarheter hvis toppen går roteres inn i et tak/vegg
+	if sprite_holder.rotation_degrees != 0:
+		collision_rect.disabled = true
+	else:
+		collision_rect.disabled = false
 		
 #		if gravity_direction == 1:
 #			prevelocity.x = -oldprevelocity.y
@@ -378,6 +397,23 @@ vel.x: ", velocity.x, " & vel.y: ", velocity.y)
 #			prevelocity.y = -oldprevelocity.x
 
 
+func find_diff_rotate(grav):
+	var diff = grav - rotation_degrees
+
+	if diff > 180:
+		diff -= 360
+	elif diff < -180:
+		diff += 360
+	sprite_holder.rotation_degrees -= diff
+	
+	
+	while sprite_holder.rotation_degrees > 180 or sprite_holder.rotation_degrees < -180:
+		if sprite_holder.rotation_degrees > 180:
+			sprite_holder.rotation_degrees -= 360
+		elif sprite_holder.rotation_degrees < -180:
+			sprite_holder.rotation_degrees += 360
+	rotation_degrees = grav
+
 func gravity_calculation():
 	var radians = deg_to_rad(gravity_direction)
 	velocity = prevelocity.rotated(radians)
@@ -385,23 +421,24 @@ func gravity_calculation():
 	up_direction = Vector2.UP.rotated(radians)
 	
 	
-	var target_angle = gravity_direction
-	var current_angle = animated_sprite_2d.rotation_degrees
+	var target_angle = 0
+#	var target_angle = gravity_direction
+	var current_angle = sprite_holder.rotation_degrees
 
 	var diff = target_angle - current_angle
-
-	if diff > 180:
-		diff -= 360
-	elif diff < -180:
-		diff += 360
+	
+	while diff > 180 or diff < -180:
+		if diff > 180:
+			diff -= 360
+		elif diff < -180:
+			diff += 360
 
 	# Limit the rotation to a maximum of 45 degrees
 	var move_rotation = clamp(diff, -rotation_speed, rotation_speed)
 
 	# Apply the rotation
-	rotation_degrees = target_angle
-	animated_sprite_2d.rotation_degrees += move_rotation #Gjør dette bra bedre!
-	# Og forresten så blir det problemer når du går inn i area og hodet blir rotert inn i et tak. fiks det også!
+	sprite_holder.rotation_degrees += move_rotation #Gjorde dette bra bedre! yay!
+	# Og forresten så fikset problemer når du går inn i area og hodet blir rotert inn i et tak. fikset det også! YAY!
 	
 #	if (rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01):
 #		print("IIIIIIIIIIIIIIIIII")

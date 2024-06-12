@@ -24,6 +24,6 @@ func generate_circle_polygon(radius: float, num_sides: int) -> PackedVector2Arra
 	for _i in num_sides:
 		polygon.append(vector)
 		vector = vector.rotated(angle_delta)
-		print("goog job Ferb!")
+#		print("goog job Ferb!")ffff
 	polygonIwant = polygon
 	return polygon
