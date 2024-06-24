@@ -107,6 +107,7 @@ movement_data = ExtResource("2_tf3sn")
 [node name="SpriteHolder" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="SpriteHolder"]
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 rotation_smoothing_enabled = true
