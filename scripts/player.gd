@@ -10,7 +10,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gonnadash = false
 var sprite_rotation_speed = 100
 
-var dashing = 250
 
 var gravity_direction = 0
 var rotation_speed = 15
@@ -35,6 +34,10 @@ var prevelocity = Vector2(0.0, 0.0)
 
 
 @export var debug = true
+
+func _ready():
+	scale.x = movement_data.size
+	scale.y = movement_data.size
 
 func _physics_process(delta):
 	gravity_check()
@@ -127,7 +130,7 @@ func handle_dash():
 	elif not is_on_floor() and can_dash:
 		var dash_axis = Input.get_axis("dashL", "dashR")
 		if Input.is_action_just_pressed("dashL") or Input.is_action_just_pressed("dashR"):
-			prevelocity.x += dashing * dash_axis
+			prevelocity.x += movement_data.jump_velocity * dash_axis
 			if not debug:
 				can_dash = false
 				
@@ -135,7 +138,7 @@ func handle_dash():
 func handle_gigadash(delta, input_axis):
 	if is_on_floor(): can_gigadash = true
 	
-	elif not is_on_floor() and Input.is_action_just_pressed("down") and can_gigadash:
+	elif not is_on_floor() and Input.is_action_just_pressed("down") and can_gigadash and movement_data.jump_velocity:
 		gonnadash = true
 		dash_charge_timer.start()
 		animated_sprite_2d.rotation_degrees = 0
@@ -418,6 +421,7 @@ func gravity_calculation():
 	var radians = deg_to_rad(gravity_direction)
 	velocity = prevelocity.rotated(radians)
 #	up_direction = Vector2(sin(radians), -cos(radians))
+
 	up_direction = Vector2.UP.rotated(radians)
 	
 	
@@ -562,31 +566,32 @@ func button_presses(delta):
 		camera.position_smoothing_enabled = true
 		camera.rotation_smoothing_enabled = true
 
-	if Input.is_key_pressed(KEY_G):
-		if gravity_detector.get_overlapping_areas():
-			var entered_area2d = gravity_detector.get_overlapping_areas()[0]
-			var center = entered_area2d.global_position
-			var distance = center.distance_to(global_position)
-#			var multiplier
-#			if prevelocity.x <= 0:
-#				multiplier = -1
-#			else: 
-#				multiplier = 1
-#			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * multiplier
-			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * sign(prevelocity.x)
-			prevelocity.y = 0
-			print(prevelocity.x)
-			print("Gravity: ", gravity * movement_data.gravity_scale * 0.017, ", Delta: ", delta)
 	if Input.is_key_pressed(KEY_H) and gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
 		var center = entered_area2d.global_position
 		var distance = center.distance_to(global_position)
 		print(distance)
 	
-	
-	if Input.is_key_pressed(KEY_U):
-		rotation_degrees += 5
-		print(position)
-	if Input.is_key_pressed(KEY_Y):
-		rotation_degrees -= 5
-		print(position)
+	if debug:
+		if Input.is_key_pressed(KEY_G):
+			if gravity_detector.get_overlapping_areas():
+				var entered_area2d = gravity_detector.get_overlapping_areas()[0]
+				var center = entered_area2d.global_position
+				var distance = center.distance_to(global_position)
+	#			var multiplier
+	#			if prevelocity.x <= 0:
+	#				multiplier = -1
+	#			else: 
+	#				multiplier = 1
+	#			prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * multiplier
+				prevelocity.x = sqrt(gravity * movement_data.gravity_scale * distance) * sign(prevelocity.x)
+				prevelocity.y = 0
+				print(prevelocity.x)
+				print("Gravity: ", gravity * movement_data.gravity_scale * 0.017, ", Delta: ", delta)
+		
+		if Input.is_key_pressed(KEY_U):
+			rotation_degrees += 5
+			print(position)
+		if Input.is_key_pressed(KEY_Y):
+			rotation_degrees -= 5
+			print(position)

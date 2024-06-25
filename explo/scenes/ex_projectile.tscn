@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch4oivkfwwrty"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_projectile.gd" id="1_fehis"]
+[ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_8voqe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l3r4n"]
+radius = 4.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgde0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8voqe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ExProjectile" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_fehis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l3r4n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.762, 0.762)
+sprite_frames = SubResource("SpriteFrames_dgde0")
