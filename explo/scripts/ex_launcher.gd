@@ -1,8 +1,13 @@
 extends Node2D
 
-var throw_power = -400
-var gravity_scale = 0.5
-
+#var throw_power = -490
+#var gravity_scale = 0.7
+#var throw_power = -400
+#var gravity_scale = 0.52
+var throw_power = -450
+var gravity_scale = 0.65
+#var throw_power = -350
+#var gravity_scale = 0.4
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 # Called when the node enters the scene tree for the first time.

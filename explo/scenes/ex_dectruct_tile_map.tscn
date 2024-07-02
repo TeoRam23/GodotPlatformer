@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dik8qa4y5uulx"]
+
+[ext_resource type="TileSet" uid="uid://su3pchqphxw" path="res://data/tile_set_des.tres" id="1_d561b"]
+[ext_resource type="Script" path="res://explo/scripts/ex_dectruct_tile_map.gd" id="2_ecx0u"]
+
+[node name="ExDectructTileMap" type="TileMap"]
+tile_set = ExtResource("1_d561b")
+format = 2
+layer_0/name = "Base"
+layer_0/modulate = Color(0.505333, 0.44, 1, 1)
+layer_0/tile_data = PackedInt32Array(0, 131072, 2, -65536, 131072, 0, -1, 0, 0, 65535, 393216, 3, 65534, 0, 3)
+layer_1/name = "Slopes"
+layer_1/modulate = Color(0.505333, 0.44, 1, 1)
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_ecx0u")

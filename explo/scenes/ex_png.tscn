@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdguhg6mlcq8f"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_png.gd" id="1_6r0vi"]
+
+[sub_resource type="Gradient" id="Gradient_w7i6b"]
+offsets = PackedFloat32Array(0, 0.577922, 0.720779)
+colors = PackedColorArray(0.929412, 0.380392, 0, 1, 1, 0.956863, 0.337255, 1, 1, 0.956863, 0.337255, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dqa6r"]
+gradient = SubResource("Gradient_w7i6b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="ExPng" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.960784)
+scale = Vector2(0.465, 0.465)
+texture = SubResource("GradientTexture2D_dqa6r")
+script = ExtResource("1_6r0vi")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

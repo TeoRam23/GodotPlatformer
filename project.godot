@@ -130,6 +130,7 @@ musR={
 2d_physics/layer_3="Hazards"
 2d_physics/layer_4="Gravity"
 2d_physics/layer_5="Conways"
+2d_physics/layer_6="Projectile"
 
 [rendering]
 

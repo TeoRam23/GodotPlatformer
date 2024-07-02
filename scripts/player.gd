@@ -30,7 +30,8 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var dash_charge_timer = $DashChargeTimer
 @onready var collision_rect = $CollisionRect
 
-@onready var camera = $SpriteHolder/Camera2D
+@onready var icamera = $SpriteHolder/Camera2D
+@onready var camera = $SpriteHolder/ExpoCamera
 
 
 @export var debug = true
