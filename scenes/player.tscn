@@ -123,12 +123,10 @@ sprite_frames = SubResource("SpriteFrames_uicba")
 animation = &"idle"
 
 [node name="ExpoCamera" type="Camera2D" parent="SpriteHolder"]
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.49, 0.49)
 process_callback = 0
-limit_bottom = 30
-position_smoothing_enabled = true
+limit_bottom = 95
 position_smoothing_speed = 7.0
-rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
 
 [node name="CollisionRect" type="CollisionShape2D" parent="."]
@@ -201,5 +199,9 @@ color = Color(0.913725, 0.32549, 0.341176, 1)
 length = 500
 
 [node name="ExLauncher" parent="." instance=ExtResource("6_y3t0q")]
+position = Vector2(0, -3)
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

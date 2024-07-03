@@ -4,3 +4,7 @@
 
 [node name="ExLauncher" type="Node2D"]
 script = ExtResource("1_t8v72")
+
+[node name="ProjTimer" type="Timer" parent="."]
+wait_time = 0.183
+one_shot = true

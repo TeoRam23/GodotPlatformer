@@ -5,9 +5,11 @@ extends Node2D
 #var throw_power = -400
 #var gravity_scale = 0.52
 var throw_power = -450
-var gravity_scale = 0.65
+var gravity_scale = 0.67
+#var gravity_scale = 0.0
 #var throw_power = -350
 #var gravity_scale = 0.4
+@onready var proj_timer = $ProjTimer
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +24,10 @@ func _process(delta):
 
 
 func eject_proj():
+	var number = get_tree().get_nodes_in_group("projectile")
+	if number.size() > 0 and proj_timer.time_left > 0:
+		return
+	
 	var mouse = get_global_mouse_position()
 	#var angle = global_position.angle_to_point(mouse)
 	var angle = mouse.angle_to_point(global_position)
@@ -35,3 +41,4 @@ func eject_proj():
 	new_proj.gravity_scale = gravity_scale
 	
 	get_parent().get_parent().add_child(new_proj)
+	proj_timer.start()

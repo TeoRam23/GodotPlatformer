@@ -9,6 +9,7 @@ var just_wall_jumped = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gonnadash = false
 var sprite_rotation_speed = 100
+var just_launched = false
 
 
 var gravity_direction = 0
@@ -35,6 +36,8 @@ var prevelocity = Vector2(0.0, 0.0)
 
 
 @export var debug = true
+
+@onready var timer = $Timer
 
 func _ready():
 	scale.x = movement_data.size
@@ -73,26 +76,42 @@ func _physics_process(delta):
 	if just_left_ledge:
 		coyotejump_timer.start()
 	just_wall_jumped = false
+	just_launched = false
 	
 	if position.y > 1350:
 		position = starting_position
 		prevelocity = Vector2(0, 0)
+	
+	
+	#print(timer.time_left)
+	if is_on_floor():
+		timer.stop()
+	if !is_on_floor() and timer.time_left <= 0:
+		timer.start()
 
 func apply_gravity(delta):
+	print(prevelocity.y)
 	if is_on_floor():
-		prevelocity.y = 0
+		if !just_launched:
+			prevelocity.y = 0
 	if not is_on_floor():
 		prevelocity.y += gravity * movement_data.gravity_scale * delta
-		if is_on_wall() and prevelocity.y > 0:
+		if prevelocity.y > 576:
+			prevelocity.y -= 50
+			if prevelocity.y < 576:
+				prevelocity.y = 576
+		if is_on_wall() and prevelocity.y > 0 and movement_data.wall_slide:
 			prevelocity.y = 40
-	if is_on_ceiling() and not is_on_wall():
-		prevelocity.y = 0.1
+	if is_on_ceiling():
+		if !just_launched:
+			prevelocity.y = 0.1
 
 func handle_wall_jump(input_axis):
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
 		return
 	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
-	prevelocity.x = 0
+	if !just_launched:
+		prevelocity.x = 0
 	if Input.is_action_just_pressed("jump"):
 		if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
 			prevelocity.x = wall_normal.y * movement_data.speed * sign(gravity_direction)
@@ -129,7 +148,7 @@ func handle_dash():
 	if is_on_floor(): can_dash = true
 	
 	elif not is_on_floor() and can_dash:
-		var dash_axis = Input.get_axis("dashL", "dashR")
+		var dash_axis = Input.get_axis("dashR", "dashL")
 		if Input.is_action_just_pressed("dashL") or Input.is_action_just_pressed("dashR"):
 			prevelocity.x += movement_data.jump_velocity * dash_axis
 			if not debug:
@@ -513,7 +532,14 @@ func gravity_calculation():
 #	velocity.y = prevelocity.x * sin(radians) + prevelocity.y * cos(radians)
 
 
-
+func launch_me(angle, power):
+	power = -410
+	var cuisine = cos(angle)
+	var sine = sin(angle)
+	prevelocity.x += (0 * cuisine + power * sine)
+	prevelocity.y += (0 * sine + power * cuisine)
+	
+	just_launched = true
 
 
 func button_presses(delta):
@@ -555,17 +581,17 @@ func button_presses(delta):
 			camera.zoom -= Vector2(1, 1)
 		print(camera.zoom)
 		
-		if camera.zoom >= Vector2(2, 2):
-			camera.position_smoothing_enabled = false
-			camera.rotation_smoothing_enabled = false
-		else:
-			camera.position_smoothing_enabled = true
-			camera.rotation_smoothing_enabled = true
+		#if camera.zoom >= Vector2(2, 2):
+			#camera.position_smoothing_enabled = false
+			#camera.rotation_smoothing_enabled = false
+		#else:
+			#camera.position_smoothing_enabled = true
+			#camera.rotation_smoothing_enabled = true
 	
 	if Input.is_key_pressed(KEY_Z):
 		camera.zoom = Vector2(1, 1)
-		camera.position_smoothing_enabled = true
-		camera.rotation_smoothing_enabled = true
+		#camera.position_smoothing_enabled = true
+		#camera.rotation_smoothing_enabled = true
 
 	if Input.is_key_pressed(KEY_H) and gravity_detector.get_overlapping_areas():
 		var entered_area2d = gravity_detector.get_overlapping_areas()[0]
@@ -596,3 +622,10 @@ func button_presses(delta):
 		if Input.is_key_pressed(KEY_Y):
 			rotation_degrees -= 5
 			print(position)
+
+
+
+
+
+func _on_timer_timeout():
+	print("1!")

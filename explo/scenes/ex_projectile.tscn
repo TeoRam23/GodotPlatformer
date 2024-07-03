@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_8voqe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3r4n"]
-radius = 4.0
+radius = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dgde0"]
 animations = [{
@@ -25,8 +25,10 @@ margin = Rect2(0, 0, 14, 14)
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5nla"]
 radius = 15.0
 
-[node name="ExProjectile" type="CharacterBody2D"]
+[node name="ExProjectile" type="CharacterBody2D" groups=["projectile"]]
 collision_layer = 32
+motion_mode = 1
+wall_min_slide_angle = 3.14159
 script = ExtResource("1_fehis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -57,6 +59,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="explosion_area" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="ExplosionShape" type="CollisionShape2D" parent="explosion_area"]
 shape = SubResource("CircleShape2D_k5nla")
