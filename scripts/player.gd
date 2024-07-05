@@ -94,6 +94,9 @@ func apply_gravity(delta):
 	if is_on_floor():
 		if !just_launched:
 			prevelocity.y = 0
+	elif is_on_ceiling():
+		if !just_launched:
+			prevelocity.y = 0
 	if not is_on_floor():
 		prevelocity.y += gravity * movement_data.gravity_scale * delta
 		if prevelocity.y > 576:
@@ -102,9 +105,6 @@ func apply_gravity(delta):
 				prevelocity.y = 576
 		if is_on_wall() and prevelocity.y > 0 and movement_data.wall_slide:
 			prevelocity.y = 40
-	if is_on_ceiling():
-		if !just_launched:
-			prevelocity.y = 0.1
 
 func handle_wall_jump(input_axis):
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel

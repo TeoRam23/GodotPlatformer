@@ -26,6 +26,7 @@ margin = Rect2(0, 0, 14, 14)
 radius = 15.0
 
 [node name="ExProjectile" type="CharacterBody2D" groups=["projectile"]]
+z_index = 1550
 collision_layer = 32
 motion_mode = 1
 wall_min_slide_angle = 3.14159

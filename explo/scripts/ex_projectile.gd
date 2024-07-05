@@ -33,20 +33,24 @@ func _physics_process(delta):
 	if illsplode:
 		#position = get_last_slide_collision().get_position()
 		#velocity = Vector2(0, 0)
+		
 		explode_pls()
-	
+		queue_free()
 	
 	# Add the gravity.
 	apply_gravity(delta)
 	move_and_slide()
 	
 	if is_on_wall():
-		if !first_frame:
-			explode_pls()
+		#if !first_frame:
+		#if !illsplode:
+		#explode_pls()
 		illsplode = true
+		
+		
 		#animated_sprite.visible = false
-		position = get_last_slide_collision().get_position()
-		velocity = Vector2(0, 0)
+		#position = get_last_slide_collision().get_position()
+		#velocity = Vector2(0, 0)
 	
 	first_frame = false
 	
@@ -93,7 +97,7 @@ func explode_pls():
 	var explod = EX_PNG.instantiate()
 	explod.position = global_position
 	get_parent().get_parent().add_child(explod)
-	queue_free()
+	illsplode = true
 
 func get_launch_angle(bod):
 	var other_pos = bod.global_position
