@@ -12,3 +12,4 @@ gravity_scale = 0.8
 air_resistance = 0.0
 air_acceleration = 400.0
 size = 1.0
+wall_slide = true

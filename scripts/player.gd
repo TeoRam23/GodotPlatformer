@@ -90,7 +90,7 @@ func _physics_process(delta):
 		timer.start()
 
 func apply_gravity(delta):
-	print(prevelocity.y)
+	#print(prevelocity.y)
 	if is_on_floor():
 		if !just_launched:
 			prevelocity.y = 0
@@ -540,6 +540,8 @@ func launch_me(angle, power):
 	prevelocity.y += (0 * sine + power * cuisine)
 	
 	just_launched = true
+	
+	print("I hast launched 3")
 
 
 func button_presses(delta):

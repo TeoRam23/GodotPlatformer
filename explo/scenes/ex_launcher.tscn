@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsv4eyc7ju17a"]
+[gd_scene load_steps=6 format=3 uid="uid://dsv4eyc7ju17a"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_launcher.gd" id="1_t8v72"]
+[ext_resource type="Script" path="res://explo/scripts/ex_launcher1.gd" id="1_tduk0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uw5wx"]
+radius = 0.0
 
 [sub_resource type="Gradient" id="Gradient_wnpo2"]
 offsets = PackedFloat32Array(0, 0.7, 0.716667)
@@ -12,8 +15,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8bv7"]
+radius = 15.0
+
 [node name="ExLauncher" type="Node2D"]
-script = ExtResource("1_t8v72")
+script = ExtResource("1_tduk0")
 
 [node name="ProjTimer" type="Timer" parent="."]
 wait_time = 0.183
@@ -21,8 +27,12 @@ one_shot = true
 
 [node name="SpawnAnchor" type="Node2D" parent="."]
 
-[node name="SpawnPoint" type="Node2D" parent="SpawnAnchor"]
+[node name="SpawnPoint" type="Area2D" parent="SpawnAnchor"]
 position = Vector2(-7, 0)
+collision_layer = 0
+
+[node name="SpawnShape" type="CollisionShape2D" parent="SpawnAnchor/SpawnPoint"]
+shape = SubResource("CircleShape2D_uw5wx")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpawnAnchor/SpawnPoint"]
 visible = false
@@ -30,6 +40,18 @@ z_index = 130
 position = Vector2(-4.76837e-07, 4.76837e-07)
 scale = Vector2(0.05, 0.05)
 texture = SubResource("GradientTexture2D_euyjl")
+
+[node name="ExplosionArea" type="Area2D" parent="SpawnAnchor/SpawnPoint"]
+visible = false
+collision_layer = 0
+collision_mask = 3
+
+[node name="ExplosionShape" type="CollisionShape2D" parent="SpawnAnchor/SpawnPoint/ExplosionArea"]
+visible = false
+shape = SubResource("CircleShape2D_d8bv7")
+disabled = true
+
+[node name="ProjectileHolder" type="Node" parent="SpawnAnchor/SpawnPoint"]
 
 [node name="PolygonArrow" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-14, -10, -22, 0, -14, 10)

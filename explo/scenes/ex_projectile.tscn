@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://explo/scripts/ex_projectile.gd" id="1_fehis"]
 [ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_8voqe"]
+[ext_resource type="PackedScene" uid="uid://bfxq1wlqcs111" path="res://explo/scenes/explosion_area.tscn" id="3_my2bu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3r4n"]
 radius = 0.0
@@ -22,17 +23,17 @@ atlas = ExtResource("2_8voqe")
 region = Rect2(0, 0, 9, 9)
 margin = Rect2(0, 0, 14, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k5nla"]
-radius = 15.0
-
 [node name="ExProjectile" type="CharacterBody2D" groups=["projectile"]]
+process_priority = -1
+process_physics_priority = -1
+visible = false
 z_index = 1550
 collision_layer = 32
 motion_mode = 1
 wall_min_slide_angle = 3.14159
 script = ExtResource("1_fehis")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ProjectileShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,21 +54,15 @@ gravity = Vector2(0, 0)
 scale_amount_min = 0.3
 scale_amount_max = 0.3
 
-[node name="level_check" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="LevelCheckShape" type="CollisionShape2D" parent="level_check"]
-shape = SubResource("CircleShape2D_l3r4n")
-
-[node name="explosion_area" type="Area2D" parent="."]
-collision_mask = 3
-
-[node name="ExplosionShape" type="CollisionShape2D" parent="explosion_area"]
-shape = SubResource("CircleShape2D_k5nla")
-
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="body_entered" from="level_check" to="." method="_on_level_check_body_entered"]
-[connection signal="body_entered" from="explosion_area" to="." method="_on_explosion_area_body_entered"]
+[node name="ExplosionBody" type="CharacterBody2D" parent="."]
+collision_layer = 0
+
+[node name="ProjectileShape" type="CollisionShape2D" parent="ExplosionBody"]
+shape = SubResource("CircleShape2D_l3r4n")
+
+[node name="explosion_area" parent="ExplosionBody" instance=ExtResource("3_my2bu")]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

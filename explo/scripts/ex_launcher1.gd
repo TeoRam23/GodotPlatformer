@@ -12,46 +12,55 @@ var gravity_scale = 0.67
 @onready var proj_timer = $ProjTimer
 @onready var spawn_anchor = $SpawnAnchor
 @onready var spawn_point = $SpawnAnchor/SpawnPoint
+@onready var projectile_holder = $SpawnAnchor/SpawnPoint/ProjectileHolder
 @onready var polygon_arrow = $PolygonArrow
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
+
+var holding_proj
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	new_projectile()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_spawn_point()
 	if Input.is_action_just_pressed("musL"):
+		print("LAUNCH")
 		eject_proj()
 
 
 func eject_proj():
 	var number = get_tree().get_nodes_in_group("projectile")
-	if number.size() > 0 and proj_timer.time_left > 0:
+	if number.size() > 1 and proj_timer.time_left > 0:
 		return
 	
-	if spawn_point.get_overlapping_bodies():
-		print("there's a snake in my boot!")
+	#if spawn_point.get_overlapping_bodies():
+		#print("there's a snake in my boot!")
 	
 	var mouse = get_global_mouse_position()
 	#var angle = global_position.angle_to_point(mouse)
 	var angle = mouse.angle_to_point(global_position)
 	angle = (angle * -1) + (PI *0.5)
 	
-	var new_proj = PROJ.instantiate()
+	holding_proj.angle = angle
+	holding_proj.throw_power = throw_power
+	holding_proj.gravity_scale = gravity_scale
+	holding_proj.global_position = spawn_point.global_position
+	holding_proj.launch()
 	
-	new_proj.position = spawn_point.global_position
-	new_proj.angle = angle
-	new_proj.throw_power = throw_power
-	new_proj.gravity_scale = gravity_scale
-	
-	get_parent().get_parent().add_child(new_proj)
 	proj_timer.start()
+	new_projectile()
 
 
+func new_projectile():
+	var new_proj = PROJ.instantiate()
+	projectile_holder.add_child(new_proj)
+	
 
+	holding_proj = new_proj
+	holding_proj.global_position = spawn_point.global_position
 func move_spawn_point():
 	var mouse = get_global_mouse_position()
 	#var angle = global_position.angle_to_point(mouse)
@@ -61,6 +70,8 @@ func move_spawn_point():
 	spawn_anchor.rotation = angle# + PI * 0.5
 	spawn_anchor.position.y = 0
 	spawn_anchor.position.y = (spawn_point.global_position.y - spawn_anchor.global_position.y) * 0.57
+	
+	holding_proj.global_position = spawn_point.global_position
 	
 	polygon_arrow.rotation = angle# + PI * 0.5
 	#polygon_arrow.position.y -= abs(spawn_anchor.position.y)
