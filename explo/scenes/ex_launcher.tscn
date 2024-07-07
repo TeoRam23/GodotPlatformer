@@ -19,6 +19,8 @@ fill_to = Vector2(0, 0)
 radius = 15.0
 
 [node name="ExLauncher" type="Node2D"]
+process_priority = -2
+process_physics_priority = -2
 script = ExtResource("1_tduk0")
 
 [node name="ProjTimer" type="Timer" parent="."]

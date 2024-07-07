@@ -68,7 +68,7 @@ sources/1 = SubResource("TileSetAtlasSource_oauxa")
 script = ExtResource("1_wn5ym")
 
 [node name="Player" parent="." instance=ExtResource("2_t2hj6")]
-position = Vector2(261, 11)
+position = Vector2(229, -27)
 movement_data = ExtResource("3_usd0b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

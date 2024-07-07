@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://scripts/framer.gd" id="1_goyxa"]
 
 [node name="Framer" type="Node"]
+process_priority = 380
+process_physics_priority = 380
 script = ExtResource("1_goyxa")

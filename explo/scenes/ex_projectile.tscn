@@ -26,7 +26,6 @@ margin = Rect2(0, 0, 14, 14)
 [node name="ExProjectile" type="CharacterBody2D" groups=["projectile"]]
 process_priority = -1
 process_physics_priority = -1
-visible = false
 z_index = 1550
 collision_layer = 32
 motion_mode = 1
@@ -55,14 +54,19 @@ scale_amount_min = 0.3
 scale_amount_max = 0.3
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="ExplosionBody" type="CharacterBody2D" parent="."]
 collision_layer = 0
+motion_mode = 1
 
 [node name="ProjectileShape" type="CollisionShape2D" parent="ExplosionBody"]
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="explosion_area" parent="ExplosionBody" instance=ExtResource("3_my2bu")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExplosionBody"]
+modulate = Color(0, 1, 1, 0.580392)
+scale = Vector2(0.762, 0.762)
+sprite_frames = SubResource("SpriteFrames_dgde0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

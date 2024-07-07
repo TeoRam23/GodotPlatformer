@@ -70,6 +70,11 @@ func _physics_process(delta):
 		prevelocity.y = 0
 	gravity_calculation()
 	
+	if prevelocity.x > 1037:
+		prevelocity.x = 1037
+	elif prevelocity.x < -1037:
+		prevelocity.x = -1037
+	
 	move_and_slide()
 #	print("2, ",velocity, " og ", prevelocity)
 	var just_left_ledge = was_on_floor and not is_on_floor() and prevelocity.y >= 0
@@ -541,7 +546,7 @@ func launch_me(angle, power):
 	
 	just_launched = true
 	
-	print("I hast launched 3")
+	print("I hast launched 3 ", process_priority)
 
 
 func button_presses(delta):

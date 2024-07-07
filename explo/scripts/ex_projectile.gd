@@ -3,6 +3,8 @@ extends CharacterBody2D
 var throw_power = -300
 var angle = 0
 var gravity_scale = 1
+var the_launcher
+var the_spawner
 
 var first_frame = true
 
@@ -43,12 +45,14 @@ func _physics_process(delta):
 	if has_launched:
 		apply_gravity(delta)
 		move_and_slide()
-		apply_second_gravity(delta)
+		apply_second_gravity(delta, false)
 		
 	else:
 		move_and_slide()
+		apply_second_gravity(delta, true)
 	
-	if is_on_wall():
+	if is_on_wall() and not is_queued_for_deletion():
+		print("I did this from the process!")
 		explode_pls()
 				
 				#if !first_frame:
@@ -75,29 +79,54 @@ func apply_gravity(delta):
 	if velocity.y > 350:
 		velocity.y = 350
 
-func apply_second_gravity(delta):
+func apply_second_gravity(delta, do_my_own):
 	explosion_body.position = Vector2(0, 0)
-	explosion_body.velocity = velocity
+	if do_my_own:
+		var mouse = get_global_mouse_position()
+		angle = mouse.angle_to_point(the_launcher.global_position)
+		#print("Throw: ", throw_power, " Grav: ", gravity_scale, " Angle: ", angle)
+		if !is_on_wall():
+			explosion_body.velocity.x = throw_power * cos(angle)
+			explosion_body.velocity.y = throw_power * sin(angle)
+			#explosion_body.position = Vector2(0, 0)
+		else:
+			explosion_body.velocity = Vector2(0, 0)
+			#explosion_body.position = Vector2(0, 0)
+	else:
+		explosion_body.velocity = velocity
 	explosion_body.velocity.y += gravity * gravity_scale * delta
 	if explosion_body.velocity.y > 350:
 		explosion_body.velocity.y = 350
+	
+	#if the_launcher.get_parent().velocity:
+		#explosion_body.velocity += the_launcher.get_parent().velocity
 	#newvelocity = Vector2(50, 50)
 	#newvelocity = newvelocity * delta
 	#explosion_area.position = newvelocity
 	explosion_body.move_and_slide()
+	
 
 func launch():
+	process_priority = -1
+	process_physics_priority = -1
 	has_launched = true
 	if is_on_wall():
 		position = get_last_slide_collision().get_position()
 		explode_pls()
 		return
-	var cuisine = cos(angle)
-	var sine = sin(angle)
-	velocity.x = (0 * cuisine + throw_power * sine)
-	velocity.y = (0 * sine + throw_power * cuisine)
+	#var cuisine = cos(angle)
+	#var sine = sin(angle)
+	#velocity.x = (0 * cuisine + throw_power * sine)
+	#velocity.y = (0 * sine + throw_power * cuisine)
+	
+	#angle = (angle * -1) + (PI *0.5)
+	velocity.x = throw_power * cos(angle)
+	velocity.y = throw_power * sin(angle)
+	
 	global_rotation = 0
 	visible = true
+	
+	timer.start()
 
 #func _on_level_check_body_entered(body):
 	#if explosion_area.get_overlapping_bodies():
@@ -123,6 +152,7 @@ func explode_pls():
 				bod.explode()
 			elif bod.has_method("launch_me"):
 				var angle = get_launch_angle(bod)
+				print(rad_to_deg(angle))
 				bod.launch_me(angle, throw_power)
 	var explod = EX_PNG.instantiate()
 	explod.position = explosion_area.global_position
