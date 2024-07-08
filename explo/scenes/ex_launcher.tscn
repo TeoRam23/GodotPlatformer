@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://explo/scripts/ex_launcher1.gd" id="1_tduk0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uw5wx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_74d7i"]
 radius = 0.0
 
 [sub_resource type="Gradient" id="Gradient_wnpo2"]
@@ -29,12 +29,14 @@ one_shot = true
 
 [node name="SpawnAnchor" type="Node2D" parent="."]
 
-[node name="SpawnPoint" type="Area2D" parent="SpawnAnchor"]
+[node name="SpawnPoint" type="CharacterBody2D" parent="SpawnAnchor"]
 position = Vector2(-7, 0)
 collision_layer = 0
+motion_mode = 1
+wall_min_slide_angle = 3.14159
 
 [node name="SpawnShape" type="CollisionShape2D" parent="SpawnAnchor/SpawnPoint"]
-shape = SubResource("CircleShape2D_uw5wx")
+shape = SubResource("CircleShape2D_74d7i")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpawnAnchor/SpawnPoint"]
 visible = false

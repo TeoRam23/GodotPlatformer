@@ -26,10 +26,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_spawn_point()
+	#print("The pros")
+	move_spawn_point(false, delta)
 
 func _physics_process(delta):
-	move_spawn_point()
+	#print("The Frizz")
+	move_spawn_point(true, delta)
 	if Input.is_action_just_pressed("musL") or Input.is_action_pressed("musM"):
 		print("LAUNCH")
 		eject_proj()
@@ -68,7 +70,7 @@ func new_projectile():
 	
 	holding_proj.global_position = spawn_point.global_position
 	
-func move_spawn_point():
+func move_spawn_point(is_in_physics, delta):
 	var mouse = get_global_mouse_position()
 	#var angle = global_position.angle_to_point(mouse)
 	var angle = mouse.angle_to_point(global_position)
@@ -78,7 +80,22 @@ func move_spawn_point():
 	spawn_anchor.position.y = 0
 	spawn_anchor.position.y = (spawn_point.global_position.y - spawn_anchor.global_position.y) * 0.57
 	
+	#spawn_point.move_and_slide()
+	#if spawn_point.is_on_wall():
+		#spawn_point.move_and_slide()
+		#
+	#if is_in_physics:
+		#holding_proj.global_position = spawn_point.global_position
+	##else:
+		##if spawn_point.is_on_wall():
+			##holding_proj.global_position.x = spawn_point.global_position.x
+		#
+	#spawn_point.position = Vector2(-7, 0)
+	
 	holding_proj.global_position = spawn_point.global_position
+	
+	holding_proj.move_and_slide()
+	holding_proj.apply_second_gravity(delta, true)
 	
 	polygon_arrow.rotation = angle# + PI * 0.5
 	#polygon_arrow.position.y -= abs(spawn_anchor.position.y)

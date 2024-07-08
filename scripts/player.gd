@@ -70,10 +70,10 @@ func _physics_process(delta):
 		prevelocity.y = 0
 	gravity_calculation()
 	
-	if prevelocity.x > 1037:
-		prevelocity.x = 1037
-	elif prevelocity.x < -1037:
-		prevelocity.x = -1037
+	if prevelocity.x > movement_data.max_speed:
+		prevelocity.x = movement_data.max_speed
+	elif prevelocity.x < -movement_data.max_speed:
+		prevelocity.x = -movement_data.max_speed
 	
 	move_and_slide()
 #	print("2, ",velocity, " og ", prevelocity)
@@ -104,19 +104,19 @@ func apply_gravity(delta):
 			prevelocity.y = 0
 	if not is_on_floor():
 		prevelocity.y += gravity * movement_data.gravity_scale * delta
-		if prevelocity.y > 576:
-			prevelocity.y -= 50
-			if prevelocity.y < 576:
-				prevelocity.y = 576
+		if prevelocity.y > movement_data.max_fall_speed:
+			prevelocity.y -= movement_data.max_fall_speed * 0.1
+			if prevelocity.y < movement_data.max_fall_speed:
+				prevelocity.y = movement_data.max_fall_speed
 		if is_on_wall() and prevelocity.y > 0 and movement_data.wall_slide:
 			prevelocity.y = 40
 
 func handle_wall_jump(input_axis):
+	if is_on_wall() and !just_launched:
+		prevelocity.x = 0
 	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
 		return
 	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
-	if !just_launched:
-		prevelocity.x = 0
 	if Input.is_action_just_pressed("jump"):
 		if gravity_direction == clamp(gravity_direction, 67.5, 112.5) or gravity_direction == clamp(gravity_direction, -112.5, -67.5):
 			prevelocity.x = wall_normal.y * movement_data.speed * sign(gravity_direction)
@@ -190,7 +190,9 @@ func handle_gigadash(delta, input_axis):
 
 func handle_acceleration(input_axis, delta):
 	if not is_on_floor() or Input.is_action_pressed("down"): return
-	if input_axis != 0:
+	if input_axis > 0 and prevelocity.x <= movement_data.speed * input_axis:
+		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
+	elif input_axis < 0 and prevelocity.x >= movement_data.speed * input_axis:
 		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
 		
 
@@ -570,12 +572,12 @@ func button_presses(delta):
 			camera.zoom += Vector2(1, 1)
 		print(camera.zoom)
 		
-		if camera.zoom >= Vector2(2, 2):
-			camera.position_smoothing_enabled = false
-			camera.rotation_smoothing_enabled = false
-		else:
-			camera.position_smoothing_enabled = true
-			camera.rotation_smoothing_enabled = true
+		#if camera.zoom >= Vector2(2, 2):
+			#camera.position_smoothing_enabled = false
+			#camera.rotation_smoothing_enabled = false
+		#else:
+			#camera.position_smoothing_enabled = true
+			#camera.rotation_smoothing_enabled = true
 	
 	elif Input.is_action_just_pressed("minus"):
 		if camera.zoom <= Vector2(0.1, 0.1):

@@ -32,7 +32,10 @@ func _ready():
 	
 	
 	#move_and_slide()
-
+#func _process(delta):
+	#if !has_launched:
+		#move_and_slide()
+		#apply_second_gravity(delta, true)
 
 func _physics_process(delta):
 	#print(timer.time_left)
@@ -45,14 +48,23 @@ func _physics_process(delta):
 	if has_launched:
 		apply_gravity(delta)
 		move_and_slide()
+		#if !is_on_wall():
 		apply_second_gravity(delta, false)
+		
+		#print("mine: ", global_position, " bod: ", explosion_body.global_position)
+		#else: explosion_body.position = Vector2(0,0)
 		
 	else:
 		move_and_slide()
+		#if is_on_wall():
+			#var wall_angle = Vector2.RIGHT.rotated(get_angle_to(the_launcher.global_position))
+			#print(wall_angle)
+			
+			#print("WE WALL EY: ", get_wall_normal())
 		apply_second_gravity(delta, true)
 	
 	if is_on_wall() and not is_queued_for_deletion():
-		print("I did this from the process!")
+		#print("I did this from the process!")
 		explode_pls()
 				
 				#if !first_frame:
@@ -82,15 +94,21 @@ func apply_gravity(delta):
 func apply_second_gravity(delta, do_my_own):
 	explosion_body.position = Vector2(0, 0)
 	if do_my_own:
+		if is_on_wall():
+			#print("I wall now")
+			global_position = the_spawner.get_parent().global_position
+			#print("Lunsj: ",the_spawner.get_parent().global_position, " Bod: ", global_position, " Mus: ", get_global_mouse_position())
+			move_and_slide()
+		
 		var mouse = get_global_mouse_position()
 		angle = mouse.angle_to_point(the_launcher.global_position)
 		#print("Throw: ", throw_power, " Grav: ", gravity_scale, " Angle: ", angle)
-		if !is_on_wall():
-			explosion_body.velocity.x = throw_power * cos(angle)
-			explosion_body.velocity.y = throw_power * sin(angle)
-			#explosion_body.position = Vector2(0, 0)
-		else:
-			explosion_body.velocity = Vector2(0, 0)
+		#if !is_on_wall():
+		explosion_body.velocity.x = throw_power * cos(angle)
+		explosion_body.velocity.y = throw_power * sin(angle)
+			##explosion_body.position = Vector2(0, 0)
+		#else:
+			#explosion_body.velocity = Vector2(0, 0)
 			#explosion_body.position = Vector2(0, 0)
 	else:
 		explosion_body.velocity = velocity
@@ -105,13 +123,23 @@ func apply_second_gravity(delta, do_my_own):
 	#explosion_area.position = newvelocity
 	explosion_body.move_and_slide()
 	
+	#if has_launched:
+	if explosion_body.is_on_wall():
+		#print("IIII Wallin'", explosion_body.get_last_slide_collision().get_position())
+		explosion_body.global_position = explosion_body.get_last_slide_collision().get_position()
+
+	if is_on_wall():
+		#print("We wallin'", get_last_slide_collision().get_position())
+		explosion_body.global_position = get_last_slide_collision().get_position()
+	
+	
 
 func launch():
-	process_priority = -1
-	process_physics_priority = -1
+	#process_priority = -1
+	#process_physics_priority = -1
 	has_launched = true
 	if is_on_wall():
-		position = get_last_slide_collision().get_position()
+		#position = get_last_slide_collision().get_position()
 		explode_pls()
 		return
 	#var cuisine = cos(angle)
@@ -156,6 +184,8 @@ func explode_pls():
 				bod.launch_me(angle, throw_power)
 	var explod = EX_PNG.instantiate()
 	explod.position = explosion_area.global_position
+	print("area: ",explosion_area.global_position, ", bod: ", explosion_body.global_position)
+	print("Mus: ", get_global_mouse_position())
 	my_root.add_child(explod)
 	#illsplode = true
 	queue_free()

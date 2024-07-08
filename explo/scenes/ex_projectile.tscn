@@ -58,6 +58,7 @@ scale_amount_max = 0.3
 [node name="ExplosionBody" type="CharacterBody2D" parent="."]
 collision_layer = 0
 motion_mode = 1
+wall_min_slide_angle = 3.14159
 
 [node name="ProjectileShape" type="CollisionShape2D" parent="ExplosionBody"]
 shape = SubResource("CircleShape2D_l3r4n")
