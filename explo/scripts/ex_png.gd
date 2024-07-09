@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	visibility -= 0.010
+	visibility -= 0.015
 	modulate = Color(1, 1, 1, visibility)
 
 

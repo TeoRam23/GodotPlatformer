@@ -6,12 +6,12 @@
 script = ExtResource("1_5mief")
 speed = 60.0
 max_speed = 1080.0
-acceleration = 2000.0
-friction = 10000.0
+acceleration = 3000.0
+friction = 2500.0
 jump_velocity = -250.0
 gravity_scale = 0.69
 air_resistance = 0.0
-air_acceleration = 400.0
+air_acceleration = 720.0
 max_fall_speed = 600.0
 max_up_speed = 6000.0
 size = 0.98

@@ -6,9 +6,10 @@ var gravity_scale = 1
 var the_launcher
 var the_spawner
 
-var first_frame = true
+var first_frame = false
 
 var has_launched = false
+var is_in_a_wall = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -39,22 +40,28 @@ func _ready():
 
 func _physics_process(delta):
 	#print(timer.time_left)
-	
 	#if is_on_wall():
 		#explode_pls()
+	if first_frame:
+		return
+		
+		#return
 
 	
 	# Add the gravity.
-	if has_launched:
+	if has_launched and !is_in_a_wall:
+		print("has lunch")
 		apply_gravity(delta)
 		move_and_slide()
 		#if !is_on_wall():
+		#apply_second_gravity(delta, false)
 		apply_second_gravity(delta, false)
 		
 		#print("mine: ", global_position, " bod: ", explosion_body.global_position)
 		#else: explosion_body.position = Vector2(0,0)
 		
 	else:
+		print("no lunch")
 		move_and_slide()
 		#if is_on_wall():
 			#var wall_angle = Vector2.RIGHT.rotated(get_angle_to(the_launcher.global_position))
@@ -99,6 +106,8 @@ func apply_second_gravity(delta, do_my_own):
 			global_position = the_spawner.get_parent().global_position
 			#print("Lunsj: ",the_spawner.get_parent().global_position, " Bod: ", global_position, " Mus: ", get_global_mouse_position())
 			move_and_slide()
+			is_in_a_wall = true
+		else: is_in_a_wall = false
 		
 		var mouse = get_global_mouse_position()
 		angle = mouse.angle_to_point(the_launcher.global_position)
@@ -138,7 +147,11 @@ func launch():
 	#process_priority = -1
 	#process_physics_priority = -1
 	has_launched = true
+	print("*lunches*")
+	
 	if is_on_wall():
+		print("*explodes* ", explosion_body.global_position)
+		
 		#position = get_last_slide_collision().get_position()
 		explode_pls()
 		return
@@ -189,6 +202,7 @@ func explode_pls():
 	my_root.add_child(explod)
 	#illsplode = true
 	queue_free()
+	first_frame = true
 
 func get_launch_angle(bod):
 	var other_pos = bod.global_position
