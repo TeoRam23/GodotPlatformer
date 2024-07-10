@@ -69,6 +69,7 @@ script = ExtResource("1_wn5ym")
 
 [node name="Player" parent="." instance=ExtResource("2_t2hj6")]
 position = Vector2(-27, 11)
+safe_margin = 0.01
 movement_data = ExtResource("3_usd0b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

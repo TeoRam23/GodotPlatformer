@@ -24,7 +24,7 @@ process_physics_priority = -2
 script = ExtResource("1_tduk0")
 
 [node name="ProjTimer" type="Timer" parent="."]
-wait_time = 0.183
+wait_time = 0.1
 one_shot = true
 
 [node name="SpawnAnchor" type="Node2D" parent="."]

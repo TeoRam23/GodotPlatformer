@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
-var throw_power = -300
+@export var throw_power = -440
+@export var gravity_scale = 0.67
+@export var launch_power = -410
+
 var angle = 0
-var gravity_scale = 1
 var the_launcher
 var the_spawner
 
@@ -194,7 +196,7 @@ func explode_pls():
 			elif bod.has_method("launch_me"):
 				var angle = get_launch_angle(bod)
 				print(rad_to_deg(angle))
-				bod.launch_me(angle, throw_power)
+				bod.launch_me(angle, launch_power)
 	var explod = EX_PNG.instantiate()
 	explod.position = explosion_area.global_position
 	print("area: ",explosion_area.global_position, ", bod: ", explosion_body.global_position)

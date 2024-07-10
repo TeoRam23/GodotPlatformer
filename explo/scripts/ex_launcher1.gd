@@ -5,8 +5,8 @@ extends Node2D
 #var gravity_scale = 0.7
 #var throw_power = -400
 #var gravity_scale = 0.52
-var throw_power = -440
-var gravity_scale = 0.67
+#var throw_power = -440 ##
+#var gravity_scale = 0.67 ##
 #var gravity_scale = 0.0
 #var throw_power = -350
 #var gravity_scale = 0.4
@@ -38,8 +38,8 @@ func _physics_process(delta):
 
 func eject_proj():
 	print("LAUNCHING 1! ", process_priority)
-	var number = get_tree().get_nodes_in_group("projectile")
-	if number.size() > 1 and proj_timer.time_left > 0:
+	#var number = get_tree().get_nodes_in_group("projectile")
+	if proj_timer.time_left > 0:# and number.size() > 1:
 		return
 	
 	#if spawn_point.get_overlapping_bodies():
@@ -49,7 +49,6 @@ func eject_proj():
 	var angle = mouse.angle_to_point(global_position)
 	#var angle = global_position.angle_to_point(mouse)
 	#angle = (angle * -1) + (PI *0.5)
-	
 	holding_proj.angle = angle
 	holding_proj.global_position = spawn_point.global_position
 	holding_proj.launch()
@@ -63,8 +62,6 @@ func new_projectile():
 	projectile_holder.add_child(new_proj)
 	
 	holding_proj = new_proj
-	holding_proj.throw_power = throw_power
-	holding_proj.gravity_scale = gravity_scale
 	holding_proj.the_launcher = self
 	holding_proj.the_spawner = spawn_point
 	

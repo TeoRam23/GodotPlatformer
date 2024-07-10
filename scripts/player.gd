@@ -99,6 +99,7 @@ func apply_gravity(delta):
 	if is_on_floor():
 		if !just_launched:
 			prevelocity.y = 0
+			
 	elif is_on_ceiling():
 		if !just_launched:
 			prevelocity.y = 0
@@ -540,11 +541,14 @@ func gravity_calculation():
 
 
 func launch_me(angle, power):
-	power = -410
+	#power = -410
 	var cuisine = cos(angle)
 	var sine = sin(angle)
 	prevelocity.x += (0 * cuisine + power * sine)
 	prevelocity.y += (0 * sine + power * cuisine)
+	
+	#if prevelocity.y < power * 1:
+		#prevelocity.y = power * 1
 	
 	just_launched = true
 	
