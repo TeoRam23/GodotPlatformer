@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4oivkfwwrty"]
+[gd_scene load_steps=12 format=3 uid="uid://ch4oivkfwwrty"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_projectile.gd" id="1_fehis"]
 [ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_8voqe"]
+[ext_resource type="Script" path="res://explo/scripts/ex_particle_holder.gd" id="3_8j0kk"]
 [ext_resource type="PackedScene" uid="uid://bfxq1wlqcs111" path="res://explo/scenes/explosion_area.tscn" id="3_my2bu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3r4n"]
@@ -23,9 +24,29 @@ atlas = ExtResource("2_8voqe")
 region = Rect2(0, 0, 9, 9)
 margin = Rect2(0, 0, 14, 14)
 
+[sub_resource type="Gradient" id="Gradient_4rdob"]
+offsets = PackedFloat32Array(0.556818, 0.602273)
+colors = PackedColorArray(0.84, 0.5264, 0.504, 1, 0.839216, 0.52549, 0.505882, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vpphc"]
+gradient = SubResource("Gradient_4rdob")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_e1d3g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.384615), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4yxd6"]
+offsets = PackedFloat32Array(0.572917, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="ExProjectile" type="CharacterBody2D" groups=["projectile"]]
 process_priority = -1
 process_physics_priority = -1
+visible = false
 z_index = 1550
 collision_layer = 32
 motion_mode = 1
@@ -36,7 +57,6 @@ script = ExtResource("1_fehis")
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_dgde0")
 
 [node name="MiniPlayers" type="CPUParticles2D" parent="."]
@@ -53,9 +73,28 @@ gravity = Vector2(0, 0)
 scale_amount_min = 0.3
 scale_amount_max = 0.3
 
+[node name="ParticleHolder" type="Node2D" parent="."]
+script = ExtResource("3_8j0kk")
+
+[node name="ThrowDust" type="CPUParticles2D" parent="ParticleHolder"]
+z_as_relative = false
+amount = 20
+lifetime = 0.5
+randomness = 0.6
+texture = SubResource("GradientTexture2D_vpphc")
+spread = 180.0
+gravity = Vector2(0, 17.335)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+scale_amount_min = 0.1
+scale_amount_max = 0.35
+scale_amount_curve = SubResource("Curve_e1d3g")
+color_ramp = SubResource("Gradient_4yxd6")
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ExplosionBody" type="CharacterBody2D" parent="."]
+visible = false
 collision_layer = 0
 motion_mode = 1
 wall_min_slide_angle = 3.14159
@@ -66,8 +105,10 @@ shape = SubResource("CircleShape2D_l3r4n")
 [node name="explosion_area" parent="ExplosionBody" instance=ExtResource("3_my2bu")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExplosionBody"]
+visible = false
 modulate = Color(0, 1, 1, 0.580392)
 scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_dgde0")
 
+[connection signal="finished" from="ParticleHolder/ThrowDust" to="ParticleHolder" method="_on_throw_dust_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

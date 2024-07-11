@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=21 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
 [ext_resource type="Texture2D" uid="uid://btyt7tei7omda" path="res://assets/JeffreySprite.png" id="3_v30qj"]
 [ext_resource type="PackedScene" uid="uid://cdoim1kpn0tlp" path="res://scenes/Framer.tscn" id="4_1icg4"]
+[ext_resource type="Script" path="res://explo/scripts/expo_camera.gd" id="4_koes7"]
 [ext_resource type="PackedScene" uid="uid://cf4digijrb32k" path="res://scenes/Liner.tscn" id="5_fplat"]
 [ext_resource type="PackedScene" uid="uid://dsv4eyc7ju17a" path="res://explo/scenes/ex_launcher.tscn" id="6_y3t0q"]
 
@@ -128,6 +129,7 @@ process_callback = 0
 limit_bottom = 95
 position_smoothing_speed = 7.0
 rotation_smoothing_speed = 7.0
+script = ExtResource("4_koes7")
 
 [node name="CollisionRect" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

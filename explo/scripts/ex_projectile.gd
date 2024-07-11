@@ -23,8 +23,12 @@ var my_root
 @onready var explosion_area = $ExplosionBody/explosion_area
 @onready var timer = $Timer
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var particle_holder = $ParticleHolder
 
 const EX_PNG = preload("res://explo/scenes/ex_png.tscn")
+
+const EX_EXPLOSION = preload("res://explo/scenes/ex_explosion_effect.tscn")
+signal projectile_hit_the_ground
 
 func _ready():
 	my_root = get_tree().get_root()
@@ -52,7 +56,7 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if has_launched and !is_in_a_wall:
-		print("has lunch")
+		#print("has lunch")
 		apply_gravity(delta)
 		move_and_slide()
 		#if !is_on_wall():
@@ -63,7 +67,7 @@ func _physics_process(delta):
 		#else: explosion_body.position = Vector2(0,0)
 		
 	else:
-		print("no lunch")
+		#print("no lunch")
 		move_and_slide()
 		#if is_on_wall():
 			#var wall_angle = Vector2.RIGHT.rotated(get_angle_to(the_launcher.global_position))
@@ -185,6 +189,7 @@ func launch():
 func explode_pls():
 	if !has_launched:
 		return
+	Events.projectile_hit()
 	if explosion_area.get_overlapping_bodies():
 		var bodies = explosion_area.get_overlapping_bodies()
 		
@@ -197,11 +202,15 @@ func explode_pls():
 				var angle = get_launch_angle(bod)
 				print(rad_to_deg(angle))
 				bod.launch_me(angle, launch_power)
-	var explod = EX_PNG.instantiate()
+	var explod = EX_EXPLOSION.instantiate()
 	explod.position = explosion_area.global_position
 	print("area: ",explosion_area.global_position, ", bod: ", explosion_body.global_position)
 	print("Mus: ", get_global_mouse_position())
 	my_root.add_child(explod)
+	
+	remove_child(particle_holder)
+	get_parent().add_child(particle_holder)
+	particle_holder.un_emit()
 	#illsplode = true
 	queue_free()
 	first_frame = true

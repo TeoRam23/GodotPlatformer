@@ -192,9 +192,15 @@ func handle_gigadash(delta, input_axis):
 func handle_acceleration(input_axis, delta):
 	if not is_on_floor() or Input.is_action_pressed("down"): return
 	if input_axis > 0 and prevelocity.x <= movement_data.speed * input_axis:
-		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
+		if prevelocity.x >= 0:
+			prevelocity.x = movement_data.speed * input_axis
+		else:
+			prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
 	elif input_axis < 0 and prevelocity.x >= movement_data.speed * input_axis:
-		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
+		if prevelocity.x <= 0:
+			prevelocity.x = movement_data.speed * input_axis
+		else:
+			prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
 		
 
 func handle_air_acceleration(input_axis, delta):
@@ -206,7 +212,10 @@ func handle_air_acceleration(input_axis, delta):
 
 func apply_friction(input_axis, delta):
 	if (input_axis == 0 or Input.is_action_pressed("down")) and is_on_floor():
-		prevelocity.x = move_toward(prevelocity.x, 0, movement_data.friction * delta)
+		if abs(prevelocity.x) <= movement_data.speed:
+			prevelocity.x = 0
+		else:
+			prevelocity.x = move_toward(prevelocity.x, 0, movement_data.friction * delta)
 		
 
 func apply_air_resistance(input_axis, delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b22od2q6jfuhy"]
+[gd_scene load_steps=11 format=3 uid="uid://b22od2q6jfuhy"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wn5ym"]
 [ext_resource type="PackedScene" uid="uid://ngj3qa1yihrq" path="res://scenes/player.tscn" id="2_t2hj6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="4_quoxl"]
 [ext_resource type="Texture2D" uid="uid://cv7rbuxn3plw0" path="res://assets/mynewtileset.png" id="5_pbtup"]
 [ext_resource type="PackedScene" uid="uid://dik8qa4y5uulx" path="res://explo/scenes/ex_dectruct_tile_map.tscn" id="6_euu4u"]
+[ext_resource type="PackedScene" uid="uid://bkyanmnvlut1i" path="res://explo/scenes/ex_explosion_effect.tscn" id="8_rf873"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oauxa"]
 texture = ExtResource("5_pbtup")
@@ -100,3 +101,6 @@ layer_0/tile_data = PackedInt32Array(65535, 0, 3, 0, 131072, 3)
 position = Vector2(-11, -16)
 tile_set = SubResource("TileSet_ssry4")
 layer_0/tile_data = PackedInt32Array(0, 196609, 3, 65536, 196609, 3)
+
+[node name="ExExplosionEffect" parent="." instance=ExtResource("8_rf873")]
+position = Vector2(37, -17)
