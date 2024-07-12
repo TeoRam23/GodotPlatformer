@@ -12,6 +12,8 @@ var first_frame = false
 
 var has_launched = false
 var is_in_a_wall = false
+var just_launched = false
+var do_explosion = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -48,14 +50,18 @@ func _physics_process(delta):
 	#print(timer.time_left)
 	#if is_on_wall():
 		#explode_pls()
-	if first_frame:
+	if do_explosion:
+		apply_second_gravity(delta, true)
+		explode_pls()
+		return
+	elif first_frame:
 		return
 		
 		#return
 
 	
 	# Add the gravity.
-	if has_launched and !is_in_a_wall:
+	if has_launched and !is_in_a_wall and not just_launched:
 		#print("has lunch")
 		apply_gravity(delta)
 		move_and_slide()
@@ -66,8 +72,9 @@ func _physics_process(delta):
 		#print("mine: ", global_position, " bod: ", explosion_body.global_position)
 		#else: explosion_body.position = Vector2(0,0)
 		
-	else:
+	elif not just_launched and is_in_a_wall:
 		#print("no lunch")
+		#explosion_body.position = Vector2(0, 0)
 		move_and_slide()
 		#if is_on_wall():
 			#var wall_angle = Vector2.RIGHT.rotated(get_angle_to(the_launcher.global_position))
@@ -75,7 +82,18 @@ func _physics_process(delta):
 			
 			#print("WE WALL EY: ", get_wall_normal())
 		apply_second_gravity(delta, true)
+		if not is_in_a_wall:
+			explosion_body.position = Vector2(0, 0)
+			
 	
+	elif just_launched:
+		apply_second_gravity(delta, true)
+	else:
+		move_and_slide()
+		explosion_body.move_and_slide()
+		explosion_body.position = Vector2(0, 0)
+		
+		
 	if is_on_wall() and not is_queued_for_deletion():
 		#print("I did this from the process!")
 		explode_pls()
@@ -92,6 +110,7 @@ func _physics_process(delta):
 		#velocity = Vector2(0, 0)
 	
 	first_frame = false
+	just_launched = false
 	
 	
 
@@ -153,13 +172,13 @@ func launch():
 	#process_priority = -1
 	#process_physics_priority = -1
 	has_launched = true
+	just_launched = true
 	print("*lunches*")
 	
-	if is_on_wall():
+	if explosion_body.is_on_wall():
 		print("*explodes* ", explosion_body.global_position)
-		
+		do_explosion = true
 		#position = get_last_slide_collision().get_position()
-		explode_pls()
 		return
 	#var cuisine = cos(angle)
 	#var sine = sin(angle)

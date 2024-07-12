@@ -1,12 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch4oivkfwwrty"]
+[gd_scene load_steps=15 format=3 uid="uid://ch4oivkfwwrty"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_projectile.gd" id="1_fehis"]
 [ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_8voqe"]
 [ext_resource type="Script" path="res://explo/scripts/ex_particle_holder.gd" id="3_8j0kk"]
 [ext_resource type="PackedScene" uid="uid://bfxq1wlqcs111" path="res://explo/scenes/explosion_area.tscn" id="3_my2bu"]
+[ext_resource type="Texture2D" uid="uid://bc64nersg001c" path="res://assets/ExProjectile2.png" id="3_qwulo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3r4n"]
 radius = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dipiy"]
+atlas = ExtResource("3_qwulo")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieklu"]
+atlas = ExtResource("3_qwulo")
+region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dgde0"]
 animations = [{
@@ -16,6 +25,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dipiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieklu")
+}],
+"loop": true,
+"name": &"flash",
 "speed": 5.0
 }]
 
@@ -51,6 +71,7 @@ z_index = 1550
 collision_layer = 32
 motion_mode = 1
 wall_min_slide_angle = 3.14159
+safe_margin = 0.01
 script = ExtResource("1_fehis")
 
 [node name="ProjectileShape" type="CollisionShape2D" parent="."]
@@ -58,6 +79,9 @@ shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dgde0")
+animation = &"flash"
+autoplay = "flash"
+frame_progress = 0.80462
 
 [node name="MiniPlayers" type="CPUParticles2D" parent="."]
 visible = false
@@ -94,10 +118,10 @@ color_ramp = SubResource("Gradient_4yxd6")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ExplosionBody" type="CharacterBody2D" parent="."]
-visible = false
 collision_layer = 0
 motion_mode = 1
 wall_min_slide_angle = 3.14159
+safe_margin = 0.01
 
 [node name="ProjectileShape" type="CollisionShape2D" parent="ExplosionBody"]
 shape = SubResource("CircleShape2D_l3r4n")
@@ -107,7 +131,6 @@ shape = SubResource("CircleShape2D_l3r4n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExplosionBody"]
 visible = false
 modulate = Color(0, 1, 1, 0.580392)
-scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_dgde0")
 
 [connection signal="finished" from="ParticleHolder/ThrowDust" to="ParticleHolder" method="_on_throw_dust_finished"]

@@ -228,13 +228,23 @@ func update_animation(input_axis):
 			animated_sprite_2d.flip_h = (input_axis < 0)
 		else:
 			animated_sprite_2d.flip_h = (input_axis > 0)
+		
+		if abs(prevelocity.x) > movement_data.speed * 8:
+			animated_sprite_2d.speed_scale = 4
+		elif abs(prevelocity.x) > movement_data.speed * 2:
+			animated_sprite_2d.speed_scale = 2
+		else:
+			animated_sprite_2d.speed_scale = 1
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
 		
 	
 	if not is_on_floor():
-		animated_sprite_2d.play("jump")
+		if prevelocity.y < 0:
+			animated_sprite_2d.play("jump")
+		else:
+			animated_sprite_2d.play("fall")
 	
 	if (Input.is_action_pressed("down") and is_on_floor()) or gonnadash:
 		animated_sprite_2d.play("crouch")

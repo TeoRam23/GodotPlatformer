@@ -14,5 +14,5 @@ air_resistance = 0.0
 air_acceleration = 720.0
 max_fall_speed = 600.0
 max_up_speed = 6000.0
-size = 0.98
+size = 1.0
 wall_slide = false

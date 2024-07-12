@@ -92,7 +92,8 @@ func move_spawn_point(is_in_physics, delta):
 	holding_proj.global_position = spawn_point.global_position
 	
 	holding_proj.move_and_slide()
-	holding_proj.apply_second_gravity(delta, true)
+	if holding_proj.is_on_wall():
+		holding_proj.apply_second_gravity(delta, true)
 	
 	polygon_arrow.rotation = angle# + PI * 0.5
 	#polygon_arrow.position.y -= abs(spawn_anchor.position.y)
