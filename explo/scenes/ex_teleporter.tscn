@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8hm8tnj2kh47"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_teleporter.gd" id="1_w21gq"]
+[ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_7t6ot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lyub"]
+radius = 14.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xxfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7t6ot")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_xn8na"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 6.59341), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_t1u8o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.417582), -0.0296225, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_r1p6a"]
+offsets = PackedFloat32Array(0.84375, 0.958333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Teleporter" type="Area2D" groups=["teleporter"]]
+process_priority = 1
+process_physics_priority = 1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_w21gq")
+
+[node name="Swirl" type="CPUParticles2D" parent="."]
+amount = 20
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = -1.0
+scale_amount_max = 3.5
+color = Color(0.235294, 0.898039, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_0lyub")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 6.487, 8.648, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4xxfh")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Porting" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 40
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.65
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 90.0
+initial_velocity_max = 110.0
+damping_min = 90.0
+damping_max = 100.0
+damping_curve = SubResource("Curve_xn8na")
+scale_amount_min = 3.0
+scale_amount_max = 3.5
+scale_amount_curve = SubResource("Curve_t1u8o")
+color = Color(0.72, 0.962667, 1, 1)
+color_ramp = SubResource("Gradient_r1p6a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

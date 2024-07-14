@@ -131,6 +131,8 @@ func handle_wall_jump(input_axis):
 		just_wall_jumped = true
 
 func handle_jump():
+	if movement_data.jump_velocity == 0:
+		return
 	if is_on_floor(): air_jump = true
 	
 	if is_on_floor() or coyotejump_timer.time_left > 0.0:
@@ -251,10 +253,12 @@ func update_animation(input_axis):
 
 
 func _on_hazard_detector_area_entered(area):
-	global_position = starting_position
-	prevelocity = Vector2(0, 0)
+	i_died()
 	
 
+func i_died():
+	global_position = starting_position
+	prevelocity = Vector2(0, 0)
 
 #func _on_gravity_detector_area_entered(area):
 #	var entered_area2d = area

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb17idu0u5etn"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_camera_boundary.gd" id="1_qljen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxsv"]
+size = Vector2(642, 362.25)
+
+[node name="ExCameraBoundary" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_hyxsv")
+disabled = true
+debug_color = Color(0.490046, 0.905087, 0.999999, 0.0745098)
+script = ExtResource("1_qljen")

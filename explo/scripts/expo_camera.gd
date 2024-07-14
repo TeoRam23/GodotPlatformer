@@ -9,6 +9,7 @@ var shake_strength = 0.0
 
 func _ready():
 	Events.pls_shake.connect(apply_shake)
+	Events.pls_camera_limit.connect(set_my_limit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,11 +18,23 @@ func _process(delta):
 	
 	if shake_strength > 0.5:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
-		
+		if shake_strength <= 0.5:
+			offset = Vector2(0, 0)
+			
+			return
 		offset = random_offset()
+		
 
 func apply_shake():
 	shake_strength = random_strength
 
 func random_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength),rng.randf_range(-shake_strength, shake_strength))
+	
+	
+
+func set_my_limit(rd, lu):
+	limit_right = rd.x
+	limit_bottom = rd.y
+	limit_left = lu.x
+	limit_top = lu.y

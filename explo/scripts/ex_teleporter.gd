@@ -1,0 +1,63 @@
+extends Area2D
+
+@export var teleport_id = 0
+var porter_crime
+
+var broken = false
+
+var port_amount = 0
+@onready var death_timer = $DeathTimer
+@onready var collision_shape_2d = $CollisionShape2D
+
+@onready var porting = $Porting
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Events.pls_reset_teleport.connect(reset_my_amount)
+	
+	var porters = get_tree().get_nodes_in_group("teleporter")
+	for port in porters:
+		if port.teleport_id == teleport_id:
+			if port != self and (not port.porter_crime or port.porter_crime == self):
+				porter_crime = port
+				print("found ya")
+				break
+	if !porter_crime:
+		modulate = Color(0.79, 0.79, 0.79, 0.604)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_body_entered(body):
+	if !broken and porter_crime:
+		if !death_timer.time_left:
+			print("boop")
+			if port_amount > 40:
+				body.i_died()
+				Events.reset_teleporters()
+				return
+
+			death_timer.start()
+		else:
+			port_amount += 1
+		
+		porting.emitting = true
+		body.global_position = porter_crime.global_position
+		porter_crime.break_porter()
+
+func _on_body_exited(body):
+	broken = false
+
+
+
+func break_porter():
+	porting.emitting = true
+	broken = true
+
+
+func reset_my_amount():
+	print("biip")
+	port_amount = 0
