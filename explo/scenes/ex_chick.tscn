@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca3ji6x6to3r0"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_chick.gd" id="1_fwdli"]
+[ext_resource type="Texture2D" uid="uid://b2r8fd5a4226" path="res://assets/Kylling.png" id="1_wn00a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86273"]
+radius = 6.0
+
+[node name="ExChick" type="Area2D" groups=["ex_chocks"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fwdli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.762, 0.762)
+texture = ExtResource("1_wn00a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_86273")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

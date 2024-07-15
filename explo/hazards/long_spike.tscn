@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp8h7ugpknrxn"]
+
+[ext_resource type="Texture2D" uid="uid://kvaakg1jc6jo" path="res://assets/SpikesTiles.png" id="1_v8jh6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih6pp"]
+size = Vector2(16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ojtc"]
+atlas = ExtResource("1_v8jh6")
+region = Rect2(16, 0, 16, 16)
+
+[node name="LongSpike" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ih6pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_1ojtc")

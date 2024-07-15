@@ -1,0 +1,31 @@
+extends Area2D
+
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var sprite_2d = $Sprite2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	check_for_chicks()
+	Events.pls_activate_ender.connect(i_will_activate)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+
+
+func _on_body_entered(body):
+	Events.level_completed.emit()
+
+func check_for_chicks():
+	var chicks = get_tree().get_nodes_in_group("ex_chocks")
+	if chicks.size() > 0:
+		collision_shape_2d.set_deferred("disabled", true)
+		sprite_2d.modulate = Color(0.55, 0.55, 0.55)
+
+func i_will_activate():
+	print("I did it!")
+	collision_shape_2d.set_deferred("disabled", false)
+	sprite_2d.modulate = Color(0.74, 0.547, 0.34)

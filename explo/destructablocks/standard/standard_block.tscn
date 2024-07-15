@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://ja1xhimefqtm"]
+
+[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="1_0w7a7"]
+[ext_resource type="Script" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="1_ngcff"]
+[ext_resource type="PackedScene" uid="uid://cm6gweh1jujll" path="res://explo/destructablocks/standard/standard_particles.tscn" id="3_gspir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pmwb"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boykl"]
+atlas = ExtResource("1_0w7a7")
+region = Rect2(48, 48, 16, 16)
+
+[node name="StandardBlock" type="StaticBody2D"]
+script = ExtResource("1_ngcff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_2pmwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.866667, 0.552941, 5.76863, 1)
+position = Vector2(8, -8)
+texture = SubResource("AtlasTexture_boykl")
+
+[node name="Particles" parent="." instance=ExtResource("3_gspir")]
+position = Vector2(8, -8)

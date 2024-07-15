@@ -187,7 +187,7 @@ size = Vector2(10, 10)
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck58h"]
-size = Vector2(8, 13.002)
+size = Vector2(10, 14.002)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1p1sq"]
 atlas = ExtResource("3_v30qj")
@@ -259,7 +259,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HazardDetector"]
-position = Vector2(0, -6.501)
+position = Vector2(-0.0010004, -7.001)
 shape = SubResource("RectangleShape2D_ck58h")
 
 [node name="GravityDetector" type="Area2D" parent="."]

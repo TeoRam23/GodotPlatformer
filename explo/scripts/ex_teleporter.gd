@@ -7,6 +7,7 @@ var broken = false
 
 var port_amount = 0
 @onready var death_timer = $DeathTimer
+@onready var wait_timer = $WaitTimer
 @onready var collision_shape_2d = $CollisionShape2D
 
 @onready var porting = $Porting
@@ -48,9 +49,14 @@ func _on_body_entered(body):
 		body.global_position = porter_crime.global_position
 		porter_crime.break_porter()
 
+func _on_death_timer_timeout():
+	wait_timer.start()
+func _on_wait_timer_timeout():
+	reset_my_amount()
+	
+	
 func _on_body_exited(body):
 	broken = false
-
 
 
 func break_porter():
@@ -61,3 +67,7 @@ func break_porter():
 func reset_my_amount():
 	print("biip")
 	port_amount = 0
+
+
+
+

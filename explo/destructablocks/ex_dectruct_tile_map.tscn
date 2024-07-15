@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dik8qa4y5uulx"]
 
 [ext_resource type="TileSet" uid="uid://su3pchqphxw" path="res://data/tile_set_des.tres" id="1_d561b"]
-[ext_resource type="Script" path="res://explo/scripts/ex_dectruct_tile_map.gd" id="2_ecx0u"]
+[ext_resource type="Script" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="2_ecx0u"]
 
 [node name="ExDectructTileMap" type="TileMap"]
 process_priority = -1

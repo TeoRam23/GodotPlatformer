@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfkpoffkqfp2t"]
+
+[ext_resource type="Script" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="1_cdw51"]
+[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="2_kmd4t"]
+[ext_resource type="PackedScene" uid="uid://cm6gweh1jujll" path="res://explo/destructablocks/standard/standard_particles.tscn" id="3_kgrsc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pmwb"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boykl"]
+atlas = ExtResource("2_kmd4t")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic61l"]
+atlas = ExtResource("2_kmd4t")
+region = Rect2(112, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksrf5"]
+atlas = ExtResource("2_kmd4t")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkxn"]
+atlas = ExtResource("2_kmd4t")
+region = Rect2(112, 0, 16, 16)
+
+[node name="StandardBigBlock" type="StaticBody2D"]
+script = ExtResource("1_cdw51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_2pmwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.866667, 0.552941, 5.76863, 1)
+position = Vector2(8, -8)
+texture = SubResource("AtlasTexture_boykl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.866667, 0.552941, 5.76863, 1)
+position = Vector2(24, -8)
+texture = SubResource("AtlasTexture_ic61l")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.866667, 0.552941, 5.76863, 1)
+position = Vector2(8, -24)
+texture = SubResource("AtlasTexture_ksrf5")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0.866667, 0.552941, 5.76863, 1)
+position = Vector2(24, -24)
+texture = SubResource("AtlasTexture_2jkxn")
+
+[node name="Particles" parent="." instance=ExtResource("3_kgrsc")]
+position = Vector2(16, -16)
