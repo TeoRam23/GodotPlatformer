@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b22od2q6jfuhy"]
+[gd_scene load_steps=24 format=3 uid="uid://b22od2q6jfuhy"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wn5ym"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://e2jdkah8x3vy" path="res://data/ExploMovementData.tres" id="3_usd0b"]
 [ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="4_quoxl"]
 [ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="6_tpwqu"]
+[ext_resource type="Script" path="res://levels/BlackScreen.gd" id="7_twdbh"]
 [ext_resource type="PackedScene" uid="uid://bkyanmnvlut1i" path="res://explo/scenes/ex_explosion_effect.tscn" id="8_rf873"]
 [ext_resource type="PackedScene" uid="uid://bb17idu0u5etn" path="res://explo/scenes/ex_camera_boundary.tscn" id="9_rprbi"]
 [ext_resource type="PackedScene" uid="uid://c8hm8tnj2kh47" path="res://explo/scenes/ex_teleporter.tscn" id="10_nacey"]
@@ -21,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cm6gweh1jujll" path="res://explo/destructablocks/standard/standard_particles.tscn" id="19_m815n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brubr"]
-size = Vector2(1431, 520)
+size = Vector2(6912, 520)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oauxa"]
 texture = ExtResource("6_tpwqu")
@@ -83,12 +84,38 @@ sources/1 = SubResource("TileSetAtlasSource_oauxa")
 script = ExtResource("1_wn5ym")
 next_level = ExtResource("2_5k66i")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_top = -184.0
+offset_right = 656.0
+offset_bottom = 184.0
+color = Color(0.0924, 0.21, 0.14924, 1)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_offset = Vector2(0, 200)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(320, -8)
+color = Color(0.2538, 0.47, 0.37271, 1)
+polygon = PackedVector2Array(-320, -24, -272, -128, -227, -53, -192, -96, -161, -62, -96, -152, -32, -88, 7, -78, 67, -130, 112, -64, 161, -38, 200, -88, 239, -50, 296, -104, 320, -24, 320, 184, -320, 184)
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(320, 0)
+color = Color(0.109804, 0.329412, 0.133333, 1)
+polygon = PackedVector2Array(-320, -24, -272, -128, -227, -53, -192, -96, -161, -62, -96, -152, -32, -88, 7, -78, 67, -130, 112, -64, 161, -38, 200, -88, 239, -50, 296, -104, 320, -24, 320, 184, -320, 184)
+
 [node name="ExCameraBoundary" parent="." instance=ExtResource("9_rprbi")]
-position = Vector2(635.5, -164)
+position = Vector2(3376, -164)
 shape = SubResource("RectangleShape2D_brubr")
 
 [node name="Player" parent="." instance=ExtResource("2_t2hj6")]
-position = Vector2(1351, 11)
+position = Vector2(60, 11)
 safe_margin = 0.01
 movement_data = ExtResource("3_usd0b")
 
@@ -103,6 +130,7 @@ visible = false
 offset_right = 320.0
 offset_bottom = 180.0
 color = Color(0, 0, 0, 1)
+script = ExtResource("7_twdbh")
 
 [node name="IntTileMap" parent="." instance=ExtResource("4_quoxl")]
 modulate = Color(1, 1, 1, 0.501961)

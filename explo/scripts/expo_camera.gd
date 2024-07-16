@@ -12,10 +12,12 @@ func _ready():
 	Events.pls_camera_limit.connect(set_my_limit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#if Input.is_action_just_pressed("musR"):
-		#apply_shake()
-	
+func _physics_process(delta):
+	print("par: ",get_parent().get_parent().velocity)
+	print("mus: ",get_global_mouse_position())
+	if Input.is_action_pressed("musR"):
+		print("OFFSETTING")
+		offset.x = 0
 	if shake_strength > 0.5:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
 		if shake_strength <= 0.5:
@@ -23,6 +25,7 @@ func _process(delta):
 			
 			return
 		offset = random_offset()
+		
 		
 
 func apply_shake():

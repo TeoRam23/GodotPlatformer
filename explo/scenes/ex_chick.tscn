@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://b2r8fd5a4226" path="res://assets/Kylling.png" id="1_wn00a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86273"]
-radius = 6.0
+radius = 8.0
 
 [node name="ExChick" type="Area2D" groups=["ex_chocks"]]
+z_index = 1
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_fwdli")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.762, 0.762)
+position = Vector2(0, -2)
 texture = ExtResource("1_wn00a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -11,6 +11,8 @@ var gonnadash = false
 var sprite_rotation_speed = 100
 var just_launched = false
 
+var is_paused = false
+
 
 var gravity_direction = 0
 var rotation_speed = 15
@@ -44,6 +46,8 @@ func _ready():
 	scale.y = movement_data.size
 
 func _physics_process(delta):
+	if is_paused:
+		return
 	gravity_check()
 	button_presses(delta)
 	
@@ -257,7 +261,9 @@ func _on_hazard_detector_area_entered(area):
 	
 
 func i_died():
-	get_tree().reload_current_scene()
+	get_tree().paused = true
+	Events.player_died()
+	#get_tree().reload_current_scene()
 	#global_position = starting_position
 	#prevelocity = Vector2(0, 0)
 
