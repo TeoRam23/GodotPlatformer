@@ -44,6 +44,8 @@ var prevelocity = Vector2(0.0, 0.0)
 func _ready():
 	scale.x = movement_data.size
 	scale.y = movement_data.size
+	
+	Events.pls_kill_player.connect(i_died)
 
 func _physics_process(delta):
 	if is_paused:
@@ -97,6 +99,8 @@ func _physics_process(delta):
 		timer.stop()
 	if !is_on_floor() and timer.time_left <= 0:
 		timer.start()
+	if timer.time_left < 1.517 - 0.667 and timer.time_left > 1.517 - 0.750:
+		print("PEAK")
 
 func apply_gravity(delta):
 	#print(prevelocity.y)
@@ -108,7 +112,10 @@ func apply_gravity(delta):
 		if !just_launched:
 			prevelocity.y = 0
 	if not is_on_floor():
-		prevelocity.y += gravity * movement_data.gravity_scale * delta
+		if prevelocity.y > 0:
+			prevelocity.y += gravity * movement_data.gravity_scale * delta * movement_data.glide_multiplier
+		else:
+			prevelocity.y += gravity * movement_data.gravity_scale * delta
 		if prevelocity.y > movement_data.max_fall_speed:
 			prevelocity.y -= movement_data.max_fall_speed * 0.1
 			if prevelocity.y < movement_data.max_fall_speed:
@@ -217,7 +224,7 @@ func handle_air_acceleration(input_axis, delta):
 		prevelocity.x = move_toward(prevelocity.x, movement_data.speed * input_axis, movement_data.air_acceleration * delta)
 
 func apply_friction(input_axis, delta):
-	if (input_axis == 0 or Input.is_action_pressed("down")) and is_on_floor():
+	if (input_axis == 0 or Input.is_action_pressed("down")) and is_on_floor() and !just_launched:
 		if abs(prevelocity.x) <= movement_data.speed:
 			prevelocity.x = 0
 		else:
@@ -259,6 +266,9 @@ func update_animation(input_axis):
 func _on_hazard_detector_area_entered(area):
 	call_deferred("i_died")
 	
+func _on_hazard_detector_body_entered(body):
+	call_deferred("i_died")
+
 
 func i_died():
 	get_tree().paused = true
@@ -571,12 +581,14 @@ func gravity_calculation():
 
 
 func launch_me(angle, power):
+	print("MY ANGLE: ",rad_to_deg(angle))
 	#power = -410
 	var cuisine = cos(angle)
 	var sine = sin(angle)
 	prevelocity.x += (0 * cuisine + power * sine)
 	prevelocity.y += (0 * sine + power * cuisine)
 	
+	print(prevelocity)
 	#if prevelocity.y < power * 1:
 		#prevelocity.y = power * 1
 	
@@ -671,4 +683,4 @@ func button_presses(delta):
 
 
 func _on_timer_timeout():
-	print("1!")
+	print("1.5!")

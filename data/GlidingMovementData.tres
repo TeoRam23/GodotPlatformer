@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://b00n8w5q2nqha"]
+
+[ext_resource type="Script" path="res://data/PlayerMovementData.gd" id="1_l3h8e"]
+
+[resource]
+script = ExtResource("1_l3h8e")
+speed = 60.0
+max_speed = 1440.0
+acceleration = 3000.0
+friction = 2500.0
+jump_velocity = 0.0
+gravity_scale = 0.647
+air_resistance = 0.0
+air_acceleration = 720.0
+max_fall_speed = 120.0
+max_up_speed = 6000.0
+size = 1.0
+wall_slide = false
+glide_multiplier = 0.3

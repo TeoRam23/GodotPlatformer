@@ -9,7 +9,7 @@ size = Vector2(16, 10)
 atlas = ExtResource("1_v8jh6")
 region = Rect2(16, 0, 16, 16)
 
-[node name="LongSpike" type="Area2D"]
+[node name="LongSpike" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
 

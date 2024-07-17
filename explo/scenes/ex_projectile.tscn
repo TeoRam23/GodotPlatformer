@@ -69,6 +69,7 @@ process_physics_priority = -1
 visible = false
 z_index = 1550
 collision_layer = 32
+collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 3.14159
 safe_margin = 0.01

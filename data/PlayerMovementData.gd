@@ -13,3 +13,4 @@ extends Resource
 @export var max_up_speed = 600.0
 @export var size = 1.0
 @export var wall_slide = true
+@export var glide_multiplier = 1.0

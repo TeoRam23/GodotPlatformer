@@ -7,6 +7,7 @@ signal pls_camera_limit
 signal pls_reset_teleport
 signal pls_activate_ender
 signal pls_player_died
+signal pls_kill_player
 
 func projectile_hit():
 	pls_shake.emit()
@@ -23,3 +24,5 @@ func activate_ender():
 func player_died():
 	pls_player_died.emit()
 	
+func kill_player():
+	pls_kill_player.emit()

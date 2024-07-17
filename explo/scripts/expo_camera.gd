@@ -8,13 +8,13 @@ var rng = RandomNumberGenerator.new()
 var shake_strength = 0.0
 
 func _ready():
-	Events.pls_shake.connect(apply_shake)
+	#Events.pls_shake.connect(apply_shake)
 	Events.pls_camera_limit.connect(set_my_limit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	print("par: ",get_parent().get_parent().velocity)
-	print("mus: ",get_global_mouse_position())
+	#print("par: ",get_parent().get_parent().velocity)
+	#print("mus: ",get_global_mouse_position())
 	if Input.is_action_pressed("musR"):
 		print("OFFSETTING")
 		offset.x = 0

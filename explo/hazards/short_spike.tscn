@@ -3,18 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://kvaakg1jc6jo" path="res://assets/SpikesTiles.png" id="1_v6835"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih6pp"]
-size = Vector2(16, 5)
+size = Vector2(16, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxbfh"]
 atlas = ExtResource("1_v6835")
 region = Rect2(0, 0, 16, 16)
 
-[node name="ShortSpike" type="Area2D"]
+[node name="ShortSpike" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ih6pp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

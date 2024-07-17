@@ -47,6 +47,7 @@ func eject_proj():
 	
 	var mouse = get_global_mouse_position()
 	var angle = mouse.angle_to_point(global_position)
+	#angle = deg_to_rad(172.87 + 90) # FJEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRNNNNNNNNNNNNNNN
 	#var angle = global_position.angle_to_point(mouse)
 	#angle = (angle * -1) + (PI *0.5)
 	holding_proj.angle = angle
@@ -71,6 +72,8 @@ func move_spawn_point(is_in_physics, delta):
 	var mouse = get_global_mouse_position()
 	#var angle = global_position.angle_to_point(mouse)
 	var angle = mouse.angle_to_point(global_position)
+	
+	#angle = deg_to_rad(172.87 + 90) # FJEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRNNNNNNNNNNNNNNN
 	#print(angle)
 	
 	spawn_anchor.rotation = angle# + PI * 0.5

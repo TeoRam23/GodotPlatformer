@@ -17,7 +17,6 @@ func _physics_process(delta):
 		particles.global_position = particle_position
 		particles.emitting = true
 		free()
-	#pass
 
 
 func explode():

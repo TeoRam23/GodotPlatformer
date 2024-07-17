@@ -16,6 +16,8 @@ atlas = ExtResource("1_fdr0u")
 region = Rect2(32, 48, 16, 16)
 
 [node name="StandardLineH" type="StaticBody2D"]
+process_priority = -1
+process_physics_priority = -1
 script = ExtResource("1_jeti7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
