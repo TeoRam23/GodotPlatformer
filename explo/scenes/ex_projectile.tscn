@@ -56,7 +56,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_e1d3g"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.384615), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.824176), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_4yxd6"]
@@ -69,7 +69,7 @@ process_physics_priority = -1
 visible = false
 z_index = 1550
 collision_layer = 32
-collision_mask = 5
+collision_mask = 64
 motion_mode = 1
 wall_min_slide_angle = 3.14159
 safe_margin = 0.01

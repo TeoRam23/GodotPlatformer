@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://bh6m2h30sfekn"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_glider_floating.gd" id="1_vptjr"]
+[ext_resource type="Texture2D" uid="uid://dvc00v4uacm4v" path="res://assets/GlideBubble.png" id="2_qwdoq"]
+[ext_resource type="Script" path="res://explo/scripts/ExGliderChild.gd" id="2_v7b7n"]
+[ext_resource type="Texture2D" uid="uid://de3cwdglk75vo" path="res://assets/Glider.png" id="3_71mp3"]
+[ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="4_rt3xu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ub5ya"]
+radius = 15.0
+
+[sub_resource type="Curve" id="Curve_vegot"]
+_data = [Vector2(0.194805, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.406593), -2.22418, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fg0xg"]
+offsets = PackedFloat32Array(0.746032, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rq27"]
+atlas = ExtResource("3_71mp3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdbtl"]
+atlas = ExtResource("3_71mp3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djuvh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rq27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdbtl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve" id="Curve_yvson"]
+_data = [Vector2(0.318182, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494505), -2.06838, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_3l5e8"]
+offsets = PackedFloat32Array(0.690476, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="ExGliderFloating" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_vptjr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ub5ya")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qwdoq")
+
+[node name="BubPoof" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 14
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 126.43
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_vegot")
+color_ramp = SubResource("Gradient_fg0xg")
+script = ExtResource("4_rt3xu")
+
+[node name="ExGliderChild" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -18)
+script = ExtResource("2_v7b7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExGliderChild"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_djuvh")
+autoplay = "default"
+frame_progress = 0.0944647
+
+[node name="PoofParticle" type="CPUParticles2D" parent="ExGliderChild"]
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 100.0
+damping_min = 13.793
+damping_max = 13.793
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_yvson")
+color = Color(0.890196, 0.870588, 0.847059, 1)
+color_ramp = SubResource("Gradient_3l5e8")
+script = ExtResource("4_rt3xu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

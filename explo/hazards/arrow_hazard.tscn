@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dljxxl585036o"]
+
+[ext_resource type="Script" path="res://explo/scripts/arrow_hazard.gd" id="1_ycjon"]
+[ext_resource type="Texture2D" uid="uid://ddu0klt0uovyp" path="res://assets/arrow.png" id="2_e4r20"]
+[ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="3_mlk2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evl7g"]
+size = Vector2(5, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7fis"]
+size = Vector2(10, 2)
+
+[sub_resource type="Curve" id="Curve_kwexm"]
+_data = [Vector2(0.461039, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.59763, 0.0, 0, 0]
+point_count = 2
+
+[node name="ArrowHazard" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 64
+motion_mode = 1
+wall_min_slide_angle = 3.14159
+script = ExtResource("1_ycjon")
+
+[node name="ArrowShape" type="CollisionShape2D" parent="."]
+position = Vector2(-10.5, 0)
+shape = SubResource("RectangleShape2D_evl7g")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="DetectorShape" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_a7fis")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8, 0)
+texture = ExtResource("2_e4r20")
+
+[node name="BreakParticle" type="CPUParticles2D" parent="."]
+z_index = -5
+position = Vector2(-16, 0)
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 10.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 50.0
+initial_velocity_max = 125.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_kwexm")
+color = Color(0.827451, 0.529412, 0.282353, 1)
+script = ExtResource("3_mlk2w")

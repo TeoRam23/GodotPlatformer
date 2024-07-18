@@ -1,23 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://tus0b6muv5i0"]
+[gd_scene load_steps=6 format=3 uid="uid://tus0b6muv5i0"]
 
-[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="1_fdr0u"]
 [ext_resource type="Script" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="1_jeti7"]
+[ext_resource type="Texture2D" uid="uid://beydgw6a34327" path="res://assets/StandardBlocks.png" id="2_4fljc"]
 [ext_resource type="PackedScene" uid="uid://cm6gweh1jujll" path="res://explo/destructablocks/standard/standard_particles.tscn" id="3_3viux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pmwb"]
 size = Vector2(32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boykl"]
-atlas = ExtResource("1_fdr0u")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tb5ce"]
-atlas = ExtResource("1_fdr0u")
-region = Rect2(32, 48, 16, 16)
+atlas = ExtResource("2_4fljc")
+region = Rect2(0, 16, 32, 16)
 
 [node name="StandardLineH" type="StaticBody2D"]
 process_priority = -1
 process_physics_priority = -1
+collision_layer = 65
 script = ExtResource("1_jeti7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,14 +22,8 @@ position = Vector2(16, -8)
 shape = SubResource("RectangleShape2D_2pmwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.866667, 0.552941, 5.76863, 1)
-position = Vector2(8, -8)
+position = Vector2(16, -8)
 texture = SubResource("AtlasTexture_boykl")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.866667, 0.552941, 5.76863, 1)
-position = Vector2(24, -8)
-texture = SubResource("AtlasTexture_tb5ce")
 
 [node name="Particles" parent="." instance=ExtResource("3_3viux")]
 position = Vector2(16, -8)

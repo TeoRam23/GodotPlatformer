@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var movement_data : PlayerMovementData
+var main_data : PlayerMovementData
 
 var air_jump = true
 var can_dash = true
@@ -36,12 +37,13 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var icamera = $SpriteHolder/Camera2D
 @onready var camera = $SpriteHolder/ExpoCamera
 
-
 @export var debug = true
 
 @onready var timer = $Timer
 
 func _ready():
+	main_data = movement_data
+	
 	scale.x = movement_data.size
 	scale.y = movement_data.size
 	

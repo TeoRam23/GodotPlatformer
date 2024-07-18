@@ -137,6 +137,7 @@ cancel={
 2d_physics/layer_4="Gravity"
 2d_physics/layer_5="Conways"
 2d_physics/layer_6="Projectile"
+2d_physics/layer_7="WorldProjectile"
 
 [rendering]
 

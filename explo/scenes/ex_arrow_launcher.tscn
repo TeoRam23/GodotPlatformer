@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb44pakjgey22"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_arrow_launcher.gd" id="1_qyi18"]
+[ext_resource type="Texture2D" uid="uid://3mb18jaw3dse" path="res://assets/dispenser.png" id="2_rmdgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10rf6"]
+size = Vector2(16, 16)
+
+[sub_resource type="Curve" id="Curve_u0d7i"]
+_data = [Vector2(0.272727, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.84615, 0.0, 0, 0]
+point_count = 2
+
+[node name="ExArrowLauncher" type="StaticBody2D"]
+collision_layer = 65
+script = ExtResource("1_qyi18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_10rf6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rmdgu")
+
+[node name="LaunchTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="ShoopParticle" type="CPUParticles2D" parent="."]
+position = Vector2(-8, 0)
+emitting = false
+amount = 3
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.89
+initial_velocity_max = 51.68
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_u0d7i")
+
+[connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]
