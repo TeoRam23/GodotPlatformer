@@ -16,7 +16,7 @@ func _physics_process(delta):
 	#print("par: ",get_parent().get_parent().velocity)
 	#print("mus: ",get_global_mouse_position())
 	if Input.is_action_pressed("musR"):
-		print("OFFSETTING")
+		#print("OFFSETTING")
 		offset.x = 0
 	if shake_strength > 0.5:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)

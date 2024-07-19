@@ -1,0 +1,59 @@
+[gd_scene load_steps=23 format=3 uid="uid://bflgygrmh01rj"]
+
+[ext_resource type="PackedScene" uid="uid://cigdcpwal2jej" path="res://explo/hazards/spike_directions/long_spike_down.tscn" id="1_8pwis"]
+[ext_resource type="PackedScene" uid="uid://c50ud60vlnrxj" path="res://explo/hazards/spike_directions/long_spike_up.tscn" id="2_l3ixs"]
+[ext_resource type="PackedScene" uid="uid://brq6n80ixdgu8" path="res://explo/hazards/spike_directions/short_spike_up.tscn" id="2_tl0lw"]
+[ext_resource type="PackedScene" uid="uid://b5jshdcr0fsbp" path="res://explo/hazards/spike_directions/long_spike_left.tscn" id="3_0drbe"]
+[ext_resource type="PackedScene" uid="uid://dq86kc655522m" path="res://explo/hazards/spike_directions/short_spike_left.tscn" id="3_dpj46"]
+[ext_resource type="PackedScene" uid="uid://bk7wr6uee50ts" path="res://explo/hazards/spike_directions/long_spike_right.tscn" id="4_7atjh"]
+[ext_resource type="PackedScene" uid="uid://ilnsdcf8kw6p" path="res://explo/hazards/spike_directions/short_spike_right.tscn" id="4_t4n02"]
+[ext_resource type="PackedScene" uid="uid://cv6h77gpfe7a0" path="res://explo/hazards/spike_directions/short_spike_down.tscn" id="8_a2ygo"]
+[ext_resource type="PackedScene" uid="uid://ja1xhimefqtm" path="res://explo/destructablocks/standard/standard_block.tscn" id="9_ryohc"]
+[ext_resource type="PackedScene" uid="uid://tus0b6muv5i0" path="res://explo/destructablocks/standard/standard_line_h.tscn" id="10_bdb6r"]
+[ext_resource type="PackedScene" uid="uid://b3uet6ycg6xp3" path="res://explo/destructablocks/standard/standard_line_v.tscn" id="11_eqsdi"]
+[ext_resource type="PackedScene" uid="uid://cfkpoffkqfp2t" path="res://explo/destructablocks/standard/standard_big_block.tscn" id="12_eold0"]
+[ext_resource type="PackedScene" uid="uid://bspwk4e0v6kw3" path="res://explo/destructablocks/regen/regen_block.tscn" id="13_ac0n3"]
+[ext_resource type="PackedScene" uid="uid://tg4e5gvf6ewp" path="res://explo/destructablocks/regen/regen_line_h.tscn" id="14_enuqg"]
+[ext_resource type="PackedScene" uid="uid://brebgkgjdnidd" path="res://explo/destructablocks/regen/regen_line_v.tscn" id="15_t5xwo"]
+[ext_resource type="PackedScene" uid="uid://dqwy785788h2d" path="res://explo/destructablocks/regen/regen_big_block.tscn" id="16_mruhc"]
+[ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="17_w4ncl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s7f3i"]
+resource_name = "Spikes"
+scenes/0/scene = ExtResource("4_7atjh")
+scenes/1/scene = ExtResource("1_8pwis")
+scenes/2/scene = ExtResource("2_l3ixs")
+scenes/3/scene = ExtResource("3_0drbe")
+scenes/9/scene = ExtResource("8_a2ygo")
+scenes/10/scene = ExtResource("2_tl0lw")
+scenes/11/scene = ExtResource("3_dpj46")
+scenes/12/scene = ExtResource("4_t4n02")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_jffwl"]
+resource_name = "StandardBlocks"
+scenes/1/scene = ExtResource("9_ryohc")
+scenes/2/scene = ExtResource("10_bdb6r")
+scenes/3/scene = ExtResource("11_eqsdi")
+scenes/4/scene = ExtResource("12_eold0")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vp5n3"]
+resource_name = "RegenBlocks"
+scenes/1/scene = ExtResource("13_ac0n3")
+scenes/2/scene = ExtResource("14_enuqg")
+scenes/3/scene = ExtResource("15_t5xwo")
+scenes/4/scene = ExtResource("16_mruhc")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kv1ea"]
+resource_name = "Div"
+scenes/1/scene = ExtResource("17_w4ncl")
+
+[sub_resource type="TileSet" id="TileSet_a1uwm"]
+sources/3 = SubResource("TileSetScenesCollectionSource_s7f3i")
+sources/4 = SubResource("TileSetScenesCollectionSource_jffwl")
+sources/5 = SubResource("TileSetScenesCollectionSource_vp5n3")
+sources/6 = SubResource("TileSetScenesCollectionSource_kv1ea")
+
+[node name="ExObjectTilemap" type="TileMap"]
+tile_set = SubResource("TileSet_a1uwm")
+format = 2
+layer_0/name = "Main"

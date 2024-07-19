@@ -14,6 +14,7 @@ region = Rect2(32, 0, 16, 32)
 [node name="StandardLineV" type="StaticBody2D"]
 process_priority = -1
 process_physics_priority = -1
+position = Vector2(-8, 8)
 collision_layer = 65
 script = ExtResource("1_tnsn8")
 

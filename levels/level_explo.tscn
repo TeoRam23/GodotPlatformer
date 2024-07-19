@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b22od2q6jfuhy"]
+[gd_scene load_steps=23 format=3 uid="uid://b22od2q6jfuhy"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wn5ym"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -12,18 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://c8hm8tnj2kh47" path="res://explo/scenes/ex_teleporter.tscn" id="10_nacey"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="11_hae8s"]
 [ext_resource type="PackedScene" uid="uid://ca3ji6x6to3r0" path="res://explo/scenes/ex_chick.tscn" id="13_fj3u6"]
-[ext_resource type="PackedScene" uid="uid://q2mmfq63yv30" path="res://explo/hazards/short_spike.tscn" id="14_kuo23"]
-[ext_resource type="PackedScene" uid="uid://bp8h7ugpknrxn" path="res://explo/hazards/long_spike.tscn" id="15_rbngj"]
-[ext_resource type="PackedScene" uid="uid://ja1xhimefqtm" path="res://explo/destructablocks/standard/standard_block.tscn" id="16_ri8vc"]
-[ext_resource type="PackedScene" uid="uid://tus0b6muv5i0" path="res://explo/destructablocks/standard/standard_line_h.tscn" id="17_7k4ar"]
-[ext_resource type="PackedScene" uid="uid://b3uet6ycg6xp3" path="res://explo/destructablocks/standard/standard_line_v.tscn" id="17_csydp"]
-[ext_resource type="PackedScene" uid="uid://cfkpoffkqfp2t" path="res://explo/destructablocks/standard/standard_big_block.tscn" id="18_xeyii"]
 [ext_resource type="PackedScene" uid="uid://bspwk4e0v6kw3" path="res://explo/destructablocks/regen/regen_block.tscn" id="19_jnea6"]
-[ext_resource type="PackedScene" uid="uid://dqwy785788h2d" path="res://explo/destructablocks/regen/regen_big_block.tscn" id="20_if37i"]
 [ext_resource type="PackedScene" uid="uid://tg4e5gvf6ewp" path="res://explo/destructablocks/regen/regen_line_h.tscn" id="21_qmq8v"]
-[ext_resource type="PackedScene" uid="uid://brebgkgjdnidd" path="res://explo/destructablocks/regen/regen_line_v.tscn" id="22_j3uyn"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="23_f0x4r"]
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="24_1i840"]
+[ext_resource type="PackedScene" uid="uid://bflgygrmh01rj" path="res://explo/scenes/ex_object_tilemap.tscn" id="25_2kj0l"]
+[ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="26_gansl"]
+[ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="27_v86sp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brubr"]
 size = Vector2(7326, 520)
@@ -162,6 +157,9 @@ position = Vector2(-264, -165)
 tile_set = SubResource("TileSet_ssry4")
 layer_0/tile_data = PackedInt32Array(0, 196609, 3, 65536, 196609, 3, 65537, 196609, 3, 65538, 196609, 3, 65539, 196609, 3, 65540, 196609, 3, 65541, 196609, 3)
 
+[node name="ExObjectTilemap" parent="." instance=ExtResource("25_2kj0l")]
+layer_0/tile_data = PackedInt32Array(-327686, 6, 65536, -393222, 6, 65536, -458758, 6, 65536, -524294, 6, 65536, -589830, 6, 65536, -655366, 6, 65536, -720902, 6, 65536, -786438, 6, 65536, -851974, 6, 65536, -917510, 6, 65536, -983046, 6, 65536, -1048582, 6, 65536, -1114118, 6, 65536, -1179654, 6, 65536, -1179655, 6, 65536, -1179656, 6, 65536, -1179657, 6, 65536, -1179658, 6, 65536, -1179659, 6, 65536, -1179660, 6, 65536, -1179661, 6, 65536, -1179662, 6, 65536, -1179663, 6, 65536, -1179664, 6, 65536, -1179665, 6, 65536, -1114129, 6, 65536, -1048593, 6, 65536, -983057, 6, 65536, -917521, 6, 65536, -851985, 6, 65536, -786449, 6, 65536, -720913, 6, 65536, -655377, 6, 65536, -589841, 6, 65536, -524305, 6, 65536, -458769, 6, 65536, -393233, 6, 65536, -327697, 6, 65536, -262161, 6, 65536, -196625, 6, 65536, -131089, 6, 65536, -131088, 6, 65536, -131087, 6, 65536, -131086, 6, 65536, -393230, 6, 65536, -327694, 6, 65536, -262158, 6, 65536, -196622, 6, 65536, -458765, 6, 65536, -458764, 6, 65536, -458766, 6, 65536, -393228, 6, 65536, -327692, 6, 65536, -262156, 6, 65536, -196620, 6, 65536, -131084, 6, 65536, -65548, 6, 65536, -65547, 6, 65536, -65546, 6, 65536, -131094, 3, 65536, -131093, 3, 65536, -131092, 3, 65536, -131091, 3, 65536, -131090, 3, 65536, 458732, 3, 65536, 458733, 3, 65536, 458734, 3, 65536, 458735, 3, 65536, 458736, 3, 65536, 458737, 3, 65536, 458738, 3, 65536, 458739, 3, 65536, 458740, 3, 65536, 458741, 3, 65536, 458742, 3, 65536, 458743, 3, 65536, 458744, 3, 65536, -655338, 3, 0, -458730, 3, 786432, -65529, 4, 131072, 9, 4, 196608, -131067, 4, 65536, 11, 4, 262144, -589826, 5, 262144, -720896, 5, 65536, -720895, 5, 65536, -786434, 5, 65536, -720898, 5, 65536, -720897, 5, 196608, -655358, 5, 196608, -851970, 5, 131072, -655360, 5, 131072)
+
 [node name="Teleporter" parent="." instance=ExtResource("10_nacey")]
 position = Vector2(128, -48)
 teleport_id = 1
@@ -199,55 +197,8 @@ position = Vector2(96, -56)
 [node name="Chick4" parent="." instance=ExtResource("13_fj3u6")]
 position = Vector2(64, -16)
 
-[node name="ShortSpike" parent="." instance=ExtResource("14_kuo23")]
-position = Vector2(368, -104)
-rotation = -1.5708
-
-[node name="LongSpike" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(368, -144)
-rotation = -1.5708
-
-[node name="StandardBlock" parent="." instance=ExtResource("16_ri8vc")]
-position = Vector2(80, -16)
-
-[node name="StandardLineH" parent="." instance=ExtResource("17_7k4ar")]
-position = Vector2(112, 0)
-
-[node name="StandardLineV" parent="." instance=ExtResource("17_csydp")]
-position = Vector2(144, 16)
-
-[node name="StandardBigBlock" parent="." instance=ExtResource("18_xeyii")]
-position = Vector2(176, 16)
-
 [node name="StandardBlock2" parent="." instance=ExtResource("19_jnea6")]
 position = Vector2(-16, 16)
-
-[node name="StandardBlock3" parent="." instance=ExtResource("20_if37i")]
-position = Vector2(-32, -144)
-
-[node name="StandardBlock4" parent="." instance=ExtResource("21_qmq8v")]
-position = Vector2(0, -144)
-
-[node name="StandardBlock5" parent="." instance=ExtResource("22_j3uyn")]
-position = Vector2(32, -144)
-
-[node name="StandardBlock6" parent="." instance=ExtResource("19_jnea6")]
-position = Vector2(0, -160)
-
-[node name="StandardBlock7" parent="." instance=ExtResource("19_jnea6")]
-position = Vector2(16, -160)
-
-[node name="StandardBlock8" parent="." instance=ExtResource("21_qmq8v")]
-position = Vector2(-32, -208)
-
-[node name="StandardBlock9" parent="." instance=ExtResource("19_jnea6")]
-position = Vector2(-32, -192)
-
-[node name="StandardBlock10" parent="." instance=ExtResource("19_jnea6")]
-position = Vector2(-32, -176)
-
-[node name="StandardBlock11" parent="." instance=ExtResource("22_j3uyn")]
-position = Vector2(-16, -176)
 
 [node name="StandardBlock12" parent="." instance=ExtResource("21_qmq8v")]
 position = Vector2(-192, 32)
@@ -255,58 +206,35 @@ position = Vector2(-192, 32)
 [node name="StandardBlock13" parent="." instance=ExtResource("21_qmq8v")]
 position = Vector2(-224, 32)
 
-[node name="LongSpike2" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-344, -32)
-
-[node name="LongSpike3" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-328, -32)
-
-[node name="LongSpike4" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-312, -32)
-
-[node name="LongSpike5" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-296, -32)
-
-[node name="LongSpike6" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-280, -32)
-
-[node name="LongSpike7" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-310, 103)
-
-[node name="LongSpike8" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-294, 103)
-
-[node name="LongSpike9" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-278, 103)
-
-[node name="LongSpike10" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-262, 103)
-
-[node name="LongSpike11" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-246, 103)
-
-[node name="LongSpike12" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-230, 103)
-
-[node name="LongSpike13" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-214, 103)
-
-[node name="LongSpike14" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-198, 103)
-
-[node name="LongSpike15" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-182, 103)
-
-[node name="LongSpike16" parent="." instance=ExtResource("15_rbngj")]
-position = Vector2(-166, 103)
-
 [node name="ExGliderFloating" parent="." instance=ExtResource("23_f0x4r")]
 position = Vector2(-126, -50)
 
 [node name="ExArrowLauncher" parent="." instance=ExtResource("24_1i840")]
 position = Vector2(-171, -81)
 rotation = -0.00506725
+launch_seconds = 5.0
 
 [node name="ExArrowLauncher2" parent="." instance=ExtResource("24_1i840")]
 position = Vector2(-125, -117)
 rotation = -1.5708
+
+[node name="DissaBlock" parent="." instance=ExtResource("26_gansl")]
+position = Vector2(-24, -88)
+king_block = true
+
+[node name="DissaBlock2" parent="." instance=ExtResource("26_gansl")]
+position = Vector2(-8, -88)
+
+[node name="DissaBlock3" parent="." instance=ExtResource("26_gansl")]
+position = Vector2(8, -88)
+
+[node name="DissaBlock4" parent="." instance=ExtResource("26_gansl")]
+position = Vector2(8, -104)
+
+[node name="ExDissaActivator" parent="." instance=ExtResource("27_v86sp")]
+position = Vector2(-88, -8)
+delay_time = 0.1
+
+[node name="ExDissaBlock" parent="." instance=ExtResource("26_gansl")]
+position = Vector2(-88, -72)
+king_block = true

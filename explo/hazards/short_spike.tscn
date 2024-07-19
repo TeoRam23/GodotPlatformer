@@ -14,9 +14,8 @@ collision_layer = 68
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ih6pp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_mxbfh")

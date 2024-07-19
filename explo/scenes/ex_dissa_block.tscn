@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://coeb0svmejo85"]
+
+[ext_resource type="Script" path="res://explo/scripts/dissa_block.gd" id="1_i6w2j"]
+[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="1_tfeay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5jpv"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcs3k"]
+size = Vector2(4, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7lqv"]
+size = Vector2(20, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emi0u"]
+atlas = ExtResource("1_tfeay")
+region = Rect2(48, 48, 16, 16)
+
+[node name="ExDissaBlock" type="StaticBody2D" groups=["DissaBlock"]]
+collision_layer = 65
+collision_mask = 0
+script = ExtResource("1_i6w2j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x5jpv")
+
+[node name="BlockDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockDetector"]
+shape = SubResource("RectangleShape2D_bcs3k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BlockDetector"]
+shape = SubResource("RectangleShape2D_t7lqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.3, 0.41, 2.844, 1)
+texture = SubResource("AtlasTexture_emi0u")
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

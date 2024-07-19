@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2amnlofb31d"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_dissa_activator.gd" id="1_wx8i4"]
+[ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_65o0v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8xfv"]
+size = Vector2(16, 16)
+
+[node name="ExDissaActivator" type="StaticBody2D"]
+collision_layer = 65
+collision_mask = 0
+script = ExtResource("1_wx8i4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f8xfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.082, 0.54, 3.784, 1)
+self_modulate = Color(0.800491, 0.800491, 0.800491, 1)
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("2_65o0v")

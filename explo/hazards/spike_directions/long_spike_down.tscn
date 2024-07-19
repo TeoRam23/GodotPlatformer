@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cigdcpwal2jej"]
+
+[ext_resource type="PackedScene" uid="uid://bp8h7ugpknrxn" path="res://explo/hazards/long_spike.tscn" id="1_4r5yu"]
+
+[node name="DownLongSpike" type="Node2D"]
+
+[node name="LongSpike" parent="." instance=ExtResource("1_4r5yu")]
+position = Vector2(0, 8)

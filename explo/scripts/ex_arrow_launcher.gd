@@ -5,9 +5,12 @@ extends StaticBody2D
 
 const ARROW_HAZARD = preload("res://explo/hazards/arrow_hazard.tscn")
 @export var arrow_speed = -180.0
+@export var launch_seconds = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	launch_timer.wait_time = launch_seconds
+	launch_timer.start()
 	pass # Replace with function body.
 
 
