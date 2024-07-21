@@ -1,8 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk0ej2eqbj74w"]
+[gd_scene load_steps=15 format=3 uid="uid://bk0ej2eqbj74w"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_complete_level.gd" id="1_81sdl"]
+[ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="2_43vsv"]
+[ext_resource type="Texture2D" uid="uid://bdtf7tvjg7mdi" path="res://assets/level_end.png" id="2_nsal0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_grret"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fukx"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_518ds"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df37t"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaxff"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljkbl"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voxxo"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr5av"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25hgo"]
+atlas = ExtResource("2_43vsv")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktu3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fukx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_518ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df37t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaxff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljkbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voxxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr5av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25hgo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uju4v"]
 size = Vector2(14, 36)
@@ -13,19 +79,33 @@ collision_mask = 2
 script = ExtResource("1_81sdl")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.9, 0.87825, 0.855, 1)
 position = Vector2(0.499998, -21.5)
 scale = Vector2(33, 43)
 texture = SubResource("CanvasTexture_grret")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.74, 0.54686, 0.3404, 1)
 position = Vector2(1.19209e-07, -19.5)
 scale = Vector2(24, 39)
 texture = SubResource("CanvasTexture_grret")
 
+[node name="SwirlSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_ktu3w")
+autoplay = "default"
+frame_progress = 0.942641
+
+[node name="GateSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2_nsal0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_uju4v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_looped" from="SwirlSprite" to="." method="_on_swirl_sprite_animation_looped"]

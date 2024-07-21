@@ -21,6 +21,7 @@ var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 var holding_proj
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Events.pls_player_died.connect(disable_me)
 	new_projectile()
 
 
@@ -104,3 +105,7 @@ func move_spawn_point(is_in_physics, delta):
 	
 	
 	
+func disable_me():
+	set_process(false)
+	set_physics_process(false)
+	polygon_arrow.visible = false

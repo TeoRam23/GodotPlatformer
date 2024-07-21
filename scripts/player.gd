@@ -107,6 +107,7 @@ func _physics_process(delta):
 func apply_gravity(delta):
 	#print(prevelocity.y)
 	if is_on_floor():
+		print("floored, man")
 		if !just_launched:
 			prevelocity.y = 0
 			
@@ -273,7 +274,9 @@ func _on_hazard_detector_body_entered(body):
 
 
 func i_died():
-	get_tree().paused = true
+	set_physics_process(false)
+	animated_sprite_2d.visible = false
+	#get_tree().paused = true
 	Events.player_died()
 	#get_tree().reload_current_scene()
 	#global_position = starting_position
@@ -646,7 +649,7 @@ func button_presses(delta):
 			#camera.rotation_smoothing_enabled = true
 	
 	if Input.is_key_pressed(KEY_Z):
-		camera.zoom = Vector2(1, 1)
+		camera.zoom = Vector2(0.5, 0.5)
 		#camera.position_smoothing_enabled = true
 		#camera.rotation_smoothing_enabled = true
 

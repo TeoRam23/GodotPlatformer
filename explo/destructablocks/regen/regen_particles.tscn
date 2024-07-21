@@ -16,5 +16,5 @@ initial_velocity_min = 200.0
 initial_velocity_max = 250.0
 scale_amount_min = 4.0
 scale_amount_max = 8.0
-color = Color(1, 0.894118, 1, 1)
+color = Color(0.756863, 0.298039, 0.286275, 1)
 script = ExtResource("1_hix8b")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://coeb0svmejo85"]
+[gd_scene load_steps=17 format=3 uid="uid://coeb0svmejo85"]
 
 [ext_resource type="Script" path="res://explo/scripts/dissa_block.gd" id="1_i6w2j"]
-[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="1_tfeay"]
+[ext_resource type="Texture2D" uid="uid://bu7sxcl6v0t2a" path="res://assets/DissaBlock.png" id="2_rie21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5jpv"]
 size = Vector2(16, 16)
@@ -12,9 +12,85 @@ size = Vector2(4, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7lqv"]
 size = Vector2(20, 4)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_emi0u"]
-atlas = ExtResource("1_tfeay")
-region = Rect2(48, 48, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii1y6"]
+atlas = ExtResource("2_rie21")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grw71"]
+atlas = ExtResource("2_rie21")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42t0d"]
+atlas = ExtResource("2_rie21")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrbkk"]
+atlas = ExtResource("2_rie21")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2878j"]
+atlas = ExtResource("2_rie21")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s52ku"]
+atlas = ExtResource("2_rie21")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yksco"]
+atlas = ExtResource("2_rie21")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or4db"]
+atlas = ExtResource("2_rie21")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od12h"]
+atlas = ExtResource("2_rie21")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utx5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii1y6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grw71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42t0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrbkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2878j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s52ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yksco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or4db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od12h")
+}],
+"loop": false,
+"name": &"dissapump",
+"speed": 30.0
+}]
+
+[sub_resource type="Curve" id="Curve_oxkfl"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.961039, 0.241758), -3.02198, 0.0, 0, 0]
+point_count = 2
 
 [node name="ExDissaBlock" type="StaticBody2D" groups=["DissaBlock"]]
 collision_layer = 65
@@ -33,11 +109,31 @@ shape = SubResource("RectangleShape2D_bcs3k")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BlockDetector"]
 shape = SubResource("RectangleShape2D_t7lqv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.3, 0.41, 2.844, 1)
-texture = SubResource("AtlasTexture_emi0u")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_utx5q")
+
+[node name="PumpParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+lifetime_randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+damping_min = 70.115
+damping_max = 100.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_oxkfl")
+color = Color(0.827451, 0.529412, 0.282353, 1)
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="finished" from="PumpParticle" to="." method="_on_pump_particle_finished"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

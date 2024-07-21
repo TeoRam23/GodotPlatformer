@@ -1,15 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://brebgkgjdnidd"]
+[gd_scene load_steps=11 format=3 uid="uid://brebgkgjdnidd"]
 
 [ext_resource type="Script" path="res://explo/destructablocks/regen/ex_destruct_regen.gd" id="1_0j7ot"]
-[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="2_3gxsp"]
+[ext_resource type="Texture2D" uid="uid://b7oo1xbshp8ya" path="res://assets/RegenBlock.png" id="2_8keud"]
 [ext_resource type="PackedScene" uid="uid://csiadbq6ohwff" path="res://explo/destructablocks/regen/regen_particles.tscn" id="3_jdhqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pmwb"]
 size = Vector2(16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boykl"]
-atlas = ExtResource("2_3gxsp")
-region = Rect2(48, 48, 16, 16)
+atlas = ExtResource("2_8keud")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcj38"]
+atlas = ExtResource("2_8keud")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v1qn"]
+atlas = ExtResource("2_8keud")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0s85"]
+atlas = ExtResource("2_8keud")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3vql"]
+atlas = ExtResource("2_8keud")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ssgcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcj38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v1qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0s85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3vql")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="RegenLineV" type="StaticBody2D"]
 process_priority = -1
@@ -32,19 +68,16 @@ z_index = -3
 position = Vector2(8, -16)
 shape = SubResource("RectangleShape2D_2pmwb")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.97, 0.4753, 0.829835, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(8, -16)
-scale = Vector2(1, 2)
 texture = SubResource("AtlasTexture_boykl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(2.70196, 1.08235, 5.76863, 1)
-z_index = -2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -16)
-scale = Vector2(1, 2)
-texture = SubResource("AtlasTexture_boykl")
+sprite_frames = SubResource("SpriteFrames_ssgcu")
+frame = 3
+frame_progress = 1.0
 
 [node name="Particles" parent="." instance=ExtResource("3_jdhqa")]
 

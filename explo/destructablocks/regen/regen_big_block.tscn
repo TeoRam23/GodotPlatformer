@@ -1,15 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqwy785788h2d"]
+[gd_scene load_steps=12 format=3 uid="uid://dqwy785788h2d"]
 
 [ext_resource type="Script" path="res://explo/destructablocks/regen/ex_destruct_regen.gd" id="1_nkwq8"]
-[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="2_jswce"]
+[ext_resource type="Texture2D" uid="uid://b7oo1xbshp8ya" path="res://assets/RegenBlock.png" id="2_blkko"]
 [ext_resource type="PackedScene" uid="uid://csiadbq6ohwff" path="res://explo/destructablocks/regen/regen_particles.tscn" id="3_vln7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pmwb"]
 size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boykl"]
-atlas = ExtResource("2_jswce")
-region = Rect2(48, 48, 16, 16)
+atlas = ExtResource("2_blkko")
+region = Rect2(48, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucytg"]
+atlas = ExtResource("2_blkko")
+region = Rect2(112, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flurq"]
+atlas = ExtResource("2_blkko")
+region = Rect2(48, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pssoq"]
+atlas = ExtResource("2_blkko")
+region = Rect2(80, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdupb"]
+atlas = ExtResource("2_blkko")
+region = Rect2(112, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxxrf"]
+atlas = ExtResource("2_blkko")
+region = Rect2(80, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7e53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucytg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flurq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pssoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdupb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxxrf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="RegenBigBlock" type="StaticBody2D"]
 process_priority = -1
@@ -32,19 +75,16 @@ z_index = -3
 position = Vector2(16, -16)
 shape = SubResource("RectangleShape2D_2pmwb")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.97, 0.4753, 0.829835, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(16, -16)
-scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_boykl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(2.70196, 1.08235, 5.76863, 1)
-z_index = -2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, -16)
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_boykl")
+sprite_frames = SubResource("SpriteFrames_u7e53")
+frame = 4
+frame_progress = 1.0
 
 [node name="Particles" parent="." instance=ExtResource("3_vln7j")]
 

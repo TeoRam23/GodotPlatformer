@@ -82,8 +82,11 @@ func _physics_process(delta):
 			
 			#print("WE WALL EY: ", get_wall_normal())
 		apply_second_gravity(delta, true)
-		if not is_in_a_wall:
-			explosion_body.position = Vector2(0, 0)
+		
+		
+		# jeg fjernet dette, men husker ikke hvorfor det var der... hvis problemer, skjekk dette
+		#if not is_in_a_wall:
+			#explosion_body.position = Vector2(0, 0)
 			
 	
 	elif just_launched:
@@ -97,7 +100,7 @@ func _physics_process(delta):
 	if is_on_wall() and not is_queued_for_deletion():
 		#print("I did this from the process!")
 		explode_pls()
-				
+	
 				#if !first_frame:
 				#if !illsplode:
 				#explode_pls()

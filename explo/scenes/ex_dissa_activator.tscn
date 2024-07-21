@@ -1,10 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc2amnlofb31d"]
+[gd_scene load_steps=8 format=3 uid="uid://dc2amnlofb31d"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_dissa_activator.gd" id="1_wx8i4"]
-[ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_65o0v"]
+[ext_resource type="Texture2D" uid="uid://bkogkonsida1c" path="res://assets/DissaActivator.png" id="2_kwfqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8xfv"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67try"]
+atlas = ExtResource("2_kwfqn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipyu5"]
+atlas = ExtResource("2_kwfqn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md1bo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67try")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipyu5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_rad3j"]
+_data = [Vector2(0, 1), 0.0, 0.49531, 0, 0, Vector2(0.584416, 1), -1.41936, -1.41936, 0, 0, Vector2(1, 0), -2.5698, 0.0, 0, 0]
+point_count = 3
 
 [node name="ExDissaActivator" type="StaticBody2D"]
 collision_layer = 65
@@ -14,9 +40,21 @@ script = ExtResource("1_wx8i4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f8xfv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1.082, 0.54, 3.784, 1)
-self_modulate = Color(0.800491, 0.800491, 0.800491, 1)
-position = Vector2(2.38419e-07, 2.38419e-07)
-scale = Vector2(2, 2)
-texture = ExtResource("2_65o0v")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_md1bo")
+
+[node name="ShplippParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 35.0
+initial_velocity_max = 45.0
+damping_min = 44.828
+damping_max = 60.92
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_rad3j")
+color = Color(0.827451, 0.529412, 0.282353, 1)

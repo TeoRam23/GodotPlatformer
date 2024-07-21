@@ -4,6 +4,7 @@ extends StaticBody2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var player_detector = $PlayerDetector
 @onready var sprite_2d = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var regen_timer = $RegenTimer
 
 #
@@ -18,7 +19,7 @@ func explode():
 	
 	particles.emitting = true
 	collision_shape_2d.disabled = true
-	sprite_2d.visible = false
+	animated_sprite_2d.visible = false
 	
 	regen_timer.start()
 	
@@ -26,7 +27,8 @@ func explode():
 
 func _on_regen_timer_timeout():
 	collision_shape_2d.disabled = false
-	sprite_2d.visible = true
+	animated_sprite_2d.visible = true
+	animated_sprite_2d.play("default")
 	
 	var bodies = player_detector.get_overlapping_bodies()
 	print(bodies)

@@ -74,6 +74,7 @@ motion_mode = 1
 wall_min_slide_angle = 3.14159
 safe_margin = 0.01
 script = ExtResource("1_fehis")
+launch_power = -411
 
 [node name="ProjectileShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_l3r4n")

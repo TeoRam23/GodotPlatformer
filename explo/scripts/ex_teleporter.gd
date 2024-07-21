@@ -9,6 +9,7 @@ var port_amount = 0
 @onready var death_timer = $DeathTimer
 @onready var wait_timer = $WaitTimer
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var sheen_sprite = $SheenSprite
 
 @onready var porting = $Porting
 
@@ -25,6 +26,8 @@ func _ready():
 				break
 	if !porter_crime:
 		modulate = Color(0.79, 0.79, 0.79, 0.604)
+	
+	rotate_sheen()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +38,6 @@ func _process(delta):
 func _on_body_entered(body):
 	if !broken and porter_crime:
 		if !death_timer.time_left:
-			print("boop")
 			if port_amount > 40:
 				body.i_died()
 				Events.reset_teleporters()
@@ -65,9 +67,14 @@ func break_porter():
 
 
 func reset_my_amount():
-	print("biip")
 	port_amount = 0
 
 
 
 
+func rotate_sheen():
+	var tween = create_tween()
+	tween.tween_property(sheen_sprite, "rotation", -PI*2, 1)
+	await tween.finished
+	sheen_sprite.rotation = 0
+	rotate_sheen()
