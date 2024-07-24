@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://gvvlurri1oxg"]
+[gd_scene load_steps=9 format=3 uid="uid://gvvlurri1oxg"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_84gyr"]
+[ext_resource type="PackedScene" uid="uid://bb17idu0u5etn" path="res://explo/scenes/ex_camera_boundary.tscn" id="2_o6vwm"]
 [ext_resource type="PackedScene" uid="uid://ngj3qa1yihrq" path="res://scenes/player.tscn" id="2_xarxi"]
+[ext_resource type="Resource" uid="uid://e2jdkah8x3vy" path="res://data/ExploMovementData.tres" id="4_drt8f"]
 [ext_resource type="Script" path="res://levels/BlackScreen.gd" id="4_e8sar"]
 [ext_resource type="PackedScene" uid="uid://bir4jub48arg0" path="res://scenes/level_completed.tscn" id="5_p5eiv"]
+[ext_resource type="PackedScene" uid="uid://bflgygrmh01rj" path="res://explo/scenes/ex_object_tilemap.tscn" id="6_c37na"]
 [ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="6_ti3ye"]
 
 [node name="World" type="Node2D"]
@@ -35,7 +38,12 @@ position = Vector2(320, 0)
 color = Color(0.109804, 0.329412, 0.133333, 1)
 polygon = PackedVector2Array(-320, -24, -272, -128, -227, -53, -192, -96, -161, -62, -96, -152, -32, -88, 7, -78, 67, -130, 112, -64, 161, -38, 200, -88, 239, -50, 296, -104, 320, -24, 320, 184, -320, 184)
 
+[node name="REFFERECNE" type="Sprite2D" parent="."]
+
+[node name="ExCameraBoundary" parent="." instance=ExtResource("2_o6vwm")]
+
 [node name="Player" parent="." instance=ExtResource("2_xarxi")]
+movement_data = ExtResource("4_drt8f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -51,4 +59,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("4_e8sar")
 
 [node name="LevelTileMap" parent="." instance=ExtResource("6_ti3ye")]
-visible = false
+
+[node name="ExObjectTilemap" parent="." instance=ExtResource("6_c37na")]
+
+[node name="ObjectHolder" type="Node" parent="."]

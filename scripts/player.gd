@@ -37,6 +37,9 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var icamera = $SpriteHolder/Camera2D
 @onready var camera = $SpriteHolder/ExpoCamera
 
+@onready var launch_particle = $LaunchParticle
+@onready var dead_particle = $DeadParticle
+
 @export var debug = true
 
 @onready var timer = $Timer
@@ -276,6 +279,8 @@ func _on_hazard_detector_body_entered(body):
 func i_died():
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
+	launch_particle.emitting = false
+	dead_particle.emitting = true
 	#get_tree().paused = true
 	Events.player_died()
 	#get_tree().reload_current_scene()
@@ -592,6 +597,11 @@ func launch_me(angle, power):
 	var sine = sin(angle)
 	prevelocity.x += (0 * cuisine + power * sine)
 	prevelocity.y += (0 * sine + power * cuisine)
+	
+	launch_particle.direction = Vector2(sine, cuisine).rotated(PI)
+	
+	#launch_particle.restart()
+	launch_particle.emitting = true
 	
 	print(prevelocity)
 	#if prevelocity.y < power * 1:

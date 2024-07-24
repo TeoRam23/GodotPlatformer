@@ -46,7 +46,7 @@ margin = Rect2(0, 0, 14, 14)
 
 [sub_resource type="Gradient" id="Gradient_4rdob"]
 offsets = PackedFloat32Array(0.556818, 0.602273)
-colors = PackedColorArray(0.84, 0.5264, 0.504, 1, 0.839216, 0.52549, 0.505882, 0)
+colors = PackedColorArray(0.839216, 0.52549, 0.501961, 1, 0.839216, 0.52549, 0.505882, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vpphc"]
 gradient = SubResource("Gradient_4rdob")
@@ -120,6 +120,7 @@ color_ramp = SubResource("Gradient_4yxd6")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ExplosionBody" type="CharacterBody2D" parent="."]
+visible = false
 collision_layer = 0
 motion_mode = 1
 wall_min_slide_angle = 3.14159

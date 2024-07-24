@@ -110,7 +110,6 @@ color = Color(0.109804, 0.329412, 0.133333, 1)
 polygon = PackedVector2Array(-320, -24, -272, -128, -227, -53, -192, -96, -161, -62, -96, -152, -32, -88, 7, -78, 67, -130, 112, -64, 161, -38, 200, -88, 239, -50, 296, -104, 320, -24, 320, 184, -320, 184)
 
 [node name="ExCameraBoundary" parent="." instance=ExtResource("9_rprbi")]
-visible = false
 position = Vector2(3169, -164)
 shape = SubResource("RectangleShape2D_brubr")
 

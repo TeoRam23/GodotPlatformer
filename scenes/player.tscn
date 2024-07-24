@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=38 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -193,6 +193,34 @@ size = Vector2(10, 14.002)
 atlas = ExtResource("3_v30qj")
 region = Rect2(105, 0, 21, 21)
 
+[sub_resource type="Gradient" id="Gradient_ygmdj"]
+offsets = PackedFloat32Array(0.694915, 0.737288)
+colors = PackedColorArray(0.839216, 0.52549, 0.501961, 1, 0.839216, 0.52549, 0.501961, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1e4h"]
+gradient = SubResource("Gradient_ygmdj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_f7o03"]
+offsets = PackedFloat32Array(0.579365, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_wol8j"]
+offsets = PackedFloat32Array(0.584746, 0.644068)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2qctj"]
+gradient = SubResource("Gradient_wol8j")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_bx641"]
+_data = [Vector2(0, 0.527472), 0.0, 2.82051, 0, 0, Vector2(0.409091, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.07692, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 2
@@ -312,6 +340,39 @@ position = Vector2(0, -3)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.517
+
+[node name="LaunchParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+randomness = 0.47
+lifetime_randomness = 0.5
+texture = SubResource("GradientTexture2D_l1e4h")
+spread = 8.28
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color_ramp = SubResource("Gradient_f7o03")
+
+[node name="DeadParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+texture = SubResource("GradientTexture2D_2qctj")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 70.0
+initial_velocity_max = 70.0
+damping_min = 67.816
+damping_max = 67.816
+scale_amount_min = 0.35
+scale_amount_max = 0.37
+scale_amount_curve = SubResource("Curve_bx641")
+color = Color(0.81, 0.324, 0.3402, 1)
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]

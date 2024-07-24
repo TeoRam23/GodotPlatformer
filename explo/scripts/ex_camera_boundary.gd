@@ -4,6 +4,7 @@ extends CollisionShape2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rd = shape.extents
+	print(rd)
 	var lu = rd * -1
 	rd += global_position
 	lu += global_position
