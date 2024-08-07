@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cb44pakjgey22"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_arrow_launcher.gd" id="1_qyi18"]
-[ext_resource type="Texture2D" uid="uid://3mb18jaw3dse" path="res://assets/dispenser.png" id="2_rmdgu"]
+[ext_resource type="Script" path="res://explo/scripts/ex_arrow_launcher.gd" id="1_noktc"]
+[ext_resource type="Texture2D" uid="uid://3mb18jaw3dse" path="res://assets/dispenser.png" id="2_pnjks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10rf6"]
 size = Vector2(16, 16)
@@ -10,15 +10,17 @@ size = Vector2(16, 16)
 _data = [Vector2(0.272727, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.84615, 0.0, 0, 0]
 point_count = 2
 
-[node name="ExArrowLauncher" type="StaticBody2D"]
+[node name="ExArrowLauncher" type="StaticBody2D" groups=["ArrowLauncher"]]
+process_priority = 1
+process_physics_priority = 1
 collision_layer = 65
-script = ExtResource("1_qyi18")
+script = ExtResource("1_noktc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_10rf6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rmdgu")
+texture = ExtResource("2_pnjks")
 
 [node name="LaunchTimer" type="Timer" parent="."]
 wait_time = 2.0

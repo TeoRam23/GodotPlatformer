@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_w3wka"]
 [ext_resource type="PackedScene" uid="uid://chn8ws13qgav" path="res://levels/world one/1-23.tscn" id="2_gbsuq"]
-[ext_resource type="Texture2D" uid="uid://ccw87ra83kejg" path="res://assets/baksplodder/1-22.png" id="2_sux18"]
+[ext_resource type="Texture2D" uid="uid://ccw87ra83kejg" path="res://assets/baksplodder/verd 1/1-22.png" id="2_sux18"]
 [ext_resource type="PackedScene" uid="uid://c8hm8tnj2kh47" path="res://explo/scenes/ex_teleporter.tscn" id="3_hvr7e"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_1hgw7"]
 

@@ -64,9 +64,9 @@ func _physics_process(delta):
 	handle_jump()
 	if debug and Input.is_key_pressed(KEY_F):
 		if Input.is_key_pressed(KEY_CTRL):
-			prevelocity.y = movement_data.jump_velocity
+			prevelocity.y = -250
 		else:
-			prevelocity.y = movement_data.jump_velocity * 0.5
+			prevelocity.y = -250 * 0.5
 	handle_dash()
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
@@ -110,7 +110,7 @@ func _physics_process(delta):
 func apply_gravity(delta):
 	#print(prevelocity.y)
 	if is_on_floor():
-		print("floored, man")
+		#print("floored, man")
 		if !just_launched:
 			prevelocity.y = 0
 			

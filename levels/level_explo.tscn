@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b22od2q6jfuhy"]
+[gd_scene load_steps=24 format=3 uid="uid://b22od2q6jfuhy"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wn5ym"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="11_hae8s"]
 [ext_resource type="PackedScene" uid="uid://ca3ji6x6to3r0" path="res://explo/scenes/ex_chick.tscn" id="13_fj3u6"]
 [ext_resource type="PackedScene" uid="uid://bspwk4e0v6kw3" path="res://explo/destructablocks/regen/regen_block.tscn" id="19_jnea6"]
+[ext_resource type="PackedScene" uid="uid://ba5cyh7oj27uv" path="res://explo/hazards/short_spikeO.tscn" id="20_mj1vy"]
 [ext_resource type="PackedScene" uid="uid://tg4e5gvf6ewp" path="res://explo/destructablocks/regen/regen_line_h.tscn" id="21_qmq8v"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="23_f0x4r"]
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="24_1i840"]
@@ -110,6 +111,7 @@ color = Color(0.109804, 0.329412, 0.133333, 1)
 polygon = PackedVector2Array(-320, -24, -272, -128, -227, -53, -192, -96, -161, -62, -96, -152, -32, -88, 7, -78, 67, -130, 112, -64, 161, -38, 200, -88, 239, -50, 296, -104, 320, -24, 320, 184, -320, 184)
 
 [node name="ExCameraBoundary" parent="." instance=ExtResource("9_rprbi")]
+visible = false
 position = Vector2(3169, -164)
 shape = SubResource("RectangleShape2D_brubr")
 
@@ -211,7 +213,6 @@ position = Vector2(-126, -50)
 [node name="ExArrowLauncher" parent="." instance=ExtResource("24_1i840")]
 position = Vector2(-171, -81)
 rotation = -0.00506725
-launch_seconds = 5.0
 
 [node name="ExArrowLauncher2" parent="." instance=ExtResource("24_1i840")]
 position = Vector2(-125, -117)
@@ -238,3 +239,15 @@ delay_time = 0.1
 [node name="ExDissaBlock" parent="." instance=ExtResource("26_gansl")]
 position = Vector2(-88, -72)
 king_block = true
+
+[node name="ShortSpike" parent="." instance=ExtResource("20_mj1vy")]
+position = Vector2(72, -8)
+rotation = 3.14159
+
+[node name="ShortSpike2" parent="." instance=ExtResource("20_mj1vy")]
+position = Vector2(56, -8)
+rotation = 3.14159
+
+[node name="ShortSpike3" parent="." instance=ExtResource("20_mj1vy")]
+position = Vector2(40, -8)
+rotation = 3.14159

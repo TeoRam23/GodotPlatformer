@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cj1x2t4ax6mxa"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_sqot5"]
-[ext_resource type="Texture2D" uid="uid://5ut6uxa672i6" path="res://assets/baksplodder/1-19.png" id="2_10u70"]
+[ext_resource type="Texture2D" uid="uid://5ut6uxa672i6" path="res://assets/baksplodder/verd 1/1-19.png" id="2_10u70"]
 [ext_resource type="PackedScene" uid="uid://c1kaofgxnpd2j" path="res://levels/world one/1-20.tscn" id="2_ns666"]
 [ext_resource type="PackedScene" uid="uid://c8hm8tnj2kh47" path="res://explo/scenes/ex_teleporter.tscn" id="3_o7tf6"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_a04vb"]
