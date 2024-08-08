@@ -220,7 +220,7 @@ rotation = -1.5708
 
 [node name="DissaBlock" parent="." instance=ExtResource("26_gansl")]
 position = Vector2(-24, -88)
-king_block = true
+dissa_id = 2
 
 [node name="DissaBlock2" parent="." instance=ExtResource("26_gansl")]
 position = Vector2(-8, -88)
@@ -238,7 +238,7 @@ delay_time = 0.1
 
 [node name="ExDissaBlock" parent="." instance=ExtResource("26_gansl")]
 position = Vector2(-88, -72)
-king_block = true
+dissa_id = 1
 
 [node name="ShortSpike" parent="." instance=ExtResource("20_mj1vy")]
 position = Vector2(72, -8)
@@ -251,3 +251,9 @@ rotation = 3.14159
 [node name="ShortSpike3" parent="." instance=ExtResource("20_mj1vy")]
 position = Vector2(40, -8)
 rotation = 3.14159
+
+[node name="ExDissaActivator2" parent="." instance=ExtResource("27_v86sp")]
+position = Vector2(-24, -8)
+rotation = 1.5708
+dissa_id = 2
+delay_time = 0.25

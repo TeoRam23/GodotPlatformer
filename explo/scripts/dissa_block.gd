@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var king_block = false
+@export var dissa_id = 0
 
 @onready var delay_timer = $DelayTimer
 @onready var block_detector = $BlockDetector
@@ -16,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if king_block and Input.is_action_just_pressed("musR"):
+	if dissa_id and Input.is_action_just_pressed("musR"):
 		activate_dissablock(3)
 
 

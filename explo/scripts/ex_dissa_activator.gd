@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+@export var dissa_id = 1
 @export var delay_time = 1.0
 var activated = false
 
@@ -24,5 +25,5 @@ func explode():
 		
 		var dissablocks = get_tree().get_nodes_in_group("DissaBlock")
 		for block in dissablocks:
-			if block.king_block:
+			if block.dissa_id == dissa_id:
 				block.activate_dissablock(delay_time)
