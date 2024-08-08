@@ -82,7 +82,6 @@ position = Vector2(8, -8)
 texture = SubResource("AtlasTexture_boykl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -2
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_jr8wc")
 frame = 4
