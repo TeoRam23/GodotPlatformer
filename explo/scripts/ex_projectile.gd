@@ -219,6 +219,7 @@ func explode_pls():
 		print("Bod: ", bodies)
 		for bod in bodies:
 			if bod.has_method("explode"):
+				print("expoddr")
 				bod.explode()
 			elif bod.has_method("launch_me"):
 				var angle = get_launch_angle(bod)

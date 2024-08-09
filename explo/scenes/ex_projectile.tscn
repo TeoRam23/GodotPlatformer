@@ -130,6 +130,7 @@ safe_margin = 0.01
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="explosion_area" parent="ExplosionBody" instance=ExtResource("3_my2bu")]
+collision_mask = 67
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExplosionBody"]
 visible = false

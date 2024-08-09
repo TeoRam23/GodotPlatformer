@@ -9,6 +9,7 @@ const ARROW_HAZARD = preload("res://explo/hazards/arrow_hazard.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	launch_arrow()
 	launch_timer.wait_time = launch_seconds
 	launch_timer.start()
 	print("YEP ", launch_seconds)
@@ -21,6 +22,9 @@ func _process(delta):
 
 
 func _on_launch_timer_timeout():
+	launch_arrow()
+
+func launch_arrow():
 	var new_arrow = ARROW_HAZARD.instantiate()
 	new_arrow.velocity = Vector2.RIGHT.rotated(rotation) * arrow_speed
 	
