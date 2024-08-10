@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwfxkfofrkr7g"]
+[gd_scene load_steps=6 format=3 uid="uid://cwfxkfofrkr7g"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_4xgvj"]
+[ext_resource type="PackedScene" uid="uid://cb8dhel11a6ai" path="res://levels/world two/2-11.tscn" id="2_tyhul"]
 [ext_resource type="Texture2D" uid="uid://m4jga1alyicx" path="res://assets/baksplodder/verd 2/2-10.png" id="2_vrimb"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="3_jvup7"]
 
@@ -8,11 +9,15 @@
 size = Vector2(640, 519)
 
 [node name="World" instance=ExtResource("1_4xgvj")]
+next_level = ExtResource("2_tyhul")
 
 [node name="2-10" type="Sprite2D" parent="." index="0"]
 visible = false
 position = Vector2(16, 195.5)
 texture = ExtResource("2_vrimb")
+
+[node name="ParallaxBackground" parent="." index="1"]
+scroll_offset = Vector2(420.721, 354.354)
 
 [node name="ExCameraBoundary" parent="." index="3"]
 position = Vector2(16, 195.5)

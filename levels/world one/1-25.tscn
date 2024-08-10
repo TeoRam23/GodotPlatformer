@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpn7leshks4yi"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_y1hth"]
-[ext_resource type="PackedScene" uid="uid://d0kb5uahajr35" path="res://levels/idk.tscn" id="2_642hi"]
 [ext_resource type="Texture2D" uid="uid://cmr7ih3tdscod" path="res://assets/baksplodder/verd 1/1-25.png" id="2_dvooh"]
+[ext_resource type="PackedScene" uid="uid://fokuwdc3sjcp" path="res://levels/world two/2-1.tscn" id="2_tnopw"]
 [ext_resource type="PackedScene" uid="uid://c8hm8tnj2kh47" path="res://explo/scenes/ex_teleporter.tscn" id="3_deu6s"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_f5srx"]
 
@@ -10,10 +10,10 @@
 size = Vector2(640, 2420)
 
 [node name="World" instance=ExtResource("1_y1hth")]
-next_level = ExtResource("2_642hi")
+next_level = ExtResource("2_tnopw")
 
 [node name="ParallaxBackground" parent="." index="0"]
-scroll_offset = Vector2(445.177, 569.467)
+scroll_offset = Vector2(386.854, 437.73)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

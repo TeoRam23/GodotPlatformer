@@ -1,18 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bayqsgrqcce7o"]
+[gd_scene load_steps=8 format=3 uid="uid://bayqsgrqcce7o"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_by4uo"]
 [ext_resource type="Texture2D" uid="uid://qssqbaciesbo" path="res://assets/baksplodder/verd 2/2-13.png" id="2_klean"]
+[ext_resource type="PackedScene" uid="uid://xemnd43xpfvw" path="res://levels/world two/2-14.tscn" id="2_skc6n"]
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="3_c2ll5"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="4_gi7hn"]
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="5_rn5gv"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="6_cxekw"]
 
 [node name="World" instance=ExtResource("1_by4uo")]
+next_level = ExtResource("2_skc6n")
 
 [node name="2-13" type="Sprite2D" parent="." index="0"]
 visible = false
 position = Vector2(0, -76)
 texture = ExtResource("2_klean")
+
+[node name="ParallaxBackground" parent="." index="1"]
+scroll_offset = Vector2(470.876, 423.633)
 
 [node name="ExCameraBoundary" parent="." index="3"]
 position = Vector2(0, -76)

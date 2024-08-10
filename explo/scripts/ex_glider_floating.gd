@@ -30,7 +30,7 @@ func _on_body_entered(body):
 func bobble_animation():
 	#print("oop")
 	var tween = create_tween()
-	tween.tween_property($Sprite2D, "position", $Sprite2D.position + Vector2(0, 5), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tween.tween_property($Sprite2D, "position", $Sprite2D.position + Vector2(0, 4), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	tween.tween_property($Sprite2D, "position", $Sprite2D.position + Vector2(0, 0), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween.finished
 	bobble_animation()

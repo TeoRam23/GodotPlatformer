@@ -595,8 +595,10 @@ func launch_me(angle, power):
 	#power = -410
 	var cuisine = cos(angle)
 	var sine = sin(angle)
-	prevelocity.x += (0 * cuisine + power * sine)
-	prevelocity.y += (0 * sine + power * cuisine)
+	velocity.x += (0 * cuisine + power * sine)
+	velocity.y += (0 * sine + power * cuisine)
+	
+	prevelocity = velocity.rotated(deg_to_rad(-gravity_direction))
 	
 	launch_particle.direction = Vector2(sine, cuisine).rotated(PI)
 	

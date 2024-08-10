@@ -85,6 +85,7 @@ script = ExtResource("1_wn5ym")
 next_level = ExtResource("2_5k66i")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
@@ -93,7 +94,7 @@ motion_scale = Vector2(0, 0)
 offset_top = -184.0
 offset_right = 656.0
 offset_bottom = 184.0
-color = Color(0.0924, 0.21, 0.14924, 1)
+color = Color(0.101961, 0.101961, 0.133333, 1)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0)

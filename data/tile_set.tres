@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=11 format=3 uid="uid://66ocw2c8pmv3"]
 
-[ext_resource type="Texture2D" uid="uid://o41fc5ohqgvj" path="res://assets/mybettertileset.png" id="1_14ikv"]
+[ext_resource type="Texture2D" uid="uid://dygfqcv678tnf" path="res://assets/myupdatedtileset.png" id="1_3ucka"]
 [ext_resource type="Texture2D" uid="uid://4mu2ordkemgi" path="res://assets/mynewslopes.png" id="2_bok8h"]
 [ext_resource type="Texture2D" uid="uid://ciljeb3f2xkm6" path="res://assets/mynewslopes_flipped.png" id="3_5iof5"]
 [ext_resource type="Texture2D" uid="uid://c1c3ds1nsi16w" path="res://assets/theslopes.png" id="3_hvfgt"]
@@ -8,7 +8,7 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35n2b"]
 resource_name = "autotile"
-texture = ExtResource("1_14ikv")
+texture = ExtResource("1_3ucka")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0

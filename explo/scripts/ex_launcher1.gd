@@ -77,10 +77,10 @@ func move_spawn_point(is_in_physics, delta):
 	#angle = deg_to_rad(172.87 + 90) # FJEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRNNNNNNNNNNNNNNN
 	#print(angle)
 	
-	spawn_anchor.rotation = angle# + PI * 0.5
+	spawn_anchor.global_rotation = angle# + PI * 0.5
 	spawn_anchor.position.y = 0
-	spawn_anchor.position.y = (spawn_point.global_position.y - spawn_anchor.global_position.y) * 0.57
-	
+	#spawn_anchor.position.y = (spawn_point.global_position.y - spawn_anchor.global_position.y) * 0.57
+	spawn_anchor.position.y = (spawn_point.global_position - spawn_anchor.global_position).rotated(-global_rotation).y * 0.57
 	#spawn_point.move_and_slide()
 	#if spawn_point.is_on_wall():
 		#spawn_point.move_and_slide()
@@ -99,7 +99,7 @@ func move_spawn_point(is_in_physics, delta):
 	if holding_proj.is_on_wall():
 		holding_proj.apply_second_gravity(delta, true)
 	
-	polygon_arrow.rotation = angle# + PI * 0.5
+	polygon_arrow.global_rotation = angle# + PI * 0.5
 	#polygon_arrow.position.y -= abs(spawn_anchor.position.y)
 	#print("poly: ",polygon_arrow.position.y, "anch: ", spawn_anchor.position.y)
 	

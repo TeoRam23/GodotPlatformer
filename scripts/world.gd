@@ -8,7 +8,8 @@ extends Node2D
 var first_frame = true
 
 func _ready():
-	RenderingServer.set_default_clear_color(Color.BLACK)
+	#RenderingServer.set_default_clear_color(Color.BLACK)
+	RenderingServer.set_default_clear_color(Color(0.102, 0.102, 0.133))
 	#RenderingServer.set_default_clear_color(Color.DARK_GREEN)
 	Events.level_completed.connect(show_level_completed) #sjekker om noe har sendt "level_completed"
 	

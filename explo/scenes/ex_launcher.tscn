@@ -7,7 +7,7 @@ radius = 0.0
 
 [sub_resource type="Gradient" id="Gradient_wnpo2"]
 offsets = PackedFloat32Array(0, 0.7, 0.716667)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_euyjl"]
 gradient = SubResource("Gradient_wnpo2")
@@ -56,6 +56,13 @@ shape = SubResource("CircleShape2D_d8bv7")
 disabled = true
 
 [node name="ProjectileHolder" type="Node" parent="SpawnAnchor/SpawnPoint"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpawnAnchor"]
+visible = false
+z_index = 130
+position = Vector2(-4.76837e-07, 4.76837e-07)
+scale = Vector2(0.05, 0.05)
+texture = SubResource("GradientTexture2D_euyjl")
 
 [node name="PolygonArrow" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-14, -10, -22, 0, -14, 10)
