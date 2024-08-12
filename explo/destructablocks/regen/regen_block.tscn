@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bspwk4e0v6kw3"]
+[gd_scene load_steps=12 format=3 uid="uid://bspwk4e0v6kw3"]
 
 [ext_resource type="Script" path="res://explo/destructablocks/regen/ex_destruct_regen.gd" id="1_mhi1o"]
-[ext_resource type="Texture2D" uid="uid://du3fnhnoa0l16" path="res://assets/appletest.png" id="2_sejp1"]
 [ext_resource type="PackedScene" uid="uid://csiadbq6ohwff" path="res://explo/destructablocks/regen/regen_particles.tscn" id="3_ep0xt"]
 [ext_resource type="Texture2D" uid="uid://b7oo1xbshp8ya" path="res://assets/RegenBlock.png" id="3_jx86p"]
 
@@ -9,8 +8,8 @@
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boykl"]
-atlas = ExtResource("2_sejp1")
-region = Rect2(0, 16, 16, 16)
+atlas = ExtResource("3_jx86p")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qeslb"]
 atlas = ExtResource("3_jx86p")

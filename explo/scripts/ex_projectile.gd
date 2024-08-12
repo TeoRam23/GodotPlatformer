@@ -19,6 +19,7 @@ var do_explosion = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var my_root
+var mouse_tracker
 
 @onready var projectile_shape = $ProjectileShape
 @onready var explosion_body = $ExplosionBody
@@ -137,7 +138,12 @@ func apply_second_gravity(delta, do_my_own):
 			is_in_a_wall = true
 		else: is_in_a_wall = false
 		
-		var mouse = get_global_mouse_position()
+		var mouse = Vector2.ZERO
+		if mouse_tracker:
+			mouse = mouse_tracker.global_position
+		else:
+			mouse = get_global_mouse_position()
+			
 		angle = mouse.angle_to_point(the_launcher.global_position)
 		#print("Throw: ", throw_power, " Grav: ", gravity_scale, " Angle: ", angle)
 		#if !is_on_wall():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gvvlurri1oxg"]
+[gd_scene load_steps=10 format=3 uid="uid://gvvlurri1oxg"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_84gyr"]
 [ext_resource type="PackedScene" uid="uid://bb17idu0u5etn" path="res://explo/scenes/ex_camera_boundary.tscn" id="2_o6vwm"]
@@ -6,13 +6,15 @@
 [ext_resource type="Resource" uid="uid://e2jdkah8x3vy" path="res://data/ExploMovementData.tres" id="4_drt8f"]
 [ext_resource type="Script" path="res://levels/BlackScreen.gd" id="4_e8sar"]
 [ext_resource type="PackedScene" uid="uid://bir4jub48arg0" path="res://scenes/level_completed.tscn" id="5_p5eiv"]
-[ext_resource type="PackedScene" uid="uid://bflgygrmh01rj" path="res://explo/scenes/ex_object_tilemap.tscn" id="6_c37na"]
-[ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://scenes/level_tile_map.tscn" id="6_ti3ye"]
+[ext_resource type="PackedScene" uid="uid://pcet7370equ0" path="res://tilemaps/background_tile_map.tscn" id="7_d8fia"]
+[ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://tilemaps/level_tile_map.tscn" id="7_f4qgx"]
+[ext_resource type="PackedScene" uid="uid://bflgygrmh01rj" path="res://tilemaps/ex_object_tilemap.tscn" id="8_6ii2e"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_84gyr")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
@@ -58,8 +60,10 @@ offset_bottom = 180.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("4_e8sar")
 
-[node name="LevelTileMap" parent="." instance=ExtResource("6_ti3ye")]
+[node name="BackgroundTileMap" parent="." instance=ExtResource("7_d8fia")]
 
-[node name="ExObjectTilemap" parent="." instance=ExtResource("6_c37na")]
+[node name="LevelTileMap" parent="." instance=ExtResource("7_f4qgx")]
+
+[node name="ExObjectTilemap" parent="." instance=ExtResource("8_6ii2e")]
 
 [node name="ObjectHolder" type="Node" parent="."]

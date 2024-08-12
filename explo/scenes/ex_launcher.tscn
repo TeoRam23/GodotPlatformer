@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsv4eyc7ju17a"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_launcher1.gd" id="1_tduk0"]
+[ext_resource type="Script" path="res://explo/scripts/ex_launcher2.gd" id="1_n86jj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_74d7i"]
 radius = 0.0
@@ -21,7 +21,7 @@ radius = 15.0
 [node name="ExLauncher" type="Node2D"]
 process_priority = -2
 process_physics_priority = -2
-script = ExtResource("1_tduk0")
+script = ExtResource("1_n86jj")
 
 [node name="ProjTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -66,3 +66,11 @@ texture = SubResource("GradientTexture2D_euyjl")
 
 [node name="PolygonArrow" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-14, -10, -22, 0, -14, 10)
+
+[node name="RotationNeglecter" type="Node2D" parent="."]
+
+[node name="MouseTracker" type="Sprite2D" parent="RotationNeglecter"]
+z_index = 130
+position = Vector2(-31, -10)
+scale = Vector2(0.05, 0.05)
+texture = SubResource("GradientTexture2D_euyjl")

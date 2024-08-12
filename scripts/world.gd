@@ -9,11 +9,12 @@ var first_frame = true
 
 func _ready():
 	#RenderingServer.set_default_clear_color(Color.BLACK)
-	RenderingServer.set_default_clear_color(Color(0.102, 0.102, 0.133))
+	#RenderingServer.set_default_clear_color(Color(0.102, 0.102, 0.133))
+	RenderingServer.set_default_clear_color(Color(0.11, 0.11, 0.125))
 	#RenderingServer.set_default_clear_color(Color.DARK_GREEN)
 	Events.level_completed.connect(show_level_completed) #sjekker om noe har sendt "level_completed"
 	
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	
 	black_screen.reveal_level()
 	
@@ -25,7 +26,7 @@ func _process(delta):
 		#first_frame = false
 	if Input.is_action_pressed("musL"):
 		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	
 func show_level_completed():
 	level_completed.show() #gjør level_complete synlig
@@ -44,6 +45,29 @@ func show_level_completed():
 func _input(event):
 	if event.is_action_pressed("cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Input.warp_mouse(get_window().size * 0.5)
+	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
+		if event is InputEventMouseMotion:
+			var screen_pos = get_screen_transform().origin * -2
+			var mouse_pos = get_global_mouse_position()
+			var windows_size = get_window().size
+			#print(screen_pos)
+			#print(mouse_pos)
+			#print(mouse_pos - screen_pos)
+			#print(windows_size)
+			
+			# Det å skjekke over og under hjelper ikke med at musa noen ganger ikke blir brakt til andre siden
+			if mouse_pos.x <= screen_pos.x:
+				Input.warp_mouse(Vector2(windows_size.x - 2, (mouse_pos.y - screen_pos.y) * 2))
+			if mouse_pos.y <= screen_pos.y:
+				Input.warp_mouse(Vector2((mouse_pos.x - screen_pos.x) * 2, windows_size.y - 2))
+			if mouse_pos.x >= screen_pos.x + windows_size.x * 0.5 - 0.5:
+				Input.warp_mouse(Vector2(1, (mouse_pos.y - screen_pos.y) * 2))
+			if mouse_pos.y >= screen_pos.y + windows_size.y * 0.5 - 0.5:
+				Input.warp_mouse(Vector2((mouse_pos.x - screen_pos.x) * 2, 1))
+				
+			########## Spørre chatgpt om ideer for å forbedre? ja pls jeg liker ikke dette :[
+		
 
 
 #func reveal_level():
