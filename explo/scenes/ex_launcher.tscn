@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsv4eyc7ju17a"]
+[gd_scene load_steps=8 format=3 uid="uid://dsv4eyc7ju17a"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_launcher2.gd" id="1_n86jj"]
+[ext_resource type="Texture2D" uid="uid://bn6apfnknivyl" path="res://assets/cursor.png" id="2_dfr5a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_74d7i"]
 radius = 0.0
@@ -17,6 +18,10 @@ fill_to = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8bv7"]
 radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txxeq"]
+atlas = ExtResource("2_dfr5a")
+region = Rect2(0, 0, 6, 6)
 
 [node name="ExLauncher" type="Node2D"]
 process_priority = -2
@@ -69,8 +74,10 @@ polygon = PackedVector2Array(-14, -10, -22, 0, -14, 10)
 
 [node name="RotationNeglecter" type="Node2D" parent="."]
 
-[node name="MouseTracker" type="Sprite2D" parent="RotationNeglecter"]
+[node name="MouseTracker" type="Node2D" parent="RotationNeglecter"]
+position = Vector2(0, 24)
+
+[node name="MouseSprite" type="Sprite2D" parent="RotationNeglecter"]
 z_index = 130
-position = Vector2(-31, -10)
-scale = Vector2(0.05, 0.05)
-texture = SubResource("GradientTexture2D_euyjl")
+position = Vector2(0, 24)
+texture = SubResource("AtlasTexture_txxeq")

@@ -51,6 +51,7 @@ func _ready():
 	scale.y = movement_data.size
 	
 	Events.pls_kill_player.connect(i_died)
+	Events.level_completed.connect(disable_player)
 
 func _physics_process(delta):
 	if is_paused:
@@ -276,10 +277,13 @@ func _on_hazard_detector_body_entered(body):
 	call_deferred("i_died")
 
 
-func i_died():
+func disable_player():
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
 	launch_particle.emitting = false
+
+func i_died():
+	disable_player()
 	dead_particle.emitting = true
 	#get_tree().paused = true
 	Events.player_died()

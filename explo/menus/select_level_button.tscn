@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://8tbh5ungpgk5"]
+
+[ext_resource type="Script" path="res://explo/menus/select_level_button.gd" id="1_ylyyi"]
+[ext_resource type="Texture2D" uid="uid://be6v5uor2avxq" path="res://assets/baksplodder/select.png" id="2_naegt"]
+
+[node name="SelectLevel" type="Button"]
+custom_minimum_size = Vector2(34, 34)
+anchors_preset = -1
+anchor_right = 0.319
+anchor_bottom = 0.567
+offset_right = -170.16
+offset_bottom = -170.12
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 14
+action_mode = 0
+text = "0"
+script = ExtResource("1_ylyyi")
+
+[node name="Select" type="Sprite2D" parent="."]
+visible = false
+z_index = -2
+position = Vector2(125, 108)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("2_naegt")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

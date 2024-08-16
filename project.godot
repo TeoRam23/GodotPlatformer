@@ -14,7 +14,7 @@ config/name="Platformer"
 run/main_scene="res://levels/level_explo.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
-config/icon="res://assets/icon.svg"
+config/icon="res://assets/JeffreySprites.png"
 
 [autoload]
 
@@ -23,12 +23,11 @@ LevelTransition="*res://scenes/level_transition.tscn"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
-window/canvas_textures/default_texture_filter=0
+window/stretch/mode="viewport"
 
 [input]
 
@@ -126,6 +125,11 @@ musR={
 cancel={
 "deadzone": 1.0,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+back={
+"deadzone": 1.0,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"echo":false,"script":null)
 ]
 }
 

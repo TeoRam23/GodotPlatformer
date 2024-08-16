@@ -4,8 +4,10 @@ extends Node2D
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
 @onready var black_screen = $CanvasLayer/BlackScreen
+@onready var pause_menu = $PauseMenu
 
 var first_frame = true
+var waiting = false
 
 func _ready():
 	#RenderingServer.set_default_clear_color(Color.BLACK)
@@ -33,22 +35,32 @@ func show_level_completed():
 	get_tree().paused = true #setter alt i world på pause
 	if not next_level is PackedScene:
 		return
-	get_tree().paused = true
+	get_tree().paused = false
+	#get_tree().paused = true
+	waiting = true
 	await black_screen.transition_level()
 	#await LevelTransition.fade_to_black()
-	get_tree().paused = false
 	get_tree().change_scene_to_packed(next_level)
 	#LevelTransition.fade_from_black()
 
-
+func un_pause():
+	print("ugh")
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	pause_menu.visible = false
 
 func _input(event):
-	if event.is_action_pressed("cancel"):
+	if event.is_action_pressed("cancel") and not waiting:
+		
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		Input.warp_mouse(get_window().size * 0.5)
+		
+		pause_menu.visible = true
+		
+		get_tree().paused = true
+		
 	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
 		if event is InputEventMouseMotion:
-			var screen_pos = get_screen_transform().origin * -2
+			var screen_pos = get_screen_transform().origin * -1
 			var mouse_pos = get_global_mouse_position()
 			var windows_size = get_window().size
 			#print(screen_pos)
@@ -57,15 +69,30 @@ func _input(event):
 			#print(windows_size)
 			
 			# Det å skjekke over og under hjelper ikke med at musa noen ganger ikke blir brakt til andre siden
-			if mouse_pos.x <= screen_pos.x:
-				Input.warp_mouse(Vector2(windows_size.x - 2, (mouse_pos.y - screen_pos.y) * 2))
-			if mouse_pos.y <= screen_pos.y:
-				Input.warp_mouse(Vector2((mouse_pos.x - screen_pos.x) * 2, windows_size.y - 2))
-			if mouse_pos.x >= screen_pos.x + windows_size.x * 0.5 - 0.5:
-				Input.warp_mouse(Vector2(1, (mouse_pos.y - screen_pos.y) * 2))
-			if mouse_pos.y >= screen_pos.y + windows_size.y * 0.5 - 0.5:
-				Input.warp_mouse(Vector2((mouse_pos.x - screen_pos.x) * 2, 1))
-				
+			var new_mouse_pos = Vector2(mouse_pos.x - screen_pos.x, mouse_pos.y - screen_pos.y) * 2
+			
+			#print(new_mouse_pos)
+			
+			if new_mouse_pos.x <= 0:
+				new_mouse_pos.x = windows_size.x - 2
+			elif new_mouse_pos.x >= windows_size.x - 1:
+				new_mouse_pos.x = 1
+			if new_mouse_pos.y <= 0:
+				new_mouse_pos.y = windows_size.y - 2
+			elif new_mouse_pos.y >= windows_size.y - 1:
+				new_mouse_pos.y = 1
+			
+			#if mouse_pos.x <= screen_pos.x:
+				#new_mouse_pos.x = windows_size.x - 2
+			#elif mouse_pos.x >= screen_pos.x + windows_size.x * 0.5 - 0.5:
+				#new_mouse_pos.x = 1
+			#if mouse_pos.y <= screen_pos.y:
+				#new_mouse_pos.y = windows_size.y - 2
+			#elif mouse_pos.y >= screen_pos.y + windows_size.y * 0.5 - 0.5:
+				#new_mouse_pos.y = 1
+			
+			if new_mouse_pos != Vector2.ZERO:
+				Input.warp_mouse(new_mouse_pos)
 			########## Spørre chatgpt om ideer for å forbedre? ja pls jeg liker ikke dette :[
 		
 

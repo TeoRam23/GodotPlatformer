@@ -17,6 +17,7 @@ extends Node2D
 @onready var polygon_arrow = $PolygonArrow
 @onready var rotation_neglecter = $RotationNeglecter
 @onready var mouse_tracker = $RotationNeglecter/MouseTracker
+@onready var mouse_sprite = $RotationNeglecter/MouseSprite
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 
@@ -24,6 +25,7 @@ var holding_proj
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.pls_player_died.connect(disable_me)
+	Events.level_completed.connect(disable_me)
 	new_projectile()
 
 
@@ -39,6 +41,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("musL") or Input.is_action_pressed("musM"):
 		print("LAUNCH")
 		eject_proj()
+	
 
 func eject_proj():
 	print("LAUNCHING 1! ", process_priority)
@@ -123,6 +126,20 @@ func _input(event):
 		if abs(event.relative.x) < window.x *0.1 and abs(event.relative.y) < window.y *0.1:
 			mouse_tracker.global_position += event.relative
 			
+			var to_object = mouse_tracker.position - Vector2.ZERO
+			var differanse = to_object.length()
+			var radius = 75
+			#print(differanse)
+			if differanse > radius:
+				mouse_tracker.position = to_object.normalized() * radius
+				
+			mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)
+			mouse_tracker.position.y = snappedf(mouse_tracker.position.y, 0.5)
+			
+			mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
+			mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
+			
+			print(mouse_tracker.position)
 			# For å begrense pekeren
 			#if abs(mouse_tracker.position.x) >= 100:
 				#mouse_tracker.position.x = 100 * sign(mouse_tracker.position.x)

@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqgfhbrla7xcn"]
+
+[ext_resource type="Texture2D" uid="uid://chq7s31pk3ah0" path="res://assets/baksplodder/paas.png" id="1_eehvo"]
+[ext_resource type="Script" path="res://explo/menus/pause_menu.gd" id="1_f4jpt"]
+[ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="2_67m8p"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_f4jpt")
+
+[node name="PauseControl" type="Control" parent="."]
+z_index = 4000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paas" type="Sprite2D" parent="PauseControl"]
+visible = false
+modulate = Color(1, 1, 1, 0.415686)
+z_index = -5
+position = Vector2(320, 180)
+texture = ExtResource("1_eehvo")
+
+[node name="ColorRect" type="ColorRect" parent="PauseControl"]
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 0.109804, 0.12549, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseControl"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 328.0
+offset_right = 77.0
+offset_bottom = 351.0
+text = "Back: B"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseControl"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -56.0
+offset_right = 75.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+
+[node name="Continue" type="Button" parent="PauseControl/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_67m8p")
+text = "Continue"
+
+[node name="BackToHub" type="Button" parent="PauseControl/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_67m8p")
+text = "Back to Hub"
+
+[node name="MainMenu" type="Button" parent="PauseControl/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_67m8p")
+text = "Main Menu"
+
+[connection signal="pressed" from="PauseControl/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://gvvlurri1oxg"]
+[gd_scene load_steps=11 format=3 uid="uid://gvvlurri1oxg"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_84gyr"]
+[ext_resource type="PackedScene" uid="uid://bqgfhbrla7xcn" path="res://explo/menus/pause_menu.tscn" id="2_d0hiu"]
 [ext_resource type="PackedScene" uid="uid://bb17idu0u5etn" path="res://explo/scenes/ex_camera_boundary.tscn" id="2_o6vwm"]
 [ext_resource type="PackedScene" uid="uid://ngj3qa1yihrq" path="res://scenes/player.tscn" id="2_xarxi"]
 [ext_resource type="Resource" uid="uid://e2jdkah8x3vy" path="res://data/ExploMovementData.tres" id="4_drt8f"]
@@ -53,12 +54,29 @@ movement_data = ExtResource("4_drt8f")
 visible = false
 
 [node name="BlackScreen" type="ColorRect" parent="CanvasLayer"]
-process_mode = 3
 visible = false
 offset_right = 640.0
-offset_bottom = 180.0
-color = Color(0, 0, 0, 1)
+offset_bottom = 360.0
+color = Color(0.109804, 0.109804, 0.12549, 1)
 script = ExtResource("4_e8sar")
+
+[node name="Line" type="ColorRect" parent="CanvasLayer/BlackScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = -16.0
+offset_right = -10.0
+offset_bottom = 360.0
+color = Color(0.2158, 0.2158, 0.26, 1)
+
+[node name="Line2" type="ColorRect" parent="CanvasLayer/BlackScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = -10.0
+offset_bottom = 360.0
+color = Color(0.1411, 0.1411, 0.17, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_d0hiu")]
+visible = false
 
 [node name="BackgroundTileMap" parent="." instance=ExtResource("7_d8fia")]
 

@@ -5,15 +5,18 @@ extends Node2D
 
 var activate = false
 var parent : CharacterBody2D
+
+var bubble : Area2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.pls_player_died.connect(poof_away)
-	pass # Replace with function body.
+	bubble = get_parent()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if parent:
+	if get_parent() == parent:
 		if parent.has_method("is_on_floor"):
 			if parent.is_on_floor():
 				poof_away()
@@ -25,14 +28,22 @@ func _process(delta):
 func glide_parent():
 	parent = get_parent()
 	parent.movement_data = load("res://data/GlidingMovementData.tres")
+	
+	animated_sprite.visible = true
 
 
 func poof_away():
-	if parent:
+	if get_parent() == parent:
+		print("ye did ti mate")
 		parent.movement_data = parent.main_data
-		remove_child(poof_particle)
-		get_tree().root.add_child(poof_particle)
-		poof_particle.global_position = global_position
-		poof_particle.emitting = true
 		
-		queue_free()
+		var old_position = global_position
+		poof_particle.emitting = true
+		animated_sprite.visible = false
+		
+		parent.remove_child(self)
+		bubble.add_child(self)
+		poof_particle.global_position = old_position
+		
+		if bubble.has_method("reemerge"):
+			bubble.reemerge()
