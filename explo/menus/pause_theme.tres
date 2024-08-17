@@ -11,6 +11,8 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j437"]
@@ -19,6 +21,8 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2h40"]
@@ -32,6 +36,8 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfnh7"]
@@ -45,10 +51,11 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+expand_margin_top = 2.0
 anti_aliasing = false
 
 [resource]
-Button/font_sizes/font_size = 18
+Button/font_sizes/font_size = 16
 Button/styles/focus = SubResource("StyleBoxFlat_s6b3d")
 Button/styles/hover = SubResource("StyleBoxFlat_7j437")
 Button/styles/normal = SubResource("StyleBoxFlat_s2h40")

@@ -11,22 +11,23 @@ func _process(delta):
 	pass
 
 func reveal_level():
-	visible = true
+	#visible = true
 	var tween = create_tween()
 	tween.tween_property(self, "size", size, 0.6) # litt delay
-	tween.tween_property(self, "position", position + Vector2(672, 0), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", position + Vector2(672 - 16, 0), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func transition_level():
 	var tween = create_tween()
-	tween.tween_property(self, "position", position + Vector2(-672, 0), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "position", position + Vector2(-672 + 16, 0), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	await tween.finished
 	#get_tree().paused = false
 	return
 
 func reset_level():
 	print("yayay")
+	await get_tree().create_timer(0.5).timeout
 	var tween = create_tween()
-	tween.tween_property(self, "position", position + Vector2(-672, 0), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "position", position + Vector2(-672 + 16, 0), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	await  tween.finished
 	get_tree().paused = false
 	get_tree().reload_current_scene()

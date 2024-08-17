@@ -283,13 +283,14 @@ func disable_player():
 	launch_particle.emitting = false
 
 func i_died():
-	disable_player()
-	dead_particle.emitting = true
-	#get_tree().paused = true
-	Events.player_died()
-	#get_tree().reload_current_scene()
-	#global_position = starting_position
-	#prevelocity = Vector2(0, 0)
+	if is_physics_processing():
+		disable_player()
+		dead_particle.emitting = true
+		#get_tree().paused = true
+		Events.player_died()
+		#get_tree().reload_current_scene()
+		#global_position = starting_position
+		#prevelocity = Vector2(0, 0)
 
 #func _on_gravity_detector_area_entered(area):
 #	var entered_area2d = area

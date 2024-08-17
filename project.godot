@@ -20,6 +20,7 @@ config/icon="res://assets/JeffreySprites.png"
 
 Events="*res://scripts/Events.gd"
 LevelTransition="*res://scenes/level_transition.tscn"
+VariableManager="*res://explo/scripts/variable_manager.gd"
 
 [display]
 
@@ -28,6 +29,10 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom_font="res://assets/nokiafc22.ttf"
 
 [input]
 

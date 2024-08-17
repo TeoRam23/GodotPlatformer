@@ -139,7 +139,7 @@ func _input(event):
 			mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
 			mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
 			
-			print(mouse_tracker.position)
+			#print(mouse_tracker.position)
 			# For å begrense pekeren
 			#if abs(mouse_tracker.position.x) >= 100:
 				#mouse_tracker.position.x = 100 * sign(mouse_tracker.position.x)

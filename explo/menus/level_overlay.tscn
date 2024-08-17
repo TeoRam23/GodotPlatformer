@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://wmo3puxyqs0n"]
+
+[ext_resource type="Script" path="res://explo/menus/level_overlay.gd" id="1_7sbsu"]
+[ext_resource type="Texture2D" uid="uid://cdy1xfp3ele0b" path="res://assets/baksplodder/verd 2/2-1.png" id="1_yy58h"]
+[ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_govle"]
+[ext_resource type="Texture2D" uid="uid://bgr5nxmbb0wik" path="res://assets/JeffreyDeath.png" id="3_oo4lr"]
+
+[node name="LevelOverlay" type="CanvasLayer"]
+script = ExtResource("1_7sbsu")
+
+[node name="2-1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(320, 180)
+texture = ExtResource("1_yy58h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Control"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 18.0
+theme_override_font_sizes/normal_font_size = 12
+text = "19.02:306gj"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_oo4lr")
+stretch_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(19.61, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(-12, 0)
+texture = ExtResource("2_govle")
+centered = false
+
+[node name="DeathLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "x 0"

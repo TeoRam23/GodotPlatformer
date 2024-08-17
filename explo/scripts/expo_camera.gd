@@ -10,6 +10,8 @@ var shake_strength = 0.0
 func _ready():
 	#Events.pls_shake.connect(apply_shake)
 	Events.pls_camera_limit.connect(set_my_limit)
+	await get_tree().create_timer(0.1).timeout
+	position_smoothing_enabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

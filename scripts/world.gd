@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
 @onready var black_screen = $CanvasLayer/BlackScreen
+@onready var poof_level_animation = $PoofLevelAnimation
 @onready var pause_menu = $PauseMenu
 
 var first_frame = true
@@ -21,14 +22,14 @@ func _ready():
 	black_screen.reveal_level()
 	
 	
-func _process(delta):
+#func _process(delta):
 	#if first_frame:
 		#reveal_level()
 		#print("donet")
 		#first_frame = false
-	if Input.is_action_pressed("musL"):
-		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	#if Input.is_action_pressed("musL"):
+		#if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	
 func show_level_completed():
 	level_completed.show() #gjør level_complete synlig
@@ -37,8 +38,10 @@ func show_level_completed():
 		return
 	get_tree().paused = false
 	#get_tree().paused = true
+	await get_tree().create_timer(1).timeout
 	waiting = true
-	await black_screen.transition_level()
+	await poof_level_animation.hide_level()
+	#await black_screen.transition_level()
 	#await LevelTransition.fade_to_black()
 	get_tree().change_scene_to_packed(next_level)
 	#LevelTransition.fade_from_black()
