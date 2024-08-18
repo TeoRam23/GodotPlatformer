@@ -80,11 +80,12 @@ offset_bottom = 360.0
 color = Color(0.1411, 0.1411, 0.17, 1)
 
 [node name="PoofLevelAnimation" parent="." instance=ExtResource("6_k0t07")]
-
-[node name="LevelOverlay" parent="." instance=ExtResource("7_2d4fg")]
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_d0hiu")]
 visible = false
+
+[node name="LevelOverlay" parent="." instance=ExtResource("7_2d4fg")]
 
 [node name="BackgroundTileMap" parent="." instance=ExtResource("7_d8fia")]
 

@@ -6,6 +6,7 @@ extends Node2D
 @onready var black_screen = $CanvasLayer/BlackScreen
 @onready var poof_level_animation = $PoofLevelAnimation
 @onready var pause_menu = $PauseMenu
+@onready var level_overlay = $LevelOverlay
 
 var first_frame = true
 var waiting = false
@@ -50,6 +51,7 @@ func un_pause():
 	print("ugh")
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	pause_menu.visible = false
+	level_overlay.show_rest(false)
 
 func _input(event):
 	if event.is_action_pressed("cancel") and not waiting:
@@ -58,6 +60,7 @@ func _input(event):
 		Input.warp_mouse(get_window().size * 0.5)
 		
 		pause_menu.visible = true
+		level_overlay.show_rest(true)
 		
 		get_tree().paused = true
 		

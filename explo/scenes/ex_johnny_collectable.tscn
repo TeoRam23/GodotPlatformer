@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpbfqml7h216p"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_johnny_collectable.gd" id="1_8q400"]
+[ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="1_b7q6n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8txv"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6plj6"]
+atlas = ExtResource("1_b7q6n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ddnc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6plj6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ExJohnnyCollectable" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8q400")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b8txv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ddnc3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

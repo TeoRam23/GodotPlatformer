@@ -11,28 +11,40 @@ func _ready():
 	reveal_level()
 
 
-
 func reveal_level():
+	visible = true
 	black_screen.visible = false
 	cpu_particles_2d_2.emitting = true
 
 
 func hide_level():
 	cpu_particles_2d.emitting = true
-	await get_tree().create_timer(0.25).timeout
+	await do_timer(0.25)
+	
 	black_screen.visible = true
 
 
 func reset_level():
-	await get_tree().create_timer(0.5).timeout
+	await do_timer(0.5)
 	cpu_particles_2d.emitting = true
-	await get_tree().create_timer(0.25).timeout
+	await do_timer(0.25)
 	black_screen.visible = true
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
-
-
+func do_timer(seconds):
+	var timer = Timer.new()
+	timer.wait_time = seconds
+	timer.one_shot = true
+	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()
+	#var new_timer = get_tree().create_timer(seconds)
+	#print(new_timer)
+	#new_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+	#await new_timer.timeout
 #
 #func _input(event):
 	#if event.is_action_pressed("musL"):

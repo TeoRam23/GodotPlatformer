@@ -38,7 +38,7 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var camera = $SpriteHolder/ExpoCamera
 
 @onready var launch_particle = $LaunchParticle
-@onready var dead_particle = $DeadParticle
+@onready var dead_particle = $DeadParticle2
 
 @export var debug = true
 

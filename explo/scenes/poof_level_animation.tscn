@@ -27,23 +27,6 @@ offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0.109804, 0.109804, 0.12549, 1)
 
-[node name="Line" type="ColorRect" parent="BlackScreen"]
-process_mode = 3
-visible = false
-layout_mode = 0
-offset_left = -16.0
-offset_right = -10.0
-offset_bottom = 360.0
-color = Color(0.2158, 0.2158, 0.26, 1)
-
-[node name="Line2" type="ColorRect" parent="BlackScreen"]
-process_mode = 3
-visible = false
-layout_mode = 0
-offset_left = -10.0
-offset_bottom = 360.0
-color = Color(0.1411, 0.1411, 0.17, 1)
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(320, 180)
 emitting = false
