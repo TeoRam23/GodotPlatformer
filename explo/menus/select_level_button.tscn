@@ -1,6 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://8tbh5ungpgk5"]
+[gd_scene load_steps=7 format=3 uid="uid://8tbh5ungpgk5"]
 
 [ext_resource type="Script" path="res://explo/menus/select_level_button.gd" id="1_ylyyi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22ew2"]
+bg_color = Color(0.717647, 0.286275, 0.286275, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.717647, 0.286275, 0.286275, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t074"]
+bg_color = Color(0.72, 0.288, 0.288, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmdam"]
+bg_color = Color(0.270222, 0.270222, 0.270222, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.72, 0.288, 0.288, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy130"]
+bg_color = Color(0.57, 0.2679, 0.2679, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.717647, 0.286275, 0.286275, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_by1t7"]
+Button/font_sizes/font_size = 16
+Button/styles/focus = SubResource("StyleBoxFlat_22ew2")
+Button/styles/hover = SubResource("StyleBoxFlat_3t074")
+Button/styles/normal = SubResource("StyleBoxFlat_xmdam")
+Button/styles/pressed = SubResource("StyleBoxFlat_qy130")
 
 [node name="SelectLevel" type="Button"]
 custom_minimum_size = Vector2(34, 34)
@@ -10,7 +64,7 @@ anchor_bottom = 0.567
 offset_right = -170.16
 offset_bottom = -170.12
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 14
+theme = SubResource("Theme_by1t7")
 action_mode = 0
 text = "0"
 script = ExtResource("1_ylyyi")

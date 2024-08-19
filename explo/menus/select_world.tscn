@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" path="res://explo/menus/select_world.gd" id="1_oeoox"]
 
-[node name="SelectWorld" type="Control"]
+[node name="SelectWorld" type="CanvasLayer"]
+process_mode = 3
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +15,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_oeoox")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

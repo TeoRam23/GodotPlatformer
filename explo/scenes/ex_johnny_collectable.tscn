@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpbfqml7h216p"]
+[gd_scene load_steps=10 format=3 uid="uid://cpbfqml7h216p"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_johnny_collectable.gd" id="1_8q400"]
 [ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="1_b7q6n"]
+[ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="3_xfcbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8txv"]
-radius = 16.0
+radius = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2iuds"]
+size = Vector2(22, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6plj6"]
 atlas = ExtResource("1_b7q6n")
@@ -21,6 +25,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_h8c4g"]
+_data = [Vector2(0.253247, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252747), -0.846154, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dgrfa"]
+offsets = PackedFloat32Array(0.761905, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="ExJohnnyCollectable" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
@@ -28,8 +40,33 @@ script = ExtResource("1_8q400")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b8txv")
+disabled = true
+
+[node name="CollisionShapeBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_2iuds")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ddnc3")
+
+[node name="SplootParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 75.0
+initial_velocity_max = 125.0
+damping_min = 4.448
+damping_max = 4.448
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_h8c4g")
+color = Color(0.3825, 0.553917, 0.85, 1)
+color_ramp = SubResource("Gradient_dgrfa")
+script = ExtResource("3_xfcbq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

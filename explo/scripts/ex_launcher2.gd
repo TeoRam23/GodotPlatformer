@@ -109,6 +109,12 @@ func move_spawn_point(is_in_physics, delta):
 		holding_proj.apply_second_gravity(delta, true)
 	
 	polygon_arrow.global_rotation = angle# + PI * 0.5
+	
+	#var org = get_viewport_transform().origin
+	#var offs = global_position - org
+	#polygon_arrow.global_position.x = org.x + snappedi(offs.x, 1)
+	#polygon_arrow.global_position.y = org.y + snappedi(offs.y, 1)
+	#print(org)
 	#polygon_arrow.position.y -= abs(spawn_anchor.position.y)
 	#print("poly: ",polygon_arrow.position.y, "anch: ", spawn_anchor.position.y)
 	

@@ -22,7 +22,6 @@ func _ready():
 	
 	black_screen.reveal_level()
 	
-	
 #func _process(delta):
 	#if first_frame:
 		#reveal_level()
@@ -40,7 +39,7 @@ func show_level_completed():
 	get_tree().paused = false
 	#get_tree().paused = true
 	await get_tree().create_timer(1).timeout
-	waiting = true
+	#waiting = true
 	await poof_level_animation.hide_level()
 	#await black_screen.transition_level()
 	#await LevelTransition.fade_to_black()
@@ -55,7 +54,6 @@ func un_pause():
 
 func _input(event):
 	if event.is_action_pressed("cancel") and not waiting:
-		
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		Input.warp_mouse(get_window().size * 0.5)
 		
@@ -63,6 +61,14 @@ func _input(event):
 		level_overlay.show_rest(true)
 		
 		get_tree().paused = true
+	
+	
+	# Brukes for å endre til window eller fullscreen
+	if Input.is_action_just_pressed("RMB"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		
 	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
 		if event is InputEventMouseMotion:
@@ -75,18 +81,25 @@ func _input(event):
 			#print(windows_size)
 			
 			# Det å skjekke over og under hjelper ikke med at musa noen ganger ikke blir brakt til andre siden
-			var new_mouse_pos = Vector2(mouse_pos.x - screen_pos.x, mouse_pos.y - screen_pos.y) * 2
+			var new_mouse_pos = Vector2((mouse_pos.x - screen_pos.x) * (windows_size.x/640.0), (mouse_pos.y - screen_pos.y) * (windows_size.y/360.0))
+			var old_mouse_pos = new_mouse_pos
+			print(new_mouse_pos)
+			print(windows_size)
 			
+			var yeah = float(windows_size.x/640)
+			
+			print(windows_size.x/640.0)
+			print(yeah)
 			#print(new_mouse_pos)
 			
 			if new_mouse_pos.x <= 0:
 				new_mouse_pos.x = windows_size.x - 2
 			elif new_mouse_pos.x >= windows_size.x - 1:
-				new_mouse_pos.x = 1
+				new_mouse_pos.x = 2
 			if new_mouse_pos.y <= 0:
 				new_mouse_pos.y = windows_size.y - 2
 			elif new_mouse_pos.y >= windows_size.y - 1:
-				new_mouse_pos.y = 1
+				new_mouse_pos.y = 2
 			
 			#if mouse_pos.x <= screen_pos.x:
 				#new_mouse_pos.x = windows_size.x - 2
@@ -97,7 +110,7 @@ func _input(event):
 			#elif mouse_pos.y >= screen_pos.y + windows_size.y * 0.5 - 0.5:
 				#new_mouse_pos.y = 1
 			
-			if new_mouse_pos != Vector2.ZERO:
+			if new_mouse_pos != old_mouse_pos:
 				Input.warp_mouse(new_mouse_pos)
 			########## Spørre chatgpt om ideer for å forbedre? ja pls jeg liker ikke dette :[
 		
