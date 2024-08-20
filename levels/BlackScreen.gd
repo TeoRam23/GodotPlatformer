@@ -2,8 +2,8 @@ extends ColorRect
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	Events.pls_player_died.connect(reset_level)
+#func _ready():
+	#Events.pls_player_died.connect(reset_level)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

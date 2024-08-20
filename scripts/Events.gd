@@ -8,7 +8,9 @@ signal pls_reset_teleport
 signal pls_activate_ender
 signal pls_player_died
 signal pls_kill_player
+signal pls_resetting_level
 signal pls_johnny_collected
+signal pls_share_title
 
 func projectile_hit():
 	pls_shake.emit()
@@ -28,5 +30,11 @@ func player_died():
 func kill_player():
 	pls_kill_player.emit()
 
+func resetting_level():
+	pls_resetting_level.emit()
+
 func johnny_collected():
 	pls_johnny_collected.emit()
+
+func share_title(title):
+	pls_share_title.emit(title)

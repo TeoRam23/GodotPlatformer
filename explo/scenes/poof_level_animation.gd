@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var cpu_particles_2d = $CPUParticles2D
-@onready var cpu_particles_2d_2 = $CPUParticles2D2
+@onready var hide_particle = $HideParticle
+@onready var reveal_particle = $RevealParticle
 
 @onready var black_screen = $BlackScreen
 
@@ -14,11 +14,11 @@ func _ready():
 func reveal_level():
 	visible = true
 	black_screen.visible = false
-	cpu_particles_2d_2.emitting = true
+	reveal_particle.emitting = true
 
 
 func hide_level():
-	cpu_particles_2d.emitting = true
+	hide_particle.emitting = true
 	await do_timer(0.25)
 	
 	black_screen.visible = true
@@ -26,10 +26,12 @@ func hide_level():
 
 func reset_level():
 	await do_timer(0.5)
-	cpu_particles_2d.emitting = true
+	hide_particle.emitting = true
 	await do_timer(0.25)
 	black_screen.visible = true
 	get_tree().paused = false
+	Events.resetting_level()
+	print("HOOOOOOOOOOOOOOOOOOOOOO")
 	get_tree().reload_current_scene()
 
 func do_timer(seconds):
@@ -39,8 +41,9 @@ func do_timer(seconds):
 	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(timer)
 	timer.start()
+	
 	await timer.timeout
-	timer.queue_free()
+	#timer.queue_free()
 	#var new_timer = get_tree().create_timer(seconds)
 	#print(new_timer)
 	#new_timer.process_mode = Node.PROCESS_MODE_PAUSABLE

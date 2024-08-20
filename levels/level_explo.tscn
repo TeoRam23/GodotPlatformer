@@ -75,7 +75,8 @@ terrain_set_0/terrain_0/name = "AutoTile"
 terrain_set_0/terrain_0/color = Color(0.22782, 0.365132, 0.199176, 1)
 sources/1 = SubResource("TileSetAtlasSource_oauxa")
 
-[node name="World" instance=ExtResource("1_2y7hc")]
+[node name="Explo-1" instance=ExtResource("1_2y7hc")]
+title = "Explo!"
 next_level = ExtResource("2_5k66i")
 
 [node name="ParallaxBackground" parent="." index="0"]

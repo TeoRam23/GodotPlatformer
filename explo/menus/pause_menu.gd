@@ -1,8 +1,14 @@
 extends CanvasLayer
 
+var title = "default"
+
+@onready var number_label = $PauseControl/NumberLabel
+@onready var level_title = $PauseControl/LevelTitle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	number_label.text = "Level " + get_tree().current_scene.name
+	Events.pls_share_title.connect(update_title)
 	pass # Replace with function body.
 
 
@@ -26,3 +32,7 @@ func un_pause():
 	if get_parent().has_method("un_pause"):
 		get_parent().un_pause()
 		
+
+func update_title(nytitle):
+	#title = nytitle
+	level_title.text = nytitle

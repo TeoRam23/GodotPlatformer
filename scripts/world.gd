@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var title = "World"
 @export var next_level: PackedScene
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
@@ -20,6 +21,8 @@ func _ready():
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	
+	#level_overlay.update_title(title)
+	Events.share_title(title)
 	black_screen.reveal_level()
 	
 #func _process(delta):
@@ -43,6 +46,8 @@ func show_level_completed():
 	await poof_level_animation.hide_level()
 	#await black_screen.transition_level()
 	#await LevelTransition.fade_to_black()
+	VariableManager.current_title_time = 3
+	
 	get_tree().change_scene_to_packed(next_level)
 	#LevelTransition.fade_from_black()
 
@@ -83,13 +88,6 @@ func _input(event):
 			# Det å skjekke over og under hjelper ikke med at musa noen ganger ikke blir brakt til andre siden
 			var new_mouse_pos = Vector2((mouse_pos.x - screen_pos.x) * (windows_size.x/640.0), (mouse_pos.y - screen_pos.y) * (windows_size.y/360.0))
 			var old_mouse_pos = new_mouse_pos
-			print(new_mouse_pos)
-			print(windows_size)
-			
-			var yeah = float(windows_size.x/640)
-			
-			print(windows_size.x/640.0)
-			print(yeah)
 			#print(new_mouse_pos)
 			
 			if new_mouse_pos.x <= 0:
