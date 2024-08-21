@@ -1,156 +1,131 @@
-[gd_scene load_steps=28 format=3 uid="uid://bqe3ke730mm3j"]
+[gd_scene load_steps=3 format=3 uid="uid://bqe3ke730mm3j"]
 
 [ext_resource type="PackedScene" uid="uid://bpc3x7u4c7gs4" path="res://explo/menus/select_world.tscn" id="1_ymov4"]
 [ext_resource type="PackedScene" uid="uid://8tbh5ungpgk5" path="res://explo/menus/select_level_button.tscn" id="2_5a6sa"]
-[ext_resource type="PackedScene" uid="uid://bkrbp4xm8s707" path="res://levels/world one/1-1.tscn" id="4_hrlfv"]
-[ext_resource type="PackedScene" uid="uid://b0ifwanw44b2i" path="res://levels/world one/1-2.tscn" id="5_d3phu"]
-[ext_resource type="PackedScene" uid="uid://bpwmmojqf7ttk" path="res://levels/world one/1-3.tscn" id="6_y1i0g"]
-[ext_resource type="PackedScene" uid="uid://b6yxjb8nag2t" path="res://levels/world one/1-4.tscn" id="7_844f0"]
-[ext_resource type="PackedScene" uid="uid://mwst2g70c3js" path="res://levels/world one/1-5.tscn" id="8_05b7o"]
-[ext_resource type="PackedScene" uid="uid://fslgtni2wtsn" path="res://levels/world one/1-6.tscn" id="9_siji1"]
-[ext_resource type="PackedScene" uid="uid://cjmn72ghf2d1s" path="res://levels/world one/1-7.tscn" id="10_4hpnn"]
-[ext_resource type="PackedScene" uid="uid://mxkmdgtvptau" path="res://levels/world one/1-8.tscn" id="11_esqih"]
-[ext_resource type="PackedScene" uid="uid://cmvi3kk5y84qo" path="res://levels/world one/1-9.tscn" id="12_gcg2h"]
-[ext_resource type="PackedScene" uid="uid://ckk10n0gde7ni" path="res://levels/world one/1-10.tscn" id="13_bs1dw"]
-[ext_resource type="PackedScene" uid="uid://btonlq5230mcm" path="res://levels/world one/1-11.tscn" id="14_m72ek"]
-[ext_resource type="PackedScene" uid="uid://cbpt7k88o6wjn" path="res://levels/world one/1-12.tscn" id="15_845xy"]
-[ext_resource type="PackedScene" uid="uid://72xk1p0u64mp" path="res://levels/world one/1-13.tscn" id="16_ck02i"]
-[ext_resource type="PackedScene" uid="uid://borgr2bpnjqop" path="res://levels/world one/1-14.tscn" id="17_pj745"]
-[ext_resource type="PackedScene" uid="uid://dk5tey13l5pu2" path="res://levels/world one/1-15.tscn" id="18_r23dc"]
-[ext_resource type="PackedScene" uid="uid://dxfmdyanxuvpe" path="res://levels/world one/1-16.tscn" id="19_wudaw"]
-[ext_resource type="PackedScene" uid="uid://dtokwrd1s82mj" path="res://levels/world one/1-17.tscn" id="20_y0fcm"]
-[ext_resource type="PackedScene" uid="uid://jxxmwpv5gdfd" path="res://levels/world one/1-18.tscn" id="21_1tdx7"]
-[ext_resource type="PackedScene" uid="uid://cj1x2t4ax6mxa" path="res://levels/world one/1-19.tscn" id="22_ukhr3"]
-[ext_resource type="PackedScene" uid="uid://c1kaofgxnpd2j" path="res://levels/world one/1-20.tscn" id="23_61qkg"]
-[ext_resource type="PackedScene" uid="uid://cvgefwhqxunu5" path="res://levels/world one/1-21.tscn" id="24_vr8gy"]
-[ext_resource type="PackedScene" uid="uid://db1g2a6uir342" path="res://levels/world one/1-22.tscn" id="25_xv374"]
-[ext_resource type="PackedScene" uid="uid://chn8ws13qgav" path="res://levels/world one/1-23.tscn" id="26_kyocs"]
-[ext_resource type="PackedScene" uid="uid://ddw7y1rsd2cft" path="res://levels/world one/1-24.tscn" id="27_jhbsa"]
-[ext_resource type="PackedScene" uid="uid://cpn7leshks4yi" path="res://levels/world one/1-25.tscn" id="28_a45ot"]
 
 [node name="SelectWorld" instance=ExtResource("1_ymov4")]
 
 [node name="GridContainer#SelectLevel" parent="Control/GridContainer" index="0" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "1"
-the_level = ExtResource("4_hrlfv")
+the_level = "res://levels/world one/1-1.tscn"
 
 [node name="GridContainer#SelectLevel2" parent="Control/GridContainer" index="1" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "2"
-the_level = ExtResource("5_d3phu")
+the_level = "res://levels/world one/1-2.tscn"
 
 [node name="GridContainer#SelectLevel3" parent="Control/GridContainer" index="2" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "3"
-the_level = ExtResource("6_y1i0g")
+the_level = "res://levels/world one/1-3.tscn"
 
 [node name="GridContainer#SelectLevel4" parent="Control/GridContainer" index="3" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "4"
-the_level = ExtResource("7_844f0")
+the_level = "res://levels/world one/1-4.tscn"
 
 [node name="GridContainer#SelectLevel5" parent="Control/GridContainer" index="4" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "5"
-the_level = ExtResource("8_05b7o")
+the_level = "res://levels/world one/1-5.tscn"
 
 [node name="GridContainer#SelectLevel6" parent="Control/GridContainer" index="5" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "6"
-the_level = ExtResource("9_siji1")
+the_level = "res://levels/world one/1-6.tscn"
 
 [node name="GridContainer#SelectLevel7" parent="Control/GridContainer" index="6" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "7"
-the_level = ExtResource("10_4hpnn")
+the_level = "res://levels/world one/1-7.tscn"
 
 [node name="GridContainer#SelectLevel8" parent="Control/GridContainer" index="7" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "8"
-the_level = ExtResource("11_esqih")
+the_level = "res://levels/world one/1-8.tscn"
 
 [node name="GridContainer#SelectLevel9" parent="Control/GridContainer" index="8" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "9"
-the_level = ExtResource("12_gcg2h")
+the_level = "res://levels/world one/1-9.tscn"
 
 [node name="GridContainer#SelectLevel10" parent="Control/GridContainer" index="9" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "10"
-the_level = ExtResource("13_bs1dw")
+the_level = "res://levels/world one/1-10.tscn"
 
 [node name="GridContainer#SelectLevel11" parent="Control/GridContainer" index="10" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "11"
-the_level = ExtResource("14_m72ek")
+the_level = "res://levels/world one/1-11.tscn"
 
 [node name="GridContainer#SelectLevel12" parent="Control/GridContainer" index="11" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "12"
-the_level = ExtResource("15_845xy")
+the_level = "res://levels/world one/1-12.tscn"
 
 [node name="GridContainer#SelectLevel13" parent="Control/GridContainer" index="12" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "13"
-the_level = ExtResource("16_ck02i")
+the_level = "res://levels/world one/1-13.tscn"
 
 [node name="GridContainer#SelectLevel14" parent="Control/GridContainer" index="13" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "14"
-the_level = ExtResource("17_pj745")
+the_level = "res://levels/world one/1-14.tscn"
 
 [node name="GridContainer#SelectLevel15" parent="Control/GridContainer" index="14" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "15"
-the_level = ExtResource("18_r23dc")
+the_level = "res://levels/world one/1-15.tscn"
 
 [node name="GridContainer#SelectLevel16" parent="Control/GridContainer" index="15" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "16"
-the_level = ExtResource("19_wudaw")
+the_level = "res://levels/world one/1-16.tscn"
 
 [node name="GridContainer#SelectLevel17" parent="Control/GridContainer" index="16" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "17"
-the_level = ExtResource("20_y0fcm")
+the_level = "res://levels/world one/1-17.tscn"
 
 [node name="GridContainer#SelectLevel18" parent="Control/GridContainer" index="17" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "18"
-the_level = ExtResource("21_1tdx7")
+the_level = "res://levels/world one/1-18.tscn"
 
 [node name="GridContainer#SelectLevel19" parent="Control/GridContainer" index="18" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "19"
-the_level = ExtResource("22_ukhr3")
+the_level = "res://levels/world one/1-19.tscn"
 
 [node name="GridContainer#SelectLevel20" parent="Control/GridContainer" index="19" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "20"
-the_level = ExtResource("23_61qkg")
+the_level = "res://levels/world one/1-20.tscn"
 
 [node name="GridContainer#SelectLevel21" parent="Control/GridContainer" index="20" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "21"
-the_level = ExtResource("24_vr8gy")
+the_level = "res://levels/world one/1-21.tscn"
 
 [node name="GridContainer#SelectLevel22" parent="Control/GridContainer" index="21" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "22"
-the_level = ExtResource("25_xv374")
+the_level = "res://levels/world one/1-22.tscn"
 
 [node name="GridContainer#SelectLevel23" parent="Control/GridContainer" index="22" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "23"
-the_level = ExtResource("26_kyocs")
+the_level = "res://levels/world one/1-23.tscn"
 
 [node name="GridContainer#SelectLevel24" parent="Control/GridContainer" index="23" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "24"
-the_level = ExtResource("27_jhbsa")
+the_level = "res://levels/world one/1-24.tscn"
 
 [node name="GridContainer#SelectLevel25" parent="Control/GridContainer" index="24" instance=ExtResource("2_5a6sa")]
 layout_mode = 2
 text = "25"
-the_level = ExtResource("28_a45ot")
+the_level = "res://levels/world one/1-25.tscn"

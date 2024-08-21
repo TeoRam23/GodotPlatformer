@@ -11,6 +11,7 @@ signal pls_kill_player
 signal pls_resetting_level
 signal pls_johnny_collected
 signal pls_share_title
+signal pls_general_leaving
 
 func projectile_hit():
 	pls_shake.emit()
@@ -38,3 +39,6 @@ func johnny_collected():
 
 func share_title(title):
 	pls_share_title.emit(title)
+
+func general_leaving():
+	pls_general_leaving.emit()

@@ -6,15 +6,18 @@ extends Camera2D
 var rng = RandomNumberGenerator.new()
 
 var shake_strength = 0.0
+var first_frame = true
 
 func _ready():
 	#Events.pls_shake.connect(apply_shake)
 	Events.pls_camera_limit.connect(set_my_limit)
 	await get_tree().create_timer(0.1).timeout
-	position_smoothing_enabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if first_frame:
+		position_smoothing_enabled = true
+		first_frame = false
 	#print("par: ",get_parent().get_parent().velocity)
 	#print("mus: ",get_global_mouse_position())
 	if Input.is_action_pressed("musR"):

@@ -9,6 +9,7 @@ var time_stop = false
 func _ready():
 	Events.pls_player_died.connect(stop_time)
 	Events.level_completed.connect(stop_time)
+	Events.pls_general_leaving.connect(stop_time)
 	if all_timer:
 		time_elapsed = VariableManager.all_time
 

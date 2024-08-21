@@ -4,11 +4,12 @@ var title = "default"
 
 @onready var number_label = $PauseControl/NumberLabel
 @onready var level_title = $PauseControl/LevelTitle
-
+#var hubby = preload("res://levels/hub.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	number_label.text = "Level " + get_tree().current_scene.name
 	Events.pls_share_title.connect(update_title)
+	
 	pass # Replace with function body.
 
 
@@ -36,3 +37,10 @@ func un_pause():
 func update_title(nytitle):
 	#title = nytitle
 	level_title.text = nytitle
+
+
+func _on_back_to_hub_pressed():
+	Events.general_leaving()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://levels/hub.tscn")
+	#get_tree().change_scene_to_packed(hubby)

@@ -43,7 +43,7 @@ func do_timer(seconds):
 	timer.start()
 	
 	await timer.timeout
-	#timer.queue_free()
+	timer.queue_free()
 	#var new_timer = get_tree().create_timer(seconds)
 	#print(new_timer)
 	#new_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
