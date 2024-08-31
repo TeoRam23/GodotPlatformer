@@ -52,6 +52,8 @@ func _ready():
 	
 	Events.pls_kill_player.connect(i_died)
 	Events.level_completed.connect(disable_player)
+	
+	johnnify()
 
 func _physics_process(delta):
 	if is_paused:
@@ -701,8 +703,20 @@ func button_presses(delta):
 			print(position)
 
 
+func johnnify():
+	if VariableManager.johnny_mode:
+		animated_sprite_2d.use_parent_material = false
+		dead_particle.color = Color(0.263, 0.482, 0.851)
+		launch_particle.modulate = Color(0.504, 0.694, 0.84)
+	else:
+		animated_sprite_2d.use_parent_material = true
+		dead_particle.color = Color(0.81, 0.324, 0.34)
+		launch_particle.modulate = Color(0.839, 0.525, 0.502)
 
-
+func _input(event):
+	if Input.is_action_just_pressed("musR"):
+		VariableManager.johnny_mode = !VariableManager.johnny_mode
+		johnnify()
 
 func _on_timer_timeout():
 	print("1.5!")

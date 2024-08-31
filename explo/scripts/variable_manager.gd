@@ -4,6 +4,8 @@ static var all_time = 0.0
 static var deaths = 0
 static var johnnies = 0
 
+static var johnny_mode = false
+
 static var current_title_time = 3
 
 signal johnny_collect

@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=40 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
 [ext_resource type="Texture2D" uid="uid://btyt7tei7omda" path="res://assets/JeffreySprite.png" id="3_v30qj"]
 [ext_resource type="PackedScene" uid="uid://cdoim1kpn0tlp" path="res://scenes/Framer.tscn" id="4_1icg4"]
 [ext_resource type="Texture2D" uid="uid://nnojjhrbugdp" path="res://assets/JeffreySprites.png" id="4_dsh50"]
+[ext_resource type="Shader" path="res://scripts/player_shader.gdshader" id="4_fs4qi"]
 [ext_resource type="Script" path="res://explo/scripts/expo_camera.gd" id="4_koes7"]
 [ext_resource type="PackedScene" uid="uid://cf4digijrb32k" path="res://scenes/Liner.tscn" id="5_fplat"]
 [ext_resource type="PackedScene" uid="uid://dsv4eyc7ju17a" path="res://explo/scenes/ex_launcher.tscn" id="6_y3t0q"]
@@ -92,6 +93,22 @@ animations = [{
 "name": &"run",
 "speed": 8.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh2k"]
+shader = ExtResource("4_fs4qi")
+shader_parameter/origin1 = Color(0.870588, 0.643137, 0.843137, 1)
+shader_parameter/new1 = Color(0.580392, 0.690196, 0.835294, 1)
+shader_parameter/origin2 = Color(0.929412, 0.117647, 0.141176, 1)
+shader_parameter/new2 = Color(0.262745, 0.482353, 0.85098, 1)
+shader_parameter/origin3 = Color(0.780392, 0.0901961, 0.239216, 1)
+shader_parameter/new3 = Color(0.172549, 0.4, 0.784314, 1)
+shader_parameter/origin4 = Color(0.580392, 0.054902, 0.305882, 1)
+shader_parameter/new4 = Color(0.188235, 0.266667, 0.592157, 1)
+shader_parameter/origin5 = Color(0.337255, 0.14902, 0.247059, 1)
+shader_parameter/new5 = Color(0.211765, 0.172549, 0.282353, 1)
+shader_parameter/origin6 = Color(0.2, 0.247059, 0.6, 1)
+shader_parameter/new6 = Color(0.560784, 0.105882, 0.27451, 1)
+shader_parameter/epsilon = 0.001
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kt5lr"]
 atlas = ExtResource("4_dsh50")
@@ -195,7 +212,7 @@ region = Rect2(105, 0, 21, 21)
 
 [sub_resource type="Gradient" id="Gradient_ygmdj"]
 offsets = PackedFloat32Array(0.694915, 0.737288)
-colors = PackedColorArray(0.839216, 0.52549, 0.501961, 1, 0.839216, 0.52549, 0.501961, 0)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l1e4h"]
 gradient = SubResource("Gradient_ygmdj")
@@ -251,6 +268,8 @@ animation = &"idle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteHolder"]
 z_index = 1
+material = SubResource("ShaderMaterial_pdh2k")
+use_parent_material = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_lgw7j")
 animation = &"idle"
@@ -341,6 +360,7 @@ position = Vector2(0, -3)
 wait_time = 1.517
 
 [node name="LaunchParticle" type="CPUParticles2D" parent="."]
+modulate = Color(0.839216, 0.52549, 0.501961, 1)
 emitting = false
 amount = 16
 lifetime = 0.5
@@ -395,7 +415,7 @@ damping_max = 67.816
 scale_amount_min = 0.35
 scale_amount_max = 0.37
 scale_amount_curve = SubResource("Curve_bx641")
-color = Color(0.81, 0.324, 0.3402, 1)
+color = Color(0.81, 0.324, 0.34, 1)
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]

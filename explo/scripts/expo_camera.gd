@@ -35,13 +35,13 @@ func _physics_process(delta):
 			return
 		offset = random_offset()
 		
-	print("first: ", global_position)
-	
-	position = Vector2.ZERO
-	global_position.x = roundi(global_position.x)
-	global_position.y = roundi(global_position.y)
-	
-	print("second: ", global_position)
+	#print("first: ", global_position)
+	#
+	#position = Vector2.ZERO
+	#global_position.x = roundi(global_position.x)
+	#global_position.y = roundi(global_position.y)
+	#
+	#print("second: ", global_position)
 	
 
 func apply_shake():

@@ -117,11 +117,11 @@ func move_spawn_point(is_in_physics, delta):
 	#print(org)
 	#polygon_arrow.position.y -= abs(spawn_anchor.position.y)
 	#print("poly: ",polygon_arrow.position.y, "anch: ", spawn_anchor.position.y)
-	print("first poly: ", polygon_arrow.global_position)
-	polygon_arrow.position = Vector2.ZERO
-	polygon_arrow.global_position.x = snappedi(polygon_arrow.global_position.x, 1)
-	polygon_arrow.global_position.y = snappedi(polygon_arrow.global_position.y, 1)
-	print("second poly: ", polygon_arrow.global_position)
+	#print("first poly: ", polygon_arrow.global_position)
+	#polygon_arrow.position = Vector2.ZERO
+	#polygon_arrow.global_position.x = snappedi(polygon_arrow.global_position.x, 1)
+	#polygon_arrow.global_position.y = snappedi(polygon_arrow.global_position.y, 1)
+	#print("second poly: ", polygon_arrow.global_position)
 	
 	
 	

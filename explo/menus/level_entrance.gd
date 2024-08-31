@@ -6,6 +6,7 @@ var WORLY
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
+const some_particles = preload("res://explo/scenes/poof_level_animation.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if worl:

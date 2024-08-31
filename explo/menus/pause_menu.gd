@@ -4,13 +4,22 @@ var title = "default"
 
 @onready var number_label = $PauseControl/NumberLabel
 @onready var level_title = $PauseControl/LevelTitle
+
+
+@onready var continue_butt = $PauseControl/VBoxContainer/Continue
+@onready var back_to_hub_butt = $PauseControl/VBoxContainer/BackToHub
+@onready var main_menu_butt = $PauseControl/VBoxContainer/MainMenu
+
+const jeffrey_theme = preload("res://explo/menus/pause_theme.tres")
+const johnny_theme = preload("res://explo/menus/pause_theme_johnny.tres")
+
 #var hubby = preload("res://levels/hub.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	number_label.text = "Level " + get_tree().current_scene.name
 	Events.pls_share_title.connect(update_title)
 	
-	pass # Replace with function body.
+	johnnify()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +35,10 @@ func _input(event):
 	if event.is_action_pressed("back") and get_tree().paused:
 		print("na")
 		un_pause()
+		
+	if Input.is_action_just_pressed("musR"):
+		VariableManager.johnny_mode = !VariableManager.johnny_mode
+		johnnify()
 
 func un_pause():
 	print("yup")
@@ -44,3 +57,18 @@ func _on_back_to_hub_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://levels/hub.tscn")
 	#get_tree().change_scene_to_packed(hubby)
+
+
+func johnnify():
+	if VariableManager.johnny_mode:
+		number_label.add_theme_color_override("font_color", Color(0.263, 0.482, 0.851))
+		continue_butt.theme = johnny_theme
+		main_menu_butt.theme = johnny_theme
+		back_to_hub_butt.theme = johnny_theme
+	else:
+		number_label.add_theme_color_override("font_color", Color(0.722, 0.29, 0.29))
+		continue_butt.theme = jeffrey_theme
+		main_menu_butt.theme = jeffrey_theme
+		back_to_hub_butt.theme = jeffrey_theme
+	
+

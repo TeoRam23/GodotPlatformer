@@ -14,12 +14,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if dissa_id and Input.is_action_just_pressed("musR"):
-		activate_dissablock(3)
-
-
 func activate_dissablock(new_time):
 	delay_timer.wait_time = new_time
 	delay_timer.start()
