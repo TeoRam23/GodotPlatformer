@@ -136,5 +136,9 @@ collision_mask = 67
 modulate = Color(0, 1, 1, 0.580392)
 sprite_frames = SubResource("SpriteFrames_dgde0")
 
+[node name="GoneTimer" type="Timer" parent="."]
+wait_time = 15.0
+
 [connection signal="finished" from="ParticleHolder/ThrowDust" to="ParticleHolder" method="_on_throw_dust_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GoneTimer" to="." method="_on_gone_timer_timeout"]

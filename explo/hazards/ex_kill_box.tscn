@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlt2p8xv8rs6g"]
+
+[ext_resource type="Texture2D" uid="uid://dmapbgb0dd2br" path="res://assets/XmanX.png" id="1_jnhss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw3t7"]
+size = Vector2(16, 16)
+
+[node name="ExKillBox" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uw3t7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jnhss")

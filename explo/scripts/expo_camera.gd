@@ -2,6 +2,7 @@ extends Camera2D
 
 @export var random_strength = 2.5
 @export var shake_fade = 10.0
+@export var do_shake = true
 
 var rng = RandomNumberGenerator.new()
 
@@ -9,12 +10,15 @@ var shake_strength = 0.0
 var first_frame = true
 
 func _ready():
-	#Events.pls_shake.connect(apply_shake)
+	if do_shake:
+		Events.pls_shake.connect(apply_shake)
 	Events.pls_camera_limit.connect(set_my_limit)
 	await get_tree().create_timer(0.1).timeout
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	
+	offset.x = 0
 	if first_frame:
 		position_smoothing_enabled = true
 		first_frame = false
@@ -31,7 +35,14 @@ func _physics_process(delta):
 			return
 		offset = random_offset()
 		
-		
+	print("first: ", global_position)
+	
+	position = Vector2.ZERO
+	global_position.x = roundi(global_position.x)
+	global_position.y = roundi(global_position.y)
+	
+	print("second: ", global_position)
+	
 
 func apply_shake():
 	shake_strength = random_strength

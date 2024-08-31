@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bflgygrmh01rj"]
+[gd_scene load_steps=24 format=3 uid="uid://bflgygrmh01rj"]
 
 [ext_resource type="PackedScene" uid="uid://cigdcpwal2jej" path="res://explo/hazards/spike_directions/long_spike_down.tscn" id="1_8pwis"]
 [ext_resource type="PackedScene" uid="uid://c50ud60vlnrxj" path="res://explo/hazards/spike_directions/long_spike_up.tscn" id="2_l3ixs"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://brebgkgjdnidd" path="res://explo/destructablocks/regen/regen_line_v.tscn" id="15_t5xwo"]
 [ext_resource type="PackedScene" uid="uid://dqwy785788h2d" path="res://explo/destructablocks/regen/regen_big_block.tscn" id="16_mruhc"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="17_w4ncl"]
+[ext_resource type="PackedScene" uid="uid://dlt2p8xv8rs6g" path="res://explo/hazards/ex_kill_box.tscn" id="18_xgthb"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s7f3i"]
 resource_name = "Spikes"
@@ -46,6 +47,7 @@ scenes/4/scene = ExtResource("16_mruhc")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kv1ea"]
 resource_name = "Div"
 scenes/1/scene = ExtResource("17_w4ncl")
+scenes/2/scene = ExtResource("18_xgthb")
 
 [sub_resource type="TileSet" id="TileSet_a1uwm"]
 sources/3 = SubResource("TileSetScenesCollectionSource_s7f3i")

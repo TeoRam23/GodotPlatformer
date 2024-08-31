@@ -27,6 +27,7 @@ var mouse_tracker
 @onready var timer = $Timer
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var particle_holder = $ParticleHolder
+@onready var gone_timer = $GoneTimer
 
 const EX_PNG = preload("res://explo/scenes/ex_png.tscn")
 
@@ -202,6 +203,7 @@ func launch():
 	visible = true
 	
 	timer.start()
+	gone_timer.start()
 
 #func _on_level_check_body_entered(body):
 	#if explosion_area.get_overlapping_bodies():
@@ -253,3 +255,9 @@ func get_launch_angle(bod):
 
 func _on_timer_timeout():
 	print("1!")
+
+
+func _on_gone_timer_timeout():
+	print("It's goning time!")
+	print("*gones all over the place* *pow*")
+	queue_free()
