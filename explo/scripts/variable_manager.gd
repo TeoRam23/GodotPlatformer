@@ -8,6 +8,8 @@ static var johnny_mode = false
 
 static var current_title_time = 3
 
+static var mouse_warped = Vector2.ZERO
+
 signal johnny_collect
 
 # Called when the node enters the scene tree for the first time.

@@ -108,8 +108,16 @@ func _input(event):
 			#elif mouse_pos.y >= screen_pos.y + windows_size.y * 0.5 - 0.5:
 				#new_mouse_pos.y = 1
 			
+			VariableManager.mouse_warped = Vector2(0, 0)
 			if new_mouse_pos != old_mouse_pos:
 				Input.warp_mouse(new_mouse_pos)
+				
+				if new_mouse_pos.x != old_mouse_pos.x:
+					VariableManager.mouse_warped.x = new_mouse_pos.x
+				if new_mouse_pos.y != old_mouse_pos.y:
+					VariableManager.mouse_warped.y = new_mouse_pos.y
+				
+				print("warped mate")
 			########## Spørre chatgpt om ideer for å forbedre? ja pls jeg liker ikke dette :[
 		
 

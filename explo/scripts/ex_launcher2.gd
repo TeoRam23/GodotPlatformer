@@ -133,22 +133,34 @@ func disable_me():
 	
 func _input(event):
 	if event is InputEventMouseMotion and not Input.is_action_pressed("cancel"):
-		var window = get_window().size
-		if abs(event.relative.x) < window.x *0.1 and abs(event.relative.y) < window.y *0.1:
-			mouse_tracker.global_position += event.relative
+		
+		mouse_tracker.global_position += event.relative
+		
+		if VariableManager.mouse_warped.x or VariableManager.mouse_warped.y:
+			var window = get_window().size
+			var checker = VariableManager.mouse_warped
 			
-			var to_object = mouse_tracker.position - Vector2.ZERO
-			var differanse = to_object.length()
-			var radius = 75
-			#print(differanse)
-			if differanse > radius:
-				mouse_tracker.position = to_object.normalized() * radius
-				
-			mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)
-			mouse_tracker.position.y = snappedf(mouse_tracker.position.y, 0.5)
+			if checker.x == 2:
+				mouse_tracker.global_position.x += 640
+			elif checker.x >= window.x * 0.5:
+				mouse_tracker.global_position.x -= 640
+			if checker.y == 2:
+				mouse_tracker.global_position.y += 360
+			elif checker.y >= window.y * 0.5:
+				mouse_tracker.global_position.y -= 360
+		
+		var to_object = mouse_tracker.position - Vector2.ZERO
+		var differanse = to_object.length()
+		var radius = 75
+		#print(differanse)
+		if differanse > radius:
+			mouse_tracker.position = to_object.normalized() * radius
 			
-			mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
-			mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
+		mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)
+		mouse_tracker.position.y = snappedf(mouse_tracker.position.y, 0.5)
+		
+		mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
+		mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
 			
 			#print(mouse_tracker.position)
 			# For å begrense pekeren
