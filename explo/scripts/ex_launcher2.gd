@@ -134,21 +134,28 @@ func disable_me():
 func _input(event):
 	if event is InputEventMouseMotion and not Input.is_action_pressed("cancel"):
 		
-		mouse_tracker.global_position += event.relative
 		
-		if VariableManager.mouse_warped.x or VariableManager.mouse_warped.y:
-			var window = get_window().size
-			var checker = VariableManager.mouse_warped
+		mouse_tracker.global_position.x += event.position.x - 320.0
+		mouse_tracker.global_position.y += event.position.y - 180.0
+		Input.warp_mouse(get_window().size * 0.5)
+		
+		## Tidligere verson av å flytte pekeren
+		#elif 2 == 1:
+			#mouse_tracker.global_position += event.relative
+			#if VariableManager.mouse_warped.x or VariableManager.mouse_warped.y:
+				#var window = get_window().size
+				#var checker = VariableManager.mouse_warped
+				#if checker.x == 2:
+					#mouse_tracker.global_position.x += 640
+				#elif checker.x >= window.x * 0.5:
+					#mouse_tracker.global_position.x -= 640
+				#if checker.y == 2:
+					#mouse_tracker.global_position.y += 360
+				#elif checker.y >= window.y * 0.5:
+					#mouse_tracker.global_position.y -= 360
 			
-			if checker.x == 2:
-				mouse_tracker.global_position.x += 640
-			elif checker.x >= window.x * 0.5:
-				mouse_tracker.global_position.x -= 640
-			if checker.y == 2:
-				mouse_tracker.global_position.y += 360
-			elif checker.y >= window.y * 0.5:
-				mouse_tracker.global_position.y -= 360
-		
+			
+			
 		var to_object = mouse_tracker.position - Vector2.ZERO
 		var differanse = to_object.length()
 		var radius = 75

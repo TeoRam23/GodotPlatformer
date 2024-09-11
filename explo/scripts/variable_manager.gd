@@ -8,7 +8,7 @@ static var johnny_mode = false
 
 static var current_title_time = 3
 
-static var mouse_warped = Vector2.ZERO
+#static var mouse_warped = Vector2.ZERO
 
 signal johnny_collect
 

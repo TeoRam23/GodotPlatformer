@@ -56,6 +56,7 @@ func un_pause():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	pause_menu.visible = false
 	level_overlay.show_rest(false)
+	Input.warp_mouse(get_window().size * 0.5)
 
 func _input(event):
 	if event.is_action_pressed("cancel") and not waiting:
@@ -75,7 +76,8 @@ func _input(event):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		
-	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
+	# Dette er en måte å få pila til å loope rundt skjermen. Jeg trenger det ikke mer, men det er her hvis jeg trenger det senere!
+	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE and 1==2:
 		if event is InputEventMouseMotion:
 			var screen_pos = get_screen_transform().origin * -1
 			var mouse_pos = get_global_mouse_position()
@@ -109,7 +111,7 @@ func _input(event):
 				#new_mouse_pos.y = 1
 			
 			VariableManager.mouse_warped = Vector2(0, 0)
-			if new_mouse_pos != old_mouse_pos:
+			if new_mouse_pos != old_mouse_pos and 2 == 1:
 				Input.warp_mouse(new_mouse_pos)
 				
 				if new_mouse_pos.x != old_mouse_pos.x:
