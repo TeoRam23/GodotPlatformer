@@ -11,7 +11,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5ejj"]
 size = Vector2(943, 392)
 
-[node name="World" instance=ExtResource("1_0gpp6")]
+[node name="2-18" instance=ExtResource("1_0gpp6")]
+title = "Gliiding pumpkins"
 next_level = ExtResource("2_p2xvx")
 
 [node name="2-18" type="Sprite2D" parent="." index="0"]

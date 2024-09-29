@@ -11,6 +11,7 @@
 size = Vector2(832, 424)
 
 [node name="2-16" instance=ExtResource("1_47p57")]
+title = "Dips"
 next_level = ExtResource("2_0iv5q")
 
 [node name="2-16" type="Sprite2D" parent="." index="0"]

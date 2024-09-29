@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4p6gfoiyp5fk"]
+[gd_scene load_steps=14 format=3 uid="uid://c4p6gfoiyp5fk"]
 
 [ext_resource type="Script" path="res://explo/menus/level_entrance.gd" id="1_hdmr7"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="1_rg3fe"]
 [ext_resource type="Texture2D" uid="uid://bdtf7tvjg7mdi" path="res://assets/level_end.png" id="2_8dmga"]
-[ext_resource type="PackedScene" uid="uid://bqe3ke730mm3j" path="res://explo/menus/select_world_one.tscn" id="2_xh7et"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fukx"]
 atlas = ExtResource("1_rg3fe")
@@ -77,8 +76,7 @@ process_mode = 3
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_hdmr7")
-world_select = ExtResource("2_xh7et")
-worl = "res://explo/menus/select_world_one.tscn"
+worl = "res://explo/menus/select_world_two.tscn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)

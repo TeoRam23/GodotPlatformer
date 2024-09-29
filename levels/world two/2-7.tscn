@@ -9,7 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mko13"]
 size = Vector2(640, 424)
 
-[node name="World" instance=ExtResource("1_oi16h")]
+[node name="2-7" instance=ExtResource("1_oi16h")]
+title = "Careful, they bite"
 next_level = ExtResource("2_cumbe")
 
 [node name="2-7" type="Sprite2D" parent="." index="0"]

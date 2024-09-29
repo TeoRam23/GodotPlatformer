@@ -9,7 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4nr0"]
 size = Vector2(640, 424)
 
-[node name="World" instance=ExtResource("1_pu1bb")]
+[node name="2-2" instance=ExtResource("1_pu1bb")]
+title = "Apple sealed meat"
 next_level = ExtResource("2_kxcbk")
 
 [node name="2-2" type="Sprite2D" parent="." index="0"]

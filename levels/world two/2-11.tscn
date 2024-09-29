@@ -9,7 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t18va"]
 size = Vector2(4512, 360)
 
-[node name="World" instance=ExtResource("1_geigl")]
+[node name="2-11" instance=ExtResource("1_geigl")]
+title = "Glide away!"
 next_level = ExtResource("2_63dab")
 
 [node name="2-11" type="Sprite2D" parent="." index="0"]

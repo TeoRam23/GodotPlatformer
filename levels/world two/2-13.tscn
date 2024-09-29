@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="5_rn5gv"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="6_cxekw"]
 
-[node name="World" instance=ExtResource("1_by4uo")]
+[node name="2-13" instance=ExtResource("1_by4uo")]
+title = "Below story battle"
 next_level = ExtResource("2_skc6n")
 
 [node name="2-13" type="Sprite2D" parent="." index="0"]

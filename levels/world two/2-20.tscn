@@ -10,7 +10,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6r5n"]
 size = Vector2(640, 536)
 
-[node name="World" instance=ExtResource("1_xmoii")]
+[node name="2-20" instance=ExtResource("1_xmoii")]
+title = "Apps"
 next_level = ExtResource("2_x1j51")
 
 [node name="2-20" type="Sprite2D" parent="." index="0"]

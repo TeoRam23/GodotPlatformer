@@ -13,7 +13,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cob5n"]
 size = Vector2(2927, 387)
 
-[node name="World" instance=ExtResource("1_y6h5g")]
+[node name="2-19" instance=ExtResource("1_y6h5g")]
+title = "The grand pumpkin race!"
 next_level = ExtResource("2_27soc")
 
 [node name="2-19" type="Sprite2D" parent="." index="0"]

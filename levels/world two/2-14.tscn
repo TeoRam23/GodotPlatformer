@@ -11,7 +11,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uul3x"]
 size = Vector2(640, 440)
 
-[node name="World" instance=ExtResource("1_hy8gc")]
+[node name="2-14" instance=ExtResource("1_hy8gc")]
+title = "Is Johnny worth it?"
 next_level = ExtResource("2_afd5t")
 
 [node name="2-14" type="Sprite2D" parent="." index="0"]

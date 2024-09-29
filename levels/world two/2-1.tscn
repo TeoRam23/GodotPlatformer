@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ropqoou6ayid" path="res://levels/world two/2-2.tscn" id="2_pyy6m"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="3_0cx7b"]
 
-[node name="World" instance=ExtResource("1_3054k")]
+[node name="2-1" instance=ExtResource("1_3054k")]
+title = "Apple harvest"
 next_level = ExtResource("2_pyy6m")
 
 [node name="2-1" type="Sprite2D" parent="." index="0"]

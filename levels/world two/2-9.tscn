@@ -9,7 +9,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8646e"]
 size = Vector2(1200, 407)
 
-[node name="World" instance=ExtResource("1_qfe8c")]
+[node name="2-9" instance=ExtResource("1_qfe8c")]
+title = "Gliding above the spike field"
 next_level = ExtResource("2_ywm3t")
 
 [node name="2-9" type="Sprite2D" parent="." index="0"]

@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b0ifwanw44b2i" path="res://levels/world one/1-2.tscn" id="2_lx76i"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="2_rkft8"]
 
-[node name="World" instance=ExtResource("1_ait8c")]
+[node name="1-1" instance=ExtResource("1_ait8c")]
+title = "Bushy Mound"
 next_level = ExtResource("2_lx76i")
 
 [node name="ParallaxBackground" parent="." index="0"]
