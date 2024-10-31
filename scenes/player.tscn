@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=42 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -238,6 +238,15 @@ fill_from = Vector2(0.5, 0.5)
 _data = [Vector2(0, 0.527472), 0.0, 2.82051, 0, 0, Vector2(0.409091, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.07692, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Curve" id="Curve_svgfd"]
+max_value = 100.0
+_data = [Vector2(0, 91.9255), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_0c0wy"]
+_data = [Vector2(0, 0.384317), 0.0, 0.859131, 0, 0, Vector2(0.458647, 1), -0.0671202, -0.0671202, 0, 0, Vector2(0.969925, 0), -3.32257, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 2
@@ -357,7 +366,7 @@ length = 500
 position = Vector2(0, -3)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.517
+wait_time = 2.067
 
 [node name="LaunchParticle" type="CPUParticles2D" parent="."]
 modulate = Color(0.839216, 0.52549, 0.501961, 1)
@@ -416,6 +425,51 @@ scale_amount_min = 0.35
 scale_amount_max = 0.37
 scale_amount_curve = SubResource("Curve_bx641")
 color = Color(0.81, 0.324, 0.34, 1)
+
+[node name="GroundPoofParticle" type="CPUParticles2D" parent="."]
+position = Vector2(0, 5)
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+lifetime_randomness = 0.39
+emission_shape = 5
+emission_points = PackedVector2Array(0, 0, 0, 0)
+emission_normals = PackedVector2Array(1, -0.2, -1, -0.2)
+emission_colors = PackedColorArray()
+spread = 11.02
+gravity = Vector2(0, 0)
+initial_velocity_min = 34.98
+initial_velocity_max = 69.94
+damping_min = 4.196
+damping_max = 4.196
+damping_curve = SubResource("Curve_svgfd")
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_0c0wy")
+
+[node name="GroundPoofParticle2" type="CPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, 5)
+emitting = false
+amount = 7
+lifetime = 0.7
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+lifetime_randomness = 0.39
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+damping_min = 4.196
+damping_max = 4.196
+damping_curve = SubResource("Curve_svgfd")
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_0c0wy")
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]

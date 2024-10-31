@@ -75,9 +75,8 @@ polygon = PackedVector2Array(-14, -10, -22, 0, -14, 10)
 [node name="RotationNeglecter" type="Node2D" parent="."]
 
 [node name="MouseTracker" type="Node2D" parent="RotationNeglecter"]
-position = Vector2(0, 24)
+position = Vector2(0, 75)
 
 [node name="MouseSprite" type="Sprite2D" parent="RotationNeglecter"]
 z_index = 130
-position = Vector2(0, 24)
 texture = SubResource("AtlasTexture_txxeq")

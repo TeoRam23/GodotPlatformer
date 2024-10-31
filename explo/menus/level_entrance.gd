@@ -28,12 +28,13 @@ func _input(event):
 
 
 func show_selection():
+	if get_tree().paused: return
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.warp_mouse(get_window().size * 0.5)
 	WORLY.visible = true
 func hide_selection():
-	get_tree().paused = false
+	#get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	WORLY.visible = false
 	Input.warp_mouse(get_window().size * 0.5)

@@ -53,5 +53,5 @@ initial_velocity_max = 125.0
 scale_amount_min = 3.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_kwexm")
-color = Color(0.827451, 0.529412, 0.282353, 1)
+color = Color(0.796078, 0.647059, 0.262745, 1)
 script = ExtResource("3_mlk2w")

@@ -10,7 +10,7 @@
 size = Vector2(831, 360)
 
 [node name="2-17" instance=ExtResource("1_rex16")]
-title = "Arrows and apple salad"
+title = "Carrots and apple salad"
 next_level = ExtResource("2_xi6n0")
 
 [node name="2-17" type="Sprite2D" parent="." index="0"]

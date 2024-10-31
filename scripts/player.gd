@@ -39,10 +39,13 @@ var prevelocity = Vector2(0.0, 0.0)
 
 @onready var launch_particle = $LaunchParticle
 @onready var dead_particle = $DeadParticle2
+@onready var ground_poof_particle = $GroundPoofParticle2
 
 @export var debug = true
 
 @onready var timer = $Timer
+
+var first_frame = true
 
 func _ready():
 	main_data = movement_data
@@ -77,6 +80,7 @@ func _physics_process(delta):
 	apply_air_resistance(input_axis, delta)
 	handle_gigadash(delta, input_axis)
 	update_animation(input_axis)
+	
 	var was_on_floor = is_on_floor()
 
 #	print("1, ",velocity, " og ", prevelocity) 
@@ -90,6 +94,12 @@ func _physics_process(delta):
 		prevelocity.x = -movement_data.max_speed
 	
 	move_and_slide()
+	
+	if is_on_floor() and !was_on_floor and !first_frame:
+		print("WUÆÆÆÆÆÆÆ")
+		ground_poof_particle.emitting = true
+		
+		
 #	print("2, ",velocity, " og ", prevelocity)
 	var just_left_ledge = was_on_floor and not is_on_floor() and prevelocity.y >= 0
 	if just_left_ledge:
@@ -107,8 +117,10 @@ func _physics_process(delta):
 		timer.stop()
 	if !is_on_floor() and timer.time_left <= 0:
 		timer.start()
-	if timer.time_left < 1.517 - 0.667 and timer.time_left > 1.517 - 0.750:
+	if timer.time_left < 2.067 - 0.733 and timer.time_left > 2.067 - 0.783:
 		print("PEAK")
+	
+	first_frame = false
 
 func apply_gravity(delta):
 	#print(prevelocity.y)
@@ -122,7 +134,7 @@ func apply_gravity(delta):
 			prevelocity.y = 0
 	if not is_on_floor():
 		if prevelocity.y > 0:
-			prevelocity.y += gravity * movement_data.gravity_scale * delta * movement_data.glide_multiplier
+			prevelocity.y += gravity * movement_data.gravity_scale * delta# * movement_data.glide_multiplier
 		else:
 			prevelocity.y += gravity * movement_data.gravity_scale * delta
 		if prevelocity.y > movement_data.max_fall_speed:
@@ -246,10 +258,7 @@ func apply_air_resistance(input_axis, delta):
 
 func update_animation(input_axis):
 	if input_axis != 0:
-		if gravity_direction == 2:
-			animated_sprite_2d.flip_h = (input_axis < 0)
-		else:
-			animated_sprite_2d.flip_h = (input_axis > 0)
+		animated_sprite_2d.flip_h = (input_axis > 0)
 		
 		if abs(prevelocity.x) > movement_data.speed * 8:
 			animated_sprite_2d.speed_scale = 4
@@ -283,11 +292,11 @@ func disable_player():
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
 	launch_particle.emitting = false
+	dead_particle.emitting = true
 
 func i_died():
 	if is_physics_processing():
 		disable_player()
-		dead_particle.emitting = true
 		#get_tree().paused = true
 		Events.player_died()
 		#get_tree().reload_current_scene()
@@ -719,4 +728,4 @@ func _input(event):
 		johnnify()
 
 func _on_timer_timeout():
-	print("1.5!")
+	print("BOTT!")

@@ -12,7 +12,7 @@
 size = Vector2(943, 392)
 
 [node name="2-18" instance=ExtResource("1_0gpp6")]
-title = "Gliiding pumpkins"
+title = "Gliding pumpkins"
 next_level = ExtResource("2_p2xvx")
 
 [node name="2-18" type="Sprite2D" parent="." index="0"]

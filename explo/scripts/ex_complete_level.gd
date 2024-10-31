@@ -8,6 +8,7 @@ extends Area2D
 func _ready():
 	check_for_chicks()
 	Events.pls_activate_ender.connect(i_will_activate)
+	#Events.level_completed.connect(animate_end)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,3 +37,8 @@ func i_will_activate():
 
 func _on_swirl_sprite_animation_looped():
 	swirl_sprite.flip_h = !swirl_sprite.flip_h
+	
+# Dette var for å gjøre slutten lysere på slutten
+func animate_end():
+	swirl_sprite.modulate = Color(1, 1, 1, 0.816)
+	

@@ -20,6 +20,7 @@ func _ready():
 	Events.level_completed.connect(show_level_completed) #sjekker om noe har sendt "level_completed"
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.warp_mouse(get_window().size * 0.5)
 	
 	#level_overlay.update_title(title)
 	Events.share_title(title)
