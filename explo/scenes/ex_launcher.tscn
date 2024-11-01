@@ -70,6 +70,7 @@ scale = Vector2(0.05, 0.05)
 texture = SubResource("GradientTexture2D_euyjl")
 
 [node name="PolygonArrow" type="Polygon2D" parent="."]
+z_index = 129
 polygon = PackedVector2Array(-14, -10, -22, 0, -14, 10)
 
 [node name="RotationNeglecter" type="Node2D" parent="."]

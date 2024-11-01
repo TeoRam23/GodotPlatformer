@@ -285,6 +285,10 @@ func _on_hazard_detector_area_entered(area):
 	call_deferred("i_died")
 	
 func _on_hazard_detector_body_entered(body):
+	if body.is_in_group("ForegroundGroup"):
+		print("WE GOT THE MAP")
+		body.fade_away()
+		return
 	call_deferred("i_died")
 
 
