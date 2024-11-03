@@ -1,0 +1,86 @@
+extends Node
+
+var save_path = "user://variable.save"
+
+static var all_time = 0.0
+static var deaths = 0
+static var johnnies = 0
+
+static var johnny_mode = false
+
+static var current_title_time = 3
+
+#static var mouse_warped = Vector2.ZERO
+
+# array med alle banene som er tilgjengelig og deres tid. -1 tid viser at banen ikke er klart enda
+var levels_completed = [{"id": &"1-1", "completed": false, "best_time": -1.0}]
+
+signal johnny_collect
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	load_variables()
+	#save_variables()
+	
+	print(levels_completed)
+	
+	Events.pls_player_died.connect(up_the_death)
+	
+
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func up_the_death():
+	print("UPDATED")
+	deaths += 1
+
+func up_the_johnnies():
+	johnnies += 1
+	Events.johnny_collected()
+	save_variables()
+
+
+func find_level(level_id) -> Dictionary:
+	# finner banen med id = level_id
+	for level in levels_completed:
+		if level.id == level_id:
+			return level
+	return {}
+
+func update_level_to(updated_level):
+	for level in levels_completed:
+		
+		if level.id == updated_level.id:
+			if !level.completed:
+				level.completed = updated_level.completed
+				level.best_time = updated_level.best_time
+			elif updated_level.best_time < level.best_time:
+				level.best_time = updated_level.best_time
+			return
+	
+	levels_completed.append(updated_level)
+
+
+# Saver variables til variable.save
+func save_variables():
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(all_time)
+	file.store_var(deaths)
+	file.store_var(johnnies)
+	file.store_var(johnny_mode)
+	file.store_var(levels_completed)
+	file.close()
+
+# Loader variables fra variable.save
+func load_variables():
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		all_time = file.get_var()
+		deaths = file.get_var()
+		johnnies = file.get_var()
+		johnny_mode = file.get_var()
+		levels_completed = file.get_var()
+		file.close()
+	else:
+		print('Welp, no save here ¯\\_ツ)_/¯')
+		return

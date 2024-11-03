@@ -20,6 +20,7 @@ func _ready():
 	Events.pls_resetting_level.connect(update_global_title_timer)
 	
 	update_deaths()
+	update_johnny()
 	
 	var curtime = VariableManager.current_title_time
 	if curtime != 0:

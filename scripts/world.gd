@@ -26,6 +26,10 @@ func _ready():
 	Events.share_title(title)
 	black_screen.reveal_level()
 	
+	# forteller manager at denne banen er tilgjengelig, men er ikke klart enda
+	var this_level = {"id": get_tree().current_scene.name, "completed": false, "best_time": -1.0}
+	VariableManager.update_level_to(this_level)
+	
 #func _process(delta):
 	#if first_frame:
 		#reveal_level()
@@ -48,6 +52,14 @@ func show_level_completed():
 	#await black_screen.transition_level()
 	#await LevelTransition.fade_to_black()
 	VariableManager.current_title_time = 3
+	
+	
+	
+	var level_time = level_overlay.time_label.time_elapsed
+	# id-en blir &"ekte_id" og det er helt greit at & er der, det går bra
+	var this_level = {"id": get_tree().current_scene.name, "completed": true, "best_time": level_time}
+	VariableManager.update_level_to(this_level)
+	VariableManager.save_variables()
 	
 	get_tree().change_scene_to_packed(next_level)
 	#LevelTransition.fade_from_black()
