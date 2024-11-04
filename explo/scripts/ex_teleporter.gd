@@ -22,7 +22,7 @@ func _ready():
 		if port.teleport_id == teleport_id:
 			if port != self and (not port.porter_crime or port.porter_crime == self):
 				porter_crime = port
-				print("found ya")
+				#print("found ya")
 				break
 	if !porter_crime:
 		modulate = Color(0.79, 0.79, 0.79, 0.604)

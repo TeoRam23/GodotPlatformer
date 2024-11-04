@@ -39,12 +39,12 @@ func _physics_process(delta):
 	#print("The Frizz")
 	move_spawn_point(true, delta)
 	if Input.is_action_just_pressed("musL") or Input.is_action_pressed("musM"):
-		print("LAUNCH")
+		#print("LAUNCH")
 		eject_proj()
 	
 
 func eject_proj():
-	print("LAUNCHING 1! ", process_priority)
+	#print("LAUNCHING 1! ", process_priority)
 	#var number = get_tree().get_nodes_in_group("projectile")
 	if proj_timer.time_left > 0:# and number.size() > 1:
 		return

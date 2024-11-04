@@ -17,7 +17,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("doin it twice?")
+	#print("doin it twice?")
 	remove_child(ex_glider_child)
 	body.add_child(ex_glider_child)
 	ex_glider_child.glide_parent()

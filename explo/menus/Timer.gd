@@ -36,6 +36,7 @@ func update_time(delta):
 func stop_time():
 	if all_timer:
 		VariableManager.all_time = time_elapsed
+		VariableManager.save_variables()
 	time_stop = true
 func start_time():
 	time_stop = false

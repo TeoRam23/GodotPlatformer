@@ -34,7 +34,7 @@ func glide_parent():
 
 func poof_away():
 	if get_parent() == parent:
-		print("ye did ti mate")
+		#print("ye did ti mate")
 		parent.movement_data = parent.main_data
 		
 		var old_position = global_position

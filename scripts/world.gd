@@ -137,6 +137,10 @@ func _input(event):
 		
 
 
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Events.general_leaving()
+
 #func reveal_level():
 	#black_screen.visible = true
 	#var tween = create_tween()

@@ -96,7 +96,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if is_on_floor() and !was_on_floor and !first_frame:
-		print("WUÆÆÆÆÆÆÆ")
+		#print("WUÆÆÆÆÆÆÆ")
 		ground_poof_particle.emitting = true
 		
 		
@@ -117,8 +117,8 @@ func _physics_process(delta):
 		timer.stop()
 	if !is_on_floor() and timer.time_left <= 0:
 		timer.start()
-	if timer.time_left < 2.067 - 0.733 and timer.time_left > 2.067 - 0.783:
-		print("PEAK")
+	#if timer.time_left < 2.067 - 0.733 and timer.time_left > 2.067 - 0.783:
+		#print("PEAK")
 	
 	first_frame = false
 
@@ -611,7 +611,7 @@ func gravity_calculation():
 
 
 func launch_me(angle, power):
-	print("MY ANGLE: ",rad_to_deg(angle))
+	#print("MY ANGLE: ",rad_to_deg(angle))
 	#power = -410
 	var cuisine = cos(angle)
 	var sine = sin(angle)
@@ -625,13 +625,13 @@ func launch_me(angle, power):
 	#launch_particle.restart()
 	launch_particle.emitting = true
 	
-	print(prevelocity)
+	#print(prevelocity)
 	#if prevelocity.y < power * 1:
 		#prevelocity.y = power * 1
 	
 	just_launched = true
 	
-	print("I hast launched 3 ", process_priority)
+	#print("I hast launched 3 ", process_priority)
 
 
 func button_presses(delta):
@@ -731,5 +731,5 @@ func _input(event):
 		VariableManager.johnny_mode = !VariableManager.johnny_mode
 		johnnify()
 
-func _on_timer_timeout():
-	print("BOTT!")
+#func _on_timer_timeout():
+	#print("BOTT!")

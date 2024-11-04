@@ -13,7 +13,8 @@ static var current_title_time = 3
 #static var mouse_warped = Vector2.ZERO
 
 # array med alle banene som er tilgjengelig og deres tid. -1 tid viser at banen ikke er klart enda
-var levels_completed = [{"id": &"1-1", "completed": false, "best_time": -1.0}]
+#var levels_completed = [{"id": &"1-1", "completed": false, "best_time": -1.0}]
+var levels_completed = []
 
 signal johnny_collect
 

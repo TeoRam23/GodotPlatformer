@@ -183,10 +183,10 @@ func launch():
 	#process_physics_priority = -1
 	has_launched = true
 	just_launched = true
-	print("*lunches*")
+	#print("*lunches*")
 	
 	if explosion_body.is_on_wall():
-		print("*explodes* ", explosion_body.global_position)
+		#print("*explodes* ", explosion_body.global_position)
 		do_explosion = true
 		#position = get_last_slide_collision().get_position()
 		return
@@ -224,19 +224,19 @@ func explode_pls():
 		var bodies = explosion_area.get_overlapping_bodies()
 		
 		# checks if body can explode or gets pushed
-		print("Bod: ", bodies)
+		#print("Bod: ", bodies)
 		for bod in bodies:
 			if bod.has_method("explode"):
-				print("expoddr")
+				#print("expoddr")
 				bod.explode()
 			elif bod.has_method("launch_me"):
 				var angle = get_launch_angle(bod)
-				print(rad_to_deg(angle))
+				#print(rad_to_deg(angle))
 				bod.launch_me(angle, launch_power)
 	var explod = EX_EXPLOSION.instantiate()
 	explod.position = explosion_area.global_position
-	print("area: ",explosion_area.global_position, ", bod: ", explosion_body.global_position)
-	print("Mus: ", get_global_mouse_position())
+	#print("area: ",explosion_area.global_position, ", bod: ", explosion_body.global_position)
+	#print("Mus: ", get_global_mouse_position())
 	my_root.add_child(explod)
 	
 	remove_child(particle_holder)
@@ -253,11 +253,11 @@ func get_launch_angle(bod):
 	return angle
 
 
-func _on_timer_timeout():
-	print("1!")
+#func _on_timer_timeout():
+	#print("1!")
 
 
 func _on_gone_timer_timeout():
-	print("It's goning time!")
-	print("*gones all over the place* *pow*")
+	#print("It's goning time!")
+	#print("*gones all over the place* *pow*")
 	queue_free()
