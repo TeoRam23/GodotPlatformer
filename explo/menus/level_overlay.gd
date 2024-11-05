@@ -12,6 +12,10 @@ extends CanvasLayer
 @onready var level_title_label = $LevelTitleBox/LevelTitleLabel
 @onready var title_timer = $LevelTitleBox/TitleTimer
 
+var our_johnnies = 0
+
+@export var show_extras = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.pls_player_died.connect(update_deaths)
@@ -20,13 +24,17 @@ func _ready():
 	Events.pls_resetting_level.connect(update_global_title_timer)
 	
 	update_deaths()
-	update_johnny()
+	our_johnnies = VariableManager.johnnies
+	johnny_label.text = "x " + str(our_johnnies)
 	
 	var curtime = VariableManager.current_title_time
 	if curtime != 0:
 		level_title_box.visible = true
 		title_timer.wait_time = curtime
 		title_timer.start()
+	
+	if show_extras:
+		other_container.visible = true
 
 
 
@@ -35,11 +43,13 @@ func update_deaths():
 	print(VariableManager.deaths)
 	
 func update_johnny():
-	johnny_label.text = "x " + str(VariableManager.johnnies)
+	our_johnnies += 1
+	johnny_label.text = "x " + str(our_johnnies)
 	
 
 func show_rest(toggle):
-	other_container.visible = toggle
+	if !show_extras:
+		other_container.visible = toggle
 
 func update_title(nytitle):
 	level_title_label.text = nytitle

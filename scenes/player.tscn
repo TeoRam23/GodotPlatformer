@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=45 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -110,21 +110,21 @@ shader_parameter/origin6 = Color(0.2, 0.247059, 0.6, 1)
 shader_parameter/new6 = Color(0.560784, 0.105882, 0.27451, 1)
 shader_parameter/epsilon = 0.001
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kt5lr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmth4"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(80, 0, 16, 16)
+region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iiev7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l1xl"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(64, 0, 16, 16)
+region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owpdj"]
 atlas = ExtResource("4_dsh50")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvcss"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j8sb"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca3nu"]
 atlas = ExtResource("4_dsh50")
@@ -142,11 +142,23 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("4_dsh50")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrve3"]
+atlas = ExtResource("4_dsh50")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b47g"]
+atlas = ExtResource("4_dsh50")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mu78"]
+atlas = ExtResource("4_dsh50")
+region = Rect2(32, 16, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgw7j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kt5lr")
+"texture": SubResource("AtlasTexture_qmth4")
 }],
 "loop": true,
 "name": &"crouch",
@@ -154,7 +166,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iiev7")
+"texture": SubResource("AtlasTexture_4l1xl")
 }],
 "loop": true,
 "name": &"fall",
@@ -170,7 +182,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vvcss")
+"texture": SubResource("AtlasTexture_0j8sb")
 }],
 "loop": false,
 "name": &"jump",
@@ -191,6 +203,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrve3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b47g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mu78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b47g")
+}],
+"loop": true,
+"name": &"runner",
 "speed": 8.0
 }]
 

@@ -260,13 +260,16 @@ func update_animation(input_axis):
 	if input_axis != 0:
 		animated_sprite_2d.flip_h = (input_axis > 0)
 		
+		
 		if abs(prevelocity.x) > movement_data.speed * 8:
 			animated_sprite_2d.speed_scale = 4
+			animated_sprite_2d.play("runner")
 		elif abs(prevelocity.x) > movement_data.speed * 2:
 			animated_sprite_2d.speed_scale = 2
+			animated_sprite_2d.play("run")
 		else:
 			animated_sprite_2d.speed_scale = 1
-		animated_sprite_2d.play("run")
+			animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
 		

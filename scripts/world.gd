@@ -9,6 +9,8 @@ extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var level_overlay = $LevelOverlay
 
+var johnny_collected = false
+
 var first_frame = true
 var waiting = false
 
@@ -22,12 +24,15 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	Input.warp_mouse(get_window().size * 0.5)
 	
+	
 	#level_overlay.update_title(title)
 	Events.share_title(title)
 	black_screen.reveal_level()
 	
+	Events.pls_johnny_collected.connect(lets_collect_johnny)
+	
 	# forteller manager at denne banen er tilgjengelig, men er ikke klart enda
-	var this_level = {"id": get_tree().current_scene.name, "completed": false, "best_time": -1.0}
+	var this_level = {"id": get_tree().current_scene.name, "completed": false, "best_time": -1.0, "johnny_collected": false}
 	VariableManager.update_level_to(this_level)
 	
 #func _process(delta):
@@ -53,11 +58,12 @@ func show_level_completed():
 	#await LevelTransition.fade_to_black()
 	VariableManager.current_title_time = 3
 	
-	
+	if johnny_collected:
+		VariableManager.up_the_johnnies()
 	
 	var level_time = level_overlay.time_label.time_elapsed
 	# id-en blir &"ekte_id" og det er helt greit at & er der, det går bra
-	var this_level = {"id": get_tree().current_scene.name, "completed": true, "best_time": level_time}
+	var this_level = {"id": get_tree().current_scene.name, "completed": true, "best_time": level_time, "johnny_collected": johnny_collected}
 	VariableManager.update_level_to(this_level)
 	VariableManager.save_variables()
 	
@@ -136,6 +142,8 @@ func _input(event):
 			########## Spørre chatgpt om ideer for å forbedre? ja pls jeg liker ikke dette :[
 		
 
+func lets_collect_johnny():
+	johnny_collected = true
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

@@ -1,9 +1,17 @@
 extends Area2D
 
 @onready var sploot_particle = $SplootParticle
+@onready var animated_sprite = $AnimatedSprite2D
+
+var im_taken = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var this_level = VariableManager.find_level(get_tree().current_scene.name)
+	if this_level:
+		if this_level.johnny_collected:
+			disable_me()
+	print("I FOUND THIS, JOHNNY! ME! FOUND THIS! ", this_level)
 	pass # Replace with function body.
 
 
@@ -13,7 +21,8 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	VariableManager.up_the_johnnies()
+	if !im_taken:
+		Events.johnny_collected()
 	
 	remove_child(sploot_particle)
 	get_parent().add_child(sploot_particle)
@@ -21,3 +30,9 @@ func _on_body_entered(body):
 	sploot_particle.global_position = global_position
 	
 	queue_free()
+
+func disable_me():
+	im_taken = true
+	# Erstatt dette med hvordan enn jeg johnny skal se ut her
+	animated_sprite.modulate = Color(0.5, 0.5, 0.5)
+	sploot_particle.modulate = Color(0.5, 0.5, 0.5)

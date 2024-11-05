@@ -37,8 +37,6 @@ func up_the_death():
 
 func up_the_johnnies():
 	johnnies += 1
-	Events.johnny_collected()
-	save_variables()
 
 
 func find_level(level_id) -> Dictionary:
@@ -52,11 +50,14 @@ func update_level_to(updated_level):
 	for level in levels_completed:
 		
 		if level.id == updated_level.id:
-			if !level.completed:
-				level.completed = updated_level.completed
-				level.best_time = updated_level.best_time
-			elif updated_level.best_time < level.best_time:
-				level.best_time = updated_level.best_time
+			if updated_level.completed:
+				if updated_level.johnny_collected:
+					level.johnny_collected = true
+				if !level.completed:
+					level.completed = updated_level.completed
+					level.best_time = updated_level.best_time
+				elif updated_level.best_time < level.best_time:
+					level.best_time = updated_level.best_time
 			return
 	
 	levels_completed.append(updated_level)
