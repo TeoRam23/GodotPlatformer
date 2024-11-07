@@ -32,7 +32,7 @@ func _ready():
 	Events.pls_johnny_collected.connect(lets_collect_johnny)
 	
 	# forteller manager at denne banen er tilgjengelig, men er ikke klart enda
-	var this_level = {"id": get_tree().current_scene.name, "completed": false, "best_time": -1.0, "johnny_collected": false}
+	var this_level = {"id": get_tree().current_scene.name, "title": title, "completed": false, "best_time": -1.0, "johnny_collected": false}
 	VariableManager.update_level_to(this_level)
 	
 #func _process(delta):
@@ -63,7 +63,7 @@ func show_level_completed():
 	
 	var level_time = level_overlay.time_label.time_elapsed
 	# id-en blir &"ekte_id" og det er helt greit at & er der, det går bra
-	var this_level = {"id": get_tree().current_scene.name, "completed": true, "best_time": level_time, "johnny_collected": johnny_collected}
+	var this_level = {"id": get_tree().current_scene.name, "title": title, "completed": true, "best_time": level_time, "johnny_collected": johnny_collected}
 	VariableManager.update_level_to(this_level)
 	VariableManager.save_variables()
 	

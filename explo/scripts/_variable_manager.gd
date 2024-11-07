@@ -20,8 +20,8 @@ signal johnny_collect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_variables()
 	#save_variables()
+	load_variables()
 	
 	print(levels_completed)
 	

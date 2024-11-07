@@ -72,4 +72,5 @@ action_mode = 0
 text = "0"
 script = ExtResource("1_ylyyi")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

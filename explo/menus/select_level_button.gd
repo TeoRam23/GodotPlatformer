@@ -1,15 +1,27 @@
 extends Button
 
 @export var the_level: String
-
+@export var title_override: String
 @export var canceled = true
+
+var level_vars: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var packed_level = load(the_level) as PackedScene
+	var level_instance = packed_level.instantiate()
+	
+	var level_name = level_instance.title
+	print(level_name)
+	
 	var level_part = the_level.get_file()
 	level_part = level_part.substr(0, level_part.rfind("."))
-	if VariableManager.find_level(level_part) or !canceled:
+	
+	level_vars = VariableManager.find_level(level_part)
+	if level_vars or !canceled:
 		print("ye: ", level_part)
+		if title_override:
+			level_vars.title = title_override
 		canceled = false
 		
 	else:
@@ -32,3 +44,18 @@ func cancel_me():
 	disabled = true
 	mouse_default_cursor_shape = Control.CURSOR_ARROW
 	#canceled = true
+
+
+func _on_mouse_entered():
+	var abomination = get_parent().get_parent().get_parent().get_children()
+	if abomination:
+		var label
+		for child in abomination:
+			if child.name == "LevelTitle":
+				label = child
+		if label is Label:
+			if level_vars:
+				label.text = level_vars.title
+			else:
+				label.text = "?????"
+	
