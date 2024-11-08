@@ -1,11 +1,15 @@
 extends Control
 
 @onready var grid_container = $GridContainer
+@onready var level_title = $"../LevelTitle"
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-	#var buttn = grid_container.get_children()[0]
-	#buttn.grab_focus()
+func _ready():
+	var buttons = grid_container.get_children()
+	#print(buttons)
+	for butt in buttons:
+		if butt.is_in_group("level_button_group"):
+			butt.label = level_title
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -59,7 +59,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_3t074")
 Button/styles/normal = SubResource("StyleBoxFlat_xmdam")
 Button/styles/pressed = SubResource("StyleBoxFlat_qy130")
 
-[node name="SelectLevel" type="Button"]
+[node name="SelectLevel" type="Button" groups=["level_button_group"]]
 custom_minimum_size = Vector2(34, 34)
 anchors_preset = -1
 anchor_right = 0.319

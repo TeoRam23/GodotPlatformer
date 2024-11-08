@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://mdbexyts0dp0"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_camera_zone.gd" id="1_gce6o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxsv"]
+size = Vector2(640, 360)
+
+[node name="ExCameraZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_gce6o")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hyxsv")
+disabled = true
+debug_color = Color(0.490046, 0.905087, 0.999999, 0.0745098)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

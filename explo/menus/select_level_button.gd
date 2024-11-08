@@ -6,26 +6,22 @@ extends Button
 
 var level_vars: Dictionary
 
+var label: Label
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var packed_level = load(the_level) as PackedScene
-	var level_instance = packed_level.instantiate()
-	
-	var level_name = level_instance.title
-	print(level_name)
-	
 	var level_part = the_level.get_file()
 	level_part = level_part.substr(0, level_part.rfind("."))
 	
 	level_vars = VariableManager.find_level(level_part)
 	if level_vars or !canceled:
-		print("ye: ", level_part)
+		#print("ye: ", level_part)
 		if title_override:
 			level_vars.title = title_override
 		canceled = false
 		
 	else:
-		print("nuu: ", level_part)
+		#print("nuu: ", level_part)
 		cancel_me()
 	
 
@@ -47,15 +43,8 @@ func cancel_me():
 
 
 func _on_mouse_entered():
-	var abomination = get_parent().get_parent().get_parent().get_children()
-	if abomination:
-		var label
-		for child in abomination:
-			if child.name == "LevelTitle":
-				label = child
-		if label is Label:
-			if level_vars:
-				label.text = level_vars.title
-			else:
-				label.text = "?????"
-	
+	if label is Label:
+		if level_vars:
+			label.text = level_vars.title
+		else:
+			label.text = "?????"

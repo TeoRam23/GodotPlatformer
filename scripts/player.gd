@@ -270,6 +270,8 @@ func update_animation(input_axis):
 		else:
 			animated_sprite_2d.speed_scale = 1
 			animated_sprite_2d.play("run")
+	elif Input.is_action_pressed("up"):
+		animated_sprite_2d.play("look_up")
 	else:
 		animated_sprite_2d.play("idle")
 		
@@ -684,7 +686,7 @@ func button_presses(delta):
 			#camera.rotation_smoothing_enabled = true
 	
 	if Input.is_key_pressed(KEY_Z):
-		camera.zoom = Vector2(0.5, 0.5)
+		camera.zoom = Vector2(1, 1)
 		#camera.position_smoothing_enabled = true
 		#camera.rotation_smoothing_enabled = true
 

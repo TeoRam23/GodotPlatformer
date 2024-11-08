@@ -1156,7 +1156,11 @@ sources/1 = SubResource("TileSetAtlasSource_lgpml")
 sources/4 = SubResource("TileSetAtlasSource_rscdl")
 
 [node name="ExForegroundTilemap" type="TileMap" groups=["ForegroundGroup"]]
-z_index = 101
 tile_set = SubResource("TileSet_pahm6")
 format = 2
+layer_0/name = "In front"
+layer_0/z_index = 101
+layer_1/name = "At ground"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("6_y48w8")

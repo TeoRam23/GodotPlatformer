@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=49 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -26,6 +26,10 @@ region = Rect2(0, 0, 21, 21)
 atlas = ExtResource("3_v30qj")
 region = Rect2(63, 0, 21, 21)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3gix"]
+atlas = ExtResource("3_v30qj")
+region = Rect2(63, 0, 21, 21)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_56opl"]
 atlas = ExtResource("3_v30qj")
 region = Rect2(21, 0, 21, 21)
@@ -41,6 +45,14 @@ region = Rect2(42, 0, 21, 21)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncig8"]
 atlas = ExtResource("3_v30qj")
 region = Rect2(84, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt2f1"]
+atlas = ExtResource("3_v30qj")
+region = Rect2(63, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y0c3"]
+atlas = ExtResource("3_v30qj")
+region = Rect2(21, 0, 21, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uicba"]
 animations = [{
@@ -78,6 +90,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_v3gix")
+}],
+"loop": false,
+"name": &"look_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_56opl")
 }, {
 "duration": 1.0,
@@ -91,6 +111,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt2f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o5id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y0c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o5id")
+}],
+"loop": true,
+"name": &"runner",
 "speed": 8.0
 }]
 
@@ -110,21 +147,25 @@ shader_parameter/origin6 = Color(0.2, 0.247059, 0.6, 1)
 shader_parameter/new6 = Color(0.560784, 0.105882, 0.27451, 1)
 shader_parameter/epsilon = 0.001
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qmth4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p3hq"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4l1xl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe1g1"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owpdj"]
 atlas = ExtResource("4_dsh50")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0j8sb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_50173"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(32, 32, 16, 16)
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkd6v"]
+atlas = ExtResource("4_dsh50")
+region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca3nu"]
 atlas = ExtResource("4_dsh50")
@@ -134,41 +175,41 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("4_dsh50")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_odh4m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaecg"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07bww"]
 atlas = ExtResource("4_dsh50")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lrve3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o414j"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8b47g"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e13xj"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mu78"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a0ij"]
 atlas = ExtResource("4_dsh50")
-region = Rect2(32, 16, 16, 16)
+region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgw7j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qmth4")
+"texture": SubResource("AtlasTexture_0p3hq")
 }],
-"loop": true,
+"loop": false,
 "name": &"crouch",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4l1xl")
+"texture": SubResource("AtlasTexture_oe1g1")
 }],
-"loop": true,
+"loop": false,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -182,10 +223,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0j8sb")
+"texture": SubResource("AtlasTexture_50173")
 }],
 "loop": false,
 "name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkd6v")
+}],
+"loop": false,
+"name": &"look_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -196,7 +245,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lntp3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_odh4m")
+"texture": SubResource("AtlasTexture_jaecg")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_07bww")
@@ -207,16 +256,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lrve3")
+"texture": SubResource("AtlasTexture_o414j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8b47g")
+"texture": SubResource("AtlasTexture_e13xj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mu78")
+"texture": SubResource("AtlasTexture_6a0ij")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8b47g")
+"texture": SubResource("AtlasTexture_e13xj")
 }],
 "loop": true,
 "name": &"runner",
@@ -303,6 +352,7 @@ position = Vector2(9.53674e-07, -3)
 scale = Vector2(0.762, 0.762)
 sprite_frames = SubResource("SpriteFrames_uicba")
 animation = &"idle"
+frame_progress = 0.249991
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteHolder"]
 z_index = 1
