@@ -22,8 +22,8 @@ func _process(delta):
 
 func update_time(delta):
 	time_elapsed += delta
-	var show_time = snappedf(time_elapsed, 0.01666666666667)
 	#time_elapsed += 0.01666666666667
+	var show_time = snappedf(time_elapsed, 0.01666666666667)
 	var minutes = int(floor(show_time * 0.01666666666667)) % 60
 	var hours = floor(show_time / 3600)
 	var seconds = int(show_time) % 60

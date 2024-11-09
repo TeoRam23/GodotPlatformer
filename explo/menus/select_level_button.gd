@@ -7,6 +7,7 @@ extends Button
 var level_vars: Dictionary
 
 var label: Label
+var time_label: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,3 +49,21 @@ func _on_mouse_entered():
 			label.text = level_vars.title
 		else:
 			label.text = "?????"
+	
+	if time_label is Label:
+		if level_vars and level_vars.completed:
+			time_label.text = format_time(level_vars.best_time)
+		else:
+			time_label.text = "??:??.???"
+
+
+func format_time(time_elapsed):
+	var show_time = snappedf(time_elapsed, 0.01666666666667)
+	var minutes = int(floor(show_time * 0.01666666666667)) % 60
+	var hours = floor(show_time / 3600)
+	var seconds = int(show_time) % 60
+	var millis = (show_time - floor(show_time)) * 1000
+	var time_text = "%02d:%02d.%03d" % [minutes, seconds, millis]
+	if hours:
+		time_text = str(hours)+":" + time_text
+	return str(time_text)

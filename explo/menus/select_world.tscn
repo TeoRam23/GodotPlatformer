@@ -30,7 +30,7 @@ offset_left = 18.0
 offset_top = 337.0
 offset_right = 90.0
 offset_bottom = 348.0
-mouse_default_cursor_shape = 2
+disabled = true
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
 layout_mode = 1
@@ -48,6 +48,25 @@ grow_vertical = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 12
 columns = 5
+
+[node name="BestTimeTitle" type="Label" parent="."]
+offset_left = 459.0
+offset_top = 72.0
+offset_right = 611.0
+offset_bottom = 92.0
+theme = ExtResource("2_oebje")
+theme_override_colors/font_color = Color(0.721569, 0.290196, 0.290196, 1)
+theme_override_font_sizes/font_size = 16
+text = "Your best time:"
+
+[node name="BestTimeLabel" type="Label" parent="."]
+offset_left = 465.0
+offset_top = 90.0
+offset_right = 591.0
+offset_bottom = 110.0
+theme = ExtResource("2_oebje")
+theme_override_font_sizes/font_size = 16
+text = "??:??.???"
 
 [node name="LevelTitle" type="Label" parent="."]
 anchors_preset = -1

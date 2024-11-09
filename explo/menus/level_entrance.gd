@@ -33,7 +33,9 @@ func show_selection():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.warp_mouse(get_window().size * 0.5)
 	WORLY.visible = true
+	
 func hide_selection():
+	print("hiding selection")
 	#get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	WORLY.visible = false
