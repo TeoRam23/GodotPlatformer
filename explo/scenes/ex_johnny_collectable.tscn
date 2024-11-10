@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpbfqml7h216p"]
+[gd_scene load_steps=23 format=3 uid="uid://cpbfqml7h216p"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_johnny_collectable.gd" id="1_8q400"]
 [ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="1_b7q6n"]
+[ext_resource type="Texture2D" uid="uid://dji3brtp1oqbq" path="res://assets/JohnnyFire.png" id="2_crbl8"]
+[ext_resource type="Texture2D" uid="uid://bikjp2hqaw643" path="res://assets/JohnnyDanceTiny.png" id="3_devpy"]
 [ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="3_xfcbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8txv"]
@@ -9,6 +11,111 @@ radius = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2iuds"]
 size = Vector2(22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enkq0"]
+atlas = ExtResource("2_crbl8")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85rfw"]
+atlas = ExtResource("2_crbl8")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw567"]
+atlas = ExtResource("2_crbl8")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c07qd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enkq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85rfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw567")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbthu"]
+atlas = ExtResource("3_devpy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_104ff"]
+atlas = ExtResource("3_devpy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw76w"]
+atlas = ExtResource("3_devpy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lutgd"]
+atlas = ExtResource("3_devpy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tm65"]
+atlas = ExtResource("3_devpy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yrvb"]
+atlas = ExtResource("3_devpy")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ns6xl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbthu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbthu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_104ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw76w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lutgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lutgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw76w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_104ff")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tm65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yrvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tm65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tm65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yrvb")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 0.5
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6plj6"]
 atlas = ExtResource("1_b7q6n")
@@ -46,8 +153,22 @@ disabled = true
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_2iuds")
 
+[node name="FireSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_c07qd")
+autoplay = "default"
+frame_progress = 0.657335
+
+[node name="JohnnyTinySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_ns6xl")
+autoplay = "default"
+frame_progress = 0.663246
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_ddnc3")
+autoplay = "default"
 
 [node name="SplootParticle" type="CPUParticles2D" parent="."]
 emitting = false

@@ -12,6 +12,7 @@ size = Vector2(640, 648)
 size = Vector2(448, 272)
 
 [node name="World" instance=ExtResource("1_ep6w1")]
+title = "Hub"
 
 [node name="Hub1" type="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 0.419608)

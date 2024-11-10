@@ -39,4 +39,4 @@ layer_0/tile_data = PackedInt32Array(131076, 4, 262144, 131082, 4, 262144, 11, 4
 position = Vector2(704, -96)
 
 [node name="ExJohnnyCollectable" parent="ObjectHolder" index="1" instance=ExtResource("5_qbn3i")]
-position = Vector2(720, 24)
+position = Vector2(720, 23)

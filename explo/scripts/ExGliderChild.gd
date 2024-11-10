@@ -11,6 +11,7 @@ var bubble : Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.pls_player_died.connect(poof_away)
+	Events.level_completed.connect(poof_away)
 	bubble = get_parent()
 
 

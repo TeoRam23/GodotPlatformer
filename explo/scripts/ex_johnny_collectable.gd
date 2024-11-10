@@ -2,6 +2,8 @@ extends Area2D
 
 @onready var sploot_particle = $SplootParticle
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var fire_sprite = $FireSprite
+@onready var johnny_tiny_sprite = $JohnnyTinySprite
 
 var im_taken = false
 
@@ -34,5 +36,7 @@ func _on_body_entered(body):
 func disable_me():
 	im_taken = true
 	# Erstatt dette med hvordan enn jeg johnny skal se ut her
-	animated_sprite.modulate = Color(0.5, 0.5, 0.5)
+	fire_sprite.modulate = Color(0.5, 0.5, 0.5)
+	johnny_tiny_sprite.modulate = Color(0.5, 0.5, 0.5)
+	johnny_tiny_sprite.play("sit")
 	sploot_particle.modulate = Color(0.5, 0.5, 0.5)
