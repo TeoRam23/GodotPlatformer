@@ -239,12 +239,17 @@ func explode_pls():
 	#print("Mus: ", get_global_mouse_position())
 	my_root.add_child(explod)
 	
+	remove_me()
+	first_frame = true
+	
+func remove_me():
 	remove_child(particle_holder)
 	get_parent().add_child(particle_holder)
 	particle_holder.un_emit()
 	#illsplode = true
 	queue_free()
-	first_frame = true
+	
+
 
 func get_launch_angle(bod):
 	var other_pos = bod.global_position
@@ -261,3 +266,11 @@ func _on_gone_timer_timeout():
 	#print("It's goning time!")
 	#print("*gones all over the place* *pow*")
 	queue_free()
+
+
+func _on_area_detection_area_entered(area):
+	remove_me()
+
+
+func _on_area_detection_body_entered(body):
+	remove_me()

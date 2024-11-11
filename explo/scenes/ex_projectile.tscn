@@ -76,6 +76,13 @@ safe_margin = 0.01
 script = ExtResource("1_fehis")
 launch_power = -411
 
+[node name="AreaDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="ProjectileShape" type="CollisionShape2D" parent="AreaDetection"]
+shape = SubResource("CircleShape2D_l3r4n")
+
 [node name="ProjectileShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_l3r4n")
 
@@ -139,6 +146,8 @@ sprite_frames = SubResource("SpriteFrames_dgde0")
 [node name="GoneTimer" type="Timer" parent="."]
 wait_time = 15.0
 
+[connection signal="area_entered" from="AreaDetection" to="." method="_on_area_detection_area_entered"]
+[connection signal="body_entered" from="AreaDetection" to="." method="_on_area_detection_body_entered"]
 [connection signal="finished" from="ParticleHolder/ThrowDust" to="ParticleHolder" method="_on_throw_dust_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="GoneTimer" to="." method="_on_gone_timer_timeout"]
