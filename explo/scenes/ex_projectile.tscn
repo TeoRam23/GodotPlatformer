@@ -129,6 +129,7 @@ color_ramp = SubResource("Gradient_4yxd6")
 [node name="ExplosionBody" type="CharacterBody2D" parent="."]
 visible = false
 collision_layer = 0
+collision_mask = 64
 motion_mode = 1
 wall_min_slide_angle = 3.14159
 safe_margin = 0.01

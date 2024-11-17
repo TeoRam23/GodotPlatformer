@@ -269,8 +269,10 @@ func _on_gone_timer_timeout():
 
 
 func _on_area_detection_area_entered(area):
-	remove_me()
+	if has_launched:
+		remove_me()
 
 
 func _on_area_detection_body_entered(body):
-	remove_me()
+	if has_launched:
+		remove_me()

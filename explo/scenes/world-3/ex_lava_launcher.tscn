@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf0nuvju10v1h"]
+
+[ext_resource type="Script" path="res://explo/scripts/world-3/ex_lava_launcher.gd" id="1_utfbq"]
+
+[node name="ExLavaLauncher" type="Node2D"]
+script = ExtResource("1_utfbq")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

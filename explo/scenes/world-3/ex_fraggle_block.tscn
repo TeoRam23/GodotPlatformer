@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://h0hxqn0deycg"]
+
+[ext_resource type="Script" path="res://explo/scripts/world-3/ex_fraggle_block.gd" id="1_jch23"]
+[ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_gt3id"]
+[ext_resource type="Script" path="res://explo/destructablocks/destruct_particles.gd" id="3_te5ap"]
+[ext_resource type="Texture2D" uid="uid://beydgw6a34327" path="res://assets/StandardBlocks.png" id="4_unkpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x81j2"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkyp1"]
+size = Vector2(16, 2)
+
+[node name="ExFraggleBlock" type="StaticBody2D"]
+process_priority = -1
+process_physics_priority = -1
+collision_layer = 65
+collision_mask = 0
+script = ExtResource("1_jch23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_x81j2")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_wkyp1")
+
+[node name="SpriteReal" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteReal"]
+position = Vector2(-4, -4)
+texture = ExtResource("2_gt3id")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpriteReal"]
+position = Vector2(4, -4)
+texture = ExtResource("2_gt3id")
+
+[node name="FragTimer" type="Timer" parent="."]
+wait_time = 0.53
+
+[node name="StandardParticles" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, -8)
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+randomness = 0.61
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 800)
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color = Color(0.780392, 0.0901961, 0.239216, 1)
+script = ExtResource("3_te5ap")
+
+[node name="StandardBlocks" type="Sprite2D" parent="StandardParticles"]
+visible = false
+position = Vector2(8, -24)
+texture = ExtResource("4_unkpe")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="FragTimer" to="." method="_on_frag_timer_timeout"]
