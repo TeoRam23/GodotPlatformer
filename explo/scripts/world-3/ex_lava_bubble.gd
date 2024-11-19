@@ -8,6 +8,9 @@ extends CharacterBody2D
 var lava_can_kill = false
 
 var start_pos = Vector2(0, 0)
+
+
+@onready var face_sprite = $FaceSprite
 # -142.0 for 1 block
 # -323.5 for 5 block
 # -601.0 for 17 block
@@ -42,6 +45,7 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_slide()
+	update_face()
 	# Add the gravity.
 	if not is_on_floor() and activated:
 		if velocity.y < max_down_velocity:
@@ -101,3 +105,18 @@ func _on_lava_detector_body_entered(body):
 func _on_lava_detector_body_exited(body):
 	#print("I live!")2
 	lava_can_kill = true
+
+
+func update_face():
+	if velocity.x > 0:
+		face_sprite.position.x = 1
+	elif velocity.x < 0:
+		face_sprite.position.x = -1
+	else:
+		face_sprite.position.x = 0
+	if velocity.y > 0:
+		face_sprite.position.y = 1
+	elif velocity.y < 0:
+		face_sprite.position.y = -1
+	else:
+		face_sprite.position.y = 0
