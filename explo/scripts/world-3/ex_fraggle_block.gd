@@ -2,11 +2,12 @@ extends StaticBody2D
 
 @onready var frag_timer = $FragTimer
 @onready var particles = $StandardParticles
-@onready var sprite_real = $SpriteReal
+@onready var sprite_real = $SpriteReal2
 
 var gonna_free = false
 var shaking = false
 var zero_next_frame = false
+var booliah = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if shaking:
-		shake()
+		better_shake()
+		#shake()
 	
 	
 	if gonna_free:
@@ -55,6 +57,17 @@ func shake():
 		
 		
 	randi_range(-2, 2)
+
+func better_shake():
+	if booliah:
+		if !sprite_real.position:
+			sprite_real.position.x = randi_range(-1, 1)
+			sprite_real.position.y = randi_range(-1, 1)
+		else:
+			sprite_real.position = Vector2.ZERO
+		booliah = false
+	else:
+		booliah = true
 
 func explode():
 	call_deferred("free")

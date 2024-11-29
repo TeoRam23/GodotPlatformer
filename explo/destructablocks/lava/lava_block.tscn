@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbn8bqmhjs1g3"]
+
+[ext_resource type="PackedScene" uid="uid://ja1xhimefqtm" path="res://explo/destructablocks/standard/standard_block.tscn" id="1_e45w0"]
+[ext_resource type="Texture2D" uid="uid://dw2yykc1r4inj" path="res://assets/LavaBlocks.png" id="2_vjwar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkmnw"]
+atlas = ExtResource("2_vjwar")
+region = Rect2(16, 0, 16, 16)
+
+[node name="LavaBlock" type="Node2D"]
+
+[node name="StandardBlock" parent="." instance=ExtResource("1_e45w0")]
+type_id = 1
+
+[node name="LavaSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_vkmnw")

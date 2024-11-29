@@ -44,7 +44,12 @@ func _ready():
 
 
 func _physics_process(delta):
-	move_and_slide()
+	var collision = move_and_slide()
+	if collision:
+		if is_on_wall():
+		
+			velocity.x = speed * -get_wall_normal().x
+
 	update_face()
 	# Add the gravity.
 	if not is_on_floor() and activated:
@@ -52,6 +57,7 @@ func _physics_process(delta):
 			velocity.y += gravity * delta * gravity_multiplier
 		if velocity.y >= max_down_velocity:
 			velocity.y = max_down_velocity
+	
 
 	# Handle jump.
 	if Input.is_action_just_pressed("back"):
@@ -97,13 +103,13 @@ func launch_bubble():
 
 
 func _on_lava_detector_body_entered(body):
-	#print("I do see you ", lava_can_kill)
+	print("I do see you ", lava_can_kill)
 	if lava_can_kill:
 		reset_bubble()
 
 
 func _on_lava_detector_body_exited(body):
-	#print("I live!")2
+	print("I live!")
 	lava_can_kill = true
 
 
