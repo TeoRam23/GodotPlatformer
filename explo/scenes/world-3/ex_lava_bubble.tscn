@@ -32,7 +32,8 @@ animations = [{
 atlas = ExtResource("2_m3vib")
 region = Rect2(29, 1, 12, 12)
 
-[node name="LavaBubble" type="CharacterBody2D"]
+[node name="LavaBubble" type="CharacterBody2D" groups=["grp_lava_bubble"]]
+z_index = -4
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_iqf1n")

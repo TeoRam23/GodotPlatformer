@@ -325,7 +325,7 @@ point_count = 3
 _data = [Vector2(0, 0.384317), 0.0, 0.859131, 0, 0, Vector2(0.458647, 1), -0.0671202, -0.0671202, 0, 0, Vector2(0.969925, 0), -3.32257, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
 collision_layer = 2
 floor_constant_speed = true

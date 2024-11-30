@@ -103,13 +103,13 @@ func launch_bubble():
 
 
 func _on_lava_detector_body_entered(body):
-	print("I do see you ", lava_can_kill)
+	#print("I do see you ", lava_can_kill)
 	if lava_can_kill:
 		reset_bubble()
 
 
 func _on_lava_detector_body_exited(body):
-	print("I live!")
+	#print("I live!")
 	lava_can_kill = true
 
 

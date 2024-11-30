@@ -117,8 +117,8 @@ func _physics_process(delta):
 		timer.stop()
 	if !is_on_floor() and timer.time_left <= 0:
 		timer.start()
-	#if timer.time_left < 2.067 - 0.733 and timer.time_left > 2.067 - 0.783:
-		#print("PEAK")
+	if timer.time_left < 2.067 - 0.834 and timer.time_left > 2.067 - 0.917:
+		print("PEAK")
 	
 	first_frame = false
 
