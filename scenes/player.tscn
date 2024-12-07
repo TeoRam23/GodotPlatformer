@@ -325,7 +325,7 @@ point_count = 3
 _data = [Vector2(0, 0.384317), 0.0, 0.859131, 0, 0, Vector2(0.458647, 1), -0.0671202, -0.0671202, 0, 0, Vector2(0.969925, 0), -3.32257, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["moved_by_air", "player"]]
 z_index = 2
 collision_layer = 2
 floor_constant_speed = true
@@ -373,6 +373,15 @@ script = ExtResource("4_koes7")
 random_strength = 3.0
 do_shake = false
 
+[node name="ColorRect" type="ColorRect" parent="SpriteHolder"]
+visible = false
+z_index = 1
+offset_left = -5.0
+offset_top = -9.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.721569, 0.290196, 0.290196, 1)
+
 [node name="CollisionRect" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_71l0s")
@@ -396,7 +405,7 @@ collision_layer = 0
 collision_mask = 132
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HazardDetector"]
-position = Vector2(-0.0010004, -7.001)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ck58h")
 
 [node name="GravityDetector" type="Area2D" parent="."]

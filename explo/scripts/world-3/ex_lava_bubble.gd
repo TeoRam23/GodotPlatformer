@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-@export var speed = 300.0
+@export var speed = 180.0
 @export var jump_velocity = 0
-@export var gravity_multiplier = 0.69
+@export var gravity_scale = 0.69
 @export var max_down_velocity = 300
 
 var lava_can_kill = false
 
 var start_pos = Vector2(0, 0)
 
+@onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
 
 @onready var face_sprite = $FaceSprite
 # -142.0 for 1 block
@@ -44,6 +45,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if visible_on_screen_notifier_2d.is_on_screen():
+		print("My velocity.y: ", velocity.y)
+	
 	var collision = move_and_slide()
 	if collision:
 		if is_on_wall():
@@ -54,7 +58,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor() and activated:
 		if velocity.y < max_down_velocity:
-			velocity.y += gravity * delta * gravity_multiplier
+			velocity.y += gravity * delta * gravity_scale
 		if velocity.y >= max_down_velocity:
 			velocity.y = max_down_velocity
 	

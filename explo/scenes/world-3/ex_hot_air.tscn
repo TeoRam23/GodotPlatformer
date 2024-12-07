@@ -6,16 +6,23 @@
 size = Vector2(224, 104)
 
 [node name="ExHotAir" type="Area2D"]
+process_physics_priority = -1
 z_index = -8
 collision_layer = 0
-collision_mask = 34
+collision_mask = 38
 script = ExtResource("1_e43lp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(112, 52)
 shape = SubResource("RectangleShape2D_e7q4m")
+disabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 224.0
 offset_bottom = 104.0
 color = Color(0.76383, 0.5022, 0.81, 0.623529)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

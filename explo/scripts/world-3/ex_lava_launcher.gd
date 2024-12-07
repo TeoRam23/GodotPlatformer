@@ -3,7 +3,7 @@ extends Node2D
 @export var blocks_tall = 17
 @export var extra_pixl = 0
 @export var speed = 0.0
-@export var gravity_multiplier = 0.69
+@export var gravity_scale = 0.69
 @export var max_down_velocity = 300
 @export var spawn_delay = 2
 
@@ -40,7 +40,7 @@ func create_bubble():
 	add_child(new_bubble)
 	new_bubble.jump_velocity = jump_velocity
 	new_bubble.speed = speed
-	new_bubble.gravity_multiplier = gravity_multiplier
+	new_bubble.gravity_scale = gravity_scale
 	new_bubble.max_down_velocity = max_down_velocity
 	
 	new_bubble.launch_bubble()

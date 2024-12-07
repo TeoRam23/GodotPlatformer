@@ -47,6 +47,8 @@ var prevelocity = Vector2(0.0, 0.0)
 
 var first_frame = true
 
+var hot_air = false
+
 func _ready():
 	main_data = movement_data
 	
@@ -59,6 +61,7 @@ func _ready():
 	johnnify()
 
 func _physics_process(delta):
+	
 	if is_paused:
 		return
 	gravity_check()
@@ -87,6 +90,8 @@ func _physics_process(delta):
 	if debug and Input.is_key_pressed(KEY_V):
 		prevelocity.y = 0
 	gravity_calculation()
+	
+	
 	
 	if prevelocity.x > movement_data.max_speed:
 		prevelocity.x = movement_data.max_speed
@@ -126,17 +131,16 @@ func apply_gravity(delta):
 	#print(prevelocity.y)
 	if is_on_floor():
 		#print("floored, man")
-		if !just_launched:
+		if !just_launched and prevelocity.y > 0:
 			prevelocity.y = 0
 			
 	elif is_on_ceiling():
 		if !just_launched:
 			prevelocity.y = 0
 	if not is_on_floor():
-		if prevelocity.y > 0:
-			prevelocity.y += gravity * movement_data.gravity_scale * delta# * movement_data.glide_multiplier
-		else:
-			prevelocity.y += gravity * movement_data.gravity_scale * delta
+		prevelocity.y += gravity * movement_data.gravity_scale * delta
+		
+		
 		if prevelocity.y > movement_data.max_fall_speed:
 			prevelocity.y -= movement_data.max_fall_speed * 0.1
 			if prevelocity.y < movement_data.max_fall_speed:
@@ -526,6 +530,7 @@ func gravity_calculation():
 #	up_direction = Vector2(sin(radians), -cos(radians))
 
 	up_direction = Vector2.UP.rotated(radians)
+	
 	
 	
 	var target_angle = 0

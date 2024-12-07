@@ -2,6 +2,7 @@ extends Node2D
 
 @export var title = "World"
 @export var next_level: PackedScene
+@export var show_mouse = false
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
 @onready var black_screen = $CanvasLayer/BlackScreen
@@ -14,14 +15,18 @@ var johnny_collected = false
 var first_frame = true
 var waiting = false
 
+var locked_mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+
 func _ready():
+	if show_mouse:
+		locked_mouse_mode = Input.MOUSE_MODE_CONFINED
 	#RenderingServer.set_default_clear_color(Color.BLACK)
 	#RenderingServer.set_default_clear_color(Color(0.102, 0.102, 0.133))
 	RenderingServer.set_default_clear_color(Color(0.11, 0.11, 0.125))
 	#RenderingServer.set_default_clear_color(Color.DARK_GREEN)
 	Events.level_completed.connect(show_level_completed) #sjekker om noe har sendt "level_completed"
 	
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = locked_mouse_mode
 	Input.warp_mouse(get_window().size * 0.5)
 	
 	
@@ -72,7 +77,7 @@ func show_level_completed():
 
 func un_pause():
 	print("ugh")
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = locked_mouse_mode
 	pause_menu.visible = false
 	level_overlay.show_rest(false)
 	Input.warp_mouse(get_window().size * 0.5)

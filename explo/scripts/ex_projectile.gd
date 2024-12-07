@@ -49,6 +49,8 @@ func _ready():
 		#apply_second_gravity(delta, true)
 
 func _physics_process(delta):
+	if !has_launched:
+		velocity.y = 0
 	#print(timer.time_left)
 	#if is_on_wall():
 		#explode_pls()
@@ -94,6 +96,7 @@ func _physics_process(delta):
 	elif just_launched:
 		apply_second_gravity(delta, true)
 	else:
+		#print("this is the one moving")
 		move_and_slide()
 		explosion_body.move_and_slide()
 		explosion_body.position = Vector2(0, 0)

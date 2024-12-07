@@ -63,7 +63,7 @@ point_count = 2
 offsets = PackedFloat32Array(0.572917, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="ExProjectile" type="CharacterBody2D" groups=["projectile"]]
+[node name="ExProjectile" type="CharacterBody2D" groups=["moved_by_air", "projectile"]]
 process_priority = -1
 process_physics_priority = -1
 visible = false
