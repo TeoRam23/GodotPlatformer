@@ -46,7 +46,6 @@ func give_air(delta):
 						#bod.prevelocity.y -= 1250 * delta
 						
 				else:
-					print(bod.name)
 					# dette er et forsøk på å gjøre projectile likt splodey, men jeg ga opp, bra nok
 					#if bod.is_in_group("projectile"):
 						## den første er for å kanselere gravitasjonen, den andre for å legge til velocetey

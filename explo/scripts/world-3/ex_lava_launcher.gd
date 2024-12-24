@@ -39,7 +39,7 @@ func _process(delta):
 	pass
 
 func create_bubble():
-	print("creating bubble...")
+	#print("creating bubble...")
 	var new_bubble = BUBBL.instantiate()
 	add_child(new_bubble)
 	new_bubble.jump_velocity = jump_velocity

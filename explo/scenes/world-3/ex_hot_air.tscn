@@ -42,6 +42,7 @@ color = Color(0.76383, 0.5022, 0.81, 0.623529)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(328, 256)
+emitting = false
 amount = 150
 lifetime = 0.7
 speed_scale = 0.5

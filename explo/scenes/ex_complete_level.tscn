@@ -1,12 +1,77 @@
-[gd_scene load_steps=16 format=3 uid="uid://bk0ej2eqbj74w"]
+[gd_scene load_steps=26 format=3 uid="uid://bk0ej2eqbj74w"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_complete_level.gd" id="1_81sdl"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="2_43vsv"]
 [ext_resource type="Texture2D" uid="uid://bdtf7tvjg7mdi" path="res://assets/level_end.png" id="2_nsal0"]
+[ext_resource type="Texture2D" uid="uid://ppoofthc4rve" path="res://assets/level_end_activate.png" id="2_p423u"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_grret"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_e6u05"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqr03"]
+atlas = ExtResource("2_p423u")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq56k"]
+atlas = ExtResource("2_p423u")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hi3n"]
+atlas = ExtResource("2_p423u")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d270x"]
+atlas = ExtResource("2_p423u")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baalm"]
+atlas = ExtResource("2_p423u")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sugvo"]
+atlas = ExtResource("2_p423u")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfalw"]
+atlas = ExtResource("2_p423u")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyk1i"]
+atlas = ExtResource("2_p423u")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ig4qb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqr03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq56k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hi3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d270x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baalm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sugvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfalw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyk1i")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fukx"]
 atlas = ExtResource("2_43vsv")
@@ -95,17 +160,24 @@ scale = Vector2(24, 39)
 texture = SubResource("CanvasTexture_grret")
 
 [node name="BrightnessSprite" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.568, 0.52, 1, 1)
 position = Vector2(-5.96046e-07, -20.5)
 scale = Vector2(24, 41)
 texture = SubResource("CanvasTexture_e6u05")
 
-[node name="SwirlSprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.992157)
+[node name="SwirlMask" type="AnimatedSprite2D" parent="."]
+clip_children = 1
 position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_ig4qb")
+frame = 7
+frame_progress = 1.0
+
+[node name="SwirlSprite" type="AnimatedSprite2D" parent="SwirlMask"]
+modulate = Color(1, 1, 1, 0.992157)
 sprite_frames = SubResource("SpriteFrames_ktu3w")
 autoplay = "default"
-frame_progress = 0.942641
+frame_progress = 0.643155
 
 [node name="GateSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
@@ -117,4 +189,4 @@ position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_uju4v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_looped" from="SwirlSprite" to="." method="_on_swirl_sprite_animation_looped"]
+[connection signal="animation_looped" from="SwirlMask/SwirlSprite" to="." method="_on_swirl_sprite_animation_looped"]

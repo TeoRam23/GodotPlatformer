@@ -39,7 +39,7 @@ func get_first_limit(rd, lu):
 
 
 func _on_body_entered(body):
-	print("trying...")
+	#print("trying...")
 	Events.set_camera_limit(rd, lu)
 
 
