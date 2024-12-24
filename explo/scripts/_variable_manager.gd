@@ -23,7 +23,7 @@ func _ready():
 	#save_variables()
 	load_variables()
 	
-	print(levels_completed)
+	#print(levels_completed)
 	
 	Events.pls_player_died.connect(up_the_death)
 	

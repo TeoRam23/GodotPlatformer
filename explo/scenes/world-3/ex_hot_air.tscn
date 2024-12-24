@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyq1jil1do57l"]
+[gd_scene load_steps=5 format=3 uid="uid://dyq1jil1do57l"]
 
 [ext_resource type="Script" path="res://explo/scripts/world-3/ex_hot_air.gd" id="1_e43lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7q4m"]
-size = Vector2(224, 104)
+size = Vector2(600, 344)
+
+[sub_resource type="Curve" id="Curve_37tlp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.369307), 1.76091e-07, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rwvd8"]
+offsets = PackedFloat32Array(0.33, 1)
+colors = PackedColorArray(0.45098, 0.317647, 0.545098, 1, 0.45098, 0.317647, 0.545098, 0)
 
 [node name="ExHotAir" type="Area2D"]
 process_physics_priority = -1
@@ -14,7 +22,7 @@ script = ExtResource("1_e43lp")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(112, 52)
+position = Vector2(316, 180)
 shape = SubResource("RectangleShape2D_e7q4m")
 disabled = true
 
@@ -23,6 +31,31 @@ visible = false
 offset_right = 224.0
 offset_bottom = 104.0
 color = Color(0.76383, 0.5022, 0.81, 0.623529)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = 232.0
+offset_top = 128.0
+offset_right = 424.0
+offset_bottom = 256.0
+color = Color(0.76383, 0.5022, 0.81, 0.623529)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(328, 256)
+amount = 150
+lifetime = 0.7
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(96, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 160.0
+initial_velocity_max = 190.0
+scale_amount_min = 1.5
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_37tlp")
+color_ramp = SubResource("Gradient_rwvd8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

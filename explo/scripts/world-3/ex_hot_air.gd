@@ -1,11 +1,15 @@
 extends Area2D
 
 @export var air_strength_p = 676.2
-@export var air_strength_o = 710
+@export var air_strength_o = 710.0
+
+@onready var air_shap = $CollisionShape2D2
+
+@onready var particles_2d = $CPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	set_particle_vars()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +47,15 @@ func give_air(delta):
 						
 				else:
 					print(bod.name)
+					# dette er et forsøk på å gjøre projectile likt splodey, men jeg ga opp, bra nok
+					#if bod.is_in_group("projectile"):
+						## den første er for å kanselere gravitasjonen, den andre for å legge til velocetey
+						#bod.velocity.y -= gravity * bod.gravity_scale * delta
+						#
+						#bod.velocity.y -= air_strength_o * delta
+						##bod.velocity.y -= 600 * delta
+					#else:
+					
 					# den første er for å kanselere gravitasjonen, den andre for å legge til velocetey
 					bod.velocity.y -= gravity * bod.gravity_scale * delta
 					#bod.velocity.y -= air_strength * delta
@@ -73,3 +86,51 @@ func _on_body_exited(body):
 		else:
 			body.velocity.y += gravity * body.gravity_scale / 60
 			body.velocity.y += air_strength_o / 60
+
+
+func set_particle_vars():
+	var air_shape = get_node_or_null("CollisionShape2D")
+	
+	if air_shape:
+		var shape = air_shape.shape.get_rect()
+		
+		particles_2d.emitting = true
+		particles_2d.position = air_shape.position
+		particles_2d.position.y += shape.end.y
+		
+		particles_2d.emission_rect_extents.x = shape.end.x
+		
+		particles_2d.lifetime = shape.end.y * 0.0109375
+		
+		particles_2d.amount = shape.get_area() * 0.0030517578125
+		print("am: ",particles_2d.amount)
+		print(shape.end.y)
+		print(particles_2d.lifetime)
+		
+		print(particles_2d.color_ramp.colors)
+		var ye = Curve.new()
+		print("the shep: ",shape.end.y)
+		if shape.end.y > 4:
+			
+			#particles_2d.color_ramp.set_offset(0, 0.25*1.5)
+			#particles_2d.color_ramp.set_offset(1, (shape.end.y*2/16 - 2)/8)
+			#particles_2d.color_ramp.set_offset(0, (shape.end.y*2/16 - 6)/8)
+			#particles_2d.color_ramp.set_offset(1, 1 - (1/(shape.end.y*2/16 - 2)))
+			particles_2d.color_ramp.set_offset(0, ((shape.end.y*2/16) - 5)/(shape.end.y*2/16))
+			print("test: ", ((shape.end.y*2/16) - 5)/(shape.end.y*2/16), " ended: ", shape.end.y*2/16)
+			#particles_2d.color_ramp.set_offset(1, 1)
+			#particles_2d.color_ramp.set_offset(0, 0.99)
+			#particles_2d.color_ramp.set_offset(0, shape.end.y*2/16)
+			particles_2d.scale_amount_curve.set_point_offset(0, ((shape.end.y*2/16) - 8)/(shape.end.y*2/16))
+			
+			
+			print("off: ", particles_2d.color_ramp.offsets)
+			print("scl: ", particles_2d.scale_amount_curve.get_point_position(0))
+		
+		#print(particles_2d.color_ramp.set_offset(0, 0.278*1.5))
+		#print(particles_2d.color_ramp.set_offset(1, 0.781))
+		
+		print(shape.size)
+		print(shape.end)
+		air_shape.shape
+	

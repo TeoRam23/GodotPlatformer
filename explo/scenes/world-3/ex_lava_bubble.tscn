@@ -57,6 +57,7 @@ frame_progress = 0.440824
 texture = SubResource("AtlasTexture_efk8x")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 
 [connection signal="area_entered" from="LavaDetector" to="." method="_on_lava_detector_area_entered"]
 [connection signal="body_entered" from="LavaDetector" to="." method="_on_lava_detector_body_entered"]

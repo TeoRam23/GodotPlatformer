@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dehufyyw8gn2y"]
+[gd_scene load_steps=9 format=3 uid="uid://dehufyyw8gn2y"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_ep6w1"]
 [ext_resource type="Texture2D" uid="uid://dq2pd6qmqnolc" path="res://assets/baksplodder/hub1.png" id="2_7ettt"]
 [ext_resource type="PackedScene" uid="uid://mdbexyts0dp0" path="res://explo/scenes/ex_camera_zone.tscn" id="3_fyph7"]
 [ext_resource type="PackedScene" uid="uid://c4p6gfoiyp5fk" path="res://explo/menus/level_entrance.tscn" id="3_k2vsl"]
+[ext_resource type="PackedScene" uid="uid://dyq1jil1do57l" path="res://explo/scenes/world-3/ex_hot_air.tscn" id="5_pn5b2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhvqk"]
 size = Vector2(640, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvbd5"]
 size = Vector2(448, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6du0"]
+size = Vector2(113, 104)
 
 [node name="World" instance=ExtResource("1_ep6w1")]
 title = "Hub"
@@ -53,3 +57,10 @@ worl = "res://explo/menus/select_world_one.tscn"
 
 [node name="LevelEntrance2" parent="." index="15" instance=ExtResource("3_k2vsl")]
 position = Vector2(-144, -160)
+
+[node name="ExHotAir" parent="." index="16" instance=ExtResource("5_pn5b2")]
+position = Vector2(119, -43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExHotAir" index="4"]
+position = Vector2(-10.5, -13)
+shape = SubResource("RectangleShape2D_v6du0")

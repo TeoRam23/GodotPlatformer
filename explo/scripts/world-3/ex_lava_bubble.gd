@@ -45,8 +45,8 @@ func _ready():
 
 
 func _physics_process(delta):
-	if visible_on_screen_notifier_2d.is_on_screen():
-		print("My velocity.y: ", velocity.y)
+	#if visible_on_screen_notifier_2d.is_on_screen():
+		#print("My velocity.y: ", velocity.y)
 	
 	var collision = move_and_slide()
 	if collision:

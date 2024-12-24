@@ -268,7 +268,9 @@ func get_launch_angle(bod):
 func _on_gone_timer_timeout():
 	#print("It's goning time!")
 	#print("*gones all over the place* *pow*")
-	queue_free()
+	#queue_free()
+	remove_me()
+	
 
 
 func _on_area_detection_area_entered(area):
