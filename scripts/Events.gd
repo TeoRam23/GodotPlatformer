@@ -4,6 +4,7 @@ signal level_completed
 
 signal pls_shake
 signal pls_camera_limit
+signal pls_set_wrap
 signal pls_reset_teleport
 signal pls_activate_ender
 signal pls_player_died
@@ -18,6 +19,11 @@ func projectile_hit():
 
 func set_camera_limit(rd, lu):
 	pls_camera_limit.emit(rd, lu)
+
+func set_wrapping(rd, lu, wr_horz, wr_vert):
+	
+	print("eventing... ", rd, ", ", lu, ", ", wr_horz, wr_vert)
+	pls_set_wrap.emit(rd, lu,wr_horz, wr_vert)
 
 func reset_teleporters():
 	pls_reset_teleport.emit()

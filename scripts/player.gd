@@ -11,6 +11,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gonnadash = false
 var sprite_rotation_speed = 100
 var just_launched = false
+var wrap_horizontal = false
+var wrap_vertical = false
+var rd = Vector2.ZERO
+var lu = Vector2.ZERO
 
 var is_paused = false
 
@@ -57,6 +61,7 @@ func _ready():
 	
 	Events.pls_kill_player.connect(i_died)
 	Events.level_completed.connect(disable_player)
+	Events.pls_set_wrap.connect(wrap_me)
 	
 	johnnify()
 
@@ -126,7 +131,7 @@ func _physics_process(delta):
 		#timer.start()
 	#if timer.time_left < 2.067 - 0.834 and timer.time_left > 2.067 - 0.917:
 		#print("PEAK")
-	
+	wrap_me(0,0,0,0)
 	first_frame = false
 
 func apply_gravity(delta):
@@ -644,6 +649,28 @@ func launch_me(angle, power):
 	just_launched = true
 	
 	#print("I hast launched 3 ", process_priority)
+
+func wrap_me(srd, slu, wr_horz, wr_vert):
+	if srd or slu:
+		rd = srd
+		lu = slu
+		wrap_horizontal = wr_horz
+		wrap_vertical = wr_vert
+	#print("sending... ", srd, ", ", slu, ", ", wr_horz, wr_vert)
+	#(320, 124) and: (-320, -236)
+	#var rd = Vector2(320, 124)
+	#var lu = Vector2(-320, -236)
+	if wrap_horizontal:
+		if global_position.x > rd.x + 8:
+			global_position.x = lu.x - 8
+		if global_position.x < lu.x - 8:
+			global_position.x = rd.x + 8
+	if wrap_vertical:
+		if global_position.y > rd.y + 8:
+			global_position.y = lu.y - 8
+		if global_position.y < lu.y - 8:
+			global_position.y = rd.y + 8
+
 
 
 func button_presses(delta):

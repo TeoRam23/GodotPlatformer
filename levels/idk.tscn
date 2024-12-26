@@ -8,6 +8,8 @@
 
 [node name="ExCameraBoundary" parent="." index="2"]
 position = Vector2(0, -56)
+wrap_horizontal = true
+wrap_vertical = true
 
 [node name="Player" parent="." index="3"]
 position = Vector2(0, 11)

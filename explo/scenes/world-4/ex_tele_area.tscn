@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b133j0vjaqlau"]
+
+[ext_resource type="Script" path="res://explo/scripts/world-4/ex_tele_area.gd" id="1_emg0w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fn4jg"]
+size = Vector2(84, 16)
+
+[node name="ExTeleArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 34
+script = ExtResource("1_emg0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(42, 8)
+shape = SubResource("RectangleShape2D_fn4jg")

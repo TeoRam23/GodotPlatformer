@@ -145,7 +145,7 @@ modulate = Color(0, 1, 1, 0.580392)
 sprite_frames = SubResource("SpriteFrames_dgde0")
 
 [node name="GoneTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 45.0
 
 [connection signal="area_entered" from="AreaDetection" to="." method="_on_area_detection_area_entered"]
 [connection signal="body_entered" from="AreaDetection" to="." method="_on_area_detection_body_entered"]
