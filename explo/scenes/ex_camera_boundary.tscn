@@ -21,7 +21,7 @@ fill_from = Vector2(0.5, 0.5)
 _data = [Vector2(0.32732, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49802), -1.46651, 0.0, 0, 0]
 point_count = 2
 
-[node name="ExCameraBoundary" type="CollisionShape2D"]
+[node name="ExCameraBoundary" type="CollisionShape2D" groups=["CameraBoundary"]]
 shape = SubResource("RectangleShape2D_hyxsv")
 disabled = true
 debug_color = Color(0.490046, 0.905087, 0.999999, 0.0745098)
@@ -85,6 +85,7 @@ color = Color(0.235294, 0.898039, 1, 1)
 
 [node name="RightParticle" type="CPUParticles2D" parent="."]
 position = Vector2(640, 192)
+emitting = false
 amount = 75
 texture = SubResource("GradientTexture2D_dig1p")
 emission_shape = 3

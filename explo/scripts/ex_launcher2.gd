@@ -19,6 +19,8 @@ extends Node2D
 @onready var mouse_tracker = $RotationNeglecter/MouseTracker
 @onready var mouse_sprite = $RotationNeglecter/MouseSprite
 
+var low_gravity = false
+
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 
 var holding_proj
@@ -26,6 +28,7 @@ var holding_proj
 func _ready():
 	Events.pls_player_died.connect(disable_me)
 	Events.level_completed.connect(disable_me)
+	Events.pls_low_gravity.connect(lower_gravity)
 	new_projectile()
 
 
@@ -74,6 +77,7 @@ func new_projectile():
 	holding_proj.the_launcher = self
 	holding_proj.the_spawner = spawn_point
 	holding_proj.mouse_tracker = mouse_tracker
+	holding_proj.low_gravity = low_gravity
 	
 	holding_proj.global_position = spawn_point.global_position
 	
@@ -175,3 +179,6 @@ func _input(event):
 				#mouse_tracker.position.x = 100 * sign(mouse_tracker.position.x)
 			#if abs(mouse_tracker.position.y) >= 100:
 				#mouse_tracker.position.y = 100 * sign(mouse_tracker.position.y)
+
+func lower_gravity():
+	low_gravity = true

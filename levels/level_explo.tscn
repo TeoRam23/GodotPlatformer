@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dj3xenwxn8j6c"]
+[gd_scene load_steps=38 format=3 uid="uid://dj3xenwxn8j6c"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_2y7hc"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -20,7 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://h0hxqn0deycg" path="res://explo/scenes/world-3/ex_fraggle_block.tscn" id="21_ypotr"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="23_f0x4r"]
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="24_1i840"]
+[ext_resource type="Texture2D" uid="uid://pfwx8c0u4uf3" path="res://assets/baksplodder/low grav jump.png" id="24_pshtt"]
 [ext_resource type="PackedScene" uid="uid://co7wx4c1r81qr" path="res://gravity/scenes/gravity_box.tscn" id="25_1jdik"]
+[ext_resource type="Texture2D" uid="uid://cv2cv8ywkoglg" path="res://assets/baksplodder/low grav projectile.png" id="25_1om7b"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="26_gansl"]
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="27_v86sp"]
 
@@ -107,6 +109,9 @@ size = Vector2(48, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4kv"]
 size = Vector2(224, 280)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxs5i"]
+size = Vector2(640, 304)
+
 [node name="Explo-1" instance=ExtResource("1_2y7hc")]
 title = "Explo!"
 next_level = ExtResource("2_5k66i")
@@ -118,6 +123,8 @@ scroll_offset = Vector2(298.227, 401.933)
 [node name="ExCameraBoundary" parent="." index="2"]
 position = Vector2(3186, -138)
 shape = SubResource("RectangleShape2D_jl7uj")
+wrap_horizontal = true
+wrap_vertical = true
 
 [node name="ExCameraBoundary2" parent="." index="3" instance=ExtResource("3_e2hif")]
 position = Vector2(1021, 98)
@@ -127,7 +134,8 @@ position = Vector2(-245, -170)
 shape = SubResource("RectangleShape2D_f480t")
 
 [node name="Player" parent="." index="4"]
-position = Vector2(233, 11)
+position = Vector2(2808, 11)
+low_gravity = true
 
 [node name="REMOVE projectile hot air" type="Sprite2D" parent="." index="5"]
 visible = false
@@ -384,3 +392,28 @@ position = Vector2(864, -264)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExHotAir2" index="4"]
 position = Vector2(112, 140)
 shape = SubResource("RectangleShape2D_7r4kv")
+
+[node name="LowGravJump" type="Sprite2D" parent="." index="29"]
+z_index = -4096
+position = Vector2(2639, -92)
+texture = ExtResource("24_pshtt")
+
+[node name="IntTileMap4" parent="." index="30" instance=ExtResource("4_quoxl")]
+modulate = Color(1, 1, 1, 0.447059)
+z_index = -4096
+position = Vector2(2632, -280)
+tile_set = SubResource("TileSet_bsl76")
+layer_0/tile_data = PackedInt32Array(65537, 196609, 3, 65538, 196609, 3, 65539, 196609, 3)
+
+[node name="LowGravProjectile" type="Sprite2D" parent="." index="31"]
+z_index = -3290
+position = Vector2(3056, -108)
+texture = ExtResource("25_1om7b")
+
+[node name="ExCameraZone" parent="." index="32" instance=ExtResource("3_e2hif")]
+position = Vector2(3056, -108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExCameraZone" index="1"]
+visible = false
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_jxs5i")

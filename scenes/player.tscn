@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=50 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://explo/scripts/expo_camera.gd" id="4_koes7"]
 [ext_resource type="PackedScene" uid="uid://cf4digijrb32k" path="res://scenes/Liner.tscn" id="5_fplat"]
 [ext_resource type="PackedScene" uid="uid://dsv4eyc7ju17a" path="res://explo/scenes/ex_launcher.tscn" id="6_y3t0q"]
+[ext_resource type="PackedScene" uid="uid://cinjw0pef2fl3" path="res://explo/scenes/world-4/ex_tele_child.tscn" id="10_kxkxs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyipa"]
 atlas = ExtResource("3_v30qj")
@@ -452,6 +453,8 @@ length = 500
 
 [node name="ExLauncher" parent="." instance=ExtResource("6_y3t0q")]
 position = Vector2(0, -3)
+
+[node name="ExTeleChild" parent="." instance=ExtResource("10_kxkxs")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.067

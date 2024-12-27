@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var gravity_scale = 0.67
 @export var launch_power = -410
 
+@export var low_gravity = false
+@export var low_gravity_scale = 0.445
+@export var low_gravity_fall_speed = 295.7
+
 var angle = 0
 var the_launcher
 var the_spawner
@@ -36,6 +40,8 @@ signal projectile_hit_the_ground
 
 func _ready():
 	my_root = get_tree().get_root()
+	
+	Events.pls_low_gravity.connect(lower_gravity)
 	#var cuisine = cos(angle)
 	#var sine = sin(angle)
 	#velocity.x = (0 * cuisine + throw_power * sine)
@@ -126,10 +132,15 @@ func _physics_process(delta):
 func apply_gravity(delta):
 	#if not is_on_floor() and velocity.y >= throw_power:
 		#velocity.y += gravity * gravity_scale * delta
-		
-	velocity.y += gravity * gravity_scale * delta
-	if velocity.y > 350:
-		velocity.y = 350
+	
+	if low_gravity:
+		velocity.y += gravity * low_gravity_scale * gravity_scale * delta
+		if velocity.y > low_gravity_fall_speed:
+			velocity.y = low_gravity_fall_speed
+	else:
+		velocity.y += gravity * gravity_scale * delta
+		if velocity.y > 350:
+			velocity.y = 350
 
 func apply_second_gravity(delta, do_my_own):
 	explosion_body.position = Vector2(0, 0)
@@ -159,9 +170,14 @@ func apply_second_gravity(delta, do_my_own):
 			#explosion_body.position = Vector2(0, 0)
 	else:
 		explosion_body.velocity = velocity
-	explosion_body.velocity.y += gravity * gravity_scale * delta
-	if explosion_body.velocity.y > 350:
-		explosion_body.velocity.y = 350
+	if low_gravity:
+		explosion_body.velocity.y += gravity * low_gravity_scale * gravity_scale * delta
+		if explosion_body.velocity.y > low_gravity_fall_speed:
+			explosion_body.velocity.y = low_gravity_fall_speed
+	else:
+		explosion_body.velocity.y += gravity * gravity_scale * delta
+		if explosion_body.velocity.y > 350:
+			explosion_body.velocity.y = 350
 	
 	#if the_launcher.get_parent().velocity:
 		#explosion_body.velocity += the_launcher.get_parent().velocity
@@ -261,8 +277,8 @@ func get_launch_angle(bod):
 	return angle
 
 
-#func _on_timer_timeout():
-	#print("1!")
+func _on_timer_timeout():
+	print("1!")
 
 
 func _on_gone_timer_timeout():
@@ -281,3 +297,7 @@ func _on_area_detection_area_entered(area):
 func _on_area_detection_body_entered(body):
 	if has_launched:
 		remove_me()
+
+func lower_gravity():
+	print("gravity lowered")
+	low_gravity = true

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cinjw0pef2fl3"]
+
+[ext_resource type="Script" path="res://explo/scripts/world-4/ex_tele_child.gd" id="1_me6wp"]
+
+[node name="ExTeleChild" type="Node2D"]
+process_priority = 1
+process_physics_priority = 1
+script = ExtResource("1_me6wp")

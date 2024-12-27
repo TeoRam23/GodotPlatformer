@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @export var movement_data : PlayerMovementData
+@export var low_gravity = false
+@export var low_gravity_scale = 0.51
+@export var low_gravity_fall_speed = 279
 var main_data : PlayerMovementData
 
 var air_jump = true
@@ -11,10 +14,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gonnadash = false
 var sprite_rotation_speed = 100
 var just_launched = false
-var wrap_horizontal = false
-var wrap_vertical = false
-var rd = Vector2.ZERO
-var lu = Vector2.ZERO
+#var wrap_horizontal = false # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
+#var wrap_vertical = false
+#var rd = Vector2.ZERO
+#var lu = Vector2.ZERO
 
 var is_paused = false
 
@@ -61,8 +64,11 @@ func _ready():
 	
 	Events.pls_kill_player.connect(i_died)
 	Events.level_completed.connect(disable_player)
-	Events.pls_set_wrap.connect(wrap_me)
+	#Events.pls_set_wrap.connect(wrap_me) # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	
+	if low_gravity:
+		print("low grav?")
+		Events.low_gravity()
 	johnnify()
 
 func _physics_process(delta):
@@ -131,7 +137,7 @@ func _physics_process(delta):
 		#timer.start()
 	#if timer.time_left < 2.067 - 0.834 and timer.time_left > 2.067 - 0.917:
 		#print("PEAK")
-	wrap_me(0,0,0,0)
+	#wrap_me(0,0,0,0) ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	first_frame = false
 
 func apply_gravity(delta):
@@ -145,13 +151,21 @@ func apply_gravity(delta):
 		if !just_launched:
 			prevelocity.y = 0
 	if not is_on_floor():
-		prevelocity.y += gravity * movement_data.gravity_scale * delta
+		if low_gravity:
+			prevelocity.y += gravity * low_gravity_scale * movement_data.gravity_scale * delta
+			if prevelocity.y > low_gravity_fall_speed:
+				prevelocity.y -= low_gravity_fall_speed * 0.1
+				if prevelocity.y < low_gravity_fall_speed:
+					prevelocity.y = low_gravity_fall_speed
+		else:
+			prevelocity.y += gravity * movement_data.gravity_scale * delta
+			if prevelocity.y > movement_data.max_fall_speed:
+				prevelocity.y -= movement_data.max_fall_speed * 0.1
+				if prevelocity.y < movement_data.max_fall_speed:
+					prevelocity.y = movement_data.max_fall_speed
+			
 		
 		
-		if prevelocity.y > movement_data.max_fall_speed:
-			prevelocity.y -= movement_data.max_fall_speed * 0.1
-			if prevelocity.y < movement_data.max_fall_speed:
-				prevelocity.y = movement_data.max_fall_speed
 		if is_on_wall() and prevelocity.y > 0 and movement_data.wall_slide:
 			prevelocity.y = 40
 
@@ -650,26 +664,26 @@ func launch_me(angle, power):
 	
 	#print("I hast launched 3 ", process_priority)
 
-func wrap_me(srd, slu, wr_horz, wr_vert):
-	if srd or slu:
-		rd = srd
-		lu = slu
-		wrap_horizontal = wr_horz
-		wrap_vertical = wr_vert
-	#print("sending... ", srd, ", ", slu, ", ", wr_horz, wr_vert)
-	#(320, 124) and: (-320, -236)
-	#var rd = Vector2(320, 124)
-	#var lu = Vector2(-320, -236)
-	if wrap_horizontal:
-		if global_position.x > rd.x + 8:
-			global_position.x = lu.x - 8
-		if global_position.x < lu.x - 8:
-			global_position.x = rd.x + 8
-	if wrap_vertical:
-		if global_position.y > rd.y + 8:
-			global_position.y = lu.y - 8
-		if global_position.y < lu.y - 8:
-			global_position.y = rd.y + 8
+#func wrap_me(srd, slu, wr_horz, wr_vert): ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
+	#if srd or slu:
+		#rd = srd
+		#lu = slu
+		#wrap_horizontal = wr_horz
+		#wrap_vertical = wr_vert
+	##print("sending... ", srd, ", ", slu, ", ", wr_horz, wr_vert)
+	##(320, 124) and: (-320, -236)
+	##var rd = Vector2(320, 124)
+	##var lu = Vector2(-320, -236)
+	#if wrap_horizontal:
+		#if global_position.x > rd.x + 8:
+			#global_position.x = lu.x - 8
+		#if global_position.x < lu.x - 8:
+			#global_position.x = rd.x + 8
+	#if wrap_vertical:
+		#if global_position.y > rd.y + 8:
+			#global_position.y = lu.y - 8
+		#if global_position.y < lu.y - 8:
+			#global_position.y = rd.y + 8
 
 
 

@@ -4,6 +4,8 @@ extends CollisionShape2D
 
 @export var wrap_horizontal = false
 @export var wrap_vertical = false
+var rd
+var lu
 
 @onready var up_particle = $UpParticle
 @onready var down_particle = $DownParticle
@@ -12,16 +14,18 @@ extends CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var rd = shape.extents
+	Events.pls_request_wrap.connect(requester_wrap)
+	
+	rd = shape.extents
 	print(rd)
-	var lu = rd * -1
+	lu = rd * -1
 	rd += global_position
 	lu += global_position
 	
 	# calls deferred fordi hvis den kjører funskjonen med en gang har ikke kameraet connecta til events
-	call_deferred("send_signal", rd, lu)
+	call_deferred("send_signal")
 	if wrap_horizontal or wrap_vertical:
-		call_deferred("send_wrap", rd, lu)
+		call_deferred("send_wrap")
 	
 	set_particles()
 
@@ -30,10 +34,10 @@ func _ready():
 func _process(delta):
 	pass
 
-func send_signal(rd, lu):
+func send_signal():
 	Events.set_camera_limit(rd, lu)
 
-func send_wrap(rd, lu):
+func send_wrap():
 	Events.set_wrapping(rd, lu, wrap_horizontal, wrap_vertical)
 
 
@@ -66,3 +70,8 @@ func set_particles():
 		right_particle.emission_rect_extents.y = shaper.size.y * 0.5
 		right_particle.position.y = 0
 		right_particle.position.x = shaper.size.x * 0.5
+
+
+func requester_wrap(requester):
+	if requester.has_method("wrap_me"):
+		requester.wrap_me(rd, lu, wrap_horizontal, wrap_vertical)
