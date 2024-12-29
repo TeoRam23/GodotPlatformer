@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dj3xenwxn8j6c"]
+[gd_scene load_steps=40 format=3 uid="uid://dj3xenwxn8j6c"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_2y7hc"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://pfwx8c0u4uf3" path="res://assets/baksplodder/low grav jump.png" id="24_pshtt"]
 [ext_resource type="PackedScene" uid="uid://co7wx4c1r81qr" path="res://gravity/scenes/gravity_box.tscn" id="25_1jdik"]
 [ext_resource type="Texture2D" uid="uid://cv2cv8ywkoglg" path="res://assets/baksplodder/low grav projectile.png" id="25_1om7b"]
+[ext_resource type="PackedScene" uid="uid://dq4oxinxg0eju" path="res://gravity/scenes/ex_anti_gravity.tscn" id="26_4r53p"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="26_gansl"]
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="27_v86sp"]
 
@@ -111,6 +112,9 @@ size = Vector2(224, 280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxs5i"]
 size = Vector2(640, 304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78y0x"]
+size = Vector2(176, 160)
 
 [node name="Explo-1" instance=ExtResource("1_2y7hc")]
 title = "Explo!"
@@ -417,3 +421,15 @@ position = Vector2(3056, -108)
 visible = false
 position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_jxs5i")
+
+[node name="ExAntiGravity" parent="." index="33" instance=ExtResource("26_4r53p")]
+position = Vector2(2856, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExAntiGravity" index="4"]
+position = Vector2(64, -56)
+shape = SubResource("RectangleShape2D_78y0x")
+
+[node name="gravity2" parent="." index="34" instance=ExtResource("25_1jdik")]
+position = Vector2(3072, 16)
+scale = Vector2(5.155, 5.575)
+area_direction = 180.0

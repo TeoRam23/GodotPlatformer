@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=51 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -285,6 +285,9 @@ radius = 8.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck58h"]
 size = Vector2(10, 14.002)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5rb0"]
+radius = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1p1sq"]
 atlas = ExtResource("3_v30qj")
 region = Rect2(105, 0, 21, 21)
@@ -409,19 +412,26 @@ collision_mask = 132
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ck58h")
 
-[node name="GravityDetector" type="Area2D" parent="."]
-position = Vector2(0.0010004, 5.002)
-collision_layer = 0
+[node name="GravityDetector" type="Area2D" parent="." groups=["GravityDetector"]]
+position = Vector2(0, -2)
+collision_layer = 2147483648
 collision_mask = 8
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GravityDetector"]
-position = Vector2(0, -5)
+[node name="CollisionCircle" type="CollisionShape2D" parent="GravityDetector"]
+visible = false
+position = Vector2(0.0010004, 2.002)
 scale = Vector2(0.624, 0.624)
 shape = SubResource("CircleShape2D_w03xi")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityDetector"]
-position = Vector2(-0.0010004, -5.002)
+[node name="CollisionSquare" type="CollisionShape2D" parent="GravityDetector"]
+visible = false
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_1in1s")
+disabled = true
+
+[node name="CollisionPoint" type="CollisionShape2D" parent="GravityDetector"]
+shape = SubResource("CircleShape2D_j5rb0")
 
 [node name="Framer" parent="." instance=ExtResource("4_1icg4")]
 process_mode = 3

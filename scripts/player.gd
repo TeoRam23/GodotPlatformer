@@ -25,6 +25,7 @@ var is_paused = false
 var gravity_direction = 0
 var rotation_speed = 15
 var wanted_rotation = 0
+var smooth_rotation = true
 
 var rotation_divider = 15
 
@@ -67,7 +68,6 @@ func _ready():
 	#Events.pls_set_wrap.connect(wrap_me) # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	
 	if low_gravity:
-		print("low grav?")
 		Events.low_gravity()
 	johnnify()
 
@@ -79,6 +79,9 @@ func _physics_process(delta):
 	button_presses(delta)
 	
 	var input_axis = Input.get_axis("left", "right")
+	if gravity_direction > 75 or gravity_direction < -75:
+		input_axis = Input.get_axis("right", "left")
+	
 	apply_gravity(delta)
 	handle_wall_jump(input_axis)
 	handle_jump()
@@ -375,7 +378,11 @@ func gravity_check():
 		for area in gravity_detector.get_overlapping_areas():
 			if area.on_top:
 				entered_area2d = area
-				
+		
+		if entered_area2d.is_in_group("explo_gravity"):
+			smooth_rotation = false
+		else:
+			smooth_rotation = true
 		
 		if gravity_direction > 180:
 			gravity_direction -= 360
@@ -418,7 +425,7 @@ func gravity_check():
 				last_area = entered_area2d
 				find_diff_rotate(gravity_direction)
 				
-				print("#######################################################################ENTERED#######################################################################")
+				#print("#######################################################################ENTERED#######################################################################")
 				
 				
 #				if gravity_direction > 180:
@@ -447,13 +454,13 @@ func gravity_check():
 				var cuisine = cos(radians)
 				var sine = sin(radians)
 #				cuisine = -cuisine
-				print("cuisine: ", cuisine, " & sine: ", sine, "
-vel.x: ", velocity.x, " & vel.y: ", velocity.y)
+				#print("cuisine: ", cuisine, " & sine: ", sine, "
+#vel.x: ", velocity.x, " & vel.y: ", velocity.y)
 				
 				prevelocity.x = (velocity.x * cuisine + velocity.y * sine)
 				prevelocity.y = (-velocity.x * sine + velocity.y * cuisine)
 				
-				print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
+				#print("pre.x: ", prevelocity.x, " & pre.y: ", prevelocity.y)
 			#
 	#				print(velocity.x * cos(radians), " - ", velocity.y * sin(radians))
 	#				print(velocity.x * sin(radians), " + ", velocity.y * cos(radians))
@@ -511,9 +518,12 @@ vel.x: ", velocity.x, " & vel.y: ", velocity.y)
 			find_diff_rotate(0)
 		last_area = Area2D
 	
-	# fjerner kollisjon fra rektangelet mens sprite roterer for å hindre rarheter hvis toppen går roteres inn i et tak/vegg
-	if sprite_holder.rotation_degrees != 0:
-		collision_rect.disabled = true
+	if smooth_rotation:
+		# fjerner kollisjon fra rektangelet mens sprite roterer for å hindre rarheter hvis toppen går roteres inn i et tak/vegg
+		if sprite_holder.rotation_degrees != 0:
+			collision_rect.disabled = true
+		else:
+			collision_rect.disabled = false
 	else:
 		collision_rect.disabled = false
 		
@@ -535,14 +545,24 @@ func find_diff_rotate(grav):
 		diff -= 360
 	elif diff < -180:
 		diff += 360
-	sprite_holder.rotation_degrees -= diff
+		
+		
+	if smooth_rotation:
+		sprite_holder.rotation_degrees -= diff
+		
+		while sprite_holder.rotation_degrees > 180 or sprite_holder.rotation_degrees < -180:
+			if sprite_holder.rotation_degrees > 180:
+				sprite_holder.rotation_degrees -= 360
+			elif sprite_holder.rotation_degrees < -180:
+				sprite_holder.rotation_degrees += 360
 	
+	else:
+		sprite_holder.rotation_degrees = 0
+		var cuisine = cos(deg_to_rad(grav))
+		var sine = sin(deg_to_rad(grav))
+		position.x += (0 * cuisine + 2 * sine)
+		position.y += (0 * sine + 2 * cuisine)
 	
-	while sprite_holder.rotation_degrees > 180 or sprite_holder.rotation_degrees < -180:
-		if sprite_holder.rotation_degrees > 180:
-			sprite_holder.rotation_degrees -= 360
-		elif sprite_holder.rotation_degrees < -180:
-			sprite_holder.rotation_degrees += 360
 	rotation_degrees = grav
 
 func gravity_calculation():
@@ -570,7 +590,8 @@ func gravity_calculation():
 	var move_rotation = clamp(diff, -rotation_speed, rotation_speed)
 
 	# Apply the rotation
-	sprite_holder.rotation_degrees += move_rotation #Gjorde dette bra bedre! yay!
+	if smooth_rotation:
+		sprite_holder.rotation_degrees += move_rotation #Gjorde dette bra bedre! yay!
 	# Og forresten så fikset problemer når du går inn i area og hodet blir rotert inn i et tak. fikset det også! YAY!
 	
 #	if (rotation_degrees > gravity_direction - 0.01 and rotation_degrees < gravity_direction + 0.01):

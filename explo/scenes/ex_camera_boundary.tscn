@@ -5,13 +5,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxsv"]
 size = Vector2(640, 360)
 
-[sub_resource type="Gradient" id="Gradient_1m221"]
+[sub_resource type="Gradient" id="Gradient_oucq8"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.588068, 0.636364)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dig1p"]
-gradient = SubResource("Gradient_1m221")
+gradient = SubResource("Gradient_oucq8")
 width = 16
 height = 16
 fill = 1

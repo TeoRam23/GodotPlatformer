@@ -156,6 +156,7 @@ back={
 2d_physics/layer_8="Foreground"
 2d_physics/layer_9="ProjectileKiller"
 2d_physics/layer_10="LavaBallKiller"
+2d_physics/layer_32="GroupDiffer"
 
 [rendering]
 
