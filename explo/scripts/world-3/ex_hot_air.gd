@@ -30,9 +30,11 @@ func give_air(delta):
 					# vet ikke om dette blir rett, eller om det virker på projectile og busker
 					# lykke til fremtidsmeg...
 					# takk... dette blir ikke rett, når man drar opp og ned skal man ikke komme lenger opp eller ned, men med dette gjør man det
-					
+					# ??? er kommentaren over utdatert? det ser ut til å virke som det skal tror jeg???
+					print("giving to player")
 					bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
 					bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
+					#bod.prevelocity.y -= 1100 * delta
 					#bod.hot_air = true
 					#if bod.prevelocity.y > 0 or 1==1:
 						#bod.prevelocity.y -= 1600 * delta

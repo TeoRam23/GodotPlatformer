@@ -303,7 +303,8 @@ func update_animation(input_axis):
 	else:
 		animated_sprite_2d.play("idle")
 		
-	
+	print("vel: ",prevelocity.y)
+	print("pos: ", position.y)
 	if not is_on_floor():
 		if prevelocity.y < 0:
 			animated_sprite_2d.play("jump")
