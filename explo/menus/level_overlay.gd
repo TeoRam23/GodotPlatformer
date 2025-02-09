@@ -15,6 +15,7 @@ extends CanvasLayer
 var our_johnnies = 0
 
 @export var show_extras = false
+@export var is_pausable = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +36,8 @@ func _ready():
 	
 	if show_extras:
 		other_container.visible = true
+	if is_pausable:
+		process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
 

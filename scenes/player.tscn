@@ -292,12 +292,12 @@ radius = 0.0
 atlas = ExtResource("3_v30qj")
 region = Rect2(105, 0, 21, 21)
 
-[sub_resource type="Gradient" id="Gradient_ygmdj"]
+[sub_resource type="Gradient" id="Gradient_q8cyk"]
 offsets = PackedFloat32Array(0.694915, 0.737288)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l1e4h"]
-gradient = SubResource("Gradient_ygmdj")
+gradient = SubResource("Gradient_q8cyk")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 

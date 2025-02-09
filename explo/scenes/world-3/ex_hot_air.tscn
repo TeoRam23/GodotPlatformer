@@ -10,7 +10,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.369307), 1.76091e-07, 0.0, 
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_rwvd8"]
-offsets = PackedFloat32Array(0.33, 1)
+offsets = PackedFloat32Array(0.338983, 1)
 colors = PackedColorArray(0.45098, 0.317647, 0.545098, 1, 0.45098, 0.317647, 0.545098, 0)
 
 [node name="ExHotAir" type="Area2D"]

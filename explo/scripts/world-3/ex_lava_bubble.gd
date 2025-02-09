@@ -10,6 +10,7 @@ var lava_can_kill = false
 var start_pos = Vector2(0, 0)
 
 @onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
+@onready var ooze_particle = $OozeParticle
 
 @onready var face_sprite = $FaceSprite
 # -142.0 for 1 block
@@ -38,6 +39,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #ok
 
 func _ready():
+	print(lava_can_kill)
 	start_pos = position
 	
 	# kalkulerer velocetey for hvor høyt den skal hoppe
@@ -47,7 +49,8 @@ func _ready():
 func _physics_process(delta):
 	#if visible_on_screen_notifier_2d.is_on_screen():
 		#print("My velocity.y: ", velocity.y)
-	
+	if !activated:
+		velocity = Vector2.ZERO
 	var collision = move_and_slide()
 	if collision:
 		if is_on_wall():
@@ -96,6 +99,7 @@ func reset_bubble():
 	# stop partikler
 	activated = false
 	lava_can_kill = false
+	ooze_particle.emitting = false
 	velocity = Vector2.ZERO
 
 
@@ -104,6 +108,7 @@ func launch_bubble():
 	velocity.y = jump_velocity
 	velocity.x = speed
 	activated = true
+	ooze_particle.emitting = true
 
 
 func _on_lava_detector_body_entered(body):

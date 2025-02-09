@@ -6,7 +6,8 @@ extends Node2D
 @export var pixel_speed = 0.0
 @export var gravity_scale = 0.69
 @export var max_down_velocity = 300
-@export var spawn_delay = 2
+@export var spawn_delay = 2.0
+@export var starts_in_lava = false
 
 var jump_velocity = -323.5
 # -142.0 for 1 block
@@ -47,6 +48,7 @@ func create_bubble():
 	new_bubble.speed = pixel_speed
 	new_bubble.gravity_scale = gravity_scale
 	new_bubble.max_down_velocity = max_down_velocity
+	new_bubble.lava_can_kill = !starts_in_lava
 	
 	new_bubble.launch_bubble()
 	
