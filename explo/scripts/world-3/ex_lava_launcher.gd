@@ -2,7 +2,7 @@ extends Node2D
 
 @export var blocks_tall = 17
 @export var extra_pixl = 0
-@export var vertical_override = 0
+@export var vertical_override = 0.0
 @export var pixel_speed = 0.0
 @export var gravity_scale = 0.69
 @export var max_down_velocity = 300
@@ -26,11 +26,16 @@ func _ready():
 	spawn_timer.wait_time = spawn_delay
 	spawn_timer.start()
 	
+	# hvis jeg vil ha full kontroll over velocity
 	if vertical_override:
 		jump_velocity = vertical_override
 	else:
+		# kalkulerer velocetey for hvor høyt den skal hoppe i blokker og pixler med 0.69 i gravitasjon
 		jump_velocity = (-0.000463931+sqrt(-0.000463931**2 - (0.000185132*(0.0007942-(blocks_tall+(extra_pixl*0.0625))))))/(0.000046283*2) *-1
-		# kalkulerer velocetey for hvor høyt den skal hoppe i blokker og pixler
+
+		# justerer jump velocity for 0.8 i gravity, som jeg fant var bedre. vet ikke om jeg kan lage dette dynamisk for all gravitasjon?
+		if gravity_scale == 0.8:
+			jump_velocity = jump_velocity * 1.076664780762374
 	pixel_speed = pixel_speed * 60
 	create_bubble()
 	

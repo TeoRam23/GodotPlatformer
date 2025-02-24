@@ -20,7 +20,7 @@ position = Vector2(255, -61)
 texture = ExtResource("2_m5sl5")
 
 [node name="ExCameraBoundary" parent="." index="2"]
-position = Vector2(255, -61)
+position = Vector2(256, -61)
 
 [node name="Player" parent="." index="3"]
 position = Vector2(8, 11)
@@ -41,37 +41,44 @@ layer_0/tile_data = PackedInt32Array(262157, 131072, 2, 196621, 131072, 1, 13108
 position = Vector2(72, 48)
 blocks_tall = 6
 extra_pixl = 11
+gravity_scale = 0.8
 spawn_delay = 1.25
+starts_in_lava = true
 
 [node name="ExLavaLauncher2" parent="ObjectHolder" index="2" instance=ExtResource("4_e0n85")]
 position = Vector2(120, 48)
 blocks_tall = 6
 extra_pixl = 11
 spawn_delay = 1.25
+starts_in_lava = true
 
 [node name="ExLavaLauncher3" parent="ObjectHolder" index="3" instance=ExtResource("4_e0n85")]
 position = Vector2(168, 48)
 blocks_tall = 6
 extra_pixl = 11
 spawn_delay = 1.25
+starts_in_lava = true
 
 [node name="ExLavaLauncher4" parent="ObjectHolder" index="4" instance=ExtResource("4_e0n85")]
 position = Vector2(328, 48)
 blocks_tall = 6
 extra_pixl = 11
 spawn_delay = 1.25
+starts_in_lava = true
 
 [node name="ExLavaLauncher5" parent="ObjectHolder" index="5" instance=ExtResource("4_e0n85")]
 position = Vector2(376, 48)
 blocks_tall = 6
 extra_pixl = 11
 spawn_delay = 1.25
+starts_in_lava = true
 
 [node name="ExLavaLauncher6" parent="ObjectHolder" index="6" instance=ExtResource("4_e0n85")]
 position = Vector2(424, 48)
 blocks_tall = 6
 extra_pixl = 11
 spawn_delay = 1.25
+starts_in_lava = true
 
 [node name="ExCompleteLevel" parent="." index="12" instance=ExtResource("5_6l0s5")]
 position = Vector2(496, 16)

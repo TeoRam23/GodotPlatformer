@@ -12,6 +12,7 @@ size = Vector2(48, 48)
 
 [node name="3-5" instance=ExtResource("1_hb6ms")]
 title = "Dodging Bushies"
+show_mouse = true
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
@@ -35,18 +36,25 @@ position = Vector2(0, 8)
 layer_0/tile_data = PackedInt32Array(131071, 131072, 1, 65535, 131072, 0, 131070, 65536, 1, 65534, 65536, 0, 131069, 65536, 1, 65533, 65536, 0, 131068, 65536, 1, 65532, 65536, 0, 131067, 65536, 1, 65531, 65536, 0, 131066, 0, 1, 65530, 0, 0, -393198, 131072, 2, -458734, 131072, 0, -393199, 65536, 2, -458735, 65536, 0, -393200, 65536, 2, -458736, 65536, 0, -393201, 65536, 2, -458737, 65536, 0, -393202, 0, 2, -458738, 0, 0, -1376254, 131072, 2, -1441790, 131072, 0, -1376255, 65536, 2, -1441791, 65536, 0, -1376256, 65536, 2, -1441792, 65536, 0, -1310721, 65536, 2, -1376257, 65536, 0, -1310722, 0, 2, -1376258, 0, 0, 196607, 131072, 2, 196606, 65536, 2, 196605, 65536, 2, 196604, 65536, 2, 196603, 65536, 2, 196602, 0, 2)
 
 [node name="ExLavaLauncher" parent="ObjectHolder" index="1" instance=ExtResource("4_i0p5m")]
-position = Vector2(16, -328)
+position = Vector2(24, -328)
 blocks_tall = 0
-vertical_override = 300
 pixel_speed = -3.0
+gravity_scale = 0.8
 starts_in_lava = true
 
 [node name="ExHotAir" parent="ObjectHolder" index="2" instance=ExtResource("5_d45ab")]
-position = Vector2(240, -80)
+position = Vector2(232, -144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectHolder/ExHotAir" index="4"]
-position = Vector2(24, -24)
+position = Vector2(32, 40)
 shape = SubResource("RectangleShape2D_25knk")
+
+[node name="ExLavaLauncher2" parent="ObjectHolder" index="3" instance=ExtResource("4_i0p5m")]
+position = Vector2(300, -152)
+blocks_tall = 0
+pixel_speed = 3.0
+gravity_scale = 0.8
+starts_in_lava = true
 
 [node name="ExCompleteLevel" parent="." index="12" instance=ExtResource("6_j2fbk")]
 position = Vector2(96, -240)

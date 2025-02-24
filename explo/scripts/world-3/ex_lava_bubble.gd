@@ -9,10 +9,13 @@ var lava_can_kill = false
 
 var start_pos = Vector2(0, 0)
 
+var last_floor_check = false
+
 @onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
 @onready var ooze_particle = $OozeParticle
 
 @onready var face_sprite = $FaceSprite
+@onready var float_timer = $FloatTimer
 # -142.0 for 1 block
 # -323.5 for 5 block
 # -601.0 for 17 block
@@ -51,11 +54,12 @@ func _physics_process(delta):
 		#print("My velocity.y: ", velocity.y)
 	if !activated:
 		velocity = Vector2.ZERO
+	
 	var collision = move_and_slide()
+	
 	if collision:
 		if is_on_wall():
-		
-			velocity.x = speed * -get_wall_normal().x
+			velocity.x = abs(speed) * get_wall_normal().x
 
 	update_face()
 	# Add the gravity.
@@ -65,9 +69,18 @@ func _physics_process(delta):
 		if velocity.y >= max_down_velocity:
 			velocity.y = max_down_velocity
 	
+	if !is_on_floor() and last_floor_check:
+		float_timer.start()
+	
+	if float_timer.time_left > 0 and velocity.y > 0:
+		velocity.y = 0
+	
+	last_floor_check = is_on_floor()
+	
 
 	# Handle jump.
-	if Input.is_action_just_pressed("back"):
+	if Input.is_action_just_pressed("back") and 1==2:
+		
 		velocity.y = jump_velocity
 		#y=0.000046283x^{2}+-0.000463931\left(x\right)+0.0007942
 		#velocity.y =  #/ 17 * blocks_tall
@@ -109,6 +122,8 @@ func launch_bubble():
 	velocity.x = speed
 	activated = true
 	ooze_particle.emitting = true
+	
+	float_timer.start()
 
 
 func _on_lava_detector_body_entered(body):

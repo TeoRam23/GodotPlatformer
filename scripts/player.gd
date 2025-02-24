@@ -175,7 +175,7 @@ func apply_gravity(delta):
 func handle_wall_jump(input_axis):
 	if is_on_wall() and !just_launched:
 		prevelocity.x = 0
-	if not is_on_wall_only(): #sjekker om man er ved siden av en vegg med bygd inn variabel
+	if not is_on_wall_only() or !movement_data.wall_slide: #sjekker om man er ved siden av en vegg med bygd inn variabel
 		return
 	var wall_normal = get_wall_normal() #finner hvilken retning vegger peker
 	if Input.is_action_just_pressed("jump"):
