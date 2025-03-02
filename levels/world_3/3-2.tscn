@@ -41,7 +41,6 @@ layer_0/tile_data = PackedInt32Array(262157, 131072, 2, 196621, 131072, 1, 13108
 position = Vector2(72, 48)
 blocks_tall = 6
 extra_pixl = 11
-gravity_scale = 0.8
 spawn_delay = 1.25
 starts_in_lava = true
 

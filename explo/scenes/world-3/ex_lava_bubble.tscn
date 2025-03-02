@@ -66,7 +66,7 @@ sprite_frames = SubResource("SpriteFrames_yq7ma")
 autoplay = "default"
 frame_progress = 0.440824
 
-[node name="FaceSprite" type="Sprite2D" parent="."]
+[node name="FaceSprite" type="Sprite2D" parent="BodySprite"]
 texture = SubResource("AtlasTexture_efk8x")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -97,7 +97,7 @@ color_ramp = SubResource("Gradient_urmno")
 
 [node name="FloatTimer" type="Timer" parent="."]
 process_mode = 1
-wait_time = 0.033
+wait_time = 0.043
 one_shot = true
 
 [connection signal="area_entered" from="LavaDetector" to="." method="_on_lava_detector_area_entered"]

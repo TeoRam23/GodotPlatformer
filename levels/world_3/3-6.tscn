@@ -52,11 +52,11 @@ position = Vector2(-528, 0)
 [node name="TextEdit" type="TextEdit" parent="." index="14"]
 offset_left = -368.0
 offset_top = -96.0
-offset_right = -144.0
+offset_right = -152.0
 offset_bottom = 56.0
-text = "Det ser ut til at 
-lava bubble er i 
-lufta i noen sekunder 
-før den går ned...
-dette ødelegger alt, 
-kanskje"
+text = "okay jeg fikset det
+problemet, men nå
+er ikke hoppingen
+helt som den skal 
+og jeg må kanskje 
+gjøre det på nytt ÆÆ"

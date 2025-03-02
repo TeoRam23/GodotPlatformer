@@ -20,6 +20,7 @@ extends Node2D
 @onready var mouse_sprite = $RotationNeglecter/MouseSprite
 
 var low_gravity = false
+var mouse_is_locked = true
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 
@@ -133,6 +134,8 @@ func disable_me():
 	set_process(false)
 	set_physics_process(false)
 	polygon_arrow.visible = false
+	mouse_is_locked = false
+	
 	
 	
 func _input(event):
@@ -164,7 +167,7 @@ func _input(event):
 		var differanse = to_object.length()
 		var radius = 75
 		#print(differanse)
-		if differanse > radius:
+		if differanse > radius and mouse_is_locked:
 			mouse_tracker.position = to_object.normalized() * radius
 			
 		mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)

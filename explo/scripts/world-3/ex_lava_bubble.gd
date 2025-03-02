@@ -4,18 +4,23 @@ extends CharacterBody2D
 @export var jump_velocity = 0
 @export var gravity_scale = 0.69
 @export var max_down_velocity = 300
+@export var show_particles = true
 
 var lava_can_kill = false
 
 var start_pos = Vector2(0, 0)
 
 var last_floor_check = false
+var last_vel_check = Vector2.ZERO
 
 @onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
 @onready var ooze_particle = $OozeParticle
 
-@onready var face_sprite = $FaceSprite
+@onready var body_sprite = $BodySprite
+@onready var face_sprite = $BodySprite/FaceSprite
 @onready var float_timer = $FloatTimer
+
+var timer_started = false
 # -142.0 for 1 block
 # -323.5 for 5 block
 # -601.0 for 17 block
@@ -42,8 +47,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #ok
 
 func _ready():
+	print("I AM A NEW BUBBLE")
 	print(lava_can_kill)
 	start_pos = position
+	
+	
 	
 	# kalkulerer velocetey for hvor høyt den skal hoppe
 	#jump_velocity = (-0.000463931+sqrt(-0.000463931**2 - (0.000185132*(0.0007942-(blocks_tall+(extra_pxl*0.0625))))))/(0.000046283*2) *-1
@@ -69,13 +77,23 @@ func _physics_process(delta):
 		if velocity.y >= max_down_velocity:
 			velocity.y = max_down_velocity
 	
-	if !is_on_floor() and last_floor_check:
+	if (!is_on_floor() and last_floor_check) or (last_vel_check.y < 0 and velocity.y >= 0):
+		#print("HEY---")
+		#print(last_vel_check.y)
+		#if last_vel_check.y < 0:
+			#print("weird...")
+		#print("starting timer")
 		float_timer.start()
+		timer_started = true
 	
-	if float_timer.time_left > 0 and velocity.y > 0:
+	if float_timer.time_left > 0 and velocity.y > 0 and timer_started:
+		#print(float_timer.time_left)
+		#print("yup")
 		velocity.y = 0
 	
 	last_floor_check = is_on_floor()
+	last_vel_check = velocity
+	
 	
 
 	# Handle jump.
@@ -107,13 +125,14 @@ func _physics_process(delta):
 
 
 func reset_bubble():
-	#print("Killed")
+	print("Killed... right?")
 	position = start_pos
 	# stop partikler
 	activated = false
 	lava_can_kill = false
 	ooze_particle.emitting = false
 	velocity = Vector2.ZERO
+	body_sprite.visible = false
 
 
 func launch_bubble():
@@ -122,6 +141,9 @@ func launch_bubble():
 	velocity.x = speed
 	activated = true
 	ooze_particle.emitting = true
+	body_sprite.visible = true
+	if !show_particles:
+		ooze_particle.visible = false
 	
 	float_timer.start()
 
@@ -139,14 +161,14 @@ func _on_lava_detector_body_exited(body):
 
 func update_face():
 	if velocity.x > 0:
-		face_sprite.position.x = 1
+		face_sprite.position.x = 2
 	elif velocity.x < 0:
-		face_sprite.position.x = -1
+		face_sprite.position.x = -2
 	else:
 		face_sprite.position.x = 0
 	if velocity.y > 0:
-		face_sprite.position.y = 1
+		face_sprite.position.y = 2
 	elif velocity.y < 0:
-		face_sprite.position.y = -1
+		face_sprite.position.y = -2
 	else:
 		face_sprite.position.y = 0
