@@ -34,6 +34,8 @@ func give_air(delta):
 					print("giving to player")
 					bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
 					bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
+					#bod.prevelocity.y -= 1500 * delta #dette var en test
+					#print("play: ",(gravity * bod.movement_data.gravity_scale) + air_strength_p)
 					#bod.prevelocity.y -= 1100 * delta
 					#bod.hot_air = true
 					#if bod.prevelocity.y > 0 or 1==1:
@@ -58,9 +60,14 @@ func give_air(delta):
 					#else:
 					
 					# den første er for å kanselere gravitasjonen, den andre for å legge til velocetey
-					bod.velocity.y -= gravity * bod.gravity_scale * delta
 					#bod.velocity.y -= air_strength * delta
+					
+
+					bod.velocity.y -= gravity * bod.gravity_scale * delta
 					bod.velocity.y -= air_strength_o * delta
+					
+					#bod.velocity.y -= 1500 * delta #dette var en test
+					#print("obj: ",(gravity * bod.gravity_scale) + air_strength_o)
 					#if bod.velocity.y > 0:
 						#bod.velocity.y -= air_strength * delta
 					#else:
@@ -117,12 +124,12 @@ func set_particle_vars():
 			#particles_2d.color_ramp.set_offset(1, (shape.end.y*2/16 - 2)/8)
 			#particles_2d.color_ramp.set_offset(0, (shape.end.y*2/16 - 6)/8)
 			#particles_2d.color_ramp.set_offset(1, 1 - (1/(shape.end.y*2/16 - 2)))
-			particles_2d.color_ramp.set_offset(0, ((shape.end.y*2/16) - 5)/(shape.end.y*2/16))
+			particles_2d.color_ramp.set_offset(0, ((shape.end.y*2/16) - 3)/(shape.end.y*2/16))
 			print("test: ", ((shape.end.y*2/16) - 5)/(shape.end.y*2/16), " ended: ", shape.end.y*2/16)
 			#particles_2d.color_ramp.set_offset(1, 1)
 			#particles_2d.color_ramp.set_offset(0, 0.99)
 			#particles_2d.color_ramp.set_offset(0, shape.end.y*2/16)
-			particles_2d.scale_amount_curve.set_point_offset(0, ((shape.end.y*2/16) - 8)/(shape.end.y*2/16))
+			particles_2d.scale_amount_curve.set_point_offset(0, ((shape.end.y*2/16) - 5)/(shape.end.y*2/16))
 			
 			
 			print("off: ", particles_2d.color_ramp.offsets)
@@ -134,4 +141,5 @@ func set_particle_vars():
 		print(shape.size)
 		print(shape.end)
 		air_shape.shape
-	
+	else:
+		print("*ERRORERROR*: This HOT AIR does not have a collisionshape! ", self)

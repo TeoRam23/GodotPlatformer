@@ -25,6 +25,7 @@ position = Vector2(208, 116)
 texture = ExtResource("2_q8io5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+visible = false
 z_index = -10
 position = Vector2(208, 116)
 texture = ExtResource("8_w0h4l")

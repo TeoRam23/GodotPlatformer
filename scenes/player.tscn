@@ -283,7 +283,7 @@ size = Vector2(10, 10)
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck58h"]
-size = Vector2(10, 12.003)
+size = Vector2(10, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5rb0"]
 radius = 0.0
@@ -404,12 +404,12 @@ wait_time = 0.1
 one_shot = true
 
 [node name="HazardDetector" type="Area2D" parent="."]
-position = Vector2(0.0010004, 5.002)
+position = Vector2(0, 5)
 collision_layer = 0
 collision_mask = 132
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HazardDetector"]
-position = Vector2(0, -6.0005)
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_ck58h")
 
 [node name="GravityDetector" type="Area2D" parent="." groups=["GravityDetector"]]

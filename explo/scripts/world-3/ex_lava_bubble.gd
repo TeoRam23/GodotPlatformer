@@ -47,7 +47,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #ok
 
 func _ready():
-	print("I AM A NEW BUBBLE")
+	#print("I AM A NEW BUBBLE")
 	print(lava_can_kill)
 	start_pos = position
 	
@@ -125,7 +125,7 @@ func _physics_process(delta):
 
 
 func reset_bubble():
-	print("Killed... right?")
+	#print("Killed... right?")
 	position = start_pos
 	# stop partikler
 	activated = false

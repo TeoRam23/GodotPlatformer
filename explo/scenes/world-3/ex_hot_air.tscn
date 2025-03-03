@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://explo/scripts/world-3/ex_hot_air.gd" id="1_e43lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7q4m"]
-size = Vector2(600, 344)
+size = Vector2(192, 128)
 
 [sub_resource type="Curve" id="Curve_37tlp"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.369307), 1.76091e-07, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.432606), -1.57285, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_rwvd8"]
-offsets = PackedFloat32Array(0.338983, 1)
-colors = PackedColorArray(0.45098, 0.317647, 0.545098, 1, 0.45098, 0.317647, 0.545098, 0)
+offsets = PackedFloat32Array(0.813, 1)
+colors = PackedColorArray(0.45098, 0.317647, 0.545098, 1, 0.45098, 0.317647, 0.545098, 0.352941)
 
 [node name="ExHotAir" type="Area2D"]
 process_physics_priority = -1
@@ -22,7 +22,7 @@ script = ExtResource("1_e43lp")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(316, 180)
+position = Vector2(328, 192)
 shape = SubResource("RectangleShape2D_e7q4m")
 disabled = true
 
@@ -34,6 +34,7 @@ color = Color(0.76383, 0.5022, 0.81, 0.623529)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0.211765)
 offset_left = 232.0
 offset_top = 128.0
 offset_right = 424.0
