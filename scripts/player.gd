@@ -142,6 +142,7 @@ func _physics_process(delta):
 		#print("PEAK")
 	#wrap_me(0,0,0,0) ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	first_frame = false
+	hot_air = false
 
 func apply_gravity(delta):
 	#print(prevelocity.y)
@@ -304,9 +305,10 @@ func update_animation(input_axis):
 		animated_sprite_2d.play("idle")
 		
 	#print("vel: ",prevelocity.y)
+	#print(hot_air)
 	#print("pos: ", position.y)
 	if not is_on_floor():
-		if prevelocity.y < 0:
+		if prevelocity.y < 0 or (hot_air and prevelocity.y < 30):
 			animated_sprite_2d.play("jump")
 		else:
 			animated_sprite_2d.play("fall")

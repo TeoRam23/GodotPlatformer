@@ -37,7 +37,7 @@ func give_air(delta):
 					#bod.prevelocity.y -= 1500 * delta #dette var en test
 					#print("play: ",(gravity * bod.movement_data.gravity_scale) + air_strength_p)
 					#bod.prevelocity.y -= 1100 * delta
-					#bod.hot_air = true
+					bod.hot_air = true
 					#if bod.prevelocity.y > 0 or 1==1:
 						#bod.prevelocity.y -= 1600 * delta
 					#else:

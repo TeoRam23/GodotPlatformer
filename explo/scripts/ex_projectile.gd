@@ -127,6 +127,7 @@ func _physics_process(delta):
 	just_launched = false
 	
 	
+	
 
 
 func apply_gravity(delta):

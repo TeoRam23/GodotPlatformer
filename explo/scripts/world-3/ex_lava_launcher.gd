@@ -66,6 +66,7 @@ func create_bubble():
 	new_bubble.show_particles = show_particles
 	print("Launcher: ",new_bubble.show_particles)
 	
+	# den trenger å launches her, gjør man edt i ready() vil den ikke ha variablene over!
 	new_bubble.launch_bubble()
 	
 	created_bubbles.append(new_bubble)

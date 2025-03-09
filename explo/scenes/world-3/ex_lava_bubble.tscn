@@ -103,3 +103,4 @@ one_shot = true
 [connection signal="area_entered" from="LavaDetector" to="." method="_on_lava_detector_area_entered"]
 [connection signal="body_entered" from="LavaDetector" to="." method="_on_lava_detector_body_entered"]
 [connection signal="body_exited" from="LavaDetector" to="." method="_on_lava_detector_body_exited"]
+[connection signal="timeout" from="FloatTimer" to="." method="_on_float_timer_timeout"]

@@ -53,6 +53,7 @@ func _ready():
 	
 	
 	
+	
 	# kalkulerer velocetey for hvor høyt den skal hoppe
 	#jump_velocity = (-0.000463931+sqrt(-0.000463931**2 - (0.000185132*(0.0007942-(blocks_tall+(extra_pxl*0.0625))))))/(0.000046283*2) *-1
 
@@ -145,7 +146,10 @@ func launch_bubble():
 	if !show_particles:
 		ooze_particle.visible = false
 	
-	float_timer.start()
+	print("ma jump: ",jump_velocity)
+	if jump_velocity == 0:
+		float_timer.start()
+		timer_started = true
 
 
 func _on_lava_detector_body_entered(body):
@@ -172,3 +176,8 @@ func update_face():
 		face_sprite.position.y = -2
 	else:
 		face_sprite.position.y = 0
+
+
+func _on_float_timer_timeout():
+	print("NO FLOAT ANYMORE")
+	# den var 0.043!!!!
