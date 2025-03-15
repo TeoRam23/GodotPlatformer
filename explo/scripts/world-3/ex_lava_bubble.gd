@@ -179,5 +179,5 @@ func update_face():
 
 
 func _on_float_timer_timeout():
-	print("NO FLOAT ANYMORE")
+	pass
 	# den var 0.043!!!!

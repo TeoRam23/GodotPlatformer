@@ -97,7 +97,9 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	if area.is_in_group("GravityDetector"):
 		if area.get_overlapping_areas():
+			#print("returning")
 			return
+		#print("NOT returning")
 		leave_node.global_position = area.global_position
 		leave_particle.emitting = true
 		leave_orb_particle.emitting = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkyanmnvlut1i"]
+[gd_scene load_steps=20 format=3 uid="uid://bkyanmnvlut1i"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_explosion_effect.gd" id="1_5vss2"]
 [ext_resource type="Texture2D" uid="uid://nnojjhrbugdp" path="res://assets/JeffreySprites.png" id="2_gdkrw"]
+[ext_resource type="Texture2D" uid="uid://blmwm7xle66qj" path="res://assets/projectile_explosion_animation.png" id="3_2kv5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bre2r"]
 atlas = ExtResource("2_gdkrw")
@@ -17,12 +18,80 @@ gradient = SubResource("Gradient_qslt1")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_j0b3q"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.727273)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
 [sub_resource type="Curve" id="Curve_odo0k"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_fvg64"]
 colors = PackedColorArray(1, 0.570667, 0.54, 1, 0.901961, 0.203922, 0.117647, 0.788235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iccp0"]
+atlas = ExtResource("3_2kv5i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqoqo"]
+atlas = ExtResource("3_2kv5i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rquis"]
+atlas = ExtResource("3_2kv5i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_435nb"]
+atlas = ExtResource("3_2kv5i")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ankuo"]
+atlas = ExtResource("3_2kv5i")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjfyu"]
+atlas = ExtResource("3_2kv5i")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ngcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iccp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqoqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rquis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_435nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ankuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjfyu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Curve" id="Curve_855vu"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 31.8681), 82.3234, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_w3fks"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483516), -1.15732, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4vodw"]
+offsets = PackedFloat32Array(0.863636, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.12549)
 
 [node name="ExExplosionEffect" type="Node2D"]
 script = ExtResource("1_5vss2")
@@ -36,14 +105,16 @@ texture = SubResource("AtlasTexture_bre2r")
 visible = false
 emitting = false
 amount = 1
-lifetime = 0.5
+lifetime = 0.1
 explosiveness = 1.0
 texture = SubResource("GradientTexture2D_n2ysg")
 gravity = Vector2(0, 0)
 scale_amount_min = 0.5
 scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_j0b3q")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
+visible = false
 z_index = 2
 emitting = false
 amount = 28
@@ -62,4 +133,34 @@ scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_odo0k")
 color_ramp = SubResource("Gradient_fvg64")
 
+[node name="ExplosionAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6ngcl")
+autoplay = "default"
+frame = 1
+frame_progress = 0.444671
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 24
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, -1)
+spread = 145.82
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+damping_min = 10.127
+damping_max = 26.583
+damping_curve = SubResource("Curve_855vu")
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_w3fks")
+color = Color(0.972549, 0.823529, 0.823529, 1)
+color_ramp = SubResource("Gradient_4vodw")
+
 [connection signal="finished" from="Particles" to="." method="_on_particles_finished"]
+[connection signal="animation_finished" from="ExplosionAnimation" to="." method="_on_explosion_animation_animation_finished"]
+[connection signal="finished" from="ExplosionParticles" to="." method="_on_explosion_particles_finished"]
