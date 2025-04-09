@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://explo/scripts/ex_camera_boundary.gd" id="1_qljen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxsv"]
-size = Vector2(640, 360)
+size = Vector2(1499, 359)
 
 [sub_resource type="Gradient" id="Gradient_oucq8"]
 interpolation_mode = 1

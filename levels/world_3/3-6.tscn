@@ -54,10 +54,17 @@ blocks_tall = 0
 pixel_speed = 2.0
 spawn_delay = 1.5
 
+[node name="ExLavaLauncher2" parent="ObjectHolder" index="2" instance=ExtResource("5_pxyov")]
+position = Vector2(8, 184)
+blocks_tall = 0
+pixel_speed = -2.0
+spawn_delay = 1.5
+
 [node name="ExCompleteLevel" parent="." index="14" instance=ExtResource("6_djimy")]
 position = Vector2(-528, 0)
 
 [node name="TextEdit" type="TextEdit" parent="." index="15"]
+visible = false
 offset_left = -368.0
 offset_top = -96.0
 offset_right = -152.0
