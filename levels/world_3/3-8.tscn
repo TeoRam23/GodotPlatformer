@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dca8ofjmkch7t"]
+[gd_scene load_steps=11 format=3 uid="uid://dca8ofjmkch7t"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_yk56w"]
 [ext_resource type="Texture2D" uid="uid://de555fgtncoyt" path="res://assets/baksplodder/verd 3/3-8.png" id="2_5mcdf"]
+[ext_resource type="PackedScene" uid="uid://bw05ag5r3loqs" path="res://levels/world_3/3-9.tscn" id="2_bd5ld"]
 [ext_resource type="PackedScene" uid="uid://dhij8xxowfx58" path="res://explo/scenes/world-3/ex_lava_tiles.tscn" id="3_hdc13"]
 [ext_resource type="PackedScene" uid="uid://dyq1jil1do57l" path="res://explo/scenes/world-3/ex_hot_air.tscn" id="4_fvwbi"]
 [ext_resource type="PackedScene" uid="uid://cf0nuvju10v1h" path="res://explo/scenes/world-3/ex_lava_launcher.tscn" id="5_sduo3"]
+[ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="6_k46dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwo2i"]
+size = Vector2(1499, 359)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyyiy"]
 size = Vector2(352, 184)
@@ -14,6 +19,10 @@ size = Vector2(512, 184)
 
 [node name="3-8" instance=ExtResource("1_yk56w")]
 title = "Wind yourself up and fall"
+next_level = ExtResource("2_bd5ld")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-488.994, 387.312)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
@@ -22,6 +31,7 @@ texture = ExtResource("2_5mcdf")
 
 [node name="ExCameraBoundary" parent="." index="2"]
 position = Vector2(669.5, -92.5)
+shape = SubResource("RectangleShape2D_nwo2i")
 
 [node name="Player" parent="." index="3"]
 position = Vector2(8, 11)
@@ -84,3 +94,6 @@ blocks_tall = 6
 [node name="ExLavaLauncher3" parent="ObjectHolder" index="10" instance=ExtResource("5_sduo3")]
 position = Vector2(456, 64)
 blocks_tall = 6
+
+[node name="ExCompleteLevel" parent="." index="12" instance=ExtResource("6_k46dd")]
+position = Vector2(1344, 0)

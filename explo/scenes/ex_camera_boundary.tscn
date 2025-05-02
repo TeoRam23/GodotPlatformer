@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://explo/scripts/ex_camera_boundary.gd" id="1_qljen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxsv"]
-size = Vector2(1499, 359)
+size = Vector2(640, 360)
 
 [sub_resource type="Gradient" id="Gradient_oucq8"]
 interpolation_mode = 1
@@ -22,9 +22,10 @@ _data = [Vector2(0.32732, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49802), -1.46651, 0.0
 point_count = 2
 
 [node name="ExCameraBoundary" type="CollisionShape2D" groups=["CameraBoundary"]]
+z_index = 4096
 shape = SubResource("RectangleShape2D_hyxsv")
 disabled = true
-debug_color = Color(0.490046, 0.905087, 0.999999, 0.0745098)
+debug_color = Color(0.490196, 0.905882, 1, 0)
 script = ExtResource("1_qljen")
 
 [node name="UpParticle" type="CPUParticles2D" parent="."]

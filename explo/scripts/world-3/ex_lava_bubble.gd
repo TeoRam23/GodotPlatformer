@@ -75,8 +75,10 @@ func _physics_process(delta):
 	if not is_on_floor() and activated:
 		if velocity.y < max_down_velocity:
 			velocity.y += gravity * delta * gravity_scale
-		if velocity.y >= max_down_velocity:
-			velocity.y = max_down_velocity
+		if velocity.y > max_down_velocity:
+			velocity.y -= max_down_velocity * 0.035
+			if velocity.y < max_down_velocity:
+				velocity.y = max_down_velocity
 	
 	if (!is_on_floor() and last_floor_check) or (last_vel_check.y < 0 and velocity.y >= 0):
 		#print("HEY---")
