@@ -157,13 +157,13 @@ shape = SubResource("RectangleShape2D_2iuds")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_c07qd")
 autoplay = "default"
-frame_progress = 0.657335
+frame_progress = 0.188211
 
 [node name="JohnnyTinySprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_ns6xl")
 autoplay = "default"
-frame_progress = 0.663246
+frame_progress = 0.944734
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
