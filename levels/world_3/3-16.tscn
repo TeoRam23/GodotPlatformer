@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://djqfx7odnapf7"]
+[gd_scene load_steps=10 format=3 uid="uid://djqfx7odnapf7"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_8xwhh"]
 [ext_resource type="Texture2D" uid="uid://d4g3qgmryv2dx" path="res://assets/baksplodder/verd 3/3-16.png" id="2_lonn8"]
+[ext_resource type="PackedScene" uid="uid://dobgb2kk7m7q4" path="res://levels/world_3/3-17.tscn" id="2_vewv6"]
 [ext_resource type="PackedScene" uid="uid://dhij8xxowfx58" path="res://explo/scenes/world-3/ex_lava_tiles.tscn" id="3_qluyx"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="4_qdtw1"]
 [ext_resource type="PackedScene" uid="uid://ca3ji6x6to3r0" path="res://explo/scenes/ex_chick.tscn" id="5_quyyr"]
@@ -13,6 +14,10 @@ size = Vector2(895, 360)
 
 [node name="3-16" instance=ExtResource("1_8xwhh")]
 title = "Beware the Bushes of Love"
+next_level = ExtResource("2_vewv6")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(168.677, 655.527)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
