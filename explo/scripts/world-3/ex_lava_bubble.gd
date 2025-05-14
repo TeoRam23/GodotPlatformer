@@ -19,6 +19,7 @@ var last_vel_check = Vector2.ZERO
 @onready var body_sprite = $BodySprite
 @onready var face_sprite = $BodySprite/FaceSprite
 @onready var float_timer = $FloatTimer
+@onready var collision_shape_2d = $CollisionShape2D
 
 var timer_started = false
 # -142.0 for 1 block
@@ -136,15 +137,17 @@ func reset_bubble():
 	ooze_particle.emitting = false
 	velocity = Vector2.ZERO
 	body_sprite.visible = false
+	#collision_shape_2d.disabled = true
 
 
 func launch_bubble():
-	#print("Let's-a go!")
+	print("Let's-a go! ", randi_range(1, 20))
 	velocity.y = jump_velocity
 	velocity.x = speed
 	activated = true
 	ooze_particle.emitting = true
 	body_sprite.visible = true
+	#collision_shape_2d.disabled = false
 	if !show_particles:
 		ooze_particle.visible = false
 	

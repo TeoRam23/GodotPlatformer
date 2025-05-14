@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvl4xu8smekwx"]
+[gd_scene load_steps=11 format=3 uid="uid://cvl4xu8smekwx"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_7h7mm"]
+[ext_resource type="PackedScene" uid="uid://ccqx1hxnue4e5" path="res://levels/world_3/3-23.tscn" id="2_oxqlb"]
 [ext_resource type="Texture2D" uid="uid://8l2dqedrjfh3" path="res://assets/baksplodder/verd 3/3-22.png" id="2_whkbk"]
 [ext_resource type="PackedScene" uid="uid://dhij8xxowfx58" path="res://explo/scenes/world-3/ex_lava_tiles.tscn" id="3_t3nhp"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="4_ld2jl"]
@@ -16,6 +17,10 @@ size = Vector2(88, 280)
 
 [node name="3-22" instance=ExtResource("1_7h7mm")]
 title = "Poisonous Climb"
+next_level = ExtResource("2_oxqlb")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-14.6396, 563.076)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

@@ -23,6 +23,7 @@ point_count = 2
 script = ExtResource("1_lvdeu")
 
 [node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0.109804, 0.109804, 0.12549, 1)
@@ -44,6 +45,7 @@ scale_amount_curve = SubResource("Curve_214mm")
 color = Color(0.109804, 0.109804, 0.12549, 1)
 
 [node name="RevealParticle" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(320, 180)
 emitting = false
 amount = 64
