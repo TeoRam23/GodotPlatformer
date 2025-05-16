@@ -19,6 +19,7 @@ size = Vector2(113, 104)
 title = "Hub"
 
 [node name="Hub1" type="Sprite2D" parent="." index="0"]
+visible = false
 modulate = Color(1, 1, 1, 0.419608)
 z_index = -105
 position = Vector2(0, -100.5)
@@ -58,7 +59,11 @@ worl = "res://explo/menus/select_world_one.tscn"
 [node name="LevelEntrance2" parent="." index="15" instance=ExtResource("3_k2vsl")]
 position = Vector2(-144, -160)
 
-[node name="ExHotAir" parent="." index="16" instance=ExtResource("5_pn5b2")]
+[node name="LevelEntrance3" parent="." index="16" instance=ExtResource("3_k2vsl")]
+position = Vector2(144, -160)
+worl = "res://explo/menus/select_world_three.tscn"
+
+[node name="ExHotAir" parent="." index="17" instance=ExtResource("5_pn5b2")]
 position = Vector2(119, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExHotAir" index="4"]

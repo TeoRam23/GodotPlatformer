@@ -62,6 +62,14 @@ func update_level_to(updated_level):
 	
 	levels_completed.append(updated_level)
 
+func delete_saved_level(level_victim_id):
+	#var test_array = [{id = "shoop", thingy = 35}, {id = "sheep", thingy = 12}]
+	for level in levels_completed:
+		if level.id == level_victim_id:
+			#print(levels_completed)
+			levels_completed.erase(level)
+			print(level)
+			#print("################################ ", levels_completed, " #########################")
 
 # Saver variables til variable.save
 func save_variables():
@@ -82,6 +90,7 @@ func load_variables():
 		johnnies = file.get_var()
 		johnny_mode = file.get_var()
 		levels_completed = file.get_var()
+		print(levels_completed)
 		file.close()
 	else:
 		print('Welp, no save here ¯\\_ツ)_/¯')

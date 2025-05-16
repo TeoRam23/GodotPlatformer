@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b27ytails66j2"]
+[gd_scene load_steps=10 format=3 uid="uid://b27ytails66j2"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_2y2ht"]
 [ext_resource type="Texture2D" uid="uid://bhw6gt5hhvnpj" path="res://assets/baksplodder/verd 3/3-24.png" id="2_4v84e"]
+[ext_resource type="PackedScene" uid="uid://gihblyoc4nmm" path="res://levels/world_3/3-25.tscn" id="2_180mi"]
 [ext_resource type="PackedScene" uid="uid://dhij8xxowfx58" path="res://explo/scenes/world-3/ex_lava_tiles.tscn" id="3_rwhvb"]
 [ext_resource type="PackedScene" uid="uid://dyq1jil1do57l" path="res://explo/scenes/world-3/ex_hot_air.tscn" id="4_hudnn"]
 [ext_resource type="PackedScene" uid="uid://cf0nuvju10v1h" path="res://explo/scenes/world-3/ex_lava_launcher.tscn" id="5_ofqls"]
@@ -15,6 +16,10 @@ size = Vector2(112, 184)
 
 [node name="3-24" instance=ExtResource("1_2y2ht")]
 title = "There's a problem with the bushes ToT"
+next_level = ExtResource("2_180mi")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-1456, 511)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
@@ -75,21 +80,18 @@ position = Vector2(1608, -152)
 blocks_tall = 0
 vertical_override = 230.0
 spawn_delay = 1.0
-show_particles = false
 
 [node name="ExLavaLauncher4" parent="ObjectHolder" index="6" instance=ExtResource("5_ofqls")]
 position = Vector2(1720, -152)
 blocks_tall = 0
 vertical_override = 230.0
 spawn_delay = 1.0
-show_particles = false
 
 [node name="ExLavaLauncher5" parent="ObjectHolder" index="7" instance=ExtResource("5_ofqls")]
 position = Vector2(1832, -152)
 blocks_tall = 0
 vertical_override = 230.0
 spawn_delay = 1.0
-show_particles = false
 
 [node name="ExCompleteLevel" parent="." index="12" instance=ExtResource("6_nk8g5")]
 position = Vector2(2160, 0)

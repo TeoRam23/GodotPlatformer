@@ -24,10 +24,12 @@ next_level = ExtResource("2_nj2l8")
 scroll_offset = Vector2(-2221.09, 39.3156)
 
 [node name="REFFERECNE" parent="." index="1"]
+visible = false
 position = Vector2(1368, 68)
 texture = ExtResource("2_uec25")
 
 [node name="3-23" type="Sprite2D" parent="." index="2"]
+visible = false
 z_index = -13
 position = Vector2(1824, 68)
 texture = SubResource("AtlasTexture_m7w85")

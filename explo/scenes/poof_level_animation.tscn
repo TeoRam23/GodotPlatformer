@@ -45,7 +45,6 @@ scale_amount_curve = SubResource("Curve_214mm")
 color = Color(0.109804, 0.109804, 0.12549, 1)
 
 [node name="RevealParticle" type="CPUParticles2D" parent="."]
-visible = false
 position = Vector2(320, 180)
 emitting = false
 amount = 64
