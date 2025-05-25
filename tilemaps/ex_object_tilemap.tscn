@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bflgygrmh01rj"]
+[gd_scene load_steps=35 format=3 uid="uid://bflgygrmh01rj"]
 
 [ext_resource type="PackedScene" uid="uid://cigdcpwal2jej" path="res://explo/hazards/spike_directions/long_spike_down.tscn" id="1_8pwis"]
 [ext_resource type="PackedScene" uid="uid://c50ud60vlnrxj" path="res://explo/hazards/spike_directions/long_spike_up.tscn" id="2_l3ixs"]
@@ -23,6 +23,10 @@
 [ext_resource type="PackedScene" uid="uid://c844wey0x2tu7" path="res://explo/destructablocks/lava/lava_line_h.tscn" id="21_fwuc3"]
 [ext_resource type="PackedScene" uid="uid://ch2sqnn4e5n66" path="res://explo/destructablocks/lava/lava_line_v.tscn" id="22_8gfws"]
 [ext_resource type="PackedScene" uid="uid://ceacl1vad2pd6" path="res://explo/destructablocks/lava/lava_big_block.tscn" id="23_ontd3"]
+[ext_resource type="PackedScene" uid="uid://bh1xb8ii6qk4t" path="res://explo/destructablocks/space/space_block.tscn" id="24_wl8jk"]
+[ext_resource type="PackedScene" uid="uid://c0h3m5ie802kc" path="res://explo/destructablocks/space/space_line_h.tscn" id="25_2uqsk"]
+[ext_resource type="PackedScene" uid="uid://tfea4h6eq2fo" path="res://explo/destructablocks/space/space_line_v.tscn" id="26_rgy1y"]
+[ext_resource type="PackedScene" uid="uid://cwvmlhf85wfsd" path="res://explo/destructablocks/space/space_big_block.tscn" id="27_720de"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s7f3i"]
 resource_name = "Spikes"
@@ -62,12 +66,20 @@ scenes/2/scene = ExtResource("21_fwuc3")
 scenes/3/scene = ExtResource("22_8gfws")
 scenes/4/scene = ExtResource("23_ontd3")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6vfhx"]
+resource_name = "SpaceBlocks"
+scenes/1/scene = ExtResource("24_wl8jk")
+scenes/2/scene = ExtResource("25_2uqsk")
+scenes/3/scene = ExtResource("26_rgy1y")
+scenes/4/scene = ExtResource("27_720de")
+
 [sub_resource type="TileSet" id="TileSet_a1uwm"]
 sources/3 = SubResource("TileSetScenesCollectionSource_s7f3i")
 sources/4 = SubResource("TileSetScenesCollectionSource_jffwl")
 sources/5 = SubResource("TileSetScenesCollectionSource_vp5n3")
 sources/6 = SubResource("TileSetScenesCollectionSource_kv1ea")
 sources/7 = SubResource("TileSetScenesCollectionSource_ega7l")
+sources/8 = SubResource("TileSetScenesCollectionSource_6vfhx")
 
 [node name="ExObjectTilemap" type="TileMap"]
 tile_set = SubResource("TileSet_a1uwm")

@@ -11,9 +11,14 @@ var gonna_free = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# dette brukes for å endre farge på andre blocker
 	if type_id == 1:
 		standard_sprite.visible = false
 		particles.color = Color(0.216, 0.471, 0.459)
+	if type_id == 2:
+		standard_sprite.visible = false
+		particles.color = Color(0.306, 0.424, 0.659)
+		
 	#pass # Replace with function body.
 #
 #

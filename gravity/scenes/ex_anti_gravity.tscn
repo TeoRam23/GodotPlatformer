@@ -54,14 +54,17 @@ collision_layer = 8
 collision_mask = 2147483648
 script = ExtResource("1_fq0j0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="GroupInvisibles" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GroupInvisibles"]
 z_index = -9
 offset_left = 320.0
 offset_right = 768.0
 offset_bottom = 384.0
-color = Color(0, 0.623529, 1, 0.501961)
+color = Color(0, 0.541176, 1, 0.0392157)
 
-[node name="BorderRect" type="ReferenceRect" parent="."]
+[node name="BorderRect" type="ReferenceRect" parent="GroupInvisibles"]
 visible = false
 z_index = -8
 offset_left = 320.0
@@ -70,19 +73,19 @@ offset_bottom = 384.0
 border_color = Color(1, 1, 1, 1)
 editor_only = false
 
-[node name="LineLeft" type="Line2D" parent="."]
+[node name="LineLeft" type="Line2D" parent="GroupInvisibles"]
 z_index = -8
 points = PackedVector2Array(237, -26, 237, 358)
 closed = true
 width = 1.0
 
-[node name="LineRight" type="Line2D" parent="."]
+[node name="LineRight" type="Line2D" parent="GroupInvisibles"]
 z_index = -8
 points = PackedVector2Array(237, -26, 237, 358)
 closed = true
 width = 1.0
 
-[node name="LeftParticle" type="CPUParticles2D" parent="."]
+[node name="LeftParticle" type="CPUParticles2D" parent="GroupInvisibles"]
 z_index = -8
 position = Vector2(320, 192)
 amount = 188
@@ -101,7 +104,7 @@ scale_amount_min = 0.2
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_a0dib")
 
-[node name="RightParticle" type="CPUParticles2D" parent="."]
+[node name="RightParticle" type="CPUParticles2D" parent="GroupInvisibles"]
 z_index = -8
 position = Vector2(768, 192)
 amount = 188
@@ -120,7 +123,7 @@ scale_amount_min = 0.2
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_a0dib")
 
-[node name="BoxParticle" type="CPUParticles2D" parent="."]
+[node name="BoxParticle" type="CPUParticles2D" parent="GroupInvisibles"]
 z_index = -9
 position = Vector2(544, 200)
 amount = 18

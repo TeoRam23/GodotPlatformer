@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwvmlhf85wfsd"]
+
+[ext_resource type="PackedScene" uid="uid://cfkpoffkqfp2t" path="res://explo/destructablocks/standard/standard_big_block.tscn" id="1_gu2is"]
+[ext_resource type="Texture2D" uid="uid://k4s05viueunc" path="res://assets/SpaceBlocks.png" id="2_0dv5j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk540"]
+atlas = ExtResource("2_0dv5j")
+region = Rect2(48, 0, 32, 32)
+
+[node name="SpaceBlock" type="Node2D"]
+
+[node name="StandardBigBlock" parent="." instance=ExtResource("1_gu2is")]
+type_id = 2
+
+[node name="SpaceSprite" type="Sprite2D" parent="."]
+position = Vector2(8, -8)
+texture = SubResource("AtlasTexture_kk540")

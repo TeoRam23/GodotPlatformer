@@ -6,14 +6,14 @@ extends Area2D
 var polygon_2d
 
 var collision_shape = false
-@onready var color_rect = $ColorRect
-@onready var border_rect = $BorderRect
-@onready var line_left = $LineLeft
-@onready var line_right = $LineRight
+@onready var color_rect = $GroupInvisibles/ColorRect
+@onready var border_rect = $GroupInvisibles/BorderRect
+@onready var line_left = $GroupInvisibles/LineLeft
+@onready var line_right = $GroupInvisibles/LineRight
 
-@onready var left_particle = $LeftParticle
-@onready var right_particle = $RightParticle
-@onready var box_particle = $BoxParticle
+@onready var left_particle = $GroupInvisibles/LeftParticle
+@onready var right_particle = $GroupInvisibles/RightParticle
+@onready var box_particle = $GroupInvisibles/BoxParticle
 
 @onready var enter_node = $EnterNode
 @onready var enter_particle = $EnterNode/EnterParticle
@@ -21,6 +21,8 @@ var collision_shape = false
 @onready var leave_node = $LeaveNode
 @onready var leave_particle = $LeaveNode/LeaveParticle
 @onready var leave_orb_particle = $LeaveNode/LeaveOrbParticle
+
+@onready var group_invisibles = $GroupInvisibles
 
 @export var area_direction = 180.0
 @export var on_top = false
@@ -31,6 +33,7 @@ var pos = Vector2.ZERO
 func _ready():
 	collision_shape = get_node_or_null("CollisionShape2D")
 	set_particles()
+	group_invisibles.visible = true
 #	if area_direction == 180 or area_direction == -180:
 #		area_direction = 179.9999
 	pass
@@ -39,8 +42,8 @@ func _ready():
 func set_particles():
 	if collision_shape:
 		
-		var shaper = collision_shape.shape.get_rect()
-		var pos = collision_shape.position
+		shaper = collision_shape.shape.get_rect()
+		pos = collision_shape.position
 		
 		left_particle.emitting = left_border
 		left_particle.amount = shaper.size.y * 0.29296875
@@ -58,7 +61,7 @@ func set_particles():
 		if shaper.get_area() * 0.0104631696428571 * 0.01 < 1:
 			box_particle.amount = 1
 		else:
-			box_particle.amount = shaper.get_area() * 0.0104631696428571 * 0.01
+			box_particle.amount = shaper.get_area() * 0.0104631696428571 * 0.02
 		box_particle.emission_rect_extents.x = shaper.size.x * 0.5
 		box_particle.emission_rect_extents.y = shaper.size.y * 0.5 - 8
 		box_particle.position = pos
