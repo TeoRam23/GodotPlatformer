@@ -1,9 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://q2mmfq63yv30"]
+[gd_scene load_steps=9 format=3 uid="uid://q2mmfq63yv30"]
 
+[ext_resource type="Shader" path="res://explo/hazards/spike_directions/short_spike_shader.gdshader" id="1_dkbot"]
 [ext_resource type="Texture2D" uid="uid://kvaakg1jc6jo" path="res://assets/SpikesTiles.png" id="1_v6835"]
+[ext_resource type="Texture2D" uid="uid://c2tpqexvs85x8" path="res://assets/spikes/spike_color1.png" id="2_cntjq"]
+[ext_resource type="Texture2D" uid="uid://dimttjahrhqvl" path="res://assets/spikes/spike_color4.png" id="3_5ljkq"]
+[ext_resource type="Script" path="res://explo/hazards/spike_directions/spike_script.gd" id="3_k4mrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih6pp"]
 size = Vector2(16, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qahuj"]
+shader = ExtResource("1_dkbot")
+shader_parameter/parent_id = null
+shader_parameter/epsilon = 0.0001
+shader_parameter/imageOG = ExtResource("2_cntjq")
+shader_parameter/imageSPACE = ExtResource("3_5ljkq")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxbfh"]
 atlas = ExtResource("1_v6835")
@@ -18,4 +29,6 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_ih6pp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qahuj")
 texture = SubResource("AtlasTexture_mxbfh")
+script = ExtResource("3_k4mrf")

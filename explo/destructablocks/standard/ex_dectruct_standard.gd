@@ -17,7 +17,7 @@ func _ready():
 		particles.color = Color(0.216, 0.471, 0.459)
 	if type_id == 2:
 		standard_sprite.visible = false
-		particles.color = Color(0.306, 0.424, 0.659)
+		particles.color = Color(0.325, 0.427, 0.863)
 		
 	#pass # Replace with function body.
 #
