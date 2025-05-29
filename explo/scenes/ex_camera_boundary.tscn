@@ -29,6 +29,8 @@ debug_color = Color(0.490196, 0.905882, 1, 0)
 script = ExtResource("1_qljen")
 
 [node name="UpParticle" type="CPUParticles2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(320, 0)
 emitting = false
 amount = 75
@@ -48,6 +50,8 @@ scale_amount_curve = SubResource("Curve_avkag")
 color = Color(0.235294, 0.898039, 1, 1)
 
 [node name="DownParticle" type="CPUParticles2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(320, 360)
 emitting = false
 amount = 75
@@ -67,6 +71,8 @@ scale_amount_curve = SubResource("Curve_avkag")
 color = Color(0.235294, 0.898039, 1, 1)
 
 [node name="LeftParticle" type="CPUParticles2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(0, 192)
 emitting = false
 amount = 75
@@ -85,6 +91,8 @@ scale_amount_curve = SubResource("Curve_avkag")
 color = Color(0.235294, 0.898039, 1, 1)
 
 [node name="RightParticle" type="CPUParticles2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(640, 192)
 emitting = false
 amount = 75
