@@ -111,3 +111,4 @@ text = "Main Menu"
 
 [connection signal="pressed" from="PauseControl/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseControl/VBoxContainer/BackToHub" to="." method="_on_back_to_hub_pressed"]
+[connection signal="pressed" from="PauseControl/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

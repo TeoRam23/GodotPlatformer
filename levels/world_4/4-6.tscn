@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnr2gn6ag2brc"]
+[gd_scene load_steps=7 format=3 uid="uid://cnr2gn6ag2brc"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_dgu7b"]
 [ext_resource type="Texture2D" uid="uid://difp0ulmu5qj3" path="res://assets/baksplodder/verd 4/4-6.png" id="2_dr31q"]
+[ext_resource type="PackedScene" uid="uid://diyh64em4mvhg" path="res://levels/world_4/4-7.tscn" id="2_m76xb"]
 [ext_resource type="PackedScene" uid="uid://ca3ji6x6to3r0" path="res://explo/scenes/ex_chick.tscn" id="3_bnmc6"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="4_7xmyp"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="5_soci8"]
 
 [node name="4-6" instance=ExtResource("1_dgu7b")]
 title = "The Bushes of Space... Spush?"
+next_level = ExtResource("2_m76xb")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-96.5, 599.5)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
