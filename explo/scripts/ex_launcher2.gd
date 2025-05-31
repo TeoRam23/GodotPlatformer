@@ -21,6 +21,7 @@ extends Node2D
 
 var low_gravity = false
 var mouse_is_locked = true
+var settings_locked_cursor = true
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 
@@ -30,6 +31,8 @@ func _ready():
 	Events.pls_player_died.connect(disable_me)
 	Events.level_completed.connect(disable_me)
 	Events.pls_low_gravity.connect(lower_gravity)
+	settings_locked_cursor = Settings.locked_cursor
+	
 	new_projectile()
 
 
@@ -167,7 +170,7 @@ func _input(event):
 		var differanse = to_object.length()
 		var radius = 75
 		#print(differanse)
-		if differanse > radius and mouse_is_locked:
+		if differanse > radius and mouse_is_locked and settings_locked_cursor:
 			mouse_tracker.position = to_object.normalized() * radius
 			
 		mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)

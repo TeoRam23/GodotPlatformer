@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4v32h58y4ln7"]
+[gd_scene load_steps=5 format=3 uid="uid://b4v32h58y4ln7"]
 
 [ext_resource type="Script" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
 [ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="1_y5tdk"]
 [ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="2_ai038"]
+[ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_ftw5e")
@@ -11,9 +12,9 @@ script = ExtResource("1_ftw5e")
 position = Vector2(320, 180)
 texture = ExtResource("1_y5tdk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="MainCanvas" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="MainCanvas"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainCanvas/Control"]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 147.0
@@ -29,29 +30,172 @@ offset_right = 210.0
 offset_bottom = 295.0
 theme_override_constants/separation = 16
 
-[node name="ButtonStart" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="ButtonStart" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ai038")
 text = "Start
 "
 
-[node name="ButtonSettings" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="ButtonSettings" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ai038")
 text = "Settings
 "
 
-[node name="ButtonCredits" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="ButtonCredits" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ai038")
 text = "Credits
 "
 
-[node name="ButtonQuit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_ai038")
 text = "Quit
 "
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[node name="CreditsCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CreditsCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.854902)
+
+[node name="CreditText" type="Control" parent="CreditsCanvas"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleGameDesign" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 640.0
+offset_bottom = 48.0
+theme = ExtResource("4_qbg5i")
+theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -21
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Game Design"
+scroll_active = false
+
+[node name="NameGameDesign" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_right = 600.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_qbg5i")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "[center]Liam Collins
+Daniel Rodermel"
+
+[node name="TitleLevelDesign" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 640.0
+offset_bottom = 136.0
+theme = ExtResource("4_qbg5i")
+theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -21
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Level Design"
+scroll_active = false
+
+[node name="NameLevelDesign" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 136.0
+offset_right = 600.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "[center]Liam Collins
+"
+
+[node name="TitleEverythingElse" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 0
+offset_top = 173.0
+offset_right = 640.0
+offset_bottom = 205.0
+theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -21
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Everything Else"
+scroll_active = false
+
+[node name="NameEverythingElse" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 205.0
+offset_right = 600.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "[center]Me
+"
+
+[node name="TitleReferenceVods" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 0
+offset_top = 240.0
+offset_right = 640.0
+offset_bottom = 272.0
+theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -21
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Reference Vods"
+scroll_active = false
+
+[node name="NameReferenceVods" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 272.0
+offset_right = 600.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+bbcode_enabled = true
+text = "[center]Squeex
+Mount Pinecone
+One More Person Probably
+"
+
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

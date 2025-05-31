@@ -21,6 +21,7 @@ config/icon="res://assets/JeffreySprites.png"
 Events="*res://scripts/Events.gd"
 LevelTransition="*res://scenes/level_transition.tscn"
 VariableManager="*res://explo/scripts/_variable_manager.gd"
+Settings="*res://explo/scripts/_settings.gd"
 
 [display]
 
