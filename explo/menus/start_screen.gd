@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var credits_canvas = $CreditsCanvas
+@onready var settings_menu = $SettingsMenu
+
 const HUB = preload("res://levels/hub.tscn")
 
 var current_open_screen = ""
@@ -21,9 +23,16 @@ func _on_button_start_pressed():
 	get_tree().change_scene_to_packed(HUB)
 
 
+func _on_button_settings_pressed():
+	if !current_open_screen:
+		settings_menu.visible = true
+		current_open_screen = "settings"
+
+
 func _on_button_credits_pressed():
-	credits_canvas.visible = true
-	current_open_screen = "credits"
+	if !current_open_screen:
+		credits_canvas.visible = true
+		current_open_screen = "credits"
 	
 
 
@@ -36,4 +45,8 @@ func _input(event):
 		if current_open_screen == "credits":
 			credits_canvas.visible = false
 			current_open_screen = ""
+		if current_open_screen == "settings":
+			current_open_screen = ""
+			# tror settings i seg selv behandler lukking, siden den må lagre masse greier
+
 

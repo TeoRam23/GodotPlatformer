@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4v32h58y4ln7"]
+[gd_scene load_steps=6 format=3 uid="uid://b4v32h58y4ln7"]
 
 [ext_resource type="Script" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
 [ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="1_y5tdk"]
 [ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="2_ai038"]
+[ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings_menu.tscn" id="4_lffss"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
 
 [node name="StartScreen" type="Node2D"]
@@ -54,6 +55,9 @@ theme = ExtResource("2_ai038")
 text = "Quit
 "
 
+[node name="SettingsMenu" parent="." instance=ExtResource("4_lffss")]
+visible = false
+
 [node name="CreditsCanvas" type="CanvasLayer" parent="."]
 visible = false
 
@@ -75,13 +79,12 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_top = 16.0
 offset_right = 640.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 theme = ExtResource("4_qbg5i")
 theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -21
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Game Design"
 scroll_active = false
@@ -91,9 +94,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 48.0
+offset_top = 40.0
 offset_right = 600.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_qbg5i")
@@ -105,15 +108,14 @@ Daniel Rodermel"
 
 [node name="TitleLevelDesign" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
 layout_mode = 0
-offset_top = 104.0
+offset_top = 96.0
 offset_right = 640.0
-offset_bottom = 136.0
+offset_bottom = 120.0
 theme = ExtResource("4_qbg5i")
 theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -21
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Level Design"
 scroll_active = false
@@ -123,9 +125,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 136.0
+offset_top = 120.0
 offset_right = 600.0
-offset_bottom = 116.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -136,14 +138,13 @@ text = "[center]Liam Collins
 
 [node name="TitleEverythingElse" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
 layout_mode = 0
-offset_top = 173.0
+offset_top = 156.0
 offset_right = 640.0
-offset_bottom = 205.0
+offset_bottom = 180.0
 theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -21
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]Everything Else"
 scroll_active = false
@@ -153,9 +154,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 205.0
+offset_top = 180.0
 offset_right = 600.0
-offset_bottom = 185.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -164,26 +165,25 @@ bbcode_enabled = true
 text = "[center]Me
 "
 
-[node name="TitleReferenceVods" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+[node name="TitleSpecialThanks" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
 layout_mode = 0
-offset_top = 240.0
+offset_top = 216.0
 offset_right = 640.0
-offset_bottom = 272.0
+offset_bottom = 240.0
 theme_override_colors/default_color = Color(0.721569, 0.290196, 0.290196, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -21
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]Reference Vods"
+text = "[center]Special Thanks"
 scroll_active = false
 
-[node name="NameReferenceVods" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
+[node name="NameSpecialThanks" type="RichTextLabel" parent="CreditsCanvas/CreditText"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 272.0
+offset_top = 240.0
 offset_right = 600.0
 offset_bottom = 296.0
 grow_horizontal = 2
@@ -194,8 +194,10 @@ bbcode_enabled = true
 text = "[center]Squeex
 Mount Pinecone
 One More Person Probably
+Godot Engine Contributors
 "
 
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
