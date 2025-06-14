@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d32pf23nfep58"]
+[gd_scene load_steps=8 format=3 uid="uid://d32pf23nfep58"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_dpqhj"]
+[ext_resource type="PackedScene" uid="uid://s4nvgw4af1wt" path="res://levels/world_4/4-10.tscn" id="2_gwrgw"]
 [ext_resource type="Texture2D" uid="uid://bohudxuwnlylo" path="res://assets/baksplodder/verd 4/4-9.png" id="2_yo604"]
 [ext_resource type="PackedScene" uid="uid://dq4oxinxg0eju" path="res://gravity/scenes/ex_anti_gravity.tscn" id="3_pi1m4"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_g3kov"]
@@ -13,6 +14,10 @@ size = Vector2(120, 416)
 
 [node name="4-9" instance=ExtResource("1_dpqhj")]
 title = "Biggy Jumpy"
+next_level = ExtResource("2_gwrgw")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-139.38, 672.152)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

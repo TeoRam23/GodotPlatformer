@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://nonoy481rpyw"]
+[gd_scene load_steps=7 format=3 uid="uid://nonoy481rpyw"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_y3rq3"]
+[ext_resource type="PackedScene" uid="uid://d32pf23nfep58" path="res://levels/world_4/4-9.tscn" id="2_logwe"]
 [ext_resource type="Texture2D" uid="uid://cy2o8ppeobl6q" path="res://assets/baksplodder/verd 4/4-8.png" id="2_vsfi8"]
 [ext_resource type="PackedScene" uid="uid://dq4oxinxg0eju" path="res://gravity/scenes/ex_anti_gravity.tscn" id="3_qlitu"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_rgrlg"]
@@ -10,6 +11,10 @@ size = Vector2(208, 304)
 
 [node name="4-8" instance=ExtResource("1_y3rq3")]
 title = "Tunneling"
+next_level = ExtResource("2_logwe")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-15.962, 133.832)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
