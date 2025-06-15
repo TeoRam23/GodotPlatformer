@@ -166,7 +166,7 @@ func _input(event):
 			
 			
 			
-		var to_object = mouse_tracker.position - Vector2.ZERO
+		var to_object = mouse_tracker.position - Vector2.ZERO #hvorfor er dette her?
 		var differanse = to_object.length()
 		var radius = 75
 		#print(differanse)

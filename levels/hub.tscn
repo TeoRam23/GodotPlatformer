@@ -15,7 +15,7 @@ size = Vector2(448, 272)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6du0"]
 size = Vector2(113, 104)
 
-[node name="World" instance=ExtResource("1_ep6w1")]
+[node name="‎ -1" instance=ExtResource("1_ep6w1")]
 title = "Hub"
 
 [node name="Hub1" type="Sprite2D" parent="." index="0"]
