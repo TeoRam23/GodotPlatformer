@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd1844erbp1qu"]
+[gd_scene load_steps=11 format=3 uid="uid://cd1844erbp1qu"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_lpoe7"]
 [ext_resource type="Texture2D" uid="uid://dldkbn5ttmnkq" path="res://assets/baksplodder/verd 4/4-14.png" id="2_1cila"]
+[ext_resource type="PackedScene" uid="uid://qkcdqbbpnc5k" path="res://levels/world_4/4-15.tscn" id="2_df0ih"]
 [ext_resource type="PackedScene" uid="uid://dq4oxinxg0eju" path="res://gravity/scenes/ex_anti_gravity.tscn" id="3_h71xp"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_flc5p"]
 
@@ -22,6 +23,10 @@ size = Vector2(288, 192)
 
 [node name="4-14" instance=ExtResource("1_lpoe7")]
 title = "What is it, some kinda anti gravity area?"
+next_level = ExtResource("2_df0ih")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(1004.91, -472.643)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
