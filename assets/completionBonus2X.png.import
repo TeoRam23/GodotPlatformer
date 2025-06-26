@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2tpqexvs85x8"
-path="res://.godot/imported/spike_color1.png-eb22550050d30a4d981b19baa6e5c5de.ctex"
+uid="uid://cuy00u6l7o7rv"
+path="res://.godot/imported/completionBonus2X.png-1959d795cb3823d2ddc69c914de0ed73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spikes/spike_color1.png"
-dest_files=["res://.godot/imported/spike_color1.png-eb22550050d30a4d981b19baa6e5c5de.ctex"]
+source_file="res://assets/completionBonus2X.png"
+dest_files=["res://.godot/imported/completionBonus2X.png-1959d795cb3823d2ddc69c914de0ed73.ctex"]
 
 [params]
 

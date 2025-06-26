@@ -1,21 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpc3x7u4c7gs4"]
+[gd_scene load_steps=9 format=3 uid="uid://bpc3x7u4c7gs4"]
 
 [ext_resource type="Texture2D" uid="uid://be6v5uor2avxq" path="res://assets/baksplodder/select.png" id="1_hrpo5"]
 [ext_resource type="Script" path="res://explo/menus/select_world.gd" id="1_oeoox"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="2_oebje"]
-[ext_resource type="Texture2D" uid="uid://cntxi0xge471a" path="res://assets/completionBonus.png" id="4_e8evc"]
+[ext_resource type="Texture2D" uid="uid://cuy00u6l7o7rv" path="res://assets/completionBonus2X.png" id="5_os8y6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vivii"]
-atlas = ExtResource("4_e8evc")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_52jj5"]
+atlas = ExtResource("5_os8y6")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqk4y"]
-atlas = ExtResource("4_e8evc")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugmfy"]
+atlas = ExtResource("5_os8y6")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtcyw"]
-atlas = ExtResource("4_e8evc")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rs7j"]
+atlas = ExtResource("5_os8y6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gscdv"]
+atlas = ExtResource("5_os8y6")
+region = Rect2(96, 0, 32, 32)
 
 [node name="SelectWorld" type="CanvasLayer"]
 process_mode = 3
@@ -106,25 +110,26 @@ offset_bottom = 348.0
 theme = ExtResource("2_oebje")
 text = "Back to hub: B"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 459.0
-offset_top = 123.0
-offset_right = 499.0
-offset_bottom = 163.0
+[node name="IconBonusContainer" type="VBoxContainer" parent="."]
+offset_left = 458.0
+offset_top = 112.0
+offset_right = 490.0
+offset_bottom = 216.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(474, 131)
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_vivii")
+[node name="IconNoWalking" type="TextureRect" parent="IconBonusContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_52jj5")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(474, 166)
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_dqk4y")
+[node name="IconConstantLaunch" type="TextureRect" parent="IconBonusContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ugmfy")
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(475, 201)
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_jtcyw")
+[node name="IconPerfection" type="TextureRect" parent="IconBonusContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2rs7j")
+
+[node name="IconNoGravity" type="TextureRect" parent="IconBonusContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gscdv")
 
 [connection signal="pressed" from="Control/BackButton" to="Control" method="_on_back_button_pressed"]

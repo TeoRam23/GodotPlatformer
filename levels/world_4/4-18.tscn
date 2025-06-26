@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cevuk7ke44gvf"]
+[gd_scene load_steps=8 format=3 uid="uid://cevuk7ke44gvf"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_sg0ow"]
 [ext_resource type="Texture2D" uid="uid://d1q11khfjqh1n" path="res://assets/baksplodder/verd 4/4-18.png" id="2_tcgg4"]
+[ext_resource type="PackedScene" uid="uid://txcek5ppbgp2" path="res://levels/world_4/4-19.tscn" id="2_y4odw"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="3_4opp3"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="4_1muf7"]
 [ext_resource type="PackedScene" uid="uid://ca3ji6x6to3r0" path="res://explo/scenes/ex_chick.tscn" id="5_6d8dv"]
@@ -11,6 +12,10 @@ size = Vector2(1277, 360)
 
 [node name="4-18" instance=ExtResource("1_sg0ow")]
 title = "Ceiling Floor"
+next_level = ExtResource("2_y4odw")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(-475.029, 287.085)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

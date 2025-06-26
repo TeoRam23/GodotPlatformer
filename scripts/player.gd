@@ -60,8 +60,10 @@ var hot_air = false
 func _ready():
 	main_data = movement_data
 	
-	scale.x = movement_data.size
-	scale.y = movement_data.size
+	if movement_data.size != 1:
+		scale.x = movement_data.size
+		scale.y = movement_data.size
+		print("###################### i have changed my size! ####################")
 	
 	Events.pls_kill_player.connect(i_died)
 	Events.level_completed.connect(disable_player)

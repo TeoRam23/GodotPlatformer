@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" path="res://explo/hazards/spike_directions/short_spike_shader.gdshader" id="1_dkbot"]
 [ext_resource type="Texture2D" uid="uid://kvaakg1jc6jo" path="res://assets/SpikesTiles.png" id="1_v6835"]
-[ext_resource type="Texture2D" uid="uid://c2tpqexvs85x8" path="res://assets/spikes/spike_color1.png" id="2_cntjq"]
-[ext_resource type="Texture2D" uid="uid://dimttjahrhqvl" path="res://assets/spikes/spike_color4.png" id="3_5ljkq"]
+[ext_resource type="Texture2D" uid="uid://c2tpqexvs85x8" path="res://assets/color_maps/spikes/spike_color1.png" id="2_cntjq"]
+[ext_resource type="Texture2D" uid="uid://dimttjahrhqvl" path="res://assets/color_maps/spikes/spike_color4.png" id="3_5ljkq"]
 [ext_resource type="Script" path="res://explo/hazards/spike_directions/spike_script.gd" id="3_k4mrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih6pp"]
