@@ -6,7 +6,7 @@ var changes_made = false
 var locked_cursor = false
 #@onready var butt_locked_cursor = $ButtLockedCursor
 #@onready var butt_locked_cursor = $VBoxContainer/ButtLockedCursor
-@onready var butt_locked_cursor = $ScrollContainer/VBoxContainer3/VBoxContainer/ButtLockedCursor
+@onready var butt_locked_cursor = $ScrollGameplay/BoxGameplay/BoxMouseSettings/ButtLockedCursor
 
 
 @onready var sure_control = $SureControl

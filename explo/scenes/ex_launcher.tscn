@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsv4eyc7ju17a"]
+[gd_scene load_steps=22 format=3 uid="uid://dsv4eyc7ju17a"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_launcher2.gd" id="1_n86jj"]
 [ext_resource type="Texture2D" uid="uid://bn6apfnknivyl" path="res://assets/cursor.png" id="2_dfr5a"]
 [ext_resource type="Texture2D" uid="uid://dqn2fyhiwa7j1" path="res://assets/arrow_size.png" id="3_ch44n"]
+[ext_resource type="Texture2D" uid="uid://dtjngorkt6v44" path="res://assets/TouchButtons.png" id="5_q68ay"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_74d7i"]
 radius = 0.0
@@ -23,6 +24,51 @@ radius = 15.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_txxeq"]
 atlas = ExtResource("2_dfr5a")
 region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0n7e"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(192, 32, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8jvf"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emdao"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdxpf"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr3qe"]
+size = Vector2(80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofuee"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydyxt"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yghxc"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3lt5"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvk3y"]
+size = Vector2(96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j575l"]
+atlas = ExtResource("5_q68ay")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub48g"]
+size = Vector2(64, 48)
 
 [node name="ExLauncher" type="Node2D"]
 process_priority = -2
@@ -88,3 +134,70 @@ texture = SubResource("AtlasTexture_txxeq")
 visible = false
 position = Vector2(22, -6)
 texture = ExtResource("3_ch44n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TouchControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TouchMouseChecker" type="ReferenceRect" parent="CanvasLayer/TouchControl"]
+layout_mode = 0
+offset_left = 432.0
+offset_right = 640.0
+offset_bottom = 208.0
+border_color = Color(0.0975368, 0.577681, 0.792285, 1)
+border_width = 0.9
+
+[node name="TouchBaseSprite" type="Sprite2D" parent="CanvasLayer/TouchControl"]
+self_modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(544, 96)
+texture = SubResource("AtlasTexture_k0n7e")
+
+[node name="StickBase" type="Node2D" parent="CanvasLayer/TouchControl"]
+position = Vector2(544, 96)
+
+[node name="TouchStickNode" type="Node2D" parent="CanvasLayer/TouchControl/StickBase"]
+
+[node name="TouchStickSprite" type="Sprite2D" parent="CanvasLayer/TouchControl/StickBase"]
+modulate = Color(1, 1, 1, 0.498039)
+texture = SubResource("AtlasTexture_p8jvf")
+
+[node name="TouchLeftButton" type="TouchScreenButton" parent="CanvasLayer/TouchControl"]
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(8, 288)
+texture_normal = SubResource("AtlasTexture_emdao")
+texture_pressed = SubResource("AtlasTexture_bdxpf")
+shape = SubResource("RectangleShape2D_sr3qe")
+passby_press = true
+action = "left"
+
+[node name="TouchRightButton" type="TouchScreenButton" parent="CanvasLayer/TouchControl"]
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(88, 288)
+texture_normal = SubResource("AtlasTexture_ofuee")
+texture_pressed = SubResource("AtlasTexture_ydyxt")
+shape = SubResource("RectangleShape2D_sr3qe")
+passby_press = true
+action = "right"
+
+[node name="TouchLaunchButton" type="TouchScreenButton" parent="CanvasLayer/TouchControl"]
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(512, 256)
+texture_normal = SubResource("AtlasTexture_yghxc")
+texture_pressed = SubResource("AtlasTexture_x3lt5")
+shape = SubResource("RectangleShape2D_qvk3y")
+action = "touchMusL"
+
+[node name="TouchPauseSprite" type="Sprite2D" parent="CanvasLayer/TouchControl"]
+position = Vector2(10, 8)
+texture = SubResource("AtlasTexture_j575l")
+
+[node name="TouchPauseButton" type="TouchScreenButton" parent="CanvasLayer/TouchControl"]
+position = Vector2(32, 24)
+shape = SubResource("RectangleShape2D_ub48g")
+action = "cancel"

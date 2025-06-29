@@ -18,10 +18,15 @@ extends Node2D
 @onready var rotation_neglecter = $RotationNeglecter
 @onready var mouse_tracker = $RotationNeglecter/MouseTracker
 @onready var mouse_sprite = $RotationNeglecter/MouseSprite
+@onready var touch_base_sprite = $CanvasLayer/TouchControl/TouchBaseSprite
+@onready var stick_base = $CanvasLayer/TouchControl/StickBase
+@onready var touch_stick_node = $CanvasLayer/TouchControl/StickBase/TouchStickNode
+@onready var touch_stick_sprite = $CanvasLayer/TouchControl/StickBase/TouchStickSprite
 
 var low_gravity = false
 var mouse_is_locked = true
 var settings_locked_cursor = true
+
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
 
@@ -45,7 +50,7 @@ func _process(delta):
 func _physics_process(delta):
 	#print("The Frizz")
 	move_spawn_point(true, delta)
-	if Input.is_action_just_pressed("musL") or Input.is_action_pressed("musM"):
+	if (Input.is_action_just_pressed("musL") and not Settings.touch_mode) or Input.is_action_pressed("musM") or (Input.is_action_just_pressed("touchMusL") and Settings.touch_mode):
 		#print("LAUNCH")
 		eject_proj()
 	
@@ -142,8 +147,7 @@ func disable_me():
 	
 	
 func _input(event):
-	if event is InputEventMouseMotion and not Input.is_action_pressed("cancel"):
-		
+	if event is InputEventMouseMotion and not Input.is_action_pressed("cancel") and not Settings.touch_mode:
 		
 		mouse_tracker.global_position.x += event.position.x - 320.0
 		mouse_tracker.global_position.y += event.position.y - 180.0
@@ -163,21 +167,21 @@ func _input(event):
 					#mouse_tracker.global_position.y += 360
 				#elif checker.y >= window.y * 0.5:
 					#mouse_tracker.global_position.y -= 360
-			
-			
-			
-		var to_object = mouse_tracker.position - Vector2.ZERO #hvorfor er dette her?
-		var differanse = to_object.length()
-		var radius = 75
-		#print(differanse)
-		if differanse > radius and mouse_is_locked and settings_locked_cursor:
-			mouse_tracker.position = to_object.normalized() * radius
-			
-		mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)
-		mouse_tracker.position.y = snappedf(mouse_tracker.position.y, 0.5)
 		
-		mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
-		mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
+		snap_mouse_tracker()
+		# dette under er flyttet til snap_mouse_tracker()
+		#var to_object = mouse_tracker.position - Vector2.ZERO #hvorfor er "- Vector2.ZERO" her? 
+		#var differanse = to_object.length()
+		#var radius = 75
+		##print(differanse)
+		#if differanse > radius and mouse_is_locked and settings_locked_cursor:
+			#mouse_tracker.position = to_object.normalized() * radius
+			#
+		#mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)
+		#mouse_tracker.position.y = snappedf(mouse_tracker.position.y, 0.5)
+		#
+		#mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
+		#mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
 			
 			#print(mouse_tracker.position)
 			# For å begrense pekeren
@@ -185,6 +189,49 @@ func _input(event):
 				#mouse_tracker.position.x = 100 * sign(mouse_tracker.position.x)
 			#if abs(mouse_tracker.position.y) >= 100:
 				#mouse_tracker.position.y = 100 * sign(mouse_tracker.position.y)
+		
+	#if event is InputEventScreenTouch and not Input.is_action_pressed("cancel"):
+		#touch_dragging = true
+	elif event is InputEventScreenDrag and not Input.is_action_pressed("cancel"):
+		print(event.position)
+		var mouse_pos = stick_base.get_local_mouse_position()
+		
+		#if not touch_mouse_checker.shape.get_rect().has_point(mouse_pos):
+			#return
+		if event.position.x < 432 or event.position.y > 208:
+			return
+		
+		touch_stick_node.position = event.position - stick_base.position
+		
+		var to_object = touch_stick_node.position - Vector2.ZERO #hvorfor er dette her?
+		var differanse = to_object.length()
+		var radius = 48
+		
+		#print(differanse)
+		if differanse > radius:
+			touch_stick_node.position = to_object.normalized() * radius
+		
+		mouse_tracker.position = touch_stick_node.position
+		
+		touch_stick_sprite.position.x = snappedi(touch_stick_node.position.x, 1)
+		touch_stick_sprite.position.y = snappedi(touch_stick_node.position.y, 1)
+		snap_mouse_tracker()
+	
+
+func snap_mouse_tracker():
+	var to_object = mouse_tracker.position - Vector2.ZERO #hvorfor er "- Vector2.ZERO" her? 
+	var differanse = to_object.length()
+	var radius = 75
+	#print(differanse)
+	if differanse > radius and mouse_is_locked and settings_locked_cursor:
+		mouse_tracker.position = to_object.normalized() * radius
+		
+	mouse_tracker.position.x = snappedf(mouse_tracker.position.x, 0.5)
+	mouse_tracker.position.y = snappedf(mouse_tracker.position.y, 0.5)
+	
+	mouse_sprite.position.x = snappedi(mouse_tracker.position.x, 1)
+	mouse_sprite.position.y = snappedi(mouse_tracker.position.y, 1)
+	
 
 func lower_gravity():
 	low_gravity = true

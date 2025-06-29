@@ -80,12 +80,14 @@ func un_pause():
 	Input.mouse_mode = locked_mouse_mode
 	pause_menu.visible = false
 	level_overlay.show_rest(false)
-	Input.warp_mouse(get_window().size * 0.5)
+	if not Settings.touch_mode:
+		Input.warp_mouse(get_window().size * 0.5)
 
 func _input(event):
 	if event.is_action_pressed("cancel") and not waiting:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		Input.warp_mouse(get_window().size * 0.5)
+		if not Settings.touch_mode:
+			Input.warp_mouse(get_window().size * 0.5)
 		
 		pause_menu.visible = true
 		level_overlay.show_rest(true)

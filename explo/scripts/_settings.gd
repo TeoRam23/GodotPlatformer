@@ -1,7 +1,10 @@
 extends Node
 
-var locked_cursor = true
 var save_path = "user://settings.save" # HEI jeg vet ikke om jeg burde lagre til settings eller hovedfilen
+
+var locked_cursor = true
+
+var touch_mode = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	save_settings()
