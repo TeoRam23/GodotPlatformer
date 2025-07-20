@@ -66,7 +66,8 @@ func _ready():
 		print("###################### i have changed my size! ####################")
 	
 	Events.pls_kill_player.connect(i_died)
-	Events.level_completed.connect(disable_player)
+	Events.level_completed.connect(func(): disable_player(true))
+	Events.pls_enter_extra.connect(func(): disable_player(false))
 	#Events.pls_set_wrap.connect(wrap_me) # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	
 	if low_gravity:
@@ -330,15 +331,15 @@ func _on_hazard_detector_body_entered(body):
 	call_deferred("i_died")
 
 
-func disable_player():
+func disable_player(do_particles: bool):
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
 	launch_particle.emitting = false
-	dead_particle.emitting = true
+	dead_particle.emitting = do_particles
 
 func i_died():
 	if is_physics_processing():
-		disable_player()
+		disable_player(true)
 		#get_tree().paused = true
 		Events.player_died()
 		#get_tree().reload_current_scene()

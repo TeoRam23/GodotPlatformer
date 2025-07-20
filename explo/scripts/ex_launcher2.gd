@@ -18,6 +18,7 @@ extends Node2D
 @onready var rotation_neglecter = $RotationNeglecter
 @onready var mouse_tracker = $RotationNeglecter/MouseTracker
 @onready var mouse_sprite = $RotationNeglecter/MouseSprite
+@onready var touch_control = $CanvasLayer/TouchControl
 @onready var touch_base_sprite = $CanvasLayer/TouchControl/TouchBaseSprite
 @onready var stick_base = $CanvasLayer/TouchControl/StickBase
 @onready var touch_stick_node = $CanvasLayer/TouchControl/StickBase/TouchStickNode
@@ -35,8 +36,11 @@ var holding_proj
 func _ready():
 	Events.pls_player_died.connect(disable_me)
 	Events.level_completed.connect(disable_me)
+	Events.pls_enter_extra.connect(disable_me)
 	Events.pls_low_gravity.connect(lower_gravity)
 	settings_locked_cursor = Settings.locked_cursor
+	if Settings.touch_mode:
+		touch_control.visible = true
 	
 	new_projectile()
 

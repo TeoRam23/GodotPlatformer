@@ -61,6 +61,8 @@ func show_level_completed():
 	await poof_level_animation.hide_level()
 	#await black_screen.transition_level()
 	#await LevelTransition.fade_to_black()
+	
+	# i variablemanager gjør dette ingenting, men jeg vil ikke fjerne det enda
 	VariableManager.current_title_time = 3
 	
 	if johnny_collected:

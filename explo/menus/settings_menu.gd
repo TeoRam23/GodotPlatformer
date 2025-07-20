@@ -13,7 +13,7 @@ var locked_cursor = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_saved_settings()
+	get_saved_settings() # denne tenker jeg å kutte ut og erstatte med script i selve knappen
 	pass # Replace with function body.
 
 
@@ -30,10 +30,12 @@ func _on_butt_save_pressed():
 	save_settings()
 		
 
+
 func get_saved_settings():
 	# okay, vi må gjøre dette ferdig. sammen. men jeg skal ikke gjøre noe mer, det er kun du og kanskje fremtidige deg-er
 	# men sånn, jeg må finne ut hvordan strukturen til settings i saved fil skal være
 	butt_locked_cursor.button_pressed = Settings.locked_cursor
+
 	
 
 func save_settings():

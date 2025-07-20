@@ -15,6 +15,7 @@ signal pls_johnny_collected
 signal pls_share_title
 signal pls_general_leaving
 signal pls_low_gravity
+signal pls_enter_extra
 
 func projectile_hit():
 	pls_shake.emit()
@@ -54,3 +55,6 @@ func general_leaving():
 
 func low_gravity():
 	pls_low_gravity.emit()
+
+func enter_extra():
+	pls_enter_extra.emit()

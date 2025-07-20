@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://x02gp7koalk8"]
+
+[ext_resource type="Script" path="res://explo/scripts/ex_extra_entrance.gd" id="1_a2y4c"]
+[ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_8tkcf"]
+[ext_resource type="Texture2D" uid="uid://bh4syhvpfm0yh" path="res://assets/extra_pot.png" id="2_a1wkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddf5x"]
+size = Vector2(10, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8m6rc"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuhm0"]
+size = Vector2(20, 2)
+
+[sub_resource type="Curve" id="Curve_2uxok"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.240409, 1), 0.0, 0.0, 0, 0, Vector2(0.450128, 0.00490677), -8.97881, 0.0, 0, 0]
+point_count = 3
+
+[node name="ExExtraEntrance" type="Node2D"]
+script = ExtResource("1_a2y4c")
+extra_level = ExtResource("2_8tkcf")
+
+[node name="PotSprite" type="Sprite2D" parent="."]
+position = Vector2(24, -16)
+texture = ExtResource("2_a1wkh")
+
+[node name="PotBody" type="StaticBody2D" parent="."]
+collision_layer = 65
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PotBody"]
+position = Vector2(9, -14.5)
+shape = SubResource("RectangleShape2D_ddf5x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PotBody"]
+position = Vector2(39, -14.5)
+shape = SubResource("RectangleShape2D_ddf5x")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PotBody"]
+position = Vector2(24, -5)
+shape = SubResource("RectangleShape2D_8m6rc")
+
+[node name="SoupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoupArea"]
+position = Vector2(24, -11)
+shape = SubResource("RectangleShape2D_wuhm0")
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2(24, -26)
+emitting = false
+amount = 48
+one_shot = true
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 92.23
+initial_velocity_max = 92.23
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_2uxok")
+color = Color(0.933333, 0.352941, 0.87451, 1)
+
+[connection signal="body_entered" from="SoupArea" to="." method="_on_soup_area_body_entered"]
+[connection signal="finished" from="Particles2D" to="." method="_on_particles_2d_finished"]
