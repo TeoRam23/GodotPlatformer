@@ -49,7 +49,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	#print("I AM A NEW BUBBLE")
-	print(lava_can_kill)
+	#print(lava_can_kill)
 	start_pos = position
 	
 	
@@ -108,7 +108,7 @@ func _physics_process(delta):
 		#velocity.y =  #/ 17 * blocks_tall
 		
 		#velocity.y = (-0.000463931+sqrt(-0.000463931**2 - (0.000185132*(0.0007942-(blocks_tall+(extra_pxl*0.0625))))))/(0.000046283*2) *-1
-		print(velocity.y)
+		#print(velocity.y)
 		#velocity.y = 601
 
 		
@@ -141,7 +141,7 @@ func reset_bubble():
 
 
 func launch_bubble():
-	print("Let's-a go! ", randi_range(1, 20))
+	#print("Let's-a go! ", randi_range(1, 20))
 	velocity.y = jump_velocity
 	velocity.x = speed
 	activated = true
@@ -151,7 +151,7 @@ func launch_bubble():
 	if !show_particles:
 		ooze_particle.visible = false
 	
-	print("ma jump: ",jump_velocity)
+	#print("ma jump: ",jump_velocity)
 	if jump_velocity == 0:
 		float_timer.start()
 		timer_started = true

@@ -32,6 +32,7 @@ var mouse_tracker
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var particle_holder = $ParticleHolder
 @onready var gone_timer = $GoneTimer
+@onready var area_detection = $AreaDetection
 
 const EX_PNG = preload("res://explo/scenes/ex_png.tscn")
 
@@ -205,7 +206,10 @@ func launch():
 	just_launched = true
 	#print("*lunches*")
 	
-	if explosion_body.is_on_wall():
+	
+	
+	
+	if explosion_body.is_on_wall() or area_detection.get_overlapping_areas():
 		#print("*explodes* ", explosion_body.global_position)
 		do_explosion = true
 		#position = get_last_slide_collision().get_position()
@@ -242,6 +246,7 @@ func explode_pls():
 	Events.projectile_hit()
 	if explosion_area.get_overlapping_bodies():
 		var bodies = explosion_area.get_overlapping_bodies()
+		bodies += explosion_area.get_overlapping_areas()
 		
 		# checks if body can explode or gets pushed
 		#print("Bod: ", bodies)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dj3xenwxn8j6c"]
+[gd_scene load_steps=44 format=3 uid="uid://dj3xenwxn8j6c"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_2y7hc"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="26_gansl"]
 [ext_resource type="PackedScene" uid="uid://x02gp7koalk8" path="res://explo/scenes/world-extra/ex_extra_entrance.tscn" id="27_kbt7h"]
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="27_v86sp"]
+[ext_resource type="PackedScene" uid="uid://n4mpconkj584" path="res://explo/scenes/world-extra/holder_eater.tscn" id="28_jiac1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl7uj"]
 size = Vector2(7326, 520)
@@ -472,3 +473,6 @@ layer_0/tile_data = PackedInt32Array(-1, 1, 3, -65536, 131073, 3)
 
 [node name="ExExtraEntrance" parent="." index="35" instance=ExtResource("27_kbt7h")]
 position = Vector2(496, -224)
+
+[node name="HolderEater" parent="." index="36" instance=ExtResource("28_jiac1")]
+position = Vector2(496, -88)

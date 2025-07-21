@@ -1,0 +1,50 @@
+extends Node2D
+
+
+var our_player: CharacterBody2D
+var mid_pos = Vector2(16, -13)
+@onready var projectile_collision_shape = $ProjectileCollisionShape
+@onready var kill_timer = $KillTimer
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	#print(kill_timer.time_left)
+	pass
+
+
+func _on_player_area_body_entered(body):
+	our_player = body
+	body.velocity = Vector2.ZERO
+	body.prevelocity = Vector2.ZERO
+	body.position = global_position + mid_pos
+	body.disable_player(false)
+	
+	kill_timer.paused = false
+	kill_timer.start()
+	projectile_collision_shape.set_deferred("disabled", false)
+	
+
+func explode():
+	#print("yup, sploded AAAAAAAAAAAAAAAAAAAAAA")
+	if our_player is CharacterBody2D:
+		#print("also yup")
+		our_player.enable_player()
+	reset_me()
+	
+	
+func reset_me():
+	our_player = null
+	kill_timer.paused = true
+	#kill_timer.time_left = kill_timer.wait_time
+	projectile_collision_shape.set_deferred("disabled", true)
+
+
+func _on_kill_timer_timeout():
+	if our_player is CharacterBody2D:
+		our_player.enable_player()
+		Events.kill_player()

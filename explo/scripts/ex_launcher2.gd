@@ -197,7 +197,7 @@ func _input(event):
 	#if event is InputEventScreenTouch and not Input.is_action_pressed("cancel"):
 		#touch_dragging = true
 	elif event is InputEventScreenDrag and not Input.is_action_pressed("cancel"):
-		print(event.position)
+		#print(event.position)
 		var mouse_pos = stick_base.get_local_mouse_position()
 		
 		#if not touch_mouse_checker.shape.get_rect().has_point(mouse_pos):

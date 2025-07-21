@@ -337,6 +337,10 @@ func disable_player(do_particles: bool):
 	launch_particle.emitting = false
 	dead_particle.emitting = do_particles
 
+func enable_player():
+	set_physics_process(true)
+	animated_sprite_2d.visible = true
+
 func i_died():
 	if is_physics_processing():
 		disable_player(true)
