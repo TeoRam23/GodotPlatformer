@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://x02gp7koalk8"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_extra_entrance.gd" id="1_a2y4c"]
+[ext_resource type="Script" path="res://explo/scripts/world-extra/ex_extra_entrance.gd" id="1_a2y4c"]
 [ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_8tkcf"]
 [ext_resource type="Texture2D" uid="uid://bh4syhvpfm0yh" path="res://assets/extra_pot.png" id="2_a1wkh"]
 

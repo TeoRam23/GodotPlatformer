@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://n4mpconkj584"]
 
-[ext_resource type="Script" path="res://explo/scripts/holder_eater.gd" id="1_htj1f"]
+[ext_resource type="Script" path="res://explo/scripts/world-extra/holder_eater.gd" id="1_htj1f"]
 [ext_resource type="Texture2D" uid="uid://dqrw4p2kvn7rv" path="res://assets/holderEater.png" id="2_yfrtm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w706t"]

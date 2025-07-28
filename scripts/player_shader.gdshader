@@ -22,6 +22,7 @@ void vertex() {
 void fragment() {
 	vec4 this_pxl = texture(TEXTURE, UV);
 	
+	
 	if (length(this_pxl - origin1) < epsilon)
 		COLOR = new1;
 	else if (length(this_pxl - origin2) < epsilon)

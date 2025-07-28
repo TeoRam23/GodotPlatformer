@@ -21,6 +21,7 @@ atlas = ExtResource("1_v6835")
 region = Rect2(0, 0, 16, 16)
 
 [node name="ShortSpike" type="StaticBody2D"]
+z_as_relative = false
 collision_layer = 68
 collision_mask = 0
 

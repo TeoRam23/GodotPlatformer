@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://4r6ad8ool77e"]
+
+[ext_resource type="Shader" path="res://explo/scripts/world-extra/gloop_shader.gdshader" id="1_bgcv4"]
+[ext_resource type="Texture2D" uid="uid://c3pghf3o7quo" path="res://assets/baksplodder/goopystuff.png" id="2_jyghe"]
+[ext_resource type="PackedScene" uid="uid://d4lf7lyl7gh8t" path="res://explo/scenes/world-extra/gloop_hazard.tscn" id="3_xd0fj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhysm"]
+shader = ExtResource("1_bgcv4")
+shader_parameter/inside_color = Color(0.537011, 0.537011, 0.537011, 1)
+shader_parameter/outline_color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_iempy"]
+scenes/1/scene = ExtResource("3_xd0fj")
+
+[sub_resource type="TileSet" id="TileSet_an4fw"]
+tile_size = Vector2i(1, 1)
+sources/0 = SubResource("TileSetScenesCollectionSource_iempy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xq37c"]
+shader = ExtResource("1_bgcv4")
+shader_parameter/inside_color = Color(0.653314, 0.531454, 0.350832, 1)
+shader_parameter/outline_color = Color(0.9, 0.846, 0.765, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q264x"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tomak"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_182r1"]
+shader = ExtResource("1_bgcv4")
+shader_parameter/inside_color = Color(0.653314, 0.531454, 0.350832, 1)
+shader_parameter/outline_color = Color(0.9, 0.846, 0.765, 1)
+
+[node name="base" type="TileMap"]
+material = SubResource("ShaderMaterial_hhysm")
+position = Vector2(-0.5, 0.5)
+tile_set = SubResource("TileSet_an4fw")
+format = 2
+layer_0/tile_data = PackedInt32Array(6160377, 0, 65536, 2883631, 0, 65536, 3866684, 0, 65536, 3473460, 0, 65536, 3801161, 0, 65536, 3145807, 0, 65536, 2490444, 0, 65536, 2031675, 0, 65536, 2031685, 0, 65536, 2162737, 0, 65536)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xq37c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_q264x")
+metadata/_edit_use_anchors_ = true
+
+[node name="psa" type="RichTextLabel" parent="."]
+offset_right = 209.0
+offset_bottom = 44.0
+theme_override_font_sizes/normal_font_size = 8
+text = "med subviewport blir dette veldig rart
+vet ikke om det er noe vits i ¯\\_(ツ)_/¯"
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]
+visible = false
+follow_viewport_enabled = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/CanvasLayer"]
+visible = false
+modulate = Color(0.329412, 1, 1, 1)
+texture = SubResource("ViewportTexture_tomak")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(640, 360)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+follow_viewport_enabled = true
+
+[node name="Node" type="Camera2D" parent="SubViewport/CanvasLayer"]
+
+[node name="GloopHolder" type="Node2D" parent="SubViewport"]
+material = SubResource("ShaderMaterial_182r1")
+
+[node name="Goopystuff" type="Sprite2D" parent="SubViewport/GloopHolder"]
+visible = false
+position = Vector2(223, -52)
+texture = ExtResource("2_jyghe")
+
+[node name="GloopHazard" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(31, 35)
+
+[node name="GloopHazard2" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(21, 46)
+
+[node name="GloopHazard3" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(25, 60)
+
+[node name="GloopHazard4" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(25, 72)
+
+[node name="GloopHazard5" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(9, 86)
+
+[node name="GloopHazard6" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(22, 80)
+
+[node name="GloopHazard7" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(-2, 101)
+
+[node name="GloopHazard8" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(29, 106)
+
+[node name="GloopHazard9" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(18, 96)
+
+[node name="GloopHazard10" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(-8, 116)
+
+[node name="GloopHazard11" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(-32, 124)
+
+[node name="GloopHazard12" parent="SubViewport/GloopHolder" instance=ExtResource("3_xd0fj")]
+position = Vector2(40, 111)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+
+[node name="GloopHazard12" parent="." instance=ExtResource("3_xd0fj")]
+position = Vector2(20, 66)
