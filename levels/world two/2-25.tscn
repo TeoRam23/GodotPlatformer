@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bntv4yl020w36"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_knj84"]
-[ext_resource type="PackedScene" uid="uid://d0kb5uahajr35" path="res://levels/idk.tscn" id="2_cn2am"]
+[ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_sk037"]
 [ext_resource type="Texture2D" uid="uid://bo7suxeufhbre" path="res://assets/baksplodder/verd 2/2-25.png" id="2_txsnn"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="3_ppl01"]
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="4_6tm31"]
@@ -14,7 +14,8 @@ size = Vector2(640, 2499)
 
 [node name="2-25" instance=ExtResource("1_knj84")]
 title = "A great fall"
-next_level = ExtResource("2_cn2am")
+next_level = ExtResource("2_sk037")
+unlock_level_path = "res://levels/world_3/3-1.tscn"
 
 [node name="2-25" type="Sprite2D" parent="." index="0"]
 visible = false

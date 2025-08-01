@@ -9,7 +9,12 @@ var activated = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var stage = get_tree().current_scene.name
+	
+	var world_number = stage.split()[0]
+	
+	animated_sprite.material.set("shader_parameter/parent_id", int(world_number))
+	shplipp_particle.material.set("shader_parameter/parent_id", int(world_number))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

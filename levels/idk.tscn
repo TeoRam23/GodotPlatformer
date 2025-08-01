@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0kb5uahajr35"]
+[gd_scene load_steps=6 format=3 uid="uid://d0kb5uahajr35"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_cduym"]
 [ext_resource type="PackedScene" uid="uid://cvw8xn4ess4ap" path="res://tilemaps/level_tile_map.tscn" id="2_tebyl"]
+[ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="3_5lhco"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="3_wkggt"]
+[ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="4_8n8x2"]
 
-[node name="World" instance=ExtResource("1_cduym")]
+[node name="3-hmm" instance=ExtResource("1_cduym")]
 
 [node name="ExCameraBoundary" parent="." index="2"]
 position = Vector2(0, -56)
@@ -18,11 +20,18 @@ position = Vector2(0, 11)
 layer_0/tile_data = PackedInt32Array(131064, 0, 0, 131065, 65536, 0, 131066, 65536, 0, 131067, 65536, 0, 131068, 65536, 0, 131069, 65536, 0, 131070, 65536, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 65536, 0, 65538, 65536, 0, 65539, 65536, 0, 65540, 65536, 0, 65541, 65536, 0, 65542, 65536, 0, 65543, 65536, 0, 65544, 65536, 0, 65545, 131072, 0, 196600, 0, 2, 196601, 65536, 2, 196602, 65536, 2, 196603, 65536, 2, 196604, 65536, 2, 196605, 65536, 2, 196606, 65536, 2, 196607, 65536, 2, 131072, 65536, 2, 131073, 65536, 2, 131074, 65536, 2, 131075, 65536, 2, 131076, 65536, 2, 131077, 65536, 2, 131078, 65536, 2, 131079, 65536, 2, 131080, 65536, 2, 131081, 131072, 2)
 
 [node name="ExObjectTilemap" parent="." index="10"]
-layer_0/tile_data = PackedInt32Array(65529, 3, 65536, 7, 3, 65536, 5, 3, 65536, 6, 3, 589824, 4, 3, 589824, 3, 3, 589824, 65530, 3, 589824, 65531, 3, 589824, 8, 3, 589824, 65528, 3, 589824)
+layer_0/tile_data = PackedInt32Array(65529, 3, 65536, 7, 3, 65536, 5, 3, 65536, 6, 3, 589824, 4, 3, 589824, 3, 3, 589824, 65530, 3, 589824, 8, 3, 589824, 65528, 3, 589824, -4, 6, 65536, -5, 6, 65536, -6, 6, 65536, -7, 6, 65536, -65543, 6, 65536, -131079, 6, 65536, -196615, 6, 65536, -262151, 6, 65536, -327687, 6, 65536, -393223, 6, 65536, -458759, 6, 65536, -524295, 6, 65536, -524294, 6, 65536, -524293, 6, 65536, -524292, 6, 65536, -589828, 6, 65536, 65531, 3, 589824)
 
 [node name="LevelTileMap4" parent="ObjectHolder" index="0" instance=ExtResource("2_tebyl")]
 position = Vector2(-24, -137)
 layer_0/tile_data = PackedInt32Array(65535, 0, 3, 0, 131072, 3)
+
+[node name="ExDissaActivator" parent="ObjectHolder" index="1" instance=ExtResource("3_5lhco")]
+position = Vector2(40, 8)
+
+[node name="ExDissaBlock" parent="ObjectHolder" index="2" instance=ExtResource("4_8n8x2")]
+position = Vector2(-56, 8)
+dissa_id = 1
 
 [node name="ExGliderFloating" parent="." index="12" instance=ExtResource("3_wkggt")]
 position = Vector2(0, -16)

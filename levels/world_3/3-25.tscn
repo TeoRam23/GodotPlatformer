@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://gihblyoc4nmm"]
+[gd_scene load_steps=15 format=3 uid="uid://gihblyoc4nmm"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_uhcm1"]
+[ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_nsi8s"]
 [ext_resource type="Texture2D" uid="uid://byjy7g05tvymu" path="res://assets/baksplodder/verd 3/3-25.png" id="2_q2284"]
 [ext_resource type="PackedScene" uid="uid://lwlnf3vivmjo" path="res://explo/scenes/world-3/ex_rising_lava.tscn" id="3_h25q7"]
 [ext_resource type="PackedScene" uid="uid://dhij8xxowfx58" path="res://explo/scenes/world-3/ex_lava_tiles.tscn" id="4_ca1uv"]
@@ -28,6 +29,8 @@ size = Vector2(112, 1808)
 
 [node name="3-25" instance=ExtResource("1_uhcm1")]
 title = "A Poisonous Volcano?? In a Swamp???"
+next_level = ExtResource("2_nsi8s")
+unlock_level_path = "res://levels/world_4/4-1.tscn"
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

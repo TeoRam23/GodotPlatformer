@@ -1,10 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc2amnlofb31d"]
+[gd_scene load_steps=15 format=3 uid="uid://dc2amnlofb31d"]
 
 [ext_resource type="Script" path="res://explo/scripts/ex_dissa_activator.gd" id="1_wx8i4"]
 [ext_resource type="Texture2D" uid="uid://bkogkonsida1c" path="res://assets/DissaActivator.png" id="2_kwfqn"]
+[ext_resource type="Shader" path="res://explo/scripts/ex_dissa_block_shader.gdshader" id="2_uu8i2"]
+[ext_resource type="Texture2D" uid="uid://sq6bo6ilrlfy" path="res://assets/color_maps/dissablocks/dissablock_color1.png" id="3_jmv2d"]
+[ext_resource type="Texture2D" uid="uid://dvlkjcmc6coh0" path="res://assets/color_maps/dissablocks/dissablock_color3.png" id="4_j3842"]
+[ext_resource type="Texture2D" uid="uid://dowst0b3gyyt1" path="res://assets/color_maps/dissablocks/dissablock_color2.png" id="5_aqjnp"]
+[ext_resource type="Texture2D" uid="uid://dhsv2e211favg" path="res://assets/color_maps/dissablocks/dissablock_color4.png" id="6_q0pp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8xfv"]
 size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31d6f"]
+shader = ExtResource("2_uu8i2")
+shader_parameter/parent_id = null
+shader_parameter/epsilon = 0.0001
+shader_parameter/imageGRASS = ExtResource("3_jmv2d")
+shader_parameter/imageOG = ExtResource("5_aqjnp")
+shader_parameter/imageLAVA = ExtResource("4_j3842")
+shader_parameter/imageSPACE = ExtResource("6_q0pp4")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67try"]
 atlas = ExtResource("2_kwfqn")
@@ -28,6 +42,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_snc5o"]
+shader = ExtResource("2_uu8i2")
+shader_parameter/parent_id = null
+shader_parameter/epsilon = 0.001
+shader_parameter/imageGRASS = ExtResource("3_jmv2d")
+shader_parameter/imageOG = ExtResource("5_aqjnp")
+shader_parameter/imageLAVA = ExtResource("4_j3842")
+shader_parameter/imageSPACE = ExtResource("6_q0pp4")
+
 [sub_resource type="Curve" id="Curve_rad3j"]
 _data = [Vector2(0, 1), 0.0, 0.49531, 0, 0, Vector2(0.584416, 1), -1.41936, -1.41936, 0, 0, Vector2(1, 0), -2.5698, 0.0, 0, 0]
 point_count = 3
@@ -41,9 +64,11 @@ script = ExtResource("1_wx8i4")
 shape = SubResource("RectangleShape2D_f8xfv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_31d6f")
 sprite_frames = SubResource("SpriteFrames_md1bo")
 
 [node name="ShplippParticle" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_snc5o")
 emitting = false
 amount = 16
 one_shot = true

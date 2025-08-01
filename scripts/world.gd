@@ -2,6 +2,7 @@ extends Node2D
 
 @export var title = "World"
 @export var next_level: PackedScene
+@export var unlock_level_path: String
 @export var show_mouse = false
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
@@ -40,6 +41,8 @@ func _ready():
 	var this_level = {"id": get_tree().current_scene.name, "title": title, "completed": false, "best_time": -1.0, "johnny_collected": false}
 	VariableManager.update_level_to(this_level)
 	
+	
+	
 #func _process(delta):
 	#if first_frame:
 		#reveal_level()
@@ -72,6 +75,17 @@ func show_level_completed():
 	# id-en blir &"ekte_id" og det er helt greit at & er der, det går bra
 	var this_level = {"id": get_tree().current_scene.name, "title": title, "completed": true, "best_time": level_time, "johnny_collected": johnny_collected}
 	VariableManager.update_level_to(this_level)
+	
+	# dette er for å åpne opp en annen bane
+	if unlock_level_path:
+		var load_level = load(unlock_level_path)
+		if load_level != null:
+			var instanced_level = load_level.instantiate()
+			var unlock_level = {"id": instanced_level.name, "title": instanced_level.title, "completed": false, "best_time": -1.0, "johnny_collected": false}
+			VariableManager.update_level_to(unlock_level)
+			instanced_level.free()
+		load_level = null
+		
 	VariableManager.save_variables()
 	
 	get_tree().change_scene_to_packed(next_level)

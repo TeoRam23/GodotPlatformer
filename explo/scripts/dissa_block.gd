@@ -11,7 +11,12 @@ extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var stage = get_tree().current_scene.name
+	
+	var world_number = stage.split()[0]
+	
+	pump_particle.material.set("shader_parameter/parent_id", int(world_number))
+	animated_sprite.material.set("shader_parameter/parent_id", int(world_number))
 
 
 func activate_dissablock(new_time):
