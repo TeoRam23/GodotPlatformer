@@ -13,8 +13,8 @@ func _ready():
 	
 	var world_number = stage.split()[0]
 	
-	animated_sprite.material.set("shader_parameter/parent_id", int(world_number))
-	shplipp_particle.material.set("shader_parameter/parent_id", int(world_number))
+	material.set("shader_parameter/parent_id", int(world_number))
+	#shplipp_particle.material.set("shader_parameter/parent_id", int(world_number))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

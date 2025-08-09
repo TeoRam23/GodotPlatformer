@@ -15,8 +15,8 @@ func _ready():
 	
 	var world_number = stage.split()[0]
 	
-	pump_particle.material.set("shader_parameter/parent_id", int(world_number))
-	animated_sprite.material.set("shader_parameter/parent_id", int(world_number))
+	material.set("shader_parameter/parent_id", int(world_number))
+	#pump_particle.material.set("shader_parameter/parent_id", int(world_number))
 
 
 func activate_dissablock(new_time):
