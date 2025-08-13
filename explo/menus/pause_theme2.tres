@@ -1,22 +1,9 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://rtc8pddds3ew"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cfuoqyle7q3jc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6b3d"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mk3al"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j437"]
-bg_color = Color(0.72, 0.288, 0.288, 1)
+bg_color = Color(0.780392, 0.0901961, 0.239216, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -31,7 +18,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.72, 0.288, 0.288, 1)
+border_color = Color(0.780392, 0.0901961, 0.239216, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -41,12 +28,12 @@ expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfnh7"]
-bg_color = Color(0.57, 0.2679, 0.2679, 1)
+bg_color = Color(0.580392, 0.054902, 0.305882, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.717647, 0.286275, 0.286275, 1)
+border_color = Color(0.780392, 0.0901961, 0.239216, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -58,7 +45,7 @@ anti_aliasing = false
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 16
-Button/styles/focus = SubResource("StyleBoxFlat_s6b3d")
+Button/styles/focus = SubResource("StyleBoxEmpty_mk3al")
 Button/styles/hover = SubResource("StyleBoxFlat_7j437")
 Button/styles/normal = SubResource("StyleBoxFlat_s2h40")
 Button/styles/pressed = SubResource("StyleBoxFlat_lfnh7")

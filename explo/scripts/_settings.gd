@@ -1,12 +1,15 @@
 extends Node
 
-var save_path = "user://settings.save" # HEI jeg vet ikke om jeg burde lagre til settings eller hovedfilen
+#jeg tror jeg lagrer til settings så jeg kanskje kan ha flere filer for savefiles men ha samme settings, for nå
+var save_path = "user://settings.save"
+
 
 var locked_cursor = true
 
 var touch_mode = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# dette burde ikke være her når vi er ferdig! AAAAAAAAAAAA
 	save_settings()
 	pass # Replace with function body.
 

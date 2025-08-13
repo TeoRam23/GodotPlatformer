@@ -10,7 +10,7 @@ var title = "default"
 @onready var back_to_hub_butt = $PauseControl/VBoxContainer/BackToHub
 @onready var main_menu_butt = $PauseControl/VBoxContainer/MainMenu
 
-const jeffrey_theme = preload("res://explo/menus/pause_theme.tres")
+const jeffrey_theme = preload("res://explo/menus/pause_theme2.tres")
 const johnny_theme = preload("res://explo/menus/pause_theme_johnny.tres")
 
 #var hubby = preload("res://levels/hub.tscn")
@@ -73,7 +73,8 @@ func johnnify():
 		main_menu_butt.theme = johnny_theme
 		back_to_hub_butt.theme = johnny_theme
 	else:
-		number_label.add_theme_color_override("font_color", Color(0.722, 0.29, 0.29))
+		#number_label.add_theme_color_override("font_color", Color(0.722, 0.29, 0.29)) # for pause theme 1
+		number_label.add_theme_color_override("font_color", Color(0.78, 0.09, 0.239)) # for pause theme 2
 		continue_butt.theme = jeffrey_theme
 		main_menu_butt.theme = jeffrey_theme
 		back_to_hub_butt.theme = jeffrey_theme

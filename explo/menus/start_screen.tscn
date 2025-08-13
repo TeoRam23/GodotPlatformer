@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
 [ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="1_y5tdk"]
-[ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="2_ai038"]
-[ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings_menu.tscn" id="4_lffss"]
+[ext_resource type="Theme" uid="uid://cfuoqyle7q3jc" path="res://explo/menus/pause_theme2.tres" id="3_u7mx0"]
+[ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings/settings_menu.tscn" id="4_lffss"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
 
 [node name="StartScreen" type="Node2D"]
@@ -33,25 +33,25 @@ theme_override_constants/separation = 16
 
 [node name="ButtonStart" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_ai038")
+theme = ExtResource("3_u7mx0")
 text = "Start
 "
 
 [node name="ButtonSettings" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_ai038")
+theme = ExtResource("3_u7mx0")
 text = "Settings
 "
 
 [node name="ButtonCredits" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_ai038")
+theme = ExtResource("3_u7mx0")
 text = "Credits
 "
 
 [node name="ButtonQuit" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_ai038")
+theme = ExtResource("3_u7mx0")
 text = "Quit
 "
 

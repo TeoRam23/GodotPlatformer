@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://chq7s31pk3ah0" path="res://assets/baksplodder/paas.png" id="1_eehvo"]
 [ext_resource type="Script" path="res://explo/menus/pause_menu.gd" id="1_f4jpt"]
-[ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="2_67m8p"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="3_o0lm2"]
+[ext_resource type="Theme" uid="uid://cfuoqyle7q3jc" path="res://explo/menus/pause_theme2.tres" id="4_krnv1"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -55,7 +55,7 @@ offset_right = 21.0
 offset_bottom = 71.0
 grow_horizontal = 2
 theme = ExtResource("3_o0lm2")
-theme_override_colors/font_color = Color(0.721569, 0.290196, 0.290196, 1)
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
 theme_override_font_sizes/font_size = 16
 text = "Level   -1"
 horizontal_alignment = 1
@@ -96,17 +96,17 @@ theme_override_constants/separation = 16
 
 [node name="Continue" type="Button" parent="PauseControl/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_67m8p")
+theme = ExtResource("4_krnv1")
 text = "Continue"
 
 [node name="BackToHub" type="Button" parent="PauseControl/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_67m8p")
+theme = ExtResource("4_krnv1")
 text = "Back to Hub"
 
 [node name="MainMenu" type="Button" parent="PauseControl/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_67m8p")
+theme = ExtResource("4_krnv1")
 text = "Main Menu"
 
 [connection signal="pressed" from="PauseControl/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

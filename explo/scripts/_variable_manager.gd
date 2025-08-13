@@ -90,7 +90,7 @@ func load_variables():
 		johnnies = file.get_var()
 		johnny_mode = file.get_var()
 		levels_completed = file.get_var()
-		print(levels_completed)
+		#print(levels_completed)
 		file.close()
 	else:
 		print('Welp, no save here ¯\\_ツ)_/¯')

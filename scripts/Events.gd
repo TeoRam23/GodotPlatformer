@@ -16,6 +16,7 @@ signal pls_share_title
 signal pls_general_leaving
 signal pls_low_gravity
 signal pls_enter_extra
+signal pls_save_settings_yall
 
 func projectile_hit():
 	pls_shake.emit()
@@ -58,3 +59,6 @@ func low_gravity():
 
 func enter_extra():
 	pls_enter_extra.emit()
+
+func save_settings_yall():
+	pls_save_settings_yall.emit()

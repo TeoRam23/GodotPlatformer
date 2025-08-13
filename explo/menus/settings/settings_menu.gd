@@ -6,10 +6,16 @@ var changes_made = false
 var locked_cursor = false
 #@onready var butt_locked_cursor = $ButtLockedCursor
 #@onready var butt_locked_cursor = $VBoxContainer/ButtLockedCursor
-@onready var butt_locked_cursor = $ScrollGameplay/BoxGameplay/BoxMouseSettings/ButtLockedCursor
-
+#@onready var butt_locked_cursor = $ScrollGameplay/BoxGameplay/BoxMouseSettings/ButtLockedCursor
 
 @onready var sure_control = $SureControl
+
+
+@onready var butt_video = $ButtVideo
+@onready var butt_audio = $ButtAudio
+@onready var butt_gameplay = $ButtGameplay
+@onready var butt_controls = $ButtControls
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,13 +40,10 @@ func _on_butt_save_pressed():
 func get_saved_settings():
 	# okay, vi må gjøre dette ferdig. sammen. men jeg skal ikke gjøre noe mer, det er kun du og kanskje fremtidige deg-er
 	# men sånn, jeg må finne ut hvordan strukturen til settings i saved fil skal være
-	butt_locked_cursor.button_pressed = Settings.locked_cursor
-
+	#butt_locked_cursor.button_pressed = Settings.locked_cursor
+	pass
 	
 
-func save_settings():
-	Settings.locked_cursor = butt_locked_cursor.is_pressed()
-	
 	
 func _input(event):
 	if Input.is_action_just_pressed("back"):
@@ -55,16 +58,51 @@ func _input(event):
 		
 
 
-func _on_sure_yes_button_pressed():
+func save_settings():
+	Events.save_settings_yall()
+	Settings.call_deferred("save_settings")
+	
+	#Settings.locked_cursor = butt_locked_cursor.is_pressed()
+	pass
+
+
+func _on_butt_back_pressed():
+	if changes_made == true:
+		sure_control.visible = true
+	else:
+		visible = false
+
+
+func _on_sure_yes_button_pressed(tog):
 	save_settings()
 	sure_control.visible = false
 	visible = false
 
 
-func _on_sure_no_button_pressed():
+func _on_sure_no_button_pressed(tog):
 	sure_control.visible = false
 	visible = false
 
 
 func _on_sure_ex_button_pressed():
 	sure_control.visible = false
+
+
+# tab buttons
+
+func _on_butt_video_toggled():
+	put_tabs_correct(butt_video)
+	pass # Replace with function body.
+
+func _on_butt_gameplay_toggled():
+	put_tabs_correct(butt_gameplay)
+	
+	pass # Replace with function body.
+
+
+func put_tabs_correct(on_button):
+	butt_video.button_pressed = false
+	butt_audio.button_pressed = false
+	butt_gameplay.button_pressed = false
+	butt_controls.button_pressed = false
+	on_button.button_pressed = true

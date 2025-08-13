@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=30 format=3 uid="uid://dpo2jb0120xxp"]
 
-[ext_resource type="Script" path="res://explo/menus/settings_menu.gd" id="1_2i17m"]
+[ext_resource type="Script" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
 [ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="3_llriq"]
+[ext_resource type="Script" path="res://explo/menus/settings/settings_check_button.gd" id="3_lsjbt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhoj3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,6 +16,50 @@ Label/styles/normal = SubResource("StyleBoxFlat_mhoj3")
 
 [sub_resource type="Theme" id="Theme_60nae"]
 CheckButton/constants/h_separation = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkdn3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uik0l"]
+bg_color = Color(0.76246, 0.538142, 0.469281, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5njg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfb61"]
+bg_color = Color(0.546579, 0.640195, 0.405756, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqnh8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddcf2"]
+bg_color = Color(0.434979, 0.636793, 0.698755, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djihi"]
+bg_color = Color(0.776471, 0.776471, 0.780392, 1)
+
+[sub_resource type="Theme" id="Theme_6dpvq"]
+TabBar/colors/drop_mark_color = Color(1, 1, 0.490196, 1)
+TabBar/colors/font_hovered_color = Color(0.466667, 0.486275, 0.94902, 1)
+TabBar/colors/font_outline_color = Color(0.427451, 0.752941, 0.215686, 1)
+TabBar/colors/font_selected_color = Color(0.94902, 0.458824, 0.0862745, 1)
+TabBar/colors/font_unselected_color = Color(0.701961, 0.415686, 0.701961, 1)
+TabBar/styles/button_highlight = SubResource("StyleBoxFlat_mkdn3")
+TabBar/styles/button_pressed = SubResource("StyleBoxFlat_uik0l")
+TabBar/styles/tab_disabled = SubResource("StyleBoxFlat_w5njg")
+TabBar/styles/tab_focus = SubResource("StyleBoxFlat_gfb61")
+TabBar/styles/tab_hovered = SubResource("StyleBoxFlat_mqnh8")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_ddcf2")
+TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_djihi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1hqp"]
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvpbp"]
+bg_color = Color(0.780392, 0.0901961, 0.239216, 1)
+skew = Vector2(-1, 0)
+corner_radius_bottom_right = 3
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_sklc0"]
+Button/styles/normal = SubResource("StyleBoxFlat_xvpbp")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ldcy"]
 bg_color = Color(0.109804, 0.109804, 0.12549, 1)
@@ -41,6 +86,29 @@ bg_color = Color(0.3, 0.3, 0.3, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ljil2"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mjv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eefby"]
+bg_color = Color(0.580392, 0.054902, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w60a3"]
+bg_color = Color(0.580392, 0.054902, 0.305882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x3kb"]
+bg_color = Color(0.929412, 0.117647, 0.141176, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.929412, 0.117647, 0.141176, 1)
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_it2bb"]
+Button/styles/focus = SubResource("StyleBoxEmpty_8mjv4")
+Button/styles/hover = SubResource("StyleBoxFlat_eefby")
+Button/styles/normal = SubResource("StyleBoxFlat_w60a3")
+Button/styles/pressed = SubResource("StyleBoxFlat_7x3kb")
+
 [node name="SettingsMenu" type="CanvasLayer"]
 script = ExtResource("1_2i17m")
 
@@ -53,6 +121,7 @@ grow_vertical = 2
 color = Color(0.109804, 0.109804, 0.12549, 1)
 
 [node name="Settings" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(320, 180)
 texture = ExtResource("2_aonyn")
 
@@ -76,12 +145,19 @@ offset_right = 391.0
 offset_bottom = 99.0
 text = "denne settingen"
 
+[node name="TabBar" type="TabBar" parent="."]
+visible = false
+offset_left = 159.0
+offset_top = 18.0
+offset_right = 199.0
+offset_bottom = 58.0
+
 [node name="ScrollGameplay" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(416, 240)
-offset_left = 130.0
-offset_top = 103.0
-offset_right = 546.0
-offset_bottom = 343.0
+custom_minimum_size = Vector2(416, 140)
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 528.0
+offset_bottom = 296.0
 
 [node name="BoxGameplay" type="VBoxContainer" parent="ScrollGameplay"]
 custom_minimum_size = Vector2(393, 0)
@@ -98,10 +174,11 @@ custom_minimum_size = Vector2(379.22, 0)
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="ButtLockedCursor" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
+[node name="locked_cursor" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
 layout_mode = 2
 theme = SubResource("Theme_60nae")
 text = "Lock cursor to player vicinity"
+script = ExtResource("3_lsjbt")
 
 [node name="ButtLockedCursor2" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
 layout_mode = 2
@@ -166,12 +243,46 @@ layout_mode = 2
 theme = SubResource("Theme_60nae")
 text = "Lock cursor to player vicinity"
 
+[node name="TabContainer" type="TabContainer" parent="."]
+visible = false
+offset_left = 112.0
+offset_top = 28.0
+offset_right = 528.0
+offset_bottom = 296.0
+theme = SubResource("Theme_6dpvq")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_f1hqp")
+tab_alignment = 1
+
+[node name="Tabs er så vanskelig å style Æ" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
 [node name="ButtSave" type="Button" parent="."]
 offset_left = 382.0
 offset_top = 300.0
 offset_right = 524.0
 offset_bottom = 328.0
 text = "Save Changes"
+
+[node name="ButtBack" type="Button" parent="."]
+offset_left = -13.0
+offset_top = 309.0
+offset_right = 120.0
+offset_bottom = 335.0
+theme = SubResource("Theme_sklc0")
+text = "Back   "
+alignment = 2
 
 [node name="SureControl" type="Control" parent="."]
 visible = false
@@ -265,7 +376,61 @@ offset_right = 244.0
 offset_bottom = 11.8225
 text = "x"
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = 26.0
+offset_right = 640.0
+offset_bottom = 48.0
+color = Color(0.580392, 0.054902, 0.305882, 1)
+
+[node name="ButtVideo" type="Button" parent="."]
+offset_left = 102.0
+offset_top = 26.0
+offset_right = 208.0
+offset_bottom = 48.0
+theme = SubResource("Theme_it2bb")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+button_pressed = true
+text = "Video"
+
+[node name="ButtAudio" type="Button" parent="."]
+offset_left = 211.0
+offset_top = 26.0
+offset_right = 317.0
+offset_bottom = 48.0
+theme = SubResource("Theme_it2bb")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+text = "Video"
+
+[node name="ButtGameplay" type="Button" parent="."]
+offset_left = 320.0
+offset_top = 26.0
+offset_right = 426.0
+offset_bottom = 48.0
+theme = SubResource("Theme_it2bb")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+text = "Video"
+
+[node name="ButtControls" type="Button" parent="."]
+offset_left = 429.0
+offset_top = 26.0
+offset_right = 535.0
+offset_bottom = 48.0
+theme = SubResource("Theme_it2bb")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+toggle_mode = true
+text = "Video"
+
 [connection signal="pressed" from="ButtSave" to="." method="_on_butt_save_pressed"]
+[connection signal="pressed" from="ButtBack" to="." method="_on_butt_back_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureYesButton" to="." method="_on_sure_yes_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureNoButton" to="." method="_on_sure_no_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureExButton" to="." method="_on_sure_ex_button_pressed"]
+[connection signal="toggled" from="ButtVideo" to="." method="_on_butt_video_toggled"]
+[connection signal="toggled" from="ButtGameplay" to="." method="_on_butt_gameplay_toggled"]
