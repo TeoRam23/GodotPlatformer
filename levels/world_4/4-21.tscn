@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccw3214hn42uq"]
+[gd_scene load_steps=7 format=3 uid="uid://ccw3214hn42uq"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_htk60"]
+[ext_resource type="PackedScene" uid="uid://b2ddifgosyv0v" path="res://levels/world_4/4-22.tscn" id="2_jehr8"]
 [ext_resource type="Texture2D" uid="uid://crwfo0velx8dl" path="res://assets/baksplodder/verd 4/4-21.png" id="2_nu0m7"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="3_ming3"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="4_3rs6q"]
@@ -10,6 +11,10 @@ size = Vector2(640, 2728)
 
 [node name="4-21" instance=ExtResource("1_htk60")]
 title = "Split Tube"
+next_level = ExtResource("2_jehr8")
+
+[node name="ParallaxBackground" parent="." index="0"]
+scroll_offset = Vector2(550.355, 175.646)
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
