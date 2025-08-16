@@ -268,11 +268,12 @@ func explode_pls():
 	first_frame = true
 	
 func remove_me():
-	remove_child(particle_holder)
-	get_parent().add_child(particle_holder)
-	particle_holder.un_emit()
-	#illsplode = true
-	queue_free()
+	if particle_holder.get_parent() == self:
+		remove_child(particle_holder)
+		get_parent().add_child(particle_holder)
+		particle_holder.un_emit()
+		#illsplode = true
+		queue_free()
 	
 
 

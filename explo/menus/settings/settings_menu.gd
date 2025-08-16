@@ -16,6 +16,7 @@ var locked_cursor = false
 @onready var butt_gameplay = $ButtGameplay
 @onready var butt_controls = $ButtControls
 
+@onready var scroll_gameplay = $ScrollGameplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -88,14 +89,6 @@ func _on_sure_ex_button_pressed():
 	sure_control.visible = false
 
 
-# tab buttons
-
-func _on_butt_video_toggled():
-	put_tabs_correct(butt_video)
-	pass # Replace with function body.
-
-func _on_butt_gameplay_toggled():
-	put_tabs_correct(butt_gameplay)
 	
 	pass # Replace with function body.
 
@@ -106,3 +99,21 @@ func put_tabs_correct(on_button):
 	butt_gameplay.button_pressed = false
 	butt_controls.button_pressed = false
 	on_button.button_pressed = true
+
+
+func _on_butt_video_pressed():
+	put_tabs_correct(butt_video)
+	scroll_gameplay.visible = false
+
+func _on_butt_audio_pressed():
+	put_tabs_correct(butt_audio)
+	scroll_gameplay.visible = false
+
+func _on_butt_gameplay_pressed():
+	put_tabs_correct(butt_gameplay)
+	scroll_gameplay.visible = true
+
+func _on_butt_controls_pressed():
+	put_tabs_correct(butt_controls)
+	scroll_gameplay.visible = false
+

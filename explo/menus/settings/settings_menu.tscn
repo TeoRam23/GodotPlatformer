@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=32 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
@@ -58,8 +58,20 @@ skew = Vector2(-1, 0)
 corner_radius_bottom_right = 3
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ded0l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpg50"]
+bg_color = Color(0.929412, 0.117647, 0.141176, 1)
+skew = Vector2(-1, 0)
+corner_radius_bottom_right = 3
+anti_aliasing = false
+
 [sub_resource type="Theme" id="Theme_sklc0"]
+Button/styles/disabled = SubResource("StyleBoxFlat_xvpbp")
+Button/styles/focus = SubResource("StyleBoxEmpty_ded0l")
+Button/styles/hover = SubResource("StyleBoxFlat_vpg50")
 Button/styles/normal = SubResource("StyleBoxFlat_xvpbp")
+Button/styles/pressed = SubResource("StyleBoxFlat_xvpbp")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ldcy"]
 bg_color = Color(0.109804, 0.109804, 0.12549, 1)
@@ -167,7 +179,7 @@ theme_override_constants/separation = 10
 [node name="LabelMouseSettings" type="Label" parent="ScrollGameplay/BoxGameplay"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-text = "Mouse Settings"
+text = " Mouse Settings"
 
 [node name="BoxMouseSettings" type="VBoxContainer" parent="ScrollGameplay/BoxGameplay"]
 custom_minimum_size = Vector2(379.22, 0)
@@ -392,6 +404,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 toggle_mode = true
 button_pressed = true
+action_mode = 0
 text = "Video"
 
 [node name="ButtAudio" type="Button" parent="."]
@@ -403,7 +416,8 @@ theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 toggle_mode = true
-text = "Video"
+action_mode = 0
+text = "Audio "
 
 [node name="ButtGameplay" type="Button" parent="."]
 offset_left = 320.0
@@ -414,7 +428,9 @@ theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 toggle_mode = true
-text = "Video"
+action_mode = 0
+text = "Gameplay
+"
 
 [node name="ButtControls" type="Button" parent="."]
 offset_left = 429.0
@@ -425,12 +441,21 @@ theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 toggle_mode = true
-text = "Video"
+action_mode = 0
+text = "Controls "
 
 [connection signal="pressed" from="ButtSave" to="." method="_on_butt_save_pressed"]
 [connection signal="pressed" from="ButtBack" to="." method="_on_butt_back_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureYesButton" to="." method="_on_sure_yes_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureNoButton" to="." method="_on_sure_no_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureExButton" to="." method="_on_sure_ex_button_pressed"]
+[connection signal="button_down" from="ButtVideo" to="." method="_on_butt_video_button_down"]
+[connection signal="button_up" from="ButtVideo" to="." method="_on_butt_video_button_up"]
+[connection signal="pressed" from="ButtVideo" to="." method="_on_butt_video_pressed"]
 [connection signal="toggled" from="ButtVideo" to="." method="_on_butt_video_toggled"]
+[connection signal="pressed" from="ButtAudio" to="." method="_on_butt_audio_pressed"]
+[connection signal="button_down" from="ButtGameplay" to="." method="_on_butt_gameplay_button_down"]
+[connection signal="button_up" from="ButtGameplay" to="." method="_on_butt_gameplay_button_up"]
+[connection signal="pressed" from="ButtGameplay" to="." method="_on_butt_gameplay_pressed"]
 [connection signal="toggled" from="ButtGameplay" to="." method="_on_butt_gameplay_toggled"]
+[connection signal="pressed" from="ButtControls" to="." method="_on_butt_controls_pressed"]
