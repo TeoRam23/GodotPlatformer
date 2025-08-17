@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=35 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
@@ -8,14 +8,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhoj3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 2
-border_color = Color(0.721569, 0.290196, 0.290196, 1)
+border_color = Color(0.780392, 0.0901961, 0.239216, 1)
 
 [sub_resource type="Theme" id="Theme_rdlvj"]
-Label/colors/font_color = Color(0.721569, 0.290196, 0.290196, 1)
-Label/styles/normal = SubResource("StyleBoxFlat_mhoj3")
-
-[sub_resource type="Theme" id="Theme_60nae"]
 CheckButton/constants/h_separation = 4
+Label/colors/font_color = Color(0.929412, 0.117647, 0.141176, 1)
+Label/styles/normal = SubResource("StyleBoxFlat_mhoj3")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkdn3"]
 
@@ -51,6 +49,27 @@ TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_djihi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1hqp"]
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj5b1"]
+bg_color = Color(0.580392, 0.054902, 0.305882, 1)
+skew = Vector2(1, 0)
+corner_radius_bottom_left = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_naf2s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbmts"]
+bg_color = Color(0.780392, 0.0901961, 0.239216, 1)
+skew = Vector2(1, 0)
+corner_radius_bottom_left = 1
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_3u6ux"]
+Button/styles/disabled = SubResource("StyleBoxFlat_dj5b1")
+Button/styles/focus = SubResource("StyleBoxEmpty_naf2s")
+Button/styles/hover = SubResource("StyleBoxFlat_lbmts")
+Button/styles/normal = SubResource("StyleBoxFlat_dj5b1")
+Button/styles/pressed = SubResource("StyleBoxFlat_dj5b1")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvpbp"]
 bg_color = Color(0.780392, 0.0901961, 0.239216, 1)
@@ -138,6 +157,7 @@ position = Vector2(320, 180)
 texture = ExtResource("2_aonyn")
 
 [node name="ColorBoxReference" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -157,14 +177,67 @@ offset_right = 391.0
 offset_bottom = 99.0
 text = "denne settingen"
 
-[node name="TabBar" type="TabBar" parent="."]
+[node name="ScrollVideo" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(416, 140)
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 528.0
+offset_bottom = 296.0
+
+[node name="BoxVideo" type="VBoxContainer" parent="ScrollVideo"]
+custom_minimum_size = Vector2(393, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LabelSomeSettings" type="Label" parent="ScrollVideo/BoxVideo"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Some Settings"
+
+[node name="BoxSomeSettings" type="VBoxContainer" parent="ScrollVideo/BoxVideo"]
+custom_minimum_size = Vector2(379.22, 0)
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="some_setting" type="CheckButton" parent="ScrollVideo/BoxVideo/BoxSomeSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+button_pressed = true
+text = "Some setting"
+script = ExtResource("3_lsjbt")
+
+[node name="ScrollAudio" type="ScrollContainer" parent="."]
 visible = false
-offset_left = 159.0
-offset_top = 18.0
-offset_right = 199.0
-offset_bottom = 58.0
+custom_minimum_size = Vector2(416, 140)
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 528.0
+offset_bottom = 296.0
+
+[node name="BoxAudio" type="VBoxContainer" parent="ScrollAudio"]
+custom_minimum_size = Vector2(393, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LabelSomeSettings" type="Label" parent="ScrollAudio/BoxAudio"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Some Settings"
+
+[node name="BoxSomeSettings" type="VBoxContainer" parent="ScrollAudio/BoxAudio"]
+custom_minimum_size = Vector2(379.22, 0)
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="some_setting" type="CheckButton" parent="ScrollAudio/BoxAudio/BoxSomeSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+button_pressed = true
+text = "Some setting"
+script = ExtResource("3_lsjbt")
 
 [node name="ScrollGameplay" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -175,6 +248,34 @@ offset_bottom = 296.0
 custom_minimum_size = Vector2(393, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="LabelStatsSettings" type="Label" parent="ScrollGameplay/BoxGameplay"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = " Stats Settings"
+
+[node name="BoxStatsSettings" type="VBoxContainer" parent="ScrollGameplay/BoxGameplay"]
+custom_minimum_size = Vector2(379.22, 0)
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="show_game_timer" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxStatsSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Show Game Timer"
+script = ExtResource("3_lsjbt")
+
+[node name="show_level_timer" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxStatsSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Show Level Timer"
+script = ExtResource("3_lsjbt")
+
+[node name="show_death_counter" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxStatsSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Show Death Counter"
+script = ExtResource("3_lsjbt")
 
 [node name="LabelMouseSettings" type="Label" parent="ScrollGameplay/BoxGameplay"]
 layout_mode = 2
@@ -188,72 +289,45 @@ theme_override_constants/separation = -5
 
 [node name="locked_cursor" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
 layout_mode = 2
-theme = SubResource("Theme_60nae")
+theme = SubResource("Theme_rdlvj")
 text = "Lock cursor to player vicinity"
 script = ExtResource("3_lsjbt")
 
-[node name="ButtLockedCursor2" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
+[node name="mouse_sensitivity?" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
 layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
+theme = SubResource("Theme_rdlvj")
+text = "Mouse Sensitivity?"
+script = ExtResource("3_lsjbt")
 
-[node name="ButtLockedCursor3" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
+[node name="ScrollControls" type="ScrollContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(416, 140)
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 528.0
+offset_bottom = 296.0
+
+[node name="BoxControls" type="VBoxContainer" parent="ScrollControls"]
+custom_minimum_size = Vector2(393, 0)
 layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
+theme_override_constants/separation = 10
 
-[node name="ButtLockedCursor4" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
+[node name="LabelSomeSettings" type="Label" parent="ScrollControls/BoxControls"]
 layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
+theme = SubResource("Theme_rdlvj")
+text = "Some Settings"
 
-[node name="boxtest" type="VBoxContainer" parent="ScrollGameplay/BoxGameplay"]
+[node name="BoxSomeSettings" type="VBoxContainer" parent="ScrollControls/BoxControls"]
 custom_minimum_size = Vector2(379.22, 0)
 layout_mode = 2
+theme_override_constants/separation = -5
 
-[node name="ButtLockedCursor" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest"]
+[node name="some_setting" type="CheckButton" parent="ScrollControls/BoxControls/BoxSomeSettings"]
 layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="ButtLockedCursor2" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="ButtLockedCursor3" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="ButtLockedCursor4" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="boxtest2" type="VBoxContainer" parent="ScrollGameplay/BoxGameplay"]
-custom_minimum_size = Vector2(379.22, 0)
-layout_mode = 2
-
-[node name="ButtLockedCursor" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest2"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="ButtLockedCursor2" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest2"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="ButtLockedCursor3" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest2"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
-
-[node name="ButtLockedCursor4" type="CheckButton" parent="ScrollGameplay/BoxGameplay/boxtest2"]
-layout_mode = 2
-theme = SubResource("Theme_60nae")
-text = "Lock cursor to player vicinity"
+theme = SubResource("Theme_rdlvj")
+button_pressed = true
+text = "Some setting"
+script = ExtResource("3_lsjbt")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 visible = false
@@ -280,20 +354,30 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="ButtSave" type="Button" parent="."]
+[node name="ButtSave2" type="Button" parent="."]
+visible = false
 offset_left = 382.0
 offset_top = 300.0
 offset_right = 524.0
 offset_bottom = 328.0
 text = "Save Changes"
 
-[node name="ButtBack" type="Button" parent="."]
+[node name="ButtCancel" type="Button" parent="."]
+offset_left = 520.0
+offset_top = 309.0
+offset_right = 653.0
+offset_bottom = 335.0
+theme = SubResource("Theme_3u6ux")
+text = "    Cancel   "
+alignment = 0
+
+[node name="ButtSave" type="Button" parent="."]
 offset_left = -13.0
 offset_top = 309.0
 offset_right = 120.0
 offset_bottom = 335.0
 theme = SubResource("Theme_sklc0")
-text = "Back   "
+text = "Save   "
 alignment = 2
 
 [node name="SureControl" type="Control" parent="."]
@@ -444,8 +528,9 @@ toggle_mode = true
 action_mode = 0
 text = "Controls "
 
+[connection signal="pressed" from="ButtSave2" to="." method="save_settings"]
+[connection signal="pressed" from="ButtCancel" to="." method="close_screen"]
 [connection signal="pressed" from="ButtSave" to="." method="_on_butt_save_pressed"]
-[connection signal="pressed" from="ButtBack" to="." method="_on_butt_back_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureYesButton" to="." method="_on_sure_yes_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureNoButton" to="." method="_on_sure_no_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureExButton" to="." method="_on_sure_ex_button_pressed"]

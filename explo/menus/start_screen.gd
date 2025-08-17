@@ -9,6 +9,7 @@ var current_open_screen = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Events.pls_save_settings_yall.connect(settings_closed)
 	pass # Replace with function body.
 
 
@@ -39,6 +40,11 @@ func _on_button_credits_pressed():
 func _on_button_quit_pressed():
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
+	
+func settings_closed(save_not_get):
+	if current_open_screen == "settings":
+		current_open_screen = ""
+	
 
 func _input(event):
 	if Input.is_action_just_pressed("back"):

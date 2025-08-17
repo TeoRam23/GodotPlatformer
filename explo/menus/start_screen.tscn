@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings/settings_menu.tscn" id="4_lffss"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
 
-[node name="StartScreen" type="Node2D"]
+[node name="StartScreen" type="Node2D" groups=["StartScreen"]]
 script = ExtResource("1_ftw5e")
 
 [node name="StartArt" type="Sprite2D" parent="."]

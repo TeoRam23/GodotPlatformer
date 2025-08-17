@@ -6,15 +6,27 @@ var my_settings: String
 func _ready():
 	#Events.connect("save_my_settings", pls_save)
 	Events.pls_save_settings_yall.connect(save_my_settings)
-	
 	my_settings = name
-	var saved_setting = Settings.get(my_settings)
-	button_pressed = saved_setting
+	get_my_settings()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
 
-func save_my_settings():
-	Settings.set(my_settings, is_pressed())
+func get_my_settings():
+	var saved_setting = Settings.get(my_settings)
+	if saved_setting != null:
+		button_pressed = saved_setting
+	else:
+		print("This doesnt have a saved setting: ", my_settings)
+
+
+func save_my_settings(save_not_get):
+	if save_not_get:
+		#print("saved!")
+		Settings.set(my_settings, is_pressed())
+	else:
+		#print("gotten!")
+		get_my_settings()

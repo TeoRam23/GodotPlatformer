@@ -60,5 +60,5 @@ func low_gravity():
 func enter_extra():
 	pls_enter_extra.emit()
 
-func save_settings_yall():
-	pls_save_settings_yall.emit()
+func save_settings_yall(save_not_get):
+	pls_save_settings_yall.emit(save_not_get)
