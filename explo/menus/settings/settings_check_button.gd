@@ -19,6 +19,8 @@ func get_my_settings():
 	var saved_setting = Settings.get(my_settings)
 	if saved_setting != null:
 		button_pressed = saved_setting
+		
+		
 	else:
 		print("This doesnt have a saved setting: ", my_settings)
 

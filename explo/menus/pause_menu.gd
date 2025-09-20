@@ -52,6 +52,13 @@ func update_title(nytitle):
 	level_title.text = nytitle
 
 
+
+func _on_restart_pressed():
+	Events.general_leaving()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
 func _on_back_to_hub_pressed():
 	Events.general_leaving()
 	get_tree().paused = false
@@ -79,6 +86,7 @@ func johnnify():
 		main_menu_butt.theme = jeffrey_theme
 		back_to_hub_butt.theme = jeffrey_theme
 	
+
 
 
 

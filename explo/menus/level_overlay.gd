@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var all_time_label = $MarginContainer/VBoxContainer/AllTimeControl/AllTimeLabel
 @onready var time_label = $MarginContainer/VBoxContainer/TimeControl/TimeLabel
 
+@onready var death_container = $MarginContainer/VBoxContainer/DeathContainer
 @onready var other_container = $MarginContainer/VBoxContainer/OtherContainer
 
 @onready var level_title_box = $LevelTitleBox
@@ -24,6 +25,14 @@ func _ready():
 	Events.pls_share_title.connect(update_title)
 	Events.pls_resetting_level.connect(update_global_title_timer)
 	
+	if !Settings.show_game_timer:
+		all_time_label.visible = false
+	if !Settings.show_level_timer:
+		time_label.visible = false
+	if !Settings.show_death_counter:
+		death_container.visible = false
+	
+	
 	update_deaths()
 	our_johnnies = VariableManager.johnnies
 	johnny_label.text = "x " + str(our_johnnies)
@@ -36,6 +45,10 @@ func _ready():
 	
 	if show_extras:
 		other_container.visible = true
+		death_container.visible = true
+		time_label.visible = true
+		all_time_label.visible = true
+		
 	if is_pausable:
 		process_mode = Node.PROCESS_MODE_PAUSABLE
 
@@ -53,6 +66,13 @@ func update_johnny():
 func show_rest(toggle):
 	if !show_extras:
 		other_container.visible = toggle
+		if !Settings.show_game_timer:
+			all_time_label.visible = toggle
+		if !Settings.show_level_timer:
+			time_label.visible = toggle
+		if !Settings.show_death_counter:
+			death_container.visible = toggle
+
 
 func update_title(nytitle):
 	level_title_label.text = nytitle

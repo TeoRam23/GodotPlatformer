@@ -25,8 +25,8 @@ func _ready():
 		
 		print(level_vars.id.split()[0])
 		
-		# sletter all data fra en verden
-		if level_vars.id.split()[0] == "3" and 1==2:
+		# sletter all data fra en verden, den i stringenet
+		if level_vars.id.split()[0] == "4" and 1==2:
 			#VariableManager.update_level_to(this_level)
 			VariableManager.delete_saved_level(level_vars.id)
 			VariableManager.save_variables()
