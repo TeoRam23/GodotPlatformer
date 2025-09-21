@@ -178,6 +178,7 @@ offset_bottom = 99.0
 text = "denne settingen"
 
 [node name="ScrollVideo" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -293,14 +294,7 @@ theme = SubResource("Theme_rdlvj")
 text = "Lock cursor to player vicinity"
 script = ExtResource("3_lsjbt")
 
-[node name="mouse_sensitivity?" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
-layout_mode = 2
-theme = SubResource("Theme_rdlvj")
-text = "Mouse Sensitivity?"
-script = ExtResource("3_lsjbt")
-
 [node name="ScrollControls" type="ScrollContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -312,21 +306,42 @@ custom_minimum_size = Vector2(393, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="LabelSomeSettings" type="Label" parent="ScrollControls/BoxControls"]
+[node name="LabelControlChallenges" type="Label" parent="ScrollControls/BoxControls"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-text = "Some Settings"
+text = "Control Challenges"
 
-[node name="BoxSomeSettings" type="VBoxContainer" parent="ScrollControls/BoxControls"]
+[node name="BoxControlChallenges" type="VBoxContainer" parent="ScrollControls/BoxControls"]
 custom_minimum_size = Vector2(379.22, 0)
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="some_setting" type="CheckButton" parent="ScrollControls/BoxControls/BoxSomeSettings"]
+[node name="no_walking" type="CheckButton" parent="ScrollControls/BoxControls/BoxControlChallenges"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-button_pressed = true
-text = "Some setting"
+text = "No walking"
+script = ExtResource("3_lsjbt")
+
+[node name="constant_throwing" type="CheckButton" parent="ScrollControls/BoxControls/BoxControlChallenges"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Constant Throwing"
+script = ExtResource("3_lsjbt")
+
+[node name="LabelWorldChallenges" type="Label" parent="ScrollControls/BoxControls"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "World Challenges"
+
+[node name="BoxWorldChallenges" type="VBoxContainer" parent="ScrollControls/BoxControls"]
+custom_minimum_size = Vector2(379.22, 0)
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="zero_gravity" type="CheckButton" parent="ScrollControls/BoxControls/BoxWorldChallenges"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+text = "Zero Gravity"
 script = ExtResource("3_lsjbt")
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -526,7 +541,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
 toggle_mode = true
 action_mode = 0
-text = "Controls "
+text = "Challenges "
 
 [connection signal="pressed" from="ButtSave2" to="." method="save_settings"]
 [connection signal="pressed" from="ButtCancel" to="." method="close_screen"]

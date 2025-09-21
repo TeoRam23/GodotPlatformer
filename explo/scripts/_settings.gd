@@ -13,6 +13,10 @@ var locked_cursor = true
 
 var touch_mode = false
 
+var no_walking = false
+var constant_throwing = false
+var zero_gravity = false
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +43,11 @@ func save_settings():
 	file.store_var(locked_cursor)
 	
 	file.store_var(touch_mode)
+	
+	file.store_var(no_walking)
+	file.store_var(constant_throwing)
+	file.store_var(zero_gravity)
+		
 	print("###########HOOOOOOOOOOOOOOOO saved this setting i think! #####################")
 	
 func load_settings():
@@ -52,6 +61,10 @@ func load_settings():
 		locked_cursor = file.get_var()
 		
 		touch_mode = file.get_var()
+		
+		no_walking = file.get_var()
+		constant_throwing = file.get_var()
+		zero_gravity = file.get_var()
 		
 		file.close()
 	else:

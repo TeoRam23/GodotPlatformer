@@ -81,9 +81,13 @@ func _physics_process(delta):
 	gravity_check()
 	button_presses(delta)
 	
-	var input_axis = Input.get_axis("left", "right")
-	if gravity_direction > 120 or gravity_direction < -120:
-		input_axis = Input.get_axis("right", "left")
+	
+	var input_axis = 0
+	if !Settings.no_walking:
+		input_axis = Input.get_axis("left", "right")
+		if gravity_direction > 120 or gravity_direction < -120:
+			input_axis = Input.get_axis("right", "left")
+			
 	
 	apply_gravity(delta)
 	handle_wall_jump(input_axis)
