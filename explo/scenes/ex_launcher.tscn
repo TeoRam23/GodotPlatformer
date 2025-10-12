@@ -124,7 +124,7 @@ polygon = PackedVector2Array(-18, -6.99992, -25, 0.000111063, -18, 7.00008)
 [node name="RotationNeglecter" type="Node2D" parent="."]
 
 [node name="MouseTracker" type="Node2D" parent="RotationNeglecter"]
-position = Vector2(0, 75)
+position = Vector2(75, 0)
 
 [node name="MouseSprite" type="Sprite2D" parent="RotationNeglecter"]
 z_index = 130

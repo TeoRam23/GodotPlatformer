@@ -41,6 +41,7 @@ mouse_filter = 1
 script = ExtResource("1_oeoox")
 
 [node name="BackButton" type="Button" parent="Control"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 18.0

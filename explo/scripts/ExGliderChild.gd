@@ -29,6 +29,8 @@ func _process(delta):
 func glide_parent():
 	parent = get_parent()
 	parent.movement_data = load("res://data/GlidingMovementData.tres")
+	if Settings.zero_gravity:
+		parent.movement_data.gravity_scale = 0
 	
 	animated_sprite.visible = true
 

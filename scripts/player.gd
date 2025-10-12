@@ -72,6 +72,8 @@ func _ready():
 	
 	if low_gravity:
 		Events.low_gravity()
+	if Settings.zero_gravity:
+		movement_data.gravity_scale = 0
 	johnnify()
 
 func _physics_process(delta):
@@ -83,10 +85,11 @@ func _physics_process(delta):
 	
 	
 	var input_axis = 0
+	var real_axis = Input.get_axis("left", "right")
+	if gravity_direction > 120 or gravity_direction < -120:
+		real_axis *= -1
 	if !Settings.no_walking:
-		input_axis = Input.get_axis("left", "right")
-		if gravity_direction > 120 or gravity_direction < -120:
-			input_axis = Input.get_axis("right", "left")
+		input_axis = real_axis
 			
 	
 	apply_gravity(delta)
@@ -103,7 +106,7 @@ func _physics_process(delta):
 	apply_friction(input_axis, delta)
 	apply_air_resistance(input_axis, delta)
 	handle_gigadash(delta, input_axis)
-	update_animation(input_axis)
+	update_animation(input_axis, real_axis)
 	
 	var was_on_floor = is_on_floor()
 
@@ -292,10 +295,11 @@ func apply_air_resistance(input_axis, delta):
 	if input_axis == 0 and not is_on_floor():
 		prevelocity.x = move_toward(prevelocity.x, 0, movement_data.air_resistance)
 
-func update_animation(input_axis):
+func update_animation(input_axis, real_axis):
+	if real_axis != 0:
+		animated_sprite_2d.flip_h = (real_axis > 0)
+	
 	if input_axis != 0:
-		animated_sprite_2d.flip_h = (input_axis > 0)
-		
 		
 		if abs(prevelocity.x) > movement_data.speed * 8:
 			animated_sprite_2d.speed_scale = 4

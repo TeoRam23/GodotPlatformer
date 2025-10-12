@@ -54,7 +54,7 @@ func _process(delta):
 func _physics_process(delta):
 	#print("The Frizz")
 	move_spawn_point(true, delta)
-	if (Input.is_action_just_pressed("musL") and not Settings.touch_mode) or Input.is_action_pressed("musM") or (Input.is_action_just_pressed("touchMusL") and Settings.touch_mode):
+	if (Input.is_action_just_pressed("musL") and not Settings.touch_mode) or Input.is_action_pressed("musM") or Settings.constant_throwing or (Input.is_action_just_pressed("touchMusL") and Settings.touch_mode):
 		#print("LAUNCH")
 		eject_proj()
 	

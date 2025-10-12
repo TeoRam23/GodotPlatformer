@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://blvehjehuvs1w"]
+
+[ext_resource type="PackedScene" uid="uid://0sx6utjq7rwu" path="res://explo/menus/select_world_testy.tscn" id="1_svgq1"]
+
+[node name="SelectWorld" instance=ExtResource("1_svgq1")]
+
+[node name="SelectLevel" parent="Control/GridContainer" index="0"]
+text = "1"
+
+[node name="SelectLevel2" parent="Control/GridContainer" index="1"]
+text = "2"
