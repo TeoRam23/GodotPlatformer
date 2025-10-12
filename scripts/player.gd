@@ -822,6 +822,8 @@ func _input(event):
 	if Input.is_action_just_pressed("musR"):
 		VariableManager.johnny_mode = !VariableManager.johnny_mode
 		johnnify()
+	elif Input.is_action_just_pressed("reset"):
+		call_deferred("i_died")
 
 #func _on_timer_timeout():
 	#print("BOTT!")

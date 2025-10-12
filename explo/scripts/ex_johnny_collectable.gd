@@ -4,6 +4,7 @@ extends Area2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var fire_sprite = $FireSprite
 @onready var johnny_tiny_sprite = $JohnnyTinySprite
+@onready var collision_shape_box = $CollisionShapeBox
 
 var im_taken = false
 
@@ -14,7 +15,9 @@ func _ready():
 		if this_level.johnny_collected:
 			disable_me()
 	print("I FOUND THIS, JOHNNY! ME! FOUND THIS! ", this_level)
-	pass # Replace with function body.
+	if Settings.zero_gravity:
+		collision_shape_box.disabled = true
+		visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,6 +26,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	print("look im shouldnt be here")
 	if !im_taken:
 		Events.johnny_collected()
 	

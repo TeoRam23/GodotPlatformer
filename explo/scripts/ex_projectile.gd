@@ -279,6 +279,7 @@ func remove_me():
 
 func get_launch_angle(bod):
 	var other_pos = bod.global_position
+	other_pos.y -= 3 # for å finne ekte senter for player fordi jeg kan ikke endre den...
 	var angle = other_pos.angle_to_point(global_position)
 	angle = (angle * -1) + (PI *0.5)
 	return angle

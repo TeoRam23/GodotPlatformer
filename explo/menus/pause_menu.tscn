@@ -19,7 +19,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Paas" type="Sprite2D" parent="PauseControl"]
-visible = false
 modulate = Color(1, 1, 1, 0.415686)
 z_index = -5
 position = Vector2(320, 180)
@@ -100,6 +99,7 @@ theme = ExtResource("4_krnv1")
 text = "Continue"
 
 [node name="Restart" type="Button" parent="PauseControl/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_krnv1")
 text = "Restart"
