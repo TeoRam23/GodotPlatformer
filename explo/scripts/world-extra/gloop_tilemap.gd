@@ -85,4 +85,3 @@ func set_camera():
 		#sub_camera.position.y -= 15
 	#if event.is_action_pressed("down"):
 		#sub_camera.position.y += 15
-

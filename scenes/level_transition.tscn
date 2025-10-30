@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cchy2iyxb60xi"]
 
-[ext_resource type="Script" path="res://scripts/level_transition.gd" id="1_dpnrr"]
+[ext_resource type="Script" uid="uid://dki380kq2d33r" path="res://scripts/level_transition.gd" id="1_dpnrr"]
 
 [sub_resource type="Animation" id="Animation_25mlq"]
 length = 0.001
@@ -51,9 +51,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d7oa6"]
 _data = {
-"RESET": SubResource("Animation_25mlq"),
-"fade_from_black": SubResource("Animation_282r3"),
-"fade_to_black": SubResource("Animation_dvv1y")
+&"RESET": SubResource("Animation_25mlq"),
+&"fade_from_black": SubResource("Animation_282r3"),
+&"fade_to_black": SubResource("Animation_dvv1y")
 }
 
 [node name="LevelTransition" type="CanvasLayer"]
@@ -63,7 +63,7 @@ script = ExtResource("1_dpnrr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_d7oa6")
+&"": SubResource("AnimationLibrary_d7oa6")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]

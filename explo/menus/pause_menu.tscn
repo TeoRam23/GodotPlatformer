@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqgfhbrla7xcn"]
 
 [ext_resource type="Texture2D" uid="uid://chq7s31pk3ah0" path="res://assets/baksplodder/paas.png" id="1_eehvo"]
-[ext_resource type="Script" path="res://explo/menus/pause_menu.gd" id="1_f4jpt"]
+[ext_resource type="Script" uid="uid://cjo2jvn7obadh" path="res://explo/menus/pause_menu.gd" id="1_f4jpt"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="3_o0lm2"]
 [ext_resource type="Theme" uid="uid://cfuoqyle7q3jc" path="res://explo/menus/pause_theme2.tres" id="4_krnv1"]
 
@@ -19,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Paas" type="Sprite2D" parent="PauseControl"]
+visible = false
 modulate = Color(1, 1, 1, 0.415686)
 z_index = -5
 position = Vector2(320, 180)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://wmo3puxyqs0n"]
 
-[ext_resource type="Script" path="res://explo/menus/level_overlay.gd" id="1_7sbsu"]
+[ext_resource type="Script" uid="uid://cvyv82pnf51rj" path="res://explo/menus/level_overlay.gd" id="1_7sbsu"]
 [ext_resource type="Texture2D" uid="uid://cdy1xfp3ele0b" path="res://assets/baksplodder/verd 2/2-1.png" id="1_yy58h"]
-[ext_resource type="Script" path="res://explo/menus/Timer.gd" id="3_cmb6l"]
+[ext_resource type="Script" uid="uid://bvegas22yir63" path="res://explo/menus/Timer.gd" id="3_cmb6l"]
 [ext_resource type="Texture2D" uid="uid://bgr5nxmbb0wik" path="res://assets/JeffreyDeath.png" id="3_oo4lr"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="3_owmad"]
 [ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="5_akm07"]
@@ -24,6 +24,8 @@ texture = ExtResource("1_yy58h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -512.0
+offset_bottom = -280.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

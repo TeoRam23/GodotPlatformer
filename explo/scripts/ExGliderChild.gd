@@ -41,12 +41,12 @@ func poof_away():
 		parent.movement_data = parent.main_data
 		
 		var old_position = global_position
-		poof_particle.emitting = true
 		animated_sprite.visible = false
 		
 		parent.remove_child(self)
 		bubble.add_child(self)
 		poof_particle.global_position = old_position
+		poof_particle.emitting = true
 		
 		if bubble.has_method("reemerge"):
 			bubble.reemerge()

@@ -183,7 +183,7 @@ func apply_gravity(delta):
 		if is_on_wall() and prevelocity.y > 0 and movement_data.wall_slide:
 			prevelocity.y = 40
 
-func handle_wall_jump(input_axis):
+func handle_wall_jump(_input_axis):
 	if is_on_wall() and !just_launched:
 		prevelocity.x = 0
 	if not is_on_wall_only() or !movement_data.wall_slide: #sjekker om man er ved siden av en vegg med bygd inn variabel
@@ -291,7 +291,7 @@ func apply_friction(input_axis, delta):
 			prevelocity.x = move_toward(prevelocity.x, 0, movement_data.friction * delta)
 		
 
-func apply_air_resistance(input_axis, delta):
+func apply_air_resistance(input_axis, _delta):
 	if input_axis == 0 and not is_on_floor():
 		prevelocity.x = move_toward(prevelocity.x, 0, movement_data.air_resistance)
 
@@ -328,7 +328,7 @@ func update_animation(input_axis, real_axis):
 		animated_sprite_2d.play("crouch")
 
 
-func _on_hazard_detector_area_entered(area):
+func _on_hazard_detector_area_entered(_area):
 	call_deferred("i_died")
 	
 func _on_hazard_detector_body_entered(body):
@@ -818,7 +818,7 @@ func johnnify():
 		dead_particle.color = Color(0.81, 0.324, 0.34)
 		#launch_particle.modulate = Color(0.839, 0.525, 0.502)
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("musR"):
 		VariableManager.johnny_mode = !VariableManager.johnny_mode
 		johnnify()

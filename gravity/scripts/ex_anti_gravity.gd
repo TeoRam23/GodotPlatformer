@@ -107,5 +107,3 @@ func _on_area_exited(area):
 		leave_particle.emitting = true
 		leave_orb_particle.emitting = true
 	
-
-

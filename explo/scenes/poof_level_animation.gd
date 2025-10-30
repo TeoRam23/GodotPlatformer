@@ -58,4 +58,3 @@ func do_timer(seconds):
 		#black_screen.visible = false
 		#cpu_particles_2d_2.emitting = true
 		#await get_tree().create_timer(0.25).timeout
-

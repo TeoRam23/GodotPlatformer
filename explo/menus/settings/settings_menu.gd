@@ -138,4 +138,3 @@ func _on_butt_controls_pressed():
 	scroll_audio.visible = false
 	scroll_gameplay.visible = false
 	scroll_controls.visible = true
-

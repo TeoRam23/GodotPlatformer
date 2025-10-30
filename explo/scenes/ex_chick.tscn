@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca3ji6x6to3r0"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_chick.gd" id="1_fwdli"]
+[ext_resource type="Script" uid="uid://baosjnuvha4v8" path="res://explo/scripts/ex_chick.gd" id="1_fwdli"]
 [ext_resource type="Texture2D" uid="uid://b2r8fd5a4226" path="res://assets/Kylling.png" id="1_wn00a"]
-[ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="3_1ade4"]
+[ext_resource type="Script" uid="uid://0enu3glx1box" path="res://explo/scripts/single_particle.gd" id="3_1ade4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86273"]
 radius = 8.0

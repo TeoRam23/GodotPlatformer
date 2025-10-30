@@ -27,6 +27,7 @@ extends Node2D
 var low_gravity = false
 var mouse_is_locked = true
 var settings_locked_cursor = true
+var free_mouse = false
 
 
 var PROJ = preload("res://explo/scenes/ex_projectile.tscn")
@@ -94,7 +95,7 @@ func new_projectile():
 	
 	holding_proj.global_position = spawn_point.global_position
 	
-func move_spawn_point(is_in_physics, delta):
+func move_spawn_point(_is_in_physics, delta):
 	#var mouse = get_global_mouse_position()
 	var mouse = mouse_tracker.global_position
 	#var angle = global_position.angle_to_point(mouse)
@@ -111,7 +112,7 @@ func move_spawn_point(is_in_physics, delta):
 	#if spawn_point.is_on_wall():
 		#spawn_point.move_and_slide()
 		#
-	#if is_in_physics:
+	#if _is_in_physics:
 		#holding_proj.global_position = spawn_point.global_position
 	##else:
 		##if spawn_point.is_on_wall():
@@ -151,7 +152,13 @@ func disable_me():
 	
 	
 func _input(event):
-	if event is InputEventMouseMotion and not Input.is_action_pressed("cancel") and not Settings.touch_mode:
+	if Input.is_action_just_pressed("free_mouse"):
+		free_mouse = !free_mouse
+		if free_mouse == true:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	elif event is InputEventMouseMotion and not Input.is_action_pressed("cancel") and not Settings.touch_mode and !free_mouse:
 		
 		mouse_tracker.global_position.x += event.position.x - 320.0
 		mouse_tracker.global_position.y += event.position.y - 180.0

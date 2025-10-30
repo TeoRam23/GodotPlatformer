@@ -134,6 +134,7 @@ show_mouse = true
 scroll_offset = Vector2(-299.087, 422.677)
 
 [node name="ExCameraBoundary" parent="." index="2"]
+visible = false
 position = Vector2(3186, -138)
 shape = SubResource("RectangleShape2D_jl7uj")
 wrap_horizontal = true

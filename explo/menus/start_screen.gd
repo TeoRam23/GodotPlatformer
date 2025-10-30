@@ -54,5 +54,3 @@ func _input(event):
 		if current_open_screen == "settings":
 			current_open_screen = ""
 			# tror settings i seg selv behandler lukking, siden den må lagre masse greier
-
-

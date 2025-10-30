@@ -9,6 +9,6 @@ func _physics_process(delta):
 		var part_pos = break_particle.global_position
 		remove_child(break_particle)
 		get_parent().add_child(break_particle)
-		break_particle.emitting = true
 		break_particle.global_position = part_pos
+		break_particle.emitting = true
 		queue_free()

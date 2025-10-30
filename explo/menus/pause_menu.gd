@@ -23,8 +23,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass
 
 
 func _on_continue_pressed():
@@ -86,7 +86,3 @@ func johnnify():
 		main_menu_butt.theme = jeffrey_theme
 		back_to_hub_butt.theme = jeffrey_theme
 	
-
-
-
-

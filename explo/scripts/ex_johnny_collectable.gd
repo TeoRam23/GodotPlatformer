@@ -32,8 +32,8 @@ func _on_body_entered(body):
 	
 	remove_child(sploot_particle)
 	get_parent().add_child(sploot_particle)
-	sploot_particle.emitting = true
 	sploot_particle.global_position = global_position
+	sploot_particle.emitting = true
 	
 	queue_free()
 
