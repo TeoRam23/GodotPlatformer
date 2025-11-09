@@ -15,7 +15,7 @@ func _physics_process(delta):
 
 
 func explode():
-	print("sploded!")
+	#print("sploded!")
 	
 	particles.emitting = true
 	collision_shape_2d.disabled = true
@@ -31,6 +31,6 @@ func _on_regen_timer_timeout():
 	animated_sprite_2d.play("default")
 	
 	var bodies = player_detector.get_overlapping_bodies()
-	print(bodies)
+	#print(bodies)
 	if bodies:
 		bodies[0].i_died()

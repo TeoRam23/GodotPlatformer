@@ -12,14 +12,14 @@ var first_lu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for child in get_children():
-		if child.name == "CollisionShape2D":
-			print("new col!")
-		else:
-			print("old col prolly")
+	#for child in get_children():
+		#if child.name == "CollisionShape2D":
+			#print("new col!")
+		#else:
+			#print("old col prolly")
 	
 	rd = collision_shape.shape.extents
-	print(rd)
+	#print(rd)
 	lu = rd * -1
 	rd += global_position
 	lu += global_position

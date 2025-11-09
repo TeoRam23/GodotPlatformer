@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://0sx6utjq7rwu"]
+[gd_scene load_steps=10 format=3 uid="uid://0sx6utjq7rwu"]
 
 [ext_resource type="Texture2D" uid="uid://be6v5uor2avxq" path="res://assets/baksplodder/select.png" id="1_lvyi1"]
-[ext_resource type="Script" path="res://explo/menus/select_world.gd" id="2_pd8kq"]
+[ext_resource type="Script" uid="uid://cx08altr45ro1" path="res://explo/menus/select_world.gd" id="2_pd8kq"]
 [ext_resource type="PackedScene" uid="uid://8tbh5ungpgk5" path="res://explo/menus/select_level_button.tscn" id="3_16bxd"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="3_njxuv"]
 [ext_resource type="Texture2D" uid="uid://cuy00u6l7o7rv" path="res://assets/completionBonus2X.png" id="4_vjah4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ad8ej"]
-border_width_top = 14
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52jj5"]
 atlas = ExtResource("4_vjah4")
@@ -40,13 +37,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
+offset_left = -146.0
 offset_top = -109.0
-offset_right = 125.0
+offset_right = 158.0
 offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
+alignment = 1
 script = ExtResource("2_pd8kq")
 
 [node name="GridContainer" type="GridContainer" parent="Control"]
@@ -137,58 +135,53 @@ theme_override_constants/separation = 12
 
 [node name="SelectLevel" parent="Control/ExtraContainer" instance=ExtResource("3_16bxd")]
 layout_mode = 2
+text = "1"
 
-[node name="Padding1" type="Button" parent="Control/ExtraContainer"]
+[node name="Padding1" type="ColorRect" parent="Control/ExtraContainer"]
 visible = false
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ad8ej")
-disabled = true
-text = "o"
 
 [node name="SelectLevel2" parent="Control/ExtraContainer" instance=ExtResource("3_16bxd")]
 visible = false
 layout_mode = 2
+text = "2"
 
-[node name="Padding2" type="Button" parent="Control/ExtraContainer"]
+[node name="Padding2" type="ColorRect" parent="Control/ExtraContainer"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ad8ej")
-disabled = true
-text = "o"
 
 [node name="SelectLevel3" parent="Control/ExtraContainer" instance=ExtResource("3_16bxd")]
 layout_mode = 2
+text = "3"
 
-[node name="Padding3" type="Button" parent="Control/ExtraContainer"]
+[node name="Padding3" type="ColorRect" parent="Control/ExtraContainer"]
 visible = false
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ad8ej")
-disabled = true
-text = "o"
 
 [node name="SelectLevel4" parent="Control/ExtraContainer" instance=ExtResource("3_16bxd")]
 visible = false
 layout_mode = 2
+text = "4"
 
-[node name="Padding4" type="Button" parent="Control/ExtraContainer"]
+[node name="Padding4" type="ColorRect" parent="Control/ExtraContainer"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ad8ej")
-disabled = true
-text = "o"
 
 [node name="SelectLevel5" parent="Control/ExtraContainer" instance=ExtResource("3_16bxd")]
 layout_mode = 2
+text = "5"
 
-[node name="Padding5" type="Button" parent="Control/ExtraContainer"]
+[node name="Padding5" type="ColorRect" parent="Control/ExtraContainer"]
 visible = false
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_ad8ej")
-disabled = true
-text = "o"
 
 [node name="BestTimeTitle" type="Label" parent="."]
 offset_left = 483.0

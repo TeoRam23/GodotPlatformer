@@ -17,7 +17,7 @@ func _ready():
 	Events.pls_request_wrap.connect(requester_wrap)
 	
 	rd = shape.extents
-	print(rd)
+	#print(rd)
 	lu = rd * -1
 	rd += global_position
 	lu += global_position
@@ -44,7 +44,7 @@ func send_wrap():
 func set_particles():
 	var shaper = shape.get_rect()
 	
-	print("shape x: ",shape.get_rect().size.x)
+	#print("shape x: ",shape.get_rect().size.x)
 	if wrap_vertical:
 		up_particle.emitting = true
 		up_particle.amount = shape.get_rect().size.x * 0.1171875

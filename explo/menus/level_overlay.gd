@@ -56,7 +56,7 @@ func _ready():
 
 func update_deaths():
 	death_label.text = "x " + str(VariableManager.deaths)
-	print(VariableManager.deaths)
+	#print("Deaths:", VariableManager.deaths)
 	
 func update_johnny():
 	our_johnnies += 1

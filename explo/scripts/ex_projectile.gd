@@ -285,8 +285,8 @@ func get_launch_angle(bod):
 	return angle
 
 
-func _on_timer_timeout():
-	print("1!")
+#func _on_timer_timeout():
+	#print("1!")
 
 
 func _on_gone_timer_timeout():

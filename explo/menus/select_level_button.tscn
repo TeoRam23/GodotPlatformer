@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://8tbh5ungpgk5"]
 
-[ext_resource type="Script" path="res://explo/menus/select_level_button.gd" id="1_ylyyi"]
+[ext_resource type="Script" uid="uid://ddluj1gqib2jd" path="res://explo/menus/select_level_button.gd" id="1_ylyyi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm8sc"]
 bg_color = Color(0.18, 0.18, 0.18, 1)
@@ -60,6 +60,8 @@ Button/styles/normal = SubResource("StyleBoxFlat_xmdam")
 Button/styles/pressed = SubResource("StyleBoxFlat_qy130")
 
 [node name="SelectLevel" type="Button" groups=["level_button_group"]]
+process_priority = -1
+process_physics_priority = -1
 custom_minimum_size = Vector2(34, 34)
 anchors_preset = -1
 anchor_right = 0.319

@@ -1,8 +1,21 @@
-extends Control
+extends HBoxContainer
 
 @onready var grid_container = $GridContainer
 @onready var level_title = $"../LevelTitle"
 @onready var best_time_label = $"../BestTimeLabel"
+
+@onready var extra_container: VBoxContainer = $ExtraContainer
+@onready var bonus_a: Button = $ExtraContainer/BonusA
+@onready var padding_a: ColorRect = $ExtraContainer/PaddingA
+@onready var bonus_b: Button = $ExtraContainer/BonusB
+@onready var padding_b: ColorRect = $ExtraContainer/PaddingB
+@onready var bonus_c: Button = $ExtraContainer/BonusC
+@onready var padding_c: ColorRect = $ExtraContainer/PaddingC
+@onready var bonus_d: Button = $ExtraContainer/BonusD
+@onready var padding_d: ColorRect = $ExtraContainer/PaddingD
+@onready var bonus_e: Button = $ExtraContainer/BonusE
+@onready var padding_e: ColorRect = $ExtraContainer/PaddingE
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +25,34 @@ func _ready():
 		if butt.is_in_group("level_button_group"):
 			butt.label = level_title
 			butt.time_label = best_time_label
+	
+	call_deferred("set_bonus_levels")
+	
+	
+	
+	
+
+func set_bonus_levels():
+	var show_bonus = 5
+	if bonus_a.visible == false:
+		padding_a.visible = true
+		show_bonus -= 1
+	if bonus_b.visible == false:
+		padding_b.visible = true
+		show_bonus -= 1
+	if bonus_c.visible == false:
+		padding_c.visible = true
+		show_bonus -= 1
+	if bonus_d.visible == false:
+		padding_d.visible = true
+		show_bonus -= 1
+	if bonus_e.visible == false:
+		padding_e.visible = true
+		show_bonus -= 1
+	
+	if show_bonus == 0:
+		extra_container.visible = false
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

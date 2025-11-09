@@ -3,6 +3,7 @@ extends Button
 @export var the_level: String
 @export var title_override: String
 @export var canceled = true
+@export var bonus = false
 
 var level_vars: Dictionary
 
@@ -11,9 +12,9 @@ var time_label: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	var level_part = the_level.get_file()
 	level_part = level_part.substr(0, level_part.rfind("."))
-	
 	level_vars = VariableManager.find_level(level_part)
 	
 	
@@ -23,8 +24,8 @@ func _ready():
 			level_vars.title = title_override
 		canceled = false
 		
-		print(level_vars.id.split()[0])
-		
+		#VariableManager.delete_saved_level("Explo-1")
+		#print(level_vars.id.split()[0])
 		# sletter all data fra en verden, den i stringenet
 		if level_vars.id.split()[0] == "4" and 1==2:
 			#VariableManager.update_level_to(this_level)
@@ -33,6 +34,7 @@ func _ready():
 		
 	else:
 		#print("nuu: ", level_part)
+		
 		cancel_me()
 	
 
@@ -50,6 +52,9 @@ func cancel_me():
 	#modulate = Color(0.5, 0.5, 0.5)
 	disabled = true
 	mouse_default_cursor_shape = Control.CURSOR_ARROW
+	
+	if bonus:
+		visible = false
 	#canceled = true
 
 

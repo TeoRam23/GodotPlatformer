@@ -72,8 +72,13 @@ func show_level_completed():
 		VariableManager.up_the_johnnies()
 	
 	var level_time = level_overlay.time_label.time_elapsed
+	
+	var path := scene_file_path
+	var my_current_name := path.get_file().get_basename()
+	#print("new naming: ",my_current_name)
+	#print("old naming: ",get_tree().current_scene.name)
 	# id-en blir &"ekte_id" og det er helt greit at & er der, det går bra
-	var this_level = {"id": get_tree().current_scene.name, "title": title, "completed": true, "best_time": level_time, "johnny_collected": johnny_collected}
+	var this_level = {"id": my_current_name, "title": title, "completed": true, "best_time": level_time, "johnny_collected": johnny_collected}
 	VariableManager.update_level_to(this_level)
 	
 	# dette er for å åpne opp en annen bane
@@ -92,7 +97,7 @@ func show_level_completed():
 	#LevelTransition.fade_from_black()
 
 func un_pause():
-	print("ugh")
+	#print("ugh")
 	Input.mouse_mode = locked_mouse_mode
 	pause_menu.visible = false
 	level_overlay.show_rest(false)

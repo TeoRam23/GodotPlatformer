@@ -131,3 +131,7 @@ the_level = "res://levels/world one/1-24.tscn"
 layout_mode = 2
 text = "25"
 the_level = "res://levels/world one/1-25.tscn"
+
+[node name="BonusB" parent="Control/ExtraContainer" index="2"]
+the_level = "res://levels/level_explo.tscn"
+canceled = false

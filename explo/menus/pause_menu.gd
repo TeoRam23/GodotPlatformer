@@ -28,12 +28,12 @@ func _ready():
 
 
 func _on_continue_pressed():
-	print("buttbutt")
+	#print("buttbutt")
 	un_pause()
 
 func _input(event):
 	if event.is_action_pressed("back") and get_tree().paused:
-		print("na")
+		#print("na")
 		un_pause()
 		
 	if Input.is_action_just_pressed("musR"):
@@ -41,7 +41,7 @@ func _input(event):
 		johnnify()
 
 func un_pause():
-	print("yup")
+	#print("yup")
 	get_tree().paused = false
 	if get_parent().has_method("un_pause"):
 		get_parent().un_pause()

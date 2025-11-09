@@ -43,5 +43,5 @@ func _physics_process(delta):
 
 func explode():
 	call_deferred("free")
-	print("sploded!")
+	#print("sploded!")
 	gonna_free = true

@@ -71,5 +71,5 @@ func better_shake():
 
 func explode():
 	call_deferred("free")
-	print("sploded!")
+	#print("sploded!")
 	gonna_free = true

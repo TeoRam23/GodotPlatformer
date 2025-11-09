@@ -14,7 +14,7 @@ func _ready():
 	if this_level:
 		if this_level.johnny_collected:
 			disable_me()
-	print("I FOUND THIS, JOHNNY! ME! FOUND THIS! ", this_level)
+	#print("I FOUND THIS, JOHNNY! ME! FOUND THIS! ", this_level)
 	if Settings.zero_gravity:
 		collision_shape_box.disabled = true
 		visible = false
@@ -26,7 +26,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("look im shouldnt be here")
+	#print("look im shouldnt be here")
 	if !im_taken:
 		Events.johnny_collected()
 	

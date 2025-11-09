@@ -45,7 +45,7 @@ func get_saved_settings():
 	
 
 	
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("back"):
 		save_settings()
 		close_screen()

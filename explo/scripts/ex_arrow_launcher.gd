@@ -12,7 +12,7 @@ func _ready():
 	launch_arrow()
 	launch_timer.wait_time = launch_seconds
 	launch_timer.start()
-	print("YEP ", launch_seconds)
+	#print("YEP ", launch_seconds)
 	pass # Replace with function body.
 
 

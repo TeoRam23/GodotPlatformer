@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var low_gravity = false
 @export var low_gravity_scale = 0.51
 @export var low_gravity_fall_speed = 279
+@export var zero_gravity = false
 var main_data : PlayerMovementData
 
 var air_jump = true
@@ -73,7 +74,7 @@ func _ready():
 	if low_gravity:
 		Events.low_gravity()
 	if Settings.zero_gravity:
-		movement_data.gravity_scale = 0
+		zero_gravity = true
 	johnnify()
 
 func _physics_process(delta):
@@ -92,6 +93,7 @@ func _physics_process(delta):
 		input_axis = real_axis
 			
 	
+
 	apply_gravity(delta)
 	handle_wall_jump(input_axis)
 	handle_jump()
@@ -164,7 +166,7 @@ func apply_gravity(delta):
 	elif is_on_ceiling():
 		if !just_launched:
 			prevelocity.y = 0
-	if not is_on_floor():
+	if not is_on_floor() and not zero_gravity:
 		if low_gravity:
 			prevelocity.y += gravity * low_gravity_scale * movement_data.gravity_scale * delta
 			if prevelocity.y > low_gravity_fall_speed:

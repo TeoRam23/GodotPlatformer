@@ -111,13 +111,13 @@ func set_particle_vars():
 		particles_2d.lifetime = shape.end.y * 0.0109375
 		
 		particles_2d.amount = shape.get_area() * 0.0030517578125
-		print("am: ",particles_2d.amount)
-		print(shape.end.y)
-		print(particles_2d.lifetime)
+		#print("am: ",particles_2d.amount)
+		#print(shape.end.y)
+		#print(particles_2d.lifetime)
 		
-		print(particles_2d.color_ramp.colors)
+		#print(particles_2d.color_ramp.colors)
 		var ye = Curve.new()
-		print("the shep: ",shape.end.y)
+		#print("the shep: ",shape.end.y)
 		if shape.end.y > 4:
 			
 			#particles_2d.color_ramp.set_offset(0, 0.25*1.5)
@@ -125,21 +125,21 @@ func set_particle_vars():
 			#particles_2d.color_ramp.set_offset(0, (shape.end.y*2/16 - 6)/8)
 			#particles_2d.color_ramp.set_offset(1, 1 - (1/(shape.end.y*2/16 - 2)))
 			particles_2d.color_ramp.set_offset(0, ((shape.end.y*2/16) - 3)/(shape.end.y*2/16))
-			print("test: ", ((shape.end.y*2/16) - 5)/(shape.end.y*2/16), " ended: ", shape.end.y*2/16)
+			#print("test: ", ((shape.end.y*2/16) - 5)/(shape.end.y*2/16), " ended: ", shape.end.y*2/16)
 			#particles_2d.color_ramp.set_offset(1, 1)
 			#particles_2d.color_ramp.set_offset(0, 0.99)
 			#particles_2d.color_ramp.set_offset(0, shape.end.y*2/16)
 			particles_2d.scale_amount_curve.set_point_offset(0, ((shape.end.y*2/16) - 5)/(shape.end.y*2/16))
 			
 			
-			print("off: ", particles_2d.color_ramp.offsets)
-			print("scl: ", particles_2d.scale_amount_curve.get_point_position(0))
+			#print("off: ", particles_2d.color_ramp.offsets)
+			#print("scl: ", particles_2d.scale_amount_curve.get_point_position(0))
 		
 		#print(particles_2d.color_ramp.set_offset(0, 0.278*1.5))
 		#print(particles_2d.color_ramp.set_offset(1, 0.781))
 		
-		print(shape.size)
-		print(shape.end)
+		#print(shape.size)
+		#print(shape.end)
 		air_shape.shape
 	else:
 		print("*ERRORERROR*: This HOT AIR does not have a collisionshape! ", self)

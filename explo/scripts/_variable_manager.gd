@@ -68,7 +68,7 @@ func delete_saved_level(level_victim_id):
 		if level.id == level_victim_id:
 			#print(levels_completed)
 			levels_completed.erase(level)
-			print(level)
+			print("Level deleted: ", level)
 			#print("################################ ", levels_completed, " #########################")
 
 # Saver variables til variable.save
