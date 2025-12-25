@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dj3xenwxn8j6c"]
+[gd_scene load_steps=46 format=3 uid="uid://dj3xenwxn8j6c"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_2y7hc"]
 [ext_resource type="PackedScene" uid="uid://dx386bkr51b7w" path="res://levels/level_one.tscn" id="2_5k66i"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="27_v86sp"]
 [ext_resource type="PackedScene" uid="uid://n4mpconkj584" path="res://explo/scenes/world-extra/holder_eater.tscn" id="28_jiac1"]
 [ext_resource type="PackedScene" uid="uid://4r6ad8ool77e" path="res://explo/scenes/world-extra/gloop_tilemap.tscn" id="29_gslry"]
+[ext_resource type="PackedScene" uid="uid://bgxdyo211rl52" path="res://explo/scenes/world-extra/extra_key.tscn" id="30_2i8dm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl7uj"]
 size = Vector2(7326, 520)
@@ -481,3 +482,6 @@ position = Vector2(496, -88)
 
 [node name="GloopTilemap" parent="." index="37" instance=ExtResource("29_gslry")]
 layer_0/tile_data = PackedInt32Array(4587558, 0, 65536, 3407919, 0, 65536, 3080228, 0, 65536, -12123776, 0, 65536, -10878588, 0, 65536, -11599473, 0, 65536, -11796069, 0, 65536, -10747486, 0, 65536, -12254805, 0, 65536, -3800707, 0, 65536, -4324985, 0, 65536, -5176959, 0, 65536, -5373553, 0, 65536, -6225532, 0, 65536, -6291049, 0, 65536, -3931600, 0, 65536, -4652489, 0, 65536, -5504464, 0, 65536, -6290900, 0, 65536)
+
+[node name="ExtraKey" parent="." index="38" instance=ExtResource("30_2i8dm")]
+position = Vector2(520, -40)

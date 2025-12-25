@@ -5,6 +5,9 @@ var save_path = "user://variable.save"
 static var all_time = 0.0
 static var deaths = 0
 static var johnnies = 0
+static var keys_collected = 0
+# array med id-en til alle banene hvor key er blitt collected
+var level_keys = []
 
 static var johnny_mode = false
 
@@ -15,6 +18,8 @@ static var current_title_time = 3
 # array med alle banene som er tilgjengelig og deres tid. -1 tid viser at banen ikke er klart enda
 #var levels_completed = [{"id": &"1-1", "completed": false, "best_time": -1.0}]
 var levels_completed = []
+
+
 
 signal johnny_collect
 
@@ -70,6 +75,22 @@ func delete_saved_level(level_victim_id):
 			levels_completed.erase(level)
 			print("Level deleted: ", level)
 			#print("################################ ", levels_completed, " #########################")
+			
+
+
+func up_the_keys(level_id: String):
+	var key_taken = false
+	for level in level_keys:
+		if level == level_id:
+			print("denne er her allerede")
+			key_taken = true
+	if key_taken:
+		print("key er tatt, gjør ingenting")
+	else:
+		print("dette er en ny key, la oss lagre den!")
+		keys_collected += 1
+		level_keys.append(level_id)
+
 
 # Saver variables til variable.save
 func save_variables():
@@ -77,6 +98,8 @@ func save_variables():
 	file.store_var(all_time)
 	file.store_var(deaths)
 	file.store_var(johnnies)
+	file.store_var(keys_collected)
+	file.store_var(level_keys)
 	file.store_var(johnny_mode)
 	file.store_var(levels_completed)
 	file.close()
@@ -88,6 +111,8 @@ func load_variables():
 		all_time = file.get_var()
 		deaths = file.get_var()
 		johnnies = file.get_var()
+		keys_collected = file.get_var()
+		level_keys = file.get_var()
 		johnny_mode = file.get_var()
 		levels_completed = file.get_var()
 		#print(levels_completed)
