@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://h0hxqn0deycg"]
 
-[ext_resource type="Script" path="res://explo/scripts/world-3/ex_fraggle_block.gd" id="1_jch23"]
+[ext_resource type="Script" uid="uid://ds8hwxck2qq65" path="res://explo/scripts/world-3/ex_fraggle_block.gd" id="1_jch23"]
 [ext_resource type="Texture2D" uid="uid://cviyq21peqi6e" path="res://assets/FraggleBlock.png" id="2_fl7ut"]
 [ext_resource type="Texture2D" uid="uid://dw2yykc1r4inj" path="res://assets/LavaBlocks.png" id="3_nn11x"]
-[ext_resource type="Script" path="res://explo/destructablocks/destruct_particles.gd" id="3_te5ap"]
+[ext_resource type="Script" uid="uid://cs2gwll55uqil" path="res://explo/destructablocks/destruct_particles.gd" id="3_te5ap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x81j2"]
 size = Vector2(16, 8)
@@ -60,7 +60,7 @@ initial_velocity_min = 200.0
 initial_velocity_max = 250.0
 scale_amount_min = 3.0
 scale_amount_max = 5.0
-color = Color(0.435294, 0.494118, 0.313726, 1)
+color = Color(0.46666667, 0.50980395, 0.31764707, 1)
 script = ExtResource("3_te5ap")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -14,10 +14,10 @@ func _ready():
 	# dette brukes for å endre farge på andre blocker
 	if type_id == 1:
 		standard_sprite.visible = false
-		particles.color = Color(0.216, 0.471, 0.459)
+		particles.color = Color(0.153, 0.463, 0.459, 1.0)
 	if type_id == 2:
 		standard_sprite.visible = false
-		particles.color = Color(0.325, 0.427, 0.863)
+		particles.color = Color(0.259, 0.439, 0.882, 1.0)
 		
 	#pass # Replace with function body.
 #

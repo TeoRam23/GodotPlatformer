@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfkpoffkqfp2t"]
 
-[ext_resource type="Script" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="1_cdw51"]
+[ext_resource type="Script" uid="uid://bixws2f5w0p77" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="1_cdw51"]
 [ext_resource type="Texture2D" uid="uid://beydgw6a34327" path="res://assets/StandardBlocks.png" id="2_64aqc"]
 [ext_resource type="PackedScene" uid="uid://cm6gweh1jujll" path="res://explo/destructablocks/standard/standard_particles.tscn" id="3_kgrsc"]
 
@@ -28,3 +28,4 @@ texture = SubResource("AtlasTexture_boykl")
 
 [node name="Particles" parent="." instance=ExtResource("3_kgrsc")]
 position = Vector2(16, -16)
+color = Color(0.29803923, 0.6901961, 0, 1)

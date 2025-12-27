@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp6i4h0qqv3m2"]
 
-[ext_resource type="Script" path="res://explo/scenes/poof_level_animation.gd" id="1_lvdeu"]
+[ext_resource type="Script" uid="uid://dxrjbtbevqfs5" path="res://explo/scenes/poof_level_animation.gd" id="1_lvdeu"]
 
 [sub_resource type="Gradient" id="Gradient_ltwub"]
 offsets = PackedFloat32Array(0.698225, 0.721893)
@@ -23,43 +23,42 @@ point_count = 2
 script = ExtResource("1_lvdeu")
 
 [node name="BlackScreen" type="ColorRect" parent="."]
-visible = false
 offset_right = 640.0
 offset_bottom = 360.0
-color = Color(0.109804, 0.109804, 0.12549, 1)
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
 
 [node name="HideParticle" type="CPUParticles2D" parent="."]
 position = Vector2(320, 180)
 emitting = false
 amount = 64
+texture = SubResource("GradientTexture2D_157bg")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.57
-texture = SubResource("GradientTexture2D_157bg")
 emission_shape = 3
 emission_rect_extents = Vector2(320, 180)
 gravity = Vector2(0, 0)
 scale_amount_min = 3.5
 scale_amount_max = 3.5
 scale_amount_curve = SubResource("Curve_214mm")
-color = Color(0.109804, 0.109804, 0.12549, 1)
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
 
 [node name="RevealParticle" type="CPUParticles2D" parent="."]
 position = Vector2(320, 180)
 emitting = false
 amount = 64
+texture = SubResource("GradientTexture2D_157bg")
 lifetime = 0.25
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 1.0
-texture = SubResource("GradientTexture2D_157bg")
 emission_shape = 3
 emission_rect_extents = Vector2(320, 180)
 gravity = Vector2(0, 0)
 scale_amount_min = 3.5
 scale_amount_max = 3.5
 scale_amount_curve = SubResource("Curve_5aadu")
-color = Color(0.109804, 0.109804, 0.12549, 1)
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
 
 [connection signal="finished" from="HideParticle" to="." method="_on_cpu_particles_2d_finished"]
 [connection signal="finished" from="RevealParticle" to="." method="_on_cpu_particles_2d_2_finished"]

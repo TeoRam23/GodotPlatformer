@@ -23,7 +23,7 @@ func _ready():
 		locked_mouse_mode = Input.MOUSE_MODE_CONFINED
 	#RenderingServer.set_default_clear_color(Color.BLACK)
 	#RenderingServer.set_default_clear_color(Color(0.102, 0.102, 0.133))
-	RenderingServer.set_default_clear_color(Color(0.11, 0.11, 0.125))
+	#RenderingServer.set_default_clear_color(Color(0.11, 0.11, 0.125))
 	#RenderingServer.set_default_clear_color(Color.DARK_GREEN)
 	Events.level_completed.connect(show_level_completed) #sjekker om noe har sendt "level_completed"
 	

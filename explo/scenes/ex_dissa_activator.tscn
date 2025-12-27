@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dc2amnlofb31d"]
 
-[ext_resource type="Shader" path="res://explo/scripts/ex_world_color.gdshader" id="1_p42ow"]
-[ext_resource type="Script" path="res://explo/scripts/ex_dissa_activator.gd" id="1_wx8i4"]
+[ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_p42ow"]
+[ext_resource type="Script" uid="uid://770wvu517e3g" path="res://explo/scripts/ex_dissa_activator.gd" id="1_wx8i4"]
 [ext_resource type="Texture2D" uid="uid://bkogkonsida1c" path="res://assets/DissaActivator.png" id="2_kwfqn"]
 [ext_resource type="Texture2D" uid="uid://sq6bo6ilrlfy" path="res://assets/color_maps/dissablocks/dissablock_color1.png" id="3_jmv2d"]
 [ext_resource type="Texture2D" uid="uid://dvlkjcmc6coh0" path="res://assets/color_maps/dissablocks/dissablock_color3.png" id="4_j3842"]
@@ -76,4 +76,4 @@ damping_min = 44.828
 damping_max = 60.92
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_rad3j")
-color = Color(0.360784, 0.529412, 0.878431, 1)
+color = Color(0.32941177, 0.5254902, 0.92941177, 1)
