@@ -13,7 +13,11 @@ func _ready():
 	if do_shake:
 		Events.pls_shake.connect(apply_shake)
 	Events.pls_camera_limit.connect(set_my_limit)
-	await get_tree().create_timer(0.1).timeout
+	#await get_tree().create_timer(0.1).timeout
+	# dette gjør at kameraet ikke starter i veggen når player starter nært kanten av camera limit. fra Isaac på internett
+	await get_tree().process_frame
+	reset_smoothing()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
