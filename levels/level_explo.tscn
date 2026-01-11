@@ -480,8 +480,11 @@ position = Vector2(496, -224)
 [node name="HolderEater" parent="." index="36" instance=ExtResource("28_jiac1")]
 position = Vector2(496, -88)
 
-[node name="GloopTilemap" parent="." index="37" instance=ExtResource("29_gslry")]
+[node name="HolderEater2" parent="." index="37" instance=ExtResource("28_jiac1")]
+position = Vector2(120, -160)
+
+[node name="GloopTilemap" parent="." index="38" instance=ExtResource("29_gslry")]
 layer_0/tile_data = PackedInt32Array(4587558, 0, 65536, 3407919, 0, 65536, 3080228, 0, 65536, -12123776, 0, 65536, -10878588, 0, 65536, -11599473, 0, 65536, -11796069, 0, 65536, -10747486, 0, 65536, -12254805, 0, 65536, -3800707, 0, 65536, -4324985, 0, 65536, -5176959, 0, 65536, -5373553, 0, 65536, -6225532, 0, 65536, -6291049, 0, 65536, -3931600, 0, 65536, -4652489, 0, 65536, -5504464, 0, 65536, -6290900, 0, 65536)
 
-[node name="ExtraKey" parent="." index="38" instance=ExtResource("30_2i8dm")]
+[node name="ExtraKey" parent="." index="39" instance=ExtResource("30_2i8dm")]
 position = Vector2(520, -40)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://4r6ad8ool77e"]
 
-[ext_resource type="Shader" path="res://explo/scripts/world-extra/gloop_shader.gdshader" id="1_bgcv4"]
-[ext_resource type="Script" path="res://explo/scripts/world-extra/gloop_tilemap.gd" id="3_fjwj1"]
+[ext_resource type="Shader" uid="uid://bjg6mqovo1bue" path="res://explo/scripts/world-extra/gloop_shader.gdshader" id="1_bgcv4"]
+[ext_resource type="Script" uid="uid://cfaf32k2hp5d0" path="res://explo/scripts/world-extra/gloop_tilemap.gd" id="3_fjwj1"]
 [ext_resource type="Texture2D" uid="uid://dnjdqytuvpmd0" path="res://assets/circle.png" id="3_pf7u7"]
 [ext_resource type="PackedScene" uid="uid://d4lf7lyl7gh8t" path="res://explo/scenes/world-extra/gloop_hazard.tscn" id="3_xd0fj"]
 
@@ -18,8 +18,6 @@ texture = ExtResource("3_pf7u7")
 texture_region_size = Vector2i(22, 22)
 0:0/0 = 0
 0:0/0/terrain_set = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, 0, -7.5, -7.5, 0, -10, 7.5, -7.5, 10, 0, 7.5, 7.5, 0, 10, -7.5, 7.5)
 
 [sub_resource type="TileSet" id="TileSet_an4fw"]
@@ -42,8 +40,8 @@ shader_parameter/outline_color = Color(0.9, 0.846, 0.765, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_frjsv"]
 shader = ExtResource("1_bgcv4")
-shader_parameter/inside_color = Color(0.36, 0.23346, 0.1548, 1)
-shader_parameter/outline_color = Color(0.78, 0.61165, 0.507, 1)
+shader_parameter/inside_color = Color(0.21176471, 0.18039216, 0.13725491, 1)
+shader_parameter/outline_color = Color(0.49019608, 0.44313726, 0.34901962, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q264x"]
 viewport_path = NodePath("SubViewport")

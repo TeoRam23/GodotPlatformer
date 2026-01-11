@@ -5,6 +5,7 @@ var our_player: CharacterBody2D
 var mid_pos = Vector2(16, -13)
 @onready var projectile_collision_shape = $ProjectileCollisionShape
 @onready var kill_timer = $KillTimer
+@onready var holder_anim: AnimatedSprite2D = $HolderAnim
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,7 @@ func _on_player_area_body_entered(body):
 	
 	kill_timer.paused = false
 	kill_timer.start()
+	holder_anim.play("close")
 	projectile_collision_shape.set_deferred("disabled", false)
 	
 
@@ -41,10 +43,12 @@ func reset_me():
 	our_player = null
 	kill_timer.paused = true
 	#kill_timer.time_left = kill_timer.wait_time
+	holder_anim.play_backwards("close")
 	projectile_collision_shape.set_deferred("disabled", true)
 
 
 func _on_kill_timer_timeout():
 	if our_player is CharacterBody2D:
 		our_player.enable_player()
+		reset_me()
 		Events.kill_player()
