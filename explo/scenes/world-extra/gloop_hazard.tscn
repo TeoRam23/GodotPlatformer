@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dnjdqytuvpmd0" path="res://assets/circle.png" id="1_x140g"]
 [ext_resource type="Texture2D" uid="uid://bnve0at7fa8o7" path="res://assets/circleAnime.png" id="2_nj1t0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v5av2"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5itp"]
 atlas = ExtResource("2_nj1t0")
 region = Rect2(0, 0, 22, 22)
@@ -41,13 +39,11 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5av2"]
+
 [node name="GloopHazard" type="StaticBody2D" groups=["gloop_hazard"]]
 collision_layer = 260
 collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
-shape = SubResource("CircleShape2D_v5av2")
 
 [node name="Circle" type="Sprite2D" parent="."]
 visible = false
@@ -59,3 +55,7 @@ position = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sqaiy")
 autoplay = "default"
 frame_progress = 0.304954
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_v5av2")

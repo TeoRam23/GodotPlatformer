@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnve0at7fa8o7"
-path="res://.godot/imported/circleAnime.png-ee1e3e778ae5cee8a61ca5c80850f5f1.ctex"
+uid="uid://ri2vkjghf0in"
+path="res://.godot/imported/MyMushedTileset.png-3c1237f7c369dd7c9469a79daa269319.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/circleAnime.png"
-dest_files=["res://.godot/imported/circleAnime.png-ee1e3e778ae5cee8a61ca5c80850f5f1.ctex"]
+source_file="res://assets/MyMushedTileset.png"
+dest_files=["res://.godot/imported/MyMushedTileset.png-3c1237f7c369dd7c9469a79daa269319.ctex"]
 
 [params]
 

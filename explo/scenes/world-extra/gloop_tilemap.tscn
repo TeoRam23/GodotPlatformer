@@ -1,14 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://4r6ad8ool77e"]
+[gd_scene load_steps=11 format=3 uid="uid://4r6ad8ool77e"]
 
 [ext_resource type="Shader" uid="uid://bjg6mqovo1bue" path="res://explo/scripts/world-extra/gloop_shader.gdshader" id="1_bgcv4"]
 [ext_resource type="Script" uid="uid://cfaf32k2hp5d0" path="res://explo/scripts/world-extra/gloop_tilemap.gd" id="3_fjwj1"]
 [ext_resource type="Texture2D" uid="uid://dnjdqytuvpmd0" path="res://assets/circle.png" id="3_pf7u7"]
 [ext_resource type="PackedScene" uid="uid://d4lf7lyl7gh8t" path="res://explo/scenes/world-extra/gloop_hazard.tscn" id="3_xd0fj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhysm"]
-shader = ExtResource("1_bgcv4")
-shader_parameter/inside_color = Color(0.653314, 0.531454, 0.350832, 1)
-shader_parameter/outline_color = Color(0.9, 0.846, 0.765, 1)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_iempy"]
 scenes/1/scene = ExtResource("3_xd0fj")
@@ -33,22 +28,16 @@ sources/1 = SubResource("TileSetAtlasSource_mxfu1")
 [sub_resource type="ViewportTexture" id="ViewportTexture_tomak"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_182r1"]
-shader = ExtResource("1_bgcv4")
-shader_parameter/inside_color = Color(0.653314, 0.531454, 0.350832, 1)
-shader_parameter/outline_color = Color(0.9, 0.846, 0.765, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_frjsv"]
 shader = ExtResource("1_bgcv4")
-shader_parameter/inside_color = Color(0.21176471, 0.18039216, 0.13725491, 1)
-shader_parameter/outline_color = Color(0.49019608, 0.44313726, 0.34901962, 1)
+shader_parameter/inside_color = Color(0.14509805, 0.12941177, 0.105882354, 1)
+shader_parameter/outline_color = Color(0.40784314, 0.36078432, 0.27058825, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q264x"]
 viewport_path = NodePath("SubViewport")
 
 [node name="GloopTilemap" type="TileMap"]
 z_index = -5
-material = SubResource("ShaderMaterial_hhysm")
 tile_set = SubResource("TileSet_an4fw")
 format = 2
 script = ExtResource("3_fjwj1")
@@ -91,14 +80,13 @@ render_target_update_mode = 4
 follow_viewport_enabled = true
 
 [node name="GloopHolderNode" type="Node2D" parent="SubViewport"]
-material = SubResource("ShaderMaterial_182r1")
 
 [node name="SubCamera" type="Camera2D" parent="SubViewport"]
 
 [node name="ShaderRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_frjsv")
-offset_right = 10.0
-offset_bottom = 10.0
+offset_right = 160.0
+offset_bottom = 80.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("ViewportTexture_q264x")

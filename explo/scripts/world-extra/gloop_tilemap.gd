@@ -61,7 +61,8 @@ func set_camera():
 			if chi_sprite:
 				child.remove_child(chi_sprite)
 				gloop_holder_node.add_child(chi_sprite)
-				chi_sprite.global_position = chi_gp
+				chi_sprite.global_position.x = chi_gp.x + 0.5 # 0.5 er for å sette tilbake offsetten slik at den ikke står på x.5 selv
+				chi_sprite.global_position.y = chi_gp.y #+ 0.5
 			
 	#print(left_top, " and ", right_bot)
 	sub_viewport.size.x = abs(left_top.x) + abs(right_bot.x) + 40
