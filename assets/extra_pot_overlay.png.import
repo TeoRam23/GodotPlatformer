@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dagd1h08r2g3m"
-path="res://.godot/imported/extra_pot.png-53edf3f2f13f91859571fa3218a8653c.ctex"
+uid="uid://b365y6su7wlve"
+path="res://.godot/imported/extra_pot_overlay.png-c67acf9022cc2438cae0cdab6f99b3a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/extra_pot.png"
-dest_files=["res://.godot/imported/extra_pot.png-53edf3f2f13f91859571fa3218a8653c.ctex"]
+source_file="res://assets/extra_pot_overlay.png"
+dest_files=["res://.godot/imported/extra_pot_overlay.png-c67acf9022cc2438cae0cdab6f99b3a1.ctex"]
 
 [params]
 

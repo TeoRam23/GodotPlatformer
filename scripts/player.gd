@@ -342,6 +342,7 @@ func _on_hazard_detector_body_entered(body):
 
 
 func disable_player(do_particles: bool):
+	print("did get disabled...")
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
 	launch_particle.emitting = false

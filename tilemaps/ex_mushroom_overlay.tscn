@@ -270,6 +270,10 @@ texture = ExtResource("1_hd4gs")
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
+9:3/0 = 0
+8:3/0 = 0
+8:4/0 = 0
+9:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5utt1"]
 terrain_set_0/mode = 0
