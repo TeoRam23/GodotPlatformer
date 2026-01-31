@@ -1,9 +1,91 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgxdyo211rl52"]
+[gd_scene load_steps=16 format=3 uid="uid://bgxdyo211rl52"]
 
 [ext_resource type="Script" uid="uid://drafawka35ky0" path="res://explo/scripts/world-extra/extra_key.gd" id="1_7yge3"]
+[ext_resource type="Texture2D" uid="uid://bm337rgf7kpqh" path="res://assets/extraKey.png" id="2_pyxsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyxsa"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y207y"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0wfd"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l17i"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd0to"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubngy"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88b62"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s8id"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(60, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28cym"]
+atlas = ExtResource("2_pyxsa")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mofd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y207y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0wfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l17i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd0to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubngy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88b62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s8id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28cym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_pyxsa"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.7511111, 0.7733333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y207y"]
+gradient = SubResource("Gradient_pyxsa")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.115384616)
+
+[sub_resource type="Curve" id="Curve_pyxsa"]
+_data = [Vector2(0.15384614, 0), 0.0, 12.536323, 0, 0, Vector2(0.39676112, 1), -4.03352e-07, -4.03352e-07, 0, 0, Vector2(0.93522257, 0), 0.057668786, 0.0, 0, 0]
+point_count = 3
 
 [node name="ExtraKey" type="Area2D"]
 collision_layer = 0
@@ -11,13 +93,33 @@ collision_mask = 2
 script = ExtResource("1_7yge3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_pyxsa")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
 color = Color(0.86, 0.72068, 0.3956, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0mofd")
+autoplay = "default"
+frame_progress = 0.78941566
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 12
+texture = SubResource("GradientTexture2D_y207y")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_pyxsa")
+color = Color(0.45490196, 1, 0.9137255, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

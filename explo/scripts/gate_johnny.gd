@@ -1,8 +1,8 @@
 extends StaticBody2D
 
-@onready var lock_container: GridContainer = $LockContainer
 @onready var collision_gate: CollisionShape2D = $CollisionGate
 @onready var collision_area: CollisionShape2D = $PlayerArea/CollisionArea
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,28 +16,22 @@ func _process(delta: float) -> void:
 
 func _on_player_area_body_entered(body: Node2D) -> void:
 	collision_area.set_deferred("disabled", true)
-	animate_opening()
+	fill_up()
 
 
-func animate_opening():
-	var keys_collected = VariableManager.keys_collected
-	#keys_collected = 16
-	var will_open = true
+func fill_up():
+	var johnny_count = VariableManager.johnnies
+	#johnny_count = 41
 	
-	await get_tree().create_timer(0.150).timeout
-	for child in lock_container.get_children():
-		if keys_collected > 0:
-			child.modulate = Color(18.892, 18.892, 18.892)
-			keys_collected -= 1
-			await get_tree().create_timer(0.166).timeout
-		else:
-			will_open = false
-		print("still doing this")
+	for j in johnny_count:
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
+		progress_bar.value += 1
 	
-	if will_open:
+	if johnny_count >= 40:
 		await get_tree().create_timer(0.834).timeout
 		collision_gate.disabled = true
 		collision_area.disabled = true
 		visible = false
-	
-	

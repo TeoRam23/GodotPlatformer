@@ -25,7 +25,7 @@ func update_time(delta):
 	#time_elapsed += 0.01666666666667
 	var show_time = snappedf(time_elapsed, 0.01666666666667)
 	var minutes = int(floor(show_time * 0.01666666666667)) % 60
-	var hours = floor(show_time / 3600)
+	var hours = int(floor(show_time / 3600))
 	var seconds = int(show_time) % 60
 	var millis = (show_time - floor(show_time)) * 1000
 	var time_text = "%02d:%02d.%03d" % [minutes, seconds, millis]
