@@ -4,6 +4,8 @@ extends StaticBody2D
 @onready var collision_area: CollisionShape2D = $PlayerArea/CollisionArea
 @onready var progress_bar: ProgressBar = $ProgressBar
 
+var all_johnnies = 20
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -21,17 +23,17 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 
 func fill_up():
 	var johnny_count = VariableManager.johnnies
-	#johnny_count = 41
+	johnny_count = 41
 	
 	for j in johnny_count:
 		await get_tree().process_frame
 		await get_tree().process_frame
 		await get_tree().process_frame
 		await get_tree().process_frame
-		progress_bar.value += 1
+		progress_bar.value += 2
 	
-	if johnny_count >= 40:
-		await get_tree().create_timer(0.834).timeout
+	if johnny_count >= all_johnnies:
+		await get_tree().create_timer(0.333).timeout
 		collision_gate.disabled = true
 		collision_area.disabled = true
 		visible = false

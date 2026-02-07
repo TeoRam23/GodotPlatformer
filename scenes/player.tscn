@@ -285,7 +285,8 @@ atlas = ExtResource("3_v30qj")
 region = Rect2(105, 0, 21, 21)
 
 [sub_resource type="Gradient" id="Gradient_q8cyk"]
-offsets = PackedFloat32Array(0.694915, 0.737288)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.694915, 0.72)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l1e4h"]

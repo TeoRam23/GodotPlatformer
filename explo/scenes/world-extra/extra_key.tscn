@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_pyxsa"]
@@ -93,7 +93,6 @@ collision_mask = 2
 script = ExtResource("1_7yge3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_pyxsa")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -105,12 +104,12 @@ offset_bottom = 8.0
 color = Color(0.86, 0.72068, 0.3956, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_0mofd")
 autoplay = "default"
 frame_progress = 0.78941566
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-z_index = -1
 amount = 12
 texture = SubResource("GradientTexture2D_y207y")
 spread = 180.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bkyanmnvlut1i"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_explosion_effect.gd" id="1_5vss2"]
+[ext_resource type="Script" uid="uid://c5wlpg7qn0551" path="res://explo/scripts/ex_explosion_effect.gd" id="1_5vss2"]
 [ext_resource type="Texture2D" uid="uid://nnojjhrbugdp" path="res://assets/JeffreySprites.png" id="2_gdkrw"]
 [ext_resource type="Texture2D" uid="uid://blmwm7xle66qj" path="res://assets/projectile_explosion_animation.png" id="3_2kv5i"]
 
@@ -81,7 +81,7 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_855vu"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 31.8681), 82.3234, 0.0, 0, 0]
 point_count = 2
 
@@ -94,7 +94,7 @@ offsets = PackedFloat32Array(0.863636, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.12549)
 
 [node name="ExExplosionEffect" type="Node2D"]
-z_index = 2
+z_index = 21
 script = ExtResource("1_5vss2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -106,9 +106,9 @@ texture = SubResource("AtlasTexture_bre2r")
 visible = false
 emitting = false
 amount = 1
+texture = SubResource("GradientTexture2D_n2ysg")
 lifetime = 0.1
 explosiveness = 1.0
-texture = SubResource("GradientTexture2D_n2ysg")
 gravity = Vector2(0, 0)
 scale_amount_min = 0.5
 scale_amount_max = 0.5
@@ -134,10 +134,10 @@ scale_amount_curve = SubResource("Curve_odo0k")
 color_ramp = SubResource("Gradient_fvg64")
 
 [node name="ExplosionAnimation" type="AnimatedSprite2D" parent="."]
+z_index = -1
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_6ngcl")
 autoplay = "default"
-frame = 1
-frame_progress = 0.444671
 
 [node name="ExplosionParticles" type="CPUParticles2D" parent="."]
 emitting = false

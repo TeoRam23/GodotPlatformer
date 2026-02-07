@@ -17,6 +17,7 @@ signal pls_general_leaving
 signal pls_low_gravity
 signal pls_enter_extra
 signal pls_save_settings_yall
+signal pls_dialogue_finished
 
 func projectile_hit():
 	pls_shake.emit()
@@ -62,3 +63,6 @@ func enter_extra():
 
 func save_settings_yall(save_not_get):
 	pls_save_settings_yall.emit(save_not_get)
+
+func dialogue_finished(answer_yes):
+	pls_dialogue_finished.emit(answer_yes)

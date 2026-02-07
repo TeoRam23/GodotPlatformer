@@ -11,6 +11,8 @@ var level_keys = []
 
 static var johnny_mode = false
 
+static var johnny_activated = false
+
 static var current_title_time = 3
 
 #static var mouse_warped = Vector2.ZERO
@@ -101,6 +103,7 @@ func save_variables():
 	file.store_var(keys_collected)
 	file.store_var(level_keys)
 	file.store_var(johnny_mode)
+	file.store_var(johnny_activated)
 	file.store_var(levels_completed)
 	file.close()
 
@@ -114,6 +117,7 @@ func load_variables():
 		keys_collected = file.get_var()
 		level_keys = file.get_var()
 		johnny_mode = file.get_var()
+		johnny_activated = file.get_var()
 		levels_completed = file.get_var()
 		#print(levels_completed)
 		file.close()
