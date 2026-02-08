@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dehufyyw8gn2y"]
+[gd_scene load_steps=28 format=3 uid="uid://dehufyyw8gn2y"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_ep6w1"]
 [ext_resource type="Texture2D" uid="uid://dq2pd6qmqnolc" path="res://assets/baksplodder/hub1.png" id="2_7ettt"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bikjp2hqaw643" path="res://assets/JohnnyDanceTiny.png" id="7_f0law"]
 [ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="8_fiilc"]
 [ext_resource type="Shader" uid="uid://ukj1hevbce3" path="res://scripts/player_shader2.gdshader" id="9_h36jq"]
+[ext_resource type="PackedScene" uid="uid://cbrkt4idiqbya" path="res://explo/menus/dialogue/dialogue_parent.tscn" id="9_kqnn8"]
+[ext_resource type="PackedScene" uid="uid://ko3cuvwb4bkp" path="res://explo/menus/dialogue/dialogue_element.tscn" id="10_7iaxr"]
 [ext_resource type="Texture2D" uid="uid://byyq17ef26l14" path="res://assets/color_maps/johnny.png" id="10_oesey"]
 [ext_resource type="Texture2D" uid="uid://bro2sgpd7ra1r" path="res://assets/color_maps/jeffrey.png" id="11_kqnn8"]
 [ext_resource type="Texture2D" uid="uid://nnojjhrbugdp" path="res://assets/JeffreySprites.png" id="12_7iaxr"]
@@ -173,6 +175,7 @@ position = Vector2(288, -16)
 [node name="BuiltInObjects" type="Node" parent="." index="16"]
 
 [node name="JohnnyNpcArea" type="Area2D" parent="BuiltInObjects" index="0"]
+process_mode = 3
 position = Vector2(544, 0)
 collision_layer = 0
 collision_mask = 2
@@ -182,7 +185,6 @@ script = ExtResource("6_ihtse")
 z_index = -1
 position = Vector2(-32, 24)
 shape = SubResource("RectangleShape2D_r78kj")
-metadata/_edit_group_ = true
 
 [node name="JohnnyGetAnimation" type="AnimatedSprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="1"]
 visible = false
@@ -197,11 +199,34 @@ position = Vector2(-31.999979, 24)
 scale = Vector2(2.2500021, 3)
 texture = ExtResource("8_fiilc")
 
-[node name="JohnnyPlaySprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="3"]
+[node name="JohnnyGetDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="3" instance=ExtResource("9_kqnn8")]
+layer = 4
+
+[node name="DialogueStandard" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="1" instance=ExtResource("10_7iaxr")]
+text = "Hallo."
+top = true
+
+[node name="DialogueStandard2" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="2" instance=ExtResource("10_7iaxr")]
+text = "Dette er bare en test."
+top = true
+
+[node name="DialogueStandard3" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="3" instance=ExtResource("10_7iaxr")]
+text = "Verden eller noe sånt."
+top = true
+yes_or_no = true
+
+[node name="JohnnyPlaySprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="4"]
 visible = false
 material = SubResource("ShaderMaterial_11x7m")
 position = Vector2(16, 40)
 texture = SubResource("AtlasTexture_op6bl")
+
+[node name="JohnnyPlayDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="5" instance=ExtResource("9_kqnn8")]
+
+[node name="DialogueStandard" parent="BuiltInObjects/JohnnyNpcArea/JohnnyPlayDialogue" index="1" instance=ExtResource("10_7iaxr")]
+text = "Hey, bro! Wanna switch?"
+top = true
+yes_or_no = true
 
 [node name="LevelEntrance" parent="." index="17" instance=ExtResource("3_k2vsl")]
 position = Vector2(0, 16)

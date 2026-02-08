@@ -1,31 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbrkt4idiqbya"]
 
 [ext_resource type="Script" uid="uid://b4kkl8cg8ixa8" path="res://explo/menus/dialogue/dialogue_parent.gd" id="1_3g6fq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq0qi"]
-bg_color = Color(0.05882353, 0.05882353, 0.101960786, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.262745, 0.482353, 0.85098, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-anti_aliasing = false
+[ext_resource type="Theme" uid="uid://cci7qdm1rnxr4" path="res://explo/menus/pause_theme_johnny2.tres" id="2_3g6fq"]
 
 [node name="DialogueParent" type="CanvasLayer"]
-follow_viewport_enabled = true
+process_mode = 3
 script = ExtResource("1_3g6fq")
 
 [node name="DialogueBox" type="Panel" parent="."]
 visible = false
 offset_left = 48.0
-offset_top = 232.0
+offset_top = 234.0
 offset_right = 584.0
-offset_bottom = 336.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_xq0qi")
+offset_bottom = 334.0
+theme = ExtResource("2_3g6fq")
 
 [node name="DialogueLabel" type="Label" parent="DialogueBox"]
 layout_mode = 0
@@ -35,3 +23,32 @@ offset_right = 512.0
 offset_bottom = 85.0
 text = "HELLO THIS IS A sample text for TESTING HOW THE TEXT WILL LOOK. it is pretty long to make sure we have enough rommjg"
 autowrap_mode = 2
+
+[node name="ButtonLabel" type="Label" parent="DialogueBox"]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 19.0
+offset_right = 376.0
+offset_bottom = 85.0
+text = "HELLO THIS IS A sample text for TESTING HOW THE TEXT WILL LOOK. it is pretty long to make sure we"
+autowrap_mode = 2
+
+[node name="ButtonYes" type="Button" parent="DialogueBox/ButtonLabel"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = -19.0
+offset_right = 512.0
+offset_bottom = 30.5
+text = "YES"
+
+[node name="ButtonNo" type="Button" parent="DialogueBox/ButtonLabel"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 32.5
+offset_right = 512.0
+offset_bottom = 80.5
+text = "NO"
+
+[connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonYes" to="." method="_on_button_yes_pressed"]
+[connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonNo" to="." method="_on_button_no_pressed"]

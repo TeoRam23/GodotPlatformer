@@ -9,7 +9,9 @@ static var keys_collected = 0
 # array med id-en til alle banene hvor key er blitt collected
 var level_keys = []
 
-static var johnny_mode = false
+#static var johnny_mode = false
+static var character_id = 0
+# 0 er jeffrey, 1 er johnny, 2 er busk
 
 static var johnny_activated = false
 
@@ -19,7 +21,7 @@ static var current_title_time = 3
 
 # array med alle banene som er tilgjengelig og deres tid. -1 tid viser at banen ikke er klart enda
 #var levels_completed = [{"id": &"1-1", "completed": false, "best_time": -1.0}]
-var levels_completed = []
+static  var levels_completed = []
 
 
 
@@ -29,8 +31,8 @@ signal johnny_collect
 func _ready():
 	#save_variables()
 	load_variables()
-	
 	#print(levels_completed)
+	
 	
 	Events.pls_player_died.connect(up_the_death)
 	
@@ -48,6 +50,7 @@ func up_the_johnnies():
 
 func find_level(level_id) -> Dictionary:
 	# finner banen med id = level_id
+	#print(levels_completed)
 	for level in levels_completed:
 		if level.id == level_id:
 			return level
@@ -102,10 +105,12 @@ func save_variables():
 	file.store_var(johnnies)
 	file.store_var(keys_collected)
 	file.store_var(level_keys)
-	file.store_var(johnny_mode)
+	#file.store_var(johnny_mode)
+	file.store_var(character_id)
 	file.store_var(johnny_activated)
 	file.store_var(levels_completed)
 	file.close()
+	#print(levels_completed)
 
 # Loader variables fra variable.save
 func load_variables():
@@ -116,7 +121,8 @@ func load_variables():
 		johnnies = file.get_var()
 		keys_collected = file.get_var()
 		level_keys = file.get_var()
-		johnny_mode = file.get_var()
+		#johnny_mode = file.get_var()
+		character_id = file.get_var()
 		johnny_activated = file.get_var()
 		levels_completed = file.get_var()
 		#print(levels_completed)

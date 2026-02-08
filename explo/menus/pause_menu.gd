@@ -10,14 +10,15 @@ var title = "default"
 @onready var back_to_hub_butt = $PauseControl/VBoxContainer/BackToHub
 @onready var main_menu_butt = $PauseControl/VBoxContainer/MainMenu
 
-const jeffrey_theme = preload("res://explo/menus/pause_theme2.tres")
-const johnny_theme = preload("res://explo/menus/pause_theme_johnny.tres")
+const jeffrey_theme = preload("uid://cfuoqyle7q3jc")
+const johnny_theme = preload("uid://cci7qdm1rnxr4")
 
 #var hubby = preload("res://levels/hub.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	number_label.text = "Level " + get_tree().current_scene.name
 	Events.pls_share_title.connect(update_title)
+	Events.pls_swap_character.connect(johnnify)
 	
 	johnnify()
 
@@ -36,9 +37,9 @@ func _input(event):
 		#print("na")
 		un_pause()
 		
-	if Input.is_action_just_pressed("musR"):
-		VariableManager.johnny_mode = !VariableManager.johnny_mode
-		johnnify()
+	#if Input.is_action_just_pressed("musR"):
+		#VariableManager.johnny_mode = !VariableManager.johnny_mode
+		#johnnify()
 
 func un_pause():
 	#print("yup")
@@ -74,15 +75,15 @@ func _on_main_menu_pressed():
 
 
 func johnnify():
-	if VariableManager.johnny_mode:
-		number_label.add_theme_color_override("font_color", Color(0.263, 0.482, 0.851))
-		continue_butt.theme = johnny_theme
-		main_menu_butt.theme = johnny_theme
-		back_to_hub_butt.theme = johnny_theme
-	else:
+	if VariableManager.character_id == 0:
 		#number_label.add_theme_color_override("font_color", Color(0.722, 0.29, 0.29)) # for pause theme 1
 		number_label.add_theme_color_override("font_color", Color(0.78, 0.09, 0.239)) # for pause theme 2
 		continue_butt.theme = jeffrey_theme
 		main_menu_butt.theme = jeffrey_theme
 		back_to_hub_butt.theme = jeffrey_theme
+	elif VariableManager.character_id == 1:
+		number_label.add_theme_color_override("font_color", Color(0.263, 0.482, 0.851))
+		continue_butt.theme = johnny_theme
+		main_menu_butt.theme = johnny_theme
+		back_to_hub_butt.theme = johnny_theme
 	

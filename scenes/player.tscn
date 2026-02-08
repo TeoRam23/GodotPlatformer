@@ -299,7 +299,8 @@ offsets = PackedFloat32Array(0.579365, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_wol8j"]
-offsets = PackedFloat32Array(0.584746, 0.644068)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.5911111, 0.6311111)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2qctj"]
@@ -519,7 +520,7 @@ damping_max = 67.816
 scale_amount_min = 0.35
 scale_amount_max = 0.37
 scale_amount_curve = SubResource("Curve_bx641")
-color = Color(0.81, 0.324, 0.34, 1)
+color = Color(0.92941177, 0.11764706, 0.14117648, 1)
 
 [node name="GroundPoofParticle" type="CPUParticles2D" parent="."]
 position = Vector2(0, 5)

@@ -18,6 +18,7 @@ signal pls_low_gravity
 signal pls_enter_extra
 signal pls_save_settings_yall
 signal pls_dialogue_finished
+signal pls_swap_character
 
 func projectile_hit():
 	pls_shake.emit()
@@ -66,3 +67,8 @@ func save_settings_yall(save_not_get):
 
 func dialogue_finished(answer_yes):
 	pls_dialogue_finished.emit(answer_yes)
+
+func swap_character(character_id: int):
+	#0 er jeffrey, 1 er johnny, 2 er busk
+	VariableManager.character_id = character_id
+	pls_swap_character.emit()

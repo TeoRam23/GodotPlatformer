@@ -20,17 +20,20 @@ func _ready():
 	
 	if level_vars or !canceled:
 		#print("ye: ", level_part)
+		if !level_vars:
+			level_vars.completed = false
 		if title_override:
 			level_vars.title = title_override
+			
 		canceled = false
 		
 		#VariableManager.delete_saved_level("Explo-1")
 		#print(level_vars.id.split()[0])
 		# sletter all data fra en verden, den i stringenet
-		if level_vars.id.split()[0] == "4" and 1==2:
-			#VariableManager.update_level_to(this_level)
-			VariableManager.delete_saved_level(level_vars.id)
-			VariableManager.save_variables()
+		#if level_vars.id.split()[0] == "4" and 1==2:
+			##VariableManager.update_level_to(this_level)
+			#VariableManager.delete_saved_level(level_vars.id)
+			#VariableManager.save_variables()
 		
 	else:
 		#print("nuu: ", level_part)
@@ -66,6 +69,7 @@ func _on_mouse_entered():
 			label.text = "?????"
 	
 	if time_label is Label:
+		print(level_vars)
 		if level_vars and level_vars.completed:
 			time_label.text = format_time(level_vars.best_time)
 		else:

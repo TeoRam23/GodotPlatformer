@@ -31,6 +31,7 @@ func fill_up():
 		await get_tree().process_frame
 		await get_tree().process_frame
 		progress_bar.value += 2
+		if j >= 20: break
 	
 	if johnny_count >= all_johnnies:
 		await get_tree().create_timer(0.333).timeout

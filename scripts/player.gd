@@ -69,6 +69,7 @@ func _ready():
 	Events.pls_kill_player.connect(i_died)
 	Events.level_completed.connect(func(): disable_player(true))
 	Events.pls_enter_extra.connect(func(): disable_player(false))
+	Events.pls_swap_character.connect(johnnify)
 	#Events.pls_set_wrap.connect(wrap_me) # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	
 	if low_gravity:
@@ -812,20 +813,20 @@ func button_presses(delta):
 
 
 func johnnify():
-	if VariableManager.johnny_mode:
+	if VariableManager.character_id == 0:
+		animated_sprite_2d.use_parent_material = true
+		dead_particle.color = Color(0.929, 0.118, 0.141)
+		#launch_particle.modulate = Color(0.839, 0.525, 0.502)
+	elif VariableManager.character_id == 1:
 		animated_sprite_2d.use_parent_material = false
 		dead_particle.color = Color(0.263, 0.482, 0.851)
 		#launch_particle.modulate = Color(0.504, 0.694, 0.84)
-	else:
-		animated_sprite_2d.use_parent_material = true
-		dead_particle.color = Color(0.81, 0.324, 0.34)
-		#launch_particle.modulate = Color(0.839, 0.525, 0.502)
 
 func _input(_event):
-	if Input.is_action_just_pressed("musR"):
-		VariableManager.johnny_mode = !VariableManager.johnny_mode
-		johnnify()
-	elif Input.is_action_just_pressed("reset"):
+	#if Input.is_action_just_pressed("musR"):
+		#VariableManager.johnny_mode = !VariableManager.johnny_mode
+		#johnnify()
+	if Input.is_action_just_pressed("reset"):
 		call_deferred("i_died")
 
 #func _on_timer_timeout():
