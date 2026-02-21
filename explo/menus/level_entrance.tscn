@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c4p6gfoiyp5fk"]
 
-[ext_resource type="Script" path="res://explo/menus/level_entrance.gd" id="1_hdmr7"]
+[ext_resource type="Script" uid="uid://6e6llsejhck" path="res://explo/menus/level_entrance.gd" id="1_hdmr7"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="1_rg3fe"]
 [ext_resource type="Texture2D" uid="uid://bdtf7tvjg7mdi" path="res://assets/level_end.png" id="2_8dmga"]
 

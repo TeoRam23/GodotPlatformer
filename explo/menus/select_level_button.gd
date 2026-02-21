@@ -10,6 +10,11 @@ var level_vars: Dictionary
 var label: Label
 var time_label: Label
 
+var tin_no_walking: TextureRect
+var tin_constant_throwing: TextureRect
+var tin_perfection: TextureRect
+var tin_zero_gravity: TextureRect
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -74,6 +79,29 @@ func _on_mouse_entered():
 			time_label.text = format_time(level_vars.best_time)
 		else:
 			time_label.text = "??:??.???"
+			
+			
+	if tin_no_walking is TextureRect:
+		tin_no_walking.visible = false
+	if tin_constant_throwing is TextureRect:
+		tin_constant_throwing.visible = false
+	if tin_perfection is TextureRect:
+		tin_perfection.visible = false
+	if tin_zero_gravity is TextureRect:
+		tin_zero_gravity.visible = false
+
+	if level_vars:
+		print("vi kommer oss hit...")
+		# burde sjekke om de eksisterer, men jeg gidder ikke, det går nok bra...
+		if level_vars.no_walking and tin_no_walking is TextureRect:
+			tin_no_walking.visible = true
+		if level_vars.constant_throwing and tin_constant_throwing is TextureRect:
+			tin_constant_throwing.visible = true
+		if level_vars.perfection and tin_perfection is TextureRect:
+			tin_perfection.visible = true
+		if level_vars.zero_gravity and tin_zero_gravity is TextureRect:
+			print("og hit...")
+			tin_zero_gravity.visible = true
 
 
 func format_time(time_elapsed):

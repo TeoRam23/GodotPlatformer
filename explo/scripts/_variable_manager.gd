@@ -57,6 +57,7 @@ func find_level(level_id) -> Dictionary:
 	return {}
 
 func update_level_to(updated_level):
+	#{"id": string, "title": string, "completed": bool, "best_time": time, "johnny_collected": bool}
 	for level in levels_completed:
 		
 		if level.id == updated_level.id:
@@ -68,7 +69,24 @@ func update_level_to(updated_level):
 					level.best_time = updated_level.best_time
 				elif updated_level.best_time < level.best_time:
 					level.best_time = updated_level.best_time
+				
+				#set challenges
+				if Settings.no_walking and not Settings.constant_throwing and not Settings.zero_gravity:
+					level.no_walking = true
+				if Settings.constant_throwing and not Settings.no_walking and not Settings.zero_gravity:
+					level.constant_throwing = true
+				if Settings.no_walking and Settings.constant_throwing and not Settings.zero_gravity:
+					level.perfection = true
+				if Settings.zero_gravity:
+					level.zero_gravity = true
+				
 			return
+
+
+	updated_level["no_walking"] = false
+	updated_level["constant_throwing"] = false
+	updated_level["perfection"] = false
+	updated_level["zero_gravity"] = false
 	
 	levels_completed.append(updated_level)
 

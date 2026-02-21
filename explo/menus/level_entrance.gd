@@ -5,6 +5,7 @@ extends Area2D
 var WORLY
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 const some_particles = preload("res://explo/scenes/poof_level_animation.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +41,10 @@ func hide_selection():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	WORLY.visible = false
 	Input.warp_mouse(get_window().size * 0.5)
+
+func disable_me():
+	animated_sprite_2d.visible = false
+	collision_shape_2d.disabled = true
 
 
 func _on_animated_sprite_2d_animation_looped():

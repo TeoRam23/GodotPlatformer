@@ -142,18 +142,22 @@ offset_right = 514.0
 offset_bottom = 252.0
 
 [node name="IconNoWalking" type="TextureRect" parent="IconBonusContainer"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_52jj5")
 
-[node name="IconConstantLaunch" type="TextureRect" parent="IconBonusContainer"]
+[node name="IconConstantThrowing" type="TextureRect" parent="IconBonusContainer"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_ugmfy")
 
 [node name="IconPerfection" type="TextureRect" parent="IconBonusContainer"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_2rs7j")
 
-[node name="IconNoGravity" type="TextureRect" parent="IconBonusContainer"]
+[node name="IconZeroGravity" type="TextureRect" parent="IconBonusContainer"]
+visible = false
 layout_mode = 2
 texture = SubResource("AtlasTexture_gscdv")
 

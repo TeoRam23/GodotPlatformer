@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var zero_gravity = false
 var main_data : PlayerMovementData
 
+@onready var test_timer_launch: Timer = $TestTimerLaunch
+
 var air_jump = true
 var can_dash = true
 var can_gigadash = true
@@ -687,6 +689,12 @@ func gravity_calculation():
 func launch_me(angle, power):
 	#print("MY ANGLE: ",rad_to_deg(angle))
 	#power = -410
+	
+	if test_timer_launch.time_left > 0:
+		return
+	
+	test_timer_launch.start()
+	
 	var cuisine = cos(angle)
 	var sine = sin(angle)
 	velocity.x += (0 * cuisine + power * sine)
