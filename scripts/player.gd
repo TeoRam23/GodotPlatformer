@@ -7,8 +7,6 @@ extends CharacterBody2D
 @export var zero_gravity = false
 var main_data : PlayerMovementData
 
-@onready var test_timer_launch: Timer = $TestTimerLaunch
-
 var air_jump = true
 var can_dash = true
 var can_gigadash = true
@@ -17,6 +15,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var gonnadash = false
 var sprite_rotation_speed = 100
 var just_launched = false
+
+var invincible = false
 #var wrap_horizontal = false # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 #var wrap_vertical = false
 #var rd = Vector2.ZERO
@@ -55,6 +55,8 @@ var prevelocity = Vector2(0.0, 0.0)
 @export var debug = true
 
 @onready var timer = $Timer
+@onready var launch_delay: Timer = $LaunchDelay
+@onready var start_delay: Timer = $start_delay
 
 var first_frame = true
 
@@ -79,6 +81,8 @@ func _ready():
 	if Settings.zero_gravity:
 		zero_gravity = true
 	johnnify()
+	
+	starting_animation()
 
 func _physics_process(delta):
 	
@@ -333,15 +337,21 @@ func update_animation(input_axis, real_axis):
 		animated_sprite_2d.play("crouch")
 
 
-func _on_hazard_detector_area_entered(_area):
-	call_deferred("i_died")
+func _on_hazard_detector_area_entered(area):
+	if area.is_in_group("truly_kill"):
+		call_deferred("i_died", true)
+	else:
+		call_deferred("i_died", false)
 	
 func _on_hazard_detector_body_entered(body):
 	if body.is_in_group("ForegroundGroup"):
 		print("WE GOT THE MAP")
 		body.fade_away()
 		return
-	call_deferred("i_died")
+	if body.is_in_group("truly_kill"):
+		call_deferred("i_died", true)
+	else:
+		call_deferred("i_died", false)
 
 
 func disable_player(do_particles: bool):
@@ -355,7 +365,9 @@ func enable_player():
 	set_physics_process(true)
 	animated_sprite_2d.visible = true
 
-func i_died():
+func i_died(truly):
+	if invincible and not truly:
+		return
 	if is_physics_processing():
 		disable_player(true)
 		#get_tree().paused = true
@@ -690,10 +702,10 @@ func launch_me(angle, power):
 	#print("MY ANGLE: ",rad_to_deg(angle))
 	#power = -410
 	
-	if test_timer_launch.time_left > 0:
+	if launch_delay.time_left > 0:
 		return
 	
-	test_timer_launch.start()
+	launch_delay.start()
 	
 	var cuisine = cos(angle)
 	var sine = sin(angle)
@@ -820,6 +832,19 @@ func button_presses(delta):
 			print(position)
 
 
+func starting_animation():
+	visible = false
+	
+	get_tree().paused = true
+	start_delay.start()
+
+func _on_start_delay_timeout() -> void:
+	get_tree().paused = false
+	visible = true
+	dead_particle.speed_scale = -2
+	dead_particle.emitting = true
+
+
 func johnnify():
 	if VariableManager.character_id == 0:
 		animated_sprite_2d.use_parent_material = true
@@ -835,7 +860,7 @@ func _input(_event):
 		#VariableManager.johnny_mode = !VariableManager.johnny_mode
 		#johnnify()
 	if Input.is_action_just_pressed("reset"):
-		call_deferred("i_died")
+		call_deferred("i_died", true)
 
 #func _on_timer_timeout():
 	#print("BOTT!")

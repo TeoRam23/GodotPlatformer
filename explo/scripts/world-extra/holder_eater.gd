@@ -51,4 +51,4 @@ func _on_kill_timer_timeout():
 	if our_player is CharacterBody2D:
 		our_player.enable_player()
 		reset_me()
-		Events.kill_player()
+		Events.kill_player(true)

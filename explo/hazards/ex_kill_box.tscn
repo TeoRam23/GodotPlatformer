@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw3t7"]
 size = Vector2(16, 16)
 
-[node name="ExKillBox" type="Area2D"]
+[node name="ExKillBox" type="Area2D" groups=["truly_kill"]]
 collision_layer = 4
 collision_mask = 0
 

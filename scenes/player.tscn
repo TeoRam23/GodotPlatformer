@@ -361,6 +361,7 @@ sprite_frames = SubResource("SpriteFrames_lgw7j")
 animation = &"idle"
 
 [node name="ExpoCamera" type="Camera2D" parent="SpriteHolder"]
+process_mode = 3
 process_priority = 1
 process_physics_priority = 1
 process_callback = 0
@@ -500,6 +501,7 @@ scale_amount_curve = SubResource("Curve_bx641")
 color = Color(0.81, 0.324, 0.3402, 1)
 
 [node name="DeadParticle2" type="CPUParticles2D" parent="."]
+process_mode = 3
 emitting = false
 amount = 48
 texture = SubResource("GradientTexture2D_2qctj")
@@ -567,10 +569,15 @@ scale_amount_min = 4.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_0c0wy")
 
-[node name="TestTimerLaunch" type="Timer" parent="."]
+[node name="LaunchDelay" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="start_delay" type="Timer" parent="."]
+process_mode = 3
 one_shot = true
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="start_delay" to="." method="_on_start_delay_timeout"]

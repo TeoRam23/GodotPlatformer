@@ -33,4 +33,5 @@ func _on_regen_timer_timeout():
 	var bodies = player_detector.get_overlapping_bodies()
 	#print(bodies)
 	if bodies:
-		bodies[0].i_died()
+		bodies[0].i_died(false)
+	#dette kan gjøres bedre, men det virker så jeg lar den være

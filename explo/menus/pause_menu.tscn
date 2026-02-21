@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.109804, 0.109804, 0.12549, 1)
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
 
 [node name="BackLabel" type="Label" parent="PauseControl"]
 layout_mode = 0
@@ -92,6 +92,7 @@ offset_right = 75.0
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"ButtonJohnny"
 theme_override_constants/separation = 16
 
 [node name="Continue" type="Button" parent="PauseControl/VBoxContainer"]

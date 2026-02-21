@@ -24,8 +24,8 @@ static var current_title_time = 3
 static  var levels_completed = []
 
 
+static var pausing_disabled = false
 
-signal johnny_collect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

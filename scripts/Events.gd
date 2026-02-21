@@ -41,8 +41,8 @@ func activate_ender():
 func player_died():
 	pls_player_died.emit()
 	
-func kill_player():
-	pls_kill_player.emit()
+func kill_player(truly):
+	pls_kill_player.emit(truly)
 
 func resetting_level():
 	pls_resetting_level.emit()

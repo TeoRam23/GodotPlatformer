@@ -3,7 +3,7 @@ extends Area2D
 #@export var world_select: PackedScene
 @export var worl: String
 var WORLY
-
+var is_active = false
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
@@ -16,16 +16,17 @@ func _ready():
 		WORLY.visible = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _input(event):
 	if worl:
 		if event.is_action_pressed("start") and get_overlapping_bodies():
 			show_selection()
-		elif event.is_action_pressed("back"):
-			hide_selection()
+		elif is_active:
+			if event.is_action_pressed("back"):
+				hide_selection()
+			elif event.is_action_pressed("cancel"):
+				print("this is running fsr")
+				hide_selection()
 
 
 func show_selection():
@@ -34,13 +35,17 @@ func show_selection():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.warp_mouse(get_window().size * 0.5)
 	WORLY.visible = true
+	VariableManager.set_deferred("pausing_disabled", true)
+	is_active = true
 	
 func hide_selection():
 	print("hiding selection")
-	#get_tree().paused = false
+	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	WORLY.visible = false
 	Input.warp_mouse(get_window().size * 0.5)
+	VariableManager.set_deferred("pausing_disabled", false)
+	is_active = false
 
 func disable_me():
 	animated_sprite_2d.visible = false

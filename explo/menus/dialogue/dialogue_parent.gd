@@ -40,6 +40,7 @@ func start():
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Input.warp_mouse(get_window().size * 0.5)
+	VariableManager.set_deferred("pausing_disabled", true)
 	
 	continue_box()
 	# jeg må finne en måte å gå gjennom boxene i riktig rekkefølge, og etter hverandre generelt
@@ -53,6 +54,7 @@ func finish_dialogue(extra_info: bool):
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	Input.warp_mouse(get_window().size * 0.5)
+	VariableManager.set_deferred("pausing_disabled", false)
 	
 	Events.dialogue_finished(extra_info)
 

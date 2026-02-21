@@ -13,10 +13,13 @@ func _ready():
 	if do_shake:
 		Events.pls_shake.connect(apply_shake)
 	Events.pls_camera_limit.connect(set_my_limit)
-	#await get_tree().create_timer(0.1).timeout
 	# dette gjør at kameraet ikke starter i veggen når player starter nært kanten av camera limit. fra Isaac på internett
 	await get_tree().process_frame
 	reset_smoothing()
+	
+	# gjør at kamera retter seg før starting animation, men virker som normalt etter
+	await get_tree().create_timer(0.5).timeout
+	set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

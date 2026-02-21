@@ -13,6 +13,8 @@ var title = "default"
 const jeffrey_theme = preload("uid://cfuoqyle7q3jc")
 const johnny_theme = preload("uid://cci7qdm1rnxr4")
 
+var i_am_paused = false
+
 #var hubby = preload("res://levels/hub.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +35,7 @@ func _on_continue_pressed():
 	un_pause()
 
 func _input(event):
-	if event.is_action_pressed("back") and get_tree().paused:
+	if (event.is_action_pressed("back") or event.is_action_pressed("cancel")) and get_tree().paused and i_am_paused:
 		#print("na")
 		un_pause()
 		
@@ -42,6 +44,7 @@ func _input(event):
 		#johnnify()
 
 func un_pause():
+	i_am_paused = false
 	#print("yup")
 	get_tree().paused = false
 	if get_parent().has_method("un_pause"):

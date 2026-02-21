@@ -29,6 +29,7 @@ func _ready():
 	
 	Input.mouse_mode = locked_mouse_mode
 	Input.warp_mouse(get_window().size * 0.5)
+	VariableManager.pausing_disabled = false
 	
 	
 	#level_overlay.update_title(title)
@@ -101,18 +102,22 @@ func un_pause():
 	Input.mouse_mode = locked_mouse_mode
 	pause_menu.visible = false
 	level_overlay.show_rest(false)
+	VariableManager.set_deferred("pausing_disabled", false)
 	if not Settings.touch_mode:
 		Input.warp_mouse(get_window().size * 0.5)
 
 func _input(event):
-	if event.is_action_pressed("cancel") and not waiting:
+	if event.is_action_pressed("cancel") and not waiting and not VariableManager.pausing_disabled:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		if not Settings.touch_mode:
 			Input.warp_mouse(get_window().size * 0.5)
 		
 		pause_menu.visible = true
+		pause_menu.i_am_paused = true
 		level_overlay.show_rest(true)
 		
+		VariableManager.pausing_disabled = true
+		print("denne kjører jo")
 		get_tree().paused = true
 	
 	

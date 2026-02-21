@@ -33,6 +33,7 @@ func _input(event: InputEvent) -> void:
 
 func activate_johnny():
 	get_tree().paused = true
+	VariableManager.pausing_disabled = true
 	johnny_get_animation.visible = true
 	johnny_get_animation.play("default")
 

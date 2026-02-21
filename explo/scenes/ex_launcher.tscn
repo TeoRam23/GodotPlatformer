@@ -118,7 +118,7 @@ texture = SubResource("GradientTexture2D_euyjl")
 
 [node name="PolygonArrow" type="Polygon2D" parent="."]
 z_index = 129
-rotation = -6.28318
+rotation = 3.1415927
 polygon = PackedVector2Array(-18, -6.99992, -25, 0.000111063, -18, 7.00008)
 
 [node name="RotationNeglecter" type="Node2D" parent="."]
@@ -128,6 +128,7 @@ position = Vector2(75, 0)
 
 [node name="MouseSprite" type="Sprite2D" parent="RotationNeglecter"]
 z_index = 130
+position = Vector2(75, 0)
 texture = SubResource("AtlasTexture_txxeq")
 
 [node name="ArrowSize" type="Sprite2D" parent="."]
