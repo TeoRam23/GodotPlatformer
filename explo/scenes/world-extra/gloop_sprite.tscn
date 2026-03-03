@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvm8yw6b3nqo3"]
+
+[ext_resource type="Texture2D" uid="uid://bnve0at7fa8o7" path="res://assets/circleAnime.png" id="1_ch2d5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5itp"]
+atlas = ExtResource("1_ch2d5")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mskmj"]
+atlas = ExtResource("1_ch2d5")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uidbc"]
+atlas = ExtResource("1_ch2d5")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdx04"]
+atlas = ExtResource("1_ch2d5")
+region = Rect2(66, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6gkje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5itp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mskmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uidbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdx04")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="GloopSprite" type="Node2D" groups=["gloop_hazard"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Sprite"]]
+position = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_6gkje")
+autoplay = "default"

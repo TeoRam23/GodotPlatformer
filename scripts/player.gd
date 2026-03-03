@@ -839,10 +839,11 @@ func starting_animation():
 	start_delay.start()
 
 func _on_start_delay_timeout() -> void:
+	#return
 	get_tree().paused = false
 	visible = true
-	dead_particle.speed_scale = -2
-	dead_particle.emitting = true
+	#dead_particle.speed_scale = -2
+	#dead_particle.emitting = true
 
 
 func johnnify():
