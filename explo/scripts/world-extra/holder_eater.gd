@@ -22,7 +22,8 @@ func _on_player_area_body_entered(body):
 	our_player = body
 	body.velocity = Vector2.ZERO
 	body.prevelocity = Vector2.ZERO
-	body.position = global_position + mid_pos
+	body.position = global_position# + mid_pos
+	body.position.y += 3
 	body.disable_player(false)
 	
 	kill_timer.paused = false

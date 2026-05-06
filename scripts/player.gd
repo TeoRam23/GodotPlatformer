@@ -82,7 +82,8 @@ func _ready():
 		zero_gravity = true
 	johnnify()
 	
-	starting_animation()
+	if 1 == 2:
+		starting_animation()
 
 func _physics_process(delta):
 	

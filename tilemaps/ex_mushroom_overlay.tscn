@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dytxi58p4i3pe"]
+[gd_scene load_steps=6 format=3 uid="uid://dytxi58p4i3pe"]
 
 [ext_resource type="Texture2D" uid="uid://ri2vkjghf0in" path="res://assets/MyMushedTileset.png" id="1_hd4gs"]
+[ext_resource type="Texture2D" uid="uid://dneoay2e1q4yq" path="res://assets/MyMushedTileset2.png" id="2_alkh6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alkh6"]
 texture = ExtResource("1_hd4gs")
@@ -274,6 +275,20 @@ texture = ExtResource("1_hd4gs")
 8:3/0 = 0
 8:4/0 = 0
 9:4/0 = 0
+10:3/0 = 0
+10:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5utt1"]
+texture = ExtResource("2_alkh6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5utt1"]
 terrain_set_0/mode = 0
@@ -283,6 +298,7 @@ terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Inner"
 terrain_set_1/terrain_0/color = Color(0.5351205, 0.89573556, 0.25030932, 1)
 sources/0 = SubResource("TileSetAtlasSource_alkh6")
+sources/1 = SubResource("TileSetAtlasSource_5utt1")
 
 [node name="ExMushroomOverlay" type="TileMap"]
 tile_set = SubResource("TileSet_5utt1")

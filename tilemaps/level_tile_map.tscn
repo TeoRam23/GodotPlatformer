@@ -7,4 +7,3 @@ tile_set = ExtResource("1_80d1y")
 format = 2
 layer_0/name = "Base"
 layer_1/name = "Slopes"
-layer_1/tile_data = PackedInt32Array()

@@ -169,6 +169,7 @@ wall_min_slide_angle = 3.14159
 safe_margin = 0.01
 
 [node name="ProjectileShape" type="CollisionShape2D" parent="ExplosionBody"]
+visible = false
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="explosion_area" parent="ExplosionBody" instance=ExtResource("3_my2bu")]
