@@ -8,6 +8,7 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.pls_player_died.connect(reset_level)
+	Events.pls_play_hide_level_particles.connect(hide_level)
 	reveal_level()
 
 
@@ -22,6 +23,7 @@ func hide_level():
 	await do_timer(0.25)
 	
 	black_screen.visible = true
+	Events.finished_hide_level_particles()
 
 
 func reset_level():

@@ -19,6 +19,8 @@ signal pls_enter_extra
 signal pls_save_settings_yall
 signal pls_dialogue_finished
 signal pls_swap_character
+signal pls_play_hide_level_particles
+signal pls_finished_hide_level_particles
 
 func projectile_hit():
 	pls_shake.emit()
@@ -72,3 +74,8 @@ func swap_character(character_id: int):
 	#0 er jeffrey, 1 er johnny, 2 er busk
 	VariableManager.character_id = character_id
 	pls_swap_character.emit()
+
+func play_hide_level_particles():
+	pls_play_hide_level_particles.emit()
+func finished_hide_level_particles():
+	pls_finished_hide_level_particles.emit()

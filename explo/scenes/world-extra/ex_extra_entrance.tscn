@@ -15,7 +15,7 @@ size = Vector2(20, 1)
 size = Vector2(20, 2)
 
 [sub_resource type="Curve" id="Curve_2uxok"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.240409, 1), 0.0, 0.0, 0, 0, Vector2(0.450128, 0.00490677), -8.97881, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.06, 1), 0.0, 0.0, 0, 0, Vector2(0.113, 0.005), -8.97881, 0.0, 0, 0]
 point_count = 3
 
 [node name="ExExtraEntrance" type="Node2D"]
@@ -54,7 +54,8 @@ shape = SubResource("RectangleShape2D_wuhm0")
 [node name="Particles2D" type="CPUParticles2D" parent="."]
 position = Vector2(24, -26)
 emitting = false
-amount = 67
+amount = 268
+lifetime = 4.0
 one_shot = true
 emission_shape = 3
 emission_rect_extents = Vector2(6, 1)
@@ -73,5 +74,10 @@ z_index = 9
 position = Vector2(24, -16)
 texture = ExtResource("4_ffnsc")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="SoupArea" to="." method="_on_soup_area_body_entered"]
 [connection signal="finished" from="Particles2D" to="." method="_on_particles_2d_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

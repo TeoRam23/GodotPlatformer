@@ -28,6 +28,7 @@ var world_is_enabled = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var buttons = grid_container.get_children()
+	buttons.append_array(extra_container.get_children())
 	#print(buttons)
 	for butt in buttons:
 		if butt.is_in_group("level_button_group"):

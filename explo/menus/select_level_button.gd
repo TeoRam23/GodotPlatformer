@@ -67,6 +67,7 @@ func cancel_me():
 
 
 func _on_mouse_entered():
+	
 	if label is Label:
 		if level_vars:
 			label.text = level_vars.title
@@ -92,6 +93,7 @@ func _on_mouse_entered():
 
 	if level_vars:
 		print("vi kommer oss hit...")
+		#print(level_vars)
 		# burde sjekke om de eksisterer, men jeg gidder ikke, det går nok bra...
 		if level_vars.no_walking and tin_no_walking is TextureRect:
 			tin_no_walking.visible = true

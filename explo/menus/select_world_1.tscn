@@ -132,5 +132,18 @@ layout_mode = 2
 text = "25"
 the_level = "res://levels/world one/1-25.tscn"
 
+[node name="BonusA" parent="Control/ExtraContainer" index="0"]
+the_level = "res://levels/world_bonus/1-A.tscn"
+
 [node name="BonusB" parent="Control/ExtraContainer" index="2"]
+the_level = "res://levels/world_bonus/1-B.tscn"
+
+[node name="BonusC" parent="Control/ExtraContainer" index="4"]
+the_level = "res://levels/world_bonus/1-C.tscn"
+
+[node name="BonusD" parent="Control/ExtraContainer" index="6"]
+the_level = "res://levels/world_bonus/1-D.tscn"
+
+[node name="BonusE" parent="Control/ExtraContainer" index="8"]
 the_level = "res://levels/level_explo.tscn"
+title_override = "Explo"
