@@ -9,6 +9,8 @@ extends Area2D
 @onready var johnny_play_sprite: Sprite2D = $JohnnyPlaySprite
 @onready var johnny_play_dialogue: CanvasLayer = $JohnnyPlayDialogue
 
+@onready var johnny_particle: CPUParticles2D = $JohnnyParticle
+@onready var jeffrey_particle: CPUParticles2D = $JeffreyParticle
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -72,6 +74,8 @@ func swap_johnny():
 	if VariableManager.character_id == 0:
 		Events.swap_character(1)
 		johnny_play_sprite.use_parent_material = true
+		jeffrey_particle.emitting = true
 	elif VariableManager.character_id == 1:
 		Events.swap_character(0)
 		johnny_play_sprite.use_parent_material = false
+		johnny_particle.emitting = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=57 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" uid="uid://bhj5j4a8ju0rv" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -323,6 +323,27 @@ point_count = 3
 _data = [Vector2(0, 0.384317), 0.0, 0.859131, 0, 0, Vector2(0.458647, 1), -0.0671202, -0.0671202, 0, 0, Vector2(0.969925, 0), -3.32257, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Gradient" id="Gradient_7iaxr"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7777778)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3v2ag"]
+gradient = SubResource("Gradient_7iaxr")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_jej6c"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.15384617, 0), 0.0, 16.689238, 0, 0, Vector2(1, 100), 401.375, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_f1ej7"]
+_data = [Vector2(0.060728744, 1), 0.0, -6.009122e-07, 0, 0, Vector2(1, 0), 0.056946374, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D" groups=["moved_by_air", "player"]]
 z_index = 2
 collision_layer = 2
@@ -568,6 +589,48 @@ damping_curve = SubResource("Curve_svgfd")
 scale_amount_min = 4.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_0c0wy")
+
+[node name="JohnnyParticle" type="CPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, -3)
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_3v2ag")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 3.731
+damping_max = 3.731
+damping_curve = SubResource("Curve_jej6c")
+scale_amount_min = 0.4
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_f1ej7")
+color = Color(0.2627451, 0.48235294, 0.8509804, 1)
+
+[node name="JeffreyParticle" type="CPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, -3)
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_3v2ag")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 3.731
+damping_max = 3.731
+damping_curve = SubResource("Curve_jej6c")
+scale_amount_min = 0.4
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_f1ej7")
+color = Color(0.92941177, 0.11764706, 0.14117648, 1)
 
 [node name="LaunchDelay" type="Timer" parent="."]
 wait_time = 0.1

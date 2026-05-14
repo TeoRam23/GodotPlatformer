@@ -52,6 +52,9 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var dead_particle = $DeadParticle2
 @onready var ground_poof_particle = $GroundPoofParticle2
 
+@onready var johnny_particle: CPUParticles2D = $JohnnyParticle
+@onready var jeffrey_particle: CPUParticles2D = $JeffreyParticle
+
 @export var debug = true
 
 @onready var timer = $Timer
@@ -61,6 +64,7 @@ var prevelocity = Vector2(0.0, 0.0)
 var first_frame = true
 
 var hot_air = false
+var show_switch_particles = false
 
 func _ready():
 	main_data = movement_data
@@ -80,7 +84,10 @@ func _ready():
 		Events.low_gravity()
 	if Settings.zero_gravity:
 		zero_gravity = true
+	
+	
 	johnnify()
+	show_switch_particles = true
 	
 	if 1 == 2:
 		starting_animation()
@@ -851,10 +858,14 @@ func johnnify():
 	if VariableManager.character_id == 0:
 		animated_sprite_2d.use_parent_material = true
 		dead_particle.color = Color(0.929, 0.118, 0.141)
+		if show_switch_particles == true:
+			jeffrey_particle.emitting = true
 		#launch_particle.modulate = Color(0.839, 0.525, 0.502)
 	elif VariableManager.character_id == 1:
 		animated_sprite_2d.use_parent_material = false
 		dead_particle.color = Color(0.263, 0.482, 0.851)
+		if show_switch_particles == true:
+			johnny_particle.emitting = true
 		#launch_particle.modulate = Color(0.504, 0.694, 0.84)
 
 func _input(_event):
