@@ -15,6 +15,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0.262745, 0.482353, 0.85098, 1)
 
 [node name="GateJohnny" type="StaticBody2D"]
+process_mode = 1
 collision_layer = 65
 collision_mask = 0
 script = ExtResource("1_anj2o")

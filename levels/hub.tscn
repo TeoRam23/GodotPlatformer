@@ -407,9 +407,11 @@ layer_0/tile_data = PackedInt32Array(131077, 131072, 1, 65541, 131072, 0, 131076
 layer_0/tile_data = PackedInt32Array(-19, 6, 65536, -20, 6, 65536, 65516, 6, 65536, 131052, 6, 65536, 196588, 6, 65536, 196589, 6, 65536, 131053, 6, 65536, 65517, 6, 65536)
 
 [node name="GateWorld5" parent="ObjectHolder" index="0" instance=ExtResource("5_g0rof")]
+process_mode = 1
 position = Vector2(-48, 320)
 
 [node name="GateJohnny" parent="ObjectHolder" index="1" instance=ExtResource("5_2myma")]
+process_mode = 1
 position = Vector2(288, -16)
 
 [node name="BuiltInObjects" type="Node" parent="." index="16"]
@@ -454,6 +456,7 @@ top = true
 yes_or_no = true
 
 [node name="JohnnyPlaySprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="4"]
+visible = false
 material = SubResource("ShaderMaterial_11x7m")
 position = Vector2(16, 40)
 texture = SubResource("AtlasTexture_op6bl")
@@ -466,6 +469,7 @@ top = true
 yes_or_no = true
 
 [node name="JohnnyParticle" type="CPUParticles2D" parent="BuiltInObjects/JohnnyNpcArea" index="6"]
+process_mode = 1
 position = Vector2(16, 40)
 emitting = false
 amount = 16
@@ -486,6 +490,7 @@ scale_amount_curve = SubResource("Curve_3uarx")
 color = Color(0.2627451, 0.48235294, 0.8509804, 1)
 
 [node name="JeffreyParticle" type="CPUParticles2D" parent="BuiltInObjects/JohnnyNpcArea" index="7"]
+process_mode = 1
 position = Vector2(16, 40)
 emitting = false
 amount = 16

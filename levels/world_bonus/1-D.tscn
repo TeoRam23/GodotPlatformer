@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dy4gbnan4usm0"]
+[gd_scene load_steps=14 format=3 uid="uid://dy4gbnan4usm0"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_b382e"]
 [ext_resource type="Texture2D" uid="uid://ck27xx4v440l3" path="res://assets/baksplodder/verd bonus/1-D.png" id="2_d635g"]
+[ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_vj6r3"]
 [ext_resource type="PackedScene" uid="uid://4r6ad8ool77e" path="res://explo/scenes/world-extra/gloop_tilemap.tscn" id="3_vj6r3"]
 [ext_resource type="PackedScene" uid="uid://b3uet6ycg6xp3" path="res://explo/destructablocks/standard/standard_line_v.tscn" id="4_6iq0n"]
 [ext_resource type="PackedScene" uid="uid://ja1xhimefqtm" path="res://explo/destructablocks/standard/standard_block.tscn" id="5_3uj88"]
@@ -17,6 +18,7 @@ size = Vector2(640, 2040)
 
 [node name="1-D" instance=ExtResource("1_b382e")]
 title = "It's a fungus eat plant world out there"
+next_level = ExtResource("2_vj6r3")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
