@@ -20,7 +20,7 @@ _data = [Vector2(0, 1), 0.0, -4.6996e-07, 0, 0, Vector2(1, 0.120879), -2.83202, 
 point_count = 2
 
 [node name="PoofLevelAnimation" type="CanvasLayer"]
-process_mode = 3
+process_mode = 1
 script = ExtResource("1_lvdeu")
 
 [node name="BlackScreen" type="ColorRect" parent="."]

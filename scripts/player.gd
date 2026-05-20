@@ -383,6 +383,7 @@ func i_died(truly):
 		#get_tree().reload_current_scene()
 		#global_position = starting_position
 		#prevelocity = Vector2(0, 0)
+	
 
 #func _on_gravity_detector_area_entered(area):
 #	var entered_area2d = area
@@ -873,7 +874,11 @@ func _input(_event):
 		#VariableManager.johnny_mode = !VariableManager.johnny_mode
 		#johnnify()
 	if Input.is_action_just_pressed("reset"):
-		call_deferred("i_died", true)
+		# har denne slik at man kan resette etter man har nådd slutten, eller for å insta-resette når man dør
+		if !is_physics_processing():
+			get_tree().reload_current_scene()
+		else:
+			call_deferred("i_died", true)
 
 #func _on_timer_timeout():
 	#print("BOTT!")

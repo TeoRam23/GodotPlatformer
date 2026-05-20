@@ -14,6 +14,8 @@ func _ready():
 
 func reveal_level():
 	visible = true
+	# av en eller annen grunn fikser den feilen hvor partiklen ikke vises hvis man kommer fra hub. idk why
+	await do_timer(0.000000000001)
 	black_screen.visible = false
 	reveal_particle.emitting = true
 
@@ -40,7 +42,8 @@ func do_timer(seconds):
 	var timer = Timer.new()
 	timer.wait_time = seconds
 	timer.one_shot = true
-	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+	# jeg endret det nettop hele animationen til pausable, jeg vet ikke hvorfor den var satt til always før?
+	#timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(timer)
 	timer.start()
 	
