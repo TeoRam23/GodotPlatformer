@@ -14,7 +14,7 @@
 size = Vector2(2878, 360)
 
 [node name="2-C" instance=ExtResource("1_hggj3")]
-title = "The Gliding Gloops!"
+title = "The Gliding Gloop Run"
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

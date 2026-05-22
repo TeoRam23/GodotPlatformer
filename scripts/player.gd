@@ -23,6 +23,7 @@ var invincible = false
 #var lu = Vector2.ZERO
 
 var is_paused = false
+var is_disabled = false
 
 
 var gravity_direction = 0
@@ -368,10 +369,12 @@ func disable_player(do_particles: bool):
 	animated_sprite_2d.visible = false
 	launch_particle.emitting = false
 	dead_particle.emitting = do_particles
+	is_disabled = true
 
 func enable_player():
 	set_physics_process(true)
 	animated_sprite_2d.visible = true
+	is_disabled = false
 
 func i_died(truly):
 	if invincible and not truly:

@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	if get_parent() == parent:
 		if parent.has_method("is_on_floor"):
-			if parent.is_on_floor():
+			if parent.is_on_floor() or parent.is_disabled:
 				poof_away()
 	var input_axis = Input.get_axis("left", "right")
 	if input_axis != 0:

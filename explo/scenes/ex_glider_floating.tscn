@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://bh6m2h30sfekn"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_glider_floating.gd" id="1_vptjr"]
+[ext_resource type="Script" uid="uid://cs6x4cql3s8g0" path="res://explo/scripts/ex_glider_floating.gd" id="1_vptjr"]
 [ext_resource type="Texture2D" uid="uid://dvc00v4uacm4v" path="res://assets/GlideBubble.png" id="2_qwdoq"]
-[ext_resource type="Script" path="res://explo/scripts/ExGliderChild.gd" id="2_v7b7n"]
+[ext_resource type="Script" uid="uid://dlbmvlnwr6xju" path="res://explo/scripts/ExGliderChild.gd" id="2_v7b7n"]
 [ext_resource type="Texture2D" uid="uid://de3cwdglk75vo" path="res://assets/Glider.png" id="3_71mp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub5ya"]
