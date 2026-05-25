@@ -115,9 +115,9 @@ func _physics_process(delta):
 	handle_jump()
 	if debug and Input.is_key_pressed(KEY_F):
 		if Input.is_key_pressed(KEY_CTRL):
-			prevelocity.y = -250
+			prevelocity.y = -125
 		else:
-			prevelocity.y = -250 * 0.5
+			prevelocity.y = -250
 	handle_dash()
 	handle_acceleration(input_axis, delta)
 	handle_air_acceleration(input_axis, delta)
@@ -319,7 +319,7 @@ func update_animation(input_axis, real_axis):
 	
 	if input_axis != 0:
 		
-		if abs(prevelocity.x) > movement_data.speed * 8:
+		if abs(prevelocity.x) > movement_data.speed * 8 or debug == true:
 			animated_sprite_2d.speed_scale = 4
 			animated_sprite_2d.play("runner")
 		elif abs(prevelocity.x) > movement_data.speed * 2:
@@ -818,6 +818,17 @@ func button_presses(delta):
 		var center = entered_area2d.global_position
 		var distance = center.distance_to(global_position)
 		print(distance)
+	
+	if Input.is_action_just_pressed("bar_key"):
+		debug = !debug
+		if debug == true:
+			invincible = true
+			movement_data.speed = 180
+			sprite_holder.modulate = Color(1.76, 1.76, 0.0)
+		else:
+			invincible = false
+			movement_data.speed = 60
+			sprite_holder.modulate = Color.WHITE
 	
 	if debug:
 		if Input.is_key_pressed(KEY_G):

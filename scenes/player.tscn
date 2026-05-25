@@ -353,6 +353,7 @@ floor_snap_length = 3.0
 safe_margin = 0.001
 script = ExtResource("1_7n2kp")
 movement_data = ExtResource("2_tf3sn")
+debug = false
 
 [node name="SpriteHolder" type="Node2D" parent="."]
 

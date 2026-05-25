@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://qjwrc22psa1m"]
+[gd_scene load_steps=12 format=3 uid="uid://qjwrc22psa1m"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_hggj3"]
+[ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_4up2g"]
 [ext_resource type="Texture2D" uid="uid://0tifsuki7xjt" path="res://assets/baksplodder/verd bonus/2-C.png" id="2_jsbqt"]
 [ext_resource type="PackedScene" uid="uid://bgxdyo211rl52" path="res://explo/scenes/world-extra/extra_key.tscn" id="3_ix324"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="4_nbt0r"]
@@ -15,6 +16,7 @@ size = Vector2(2878, 360)
 
 [node name="2-C" instance=ExtResource("1_hggj3")]
 title = "The Gliding Gloop Run"
+next_level = ExtResource("2_4up2g")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
