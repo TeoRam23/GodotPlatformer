@@ -57,6 +57,14 @@ func set_camera():
 				if baby.is_in_group("Sprite"):
 					chi_sprite = baby
 					chi_sprite.frame = randi_range(1,4)
+					var rot_rand = randi_range(1,4)
+					# Jeg prøvde å rotere den for å ha flere variasjoner, men det virket ikke helt og jeg ga opp.
+					#if rot_rand == 1:
+						#chi_sprite.rotation = 90
+					#if rot_rand == 2:
+						#chi_sprite.rotation = 180
+					#elif rot_rand == 3:
+						#chi_sprite.rotation = 270
 					
 			if chi_sprite:
 				child.remove_child(chi_sprite)

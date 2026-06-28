@@ -79,6 +79,7 @@ func _ready():
 	Events.level_completed.connect(func(): disable_player(true))
 	Events.pls_enter_extra.connect(func(): disable_player(false))
 	Events.pls_swap_character.connect(johnnify)
+	Events.pls_tp_player.connect(tp_to_cord)
 	#Events.pls_set_wrap.connect(wrap_me) # ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 	
 	if low_gravity:
@@ -154,7 +155,7 @@ func _physics_process(delta):
 	just_wall_jumped = false
 	just_launched = false
 	
-	if position.y > 1350:
+	if position.y > 2500:
 		position = starting_position
 		prevelocity = Vector2(0, 0)
 	
@@ -377,7 +378,7 @@ func enable_player():
 	is_disabled = false
 
 func i_died(truly):
-	if invincible and not truly:
+	if (invincible and not truly) or (invincible and debug):
 		return
 	if is_physics_processing():
 		disable_player(true)
@@ -386,6 +387,9 @@ func i_died(truly):
 		#get_tree().reload_current_scene()
 		#global_position = starting_position
 		#prevelocity = Vector2(0, 0)
+
+func tp_to_cord(cords: Vector2):
+	global_position = cords
 	
 
 #func _on_gravity_detector_area_entered(area):

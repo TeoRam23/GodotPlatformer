@@ -355,6 +355,7 @@ point_count = 2
 
 [node name="‎ -1" instance=ExtResource("1_ep6w1")]
 title = "Hub"
+hub = true
 
 [node name="Hub1" type="Sprite2D" parent="." index="0"]
 visible = false
@@ -411,7 +412,6 @@ process_mode = 1
 position = Vector2(-48, 320)
 
 [node name="GateJohnny" parent="ObjectHolder" index="1" instance=ExtResource("5_2myma")]
-process_mode = 1
 position = Vector2(288, -16)
 
 [node name="BuiltInObjects" type="Node" parent="." index="16"]

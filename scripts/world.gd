@@ -4,6 +4,7 @@ extends Node2D
 @export var next_level: PackedScene
 @export var unlock_level_path: String
 @export var show_mouse = false
+@export var hub = false
 
 @onready var level_completed = $CanvasLayer/LevelCompleted
 @onready var black_screen = $CanvasLayer/BlackScreen
@@ -21,6 +22,17 @@ var locked_mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 func _ready():
 	if show_mouse:
 		locked_mouse_mode = Input.MOUSE_MODE_CONFINED
+	if hub:
+		if VariableManager.world_we_entered == "1":
+			Events.tp_player(Vector2(0,11))
+		elif VariableManager.world_we_entered == "2":
+			Events.tp_player(Vector2(-144,-165))
+		elif VariableManager.world_we_entered == "3":
+			Events.tp_player(Vector2(144,-165))
+		elif VariableManager.world_we_entered == "4":
+			Events.tp_player(Vector2(0,-389))
+		elif VariableManager.world_we_entered == "5":
+			Events.tp_player(Vector2(0,619))
 	#RenderingServer.set_default_clear_color(Color.BLACK)
 	#RenderingServer.set_default_clear_color(Color(0.102, 0.102, 0.133))
 	#RenderingServer.set_default_clear_color(Color(0.11, 0.11, 0.125))

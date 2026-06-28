@@ -6,6 +6,7 @@ extends Button
 @export var bonus = false
 
 var level_vars: Dictionary
+var level_world
 
 var label: Label
 var time_label: Label
@@ -21,10 +22,11 @@ func _ready():
 	var level_part = the_level.get_file()
 	level_part = level_part.substr(0, level_part.rfind("."))
 	level_vars = VariableManager.find_level(level_part)
+	level_world = level_part.split()[0]
 	
 	
 	if level_vars or !canceled:
-		#print("ye: ", level_part)
+		#print("ye: ", level_id)
 		if !level_vars:
 			level_vars.completed = false
 		if title_override:
@@ -52,6 +54,7 @@ func _on_pressed():
 		Events.general_leaving()
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 		Input.warp_mouse(get_window().size * 0.5)
+		VariableManager.world_we_entered = level_world
 		get_tree().paused = false
 		get_tree().change_scene_to_file(the_level)
 

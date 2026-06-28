@@ -23,8 +23,9 @@ static var current_title_time = 3
 #var levels_completed = [{"id": &"1-1", "completed": false, "best_time": -1.0}]
 static  var levels_completed = []
 
-
 static var pausing_disabled = false
+
+static var world_we_entered = "1"
 
 
 # Called when the node enters the scene tree for the first time.

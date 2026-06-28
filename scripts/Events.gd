@@ -21,6 +21,7 @@ signal pls_dialogue_finished
 signal pls_swap_character
 signal pls_play_hide_level_particles
 signal pls_finished_hide_level_particles
+signal pls_tp_player
 
 func projectile_hit():
 	pls_shake.emit()
@@ -79,3 +80,6 @@ func play_hide_level_particles():
 	pls_play_hide_level_particles.emit()
 func finished_hide_level_particles():
 	pls_finished_hide_level_particles.emit()
+
+func tp_player(cords):
+	pls_tp_player.emit(cords)

@@ -31,6 +31,9 @@ func give_air(delta):
 					# lykke til fremtidsmeg...
 					# takk... dette blir ikke rett, når man drar opp og ned skal man ikke komme lenger opp eller ned, men med dette gjør man det
 					# ??? er kommentaren over utdatert? det ser ut til å virke som det skal tror jeg???
+					# hei, jeg er tilbake. det er ett sted hvor det er mismatch mellom referansen og explo, men rett ved siden er de helt likkens
+					# så, det kan hende det er noe feil? men jeg aner ikke :(
+					# hei, jeg er fra 10 sekunder frem i tid. jeg hadde bare feil størrelse på hot air, alt er bra!
 					print("giving to player")
 					bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
 					bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
