@@ -12,6 +12,7 @@
 size = Vector2(3207, 360)
 
 [node name="4-B" instance=ExtResource("1_joo84")]
+title = "Diagonal Mushrooms"
 next_level = ExtResource("2_07jl8")
 
 [node name="REFFERECNE" parent="." index="1"]

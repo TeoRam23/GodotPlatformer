@@ -79,6 +79,7 @@ func show_level_completed():
 	#await LevelTransition.fade_to_black()
 	
 	# i variablemanager gjør dette ingenting, men jeg vil ikke fjerne det enda
+	# JO i overlay brukes dette for å holde tittelen oppe hvis man dør før den forsvinner!
 	VariableManager.current_title_time = 3
 	
 	if johnny_collected:

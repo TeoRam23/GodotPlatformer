@@ -64,6 +64,7 @@ func _on_restart_pressed():
 
 
 func _on_back_to_hub_pressed():
+	VariableManager.current_title_time = 3
 	Events.general_leaving()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://levels/hub.tscn")
@@ -71,6 +72,7 @@ func _on_back_to_hub_pressed():
 
 
 func _on_main_menu_pressed():
+	VariableManager.current_title_time = 3
 	Events.general_leaving()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://explo/menus/start_screen.tscn")
