@@ -1,6 +1,16 @@
 extends CharacterBody2D
 
-@onready var break_particle = $BreakParticle
+var break_particle: CPUParticles2D
+@onready var break_particle_main: CPUParticles2D = $BreakParticle
+@onready var break_particle_mush: CPUParticles2D = $BreakParticleMush
+var world_number = 1
+
+func _ready() -> void:
+	if world_number == 5:
+		break_particle = break_particle_mush
+	else:
+		break_particle = break_particle_main
+
 
 func _physics_process(delta):
 	move_and_slide()

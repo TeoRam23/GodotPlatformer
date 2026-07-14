@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbmw4ulyatl2j"]
+[gd_scene load_steps=16 format=3 uid="uid://bbmw4ulyatl2j"]
 
-[ext_resource type="Script" path="res://explo/scripts/world-3/ex_lava_bubble.gd" id="1_iqf1n"]
+[ext_resource type="Script" uid="uid://c3lphpiiln2i6" path="res://explo/scripts/world-3/ex_lava_bubble.gd" id="1_iqf1n"]
+[ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="2_fk4wj"]
 [ext_resource type="Texture2D" uid="uid://divv63jcrh16p" path="res://assets/LavaBush.png" id="2_m3vib"]
+[ext_resource type="Texture2D" uid="uid://de6r2vveh87ey" path="res://assets/LavaMush.png" id="4_p0qrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rljki"]
 size = Vector2(14, 14)
@@ -32,6 +34,28 @@ animations = [{
 atlas = ExtResource("2_m3vib")
 region = Rect2(29, 1, 12, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6wjj"]
+atlas = ExtResource("4_p0qrc")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0qrc"]
+atlas = ExtResource("4_p0qrc")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_alstc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6wjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0qrc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
 [sub_resource type="Gradient" id="Gradient_ygmdj"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.488636, 0.670455)
@@ -61,13 +85,21 @@ shape = SubResource("RectangleShape2D_rljki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rljki")
 
-[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+[node name="W5SpriteSwapper" parent="." instance=ExtResource("2_fk4wj")]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="W5SpriteSwapper" groups=["sprite_to_hide"]]
 sprite_frames = SubResource("SpriteFrames_yq7ma")
 autoplay = "default"
 frame_progress = 0.440824
 
-[node name="FaceSprite" type="Sprite2D" parent="BodySprite"]
+[node name="FaceSprite" type="Sprite2D" parent="W5SpriteSwapper/BodySprite"]
 texture = SubResource("AtlasTexture_efk8x")
+
+[node name="MushSprite" type="AnimatedSprite2D" parent="W5SpriteSwapper" groups=["sprite_to_show"]]
+visible = false
+sprite_frames = SubResource("SpriteFrames_alstc")
+autoplay = "default"
+frame_progress = 0.82965106
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false
@@ -81,10 +113,29 @@ modulate = Color(0.45098, 0.317647, 0.545098, 0.643137)
 z_index = -1
 emitting = false
 amount = 20
+texture = SubResource("GradientTexture2D_eqx5t")
 lifetime = 0.37
 randomness = 0.47
 lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+scale_amount_min = 0.15
+scale_amount_max = 0.22
+color_ramp = SubResource("Gradient_urmno")
+
+[node name="MoozheParticle" type="CPUParticles2D" parent="."]
+modulate = Color(0.45, 1, 0.91749996, 0.4509804)
+z_index = -1
+emitting = false
+amount = 20
 texture = SubResource("GradientTexture2D_eqx5t")
+lifetime = 0.37
+randomness = 0.47
+lifetime_randomness = 0.5
 emission_shape = 1
 emission_sphere_radius = 3.0
 spread = 180.0

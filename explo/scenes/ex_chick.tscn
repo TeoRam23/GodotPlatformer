@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca3ji6x6to3r0"]
+[gd_scene load_steps=9 format=3 uid="uid://ca3ji6x6to3r0"]
 
 [ext_resource type="Script" uid="uid://baosjnuvha4v8" path="res://explo/scripts/ex_chick.gd" id="1_fwdli"]
 [ext_resource type="Texture2D" uid="uid://b2r8fd5a4226" path="res://assets/Kylling.png" id="1_wn00a"]
+[ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="2_o4ndy"]
 [ext_resource type="Script" uid="uid://0enu3glx1box" path="res://explo/scripts/single_particle.gd" id="3_1ade4"]
+[ext_resource type="Texture2D" uid="uid://duli7kvbpyiha" path="res://assets/KyllingMush.png" id="4_bvm15"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86273"]
 radius = 8.0
@@ -24,9 +26,16 @@ script = ExtResource("1_fwdli")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_86273")
 
+[node name="W5SpriteSwapper" parent="." instance=ExtResource("2_o4ndy")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
 texture = ExtResource("1_wn00a")
+
+[node name="SpriteMush" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -2)
+texture = ExtResource("4_bvm15")
 
 [node name="SplootParticle" type="CPUParticles2D" parent="."]
 emitting = false
@@ -43,7 +52,7 @@ damping_max = 4.448
 scale_amount_min = 3.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_rfjay")
-color = Color(0.803922, 0.560784, 0.427451, 1)
+color = Color(0.8039216, 0.56078434, 0.42745098, 1)
 color_ramp = SubResource("Gradient_erd2h")
 script = ExtResource("3_1ade4")
 

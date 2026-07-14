@@ -16,8 +16,8 @@ var last_vel_check = Vector2.ZERO
 @onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
 @onready var ooze_particle = $OozeParticle
 
-@onready var body_sprite = $BodySprite
-@onready var face_sprite = $BodySprite/FaceSprite
+@onready var body_sprite: Node2D = $W5SpriteSwapper
+@onready var face_sprite: Sprite2D = $W5SpriteSwapper/BodySprite/FaceSprite
 @onready var float_timer = $FloatTimer
 @onready var collision_shape_2d = $CollisionShape2D
 
@@ -50,6 +50,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	#print("I AM A NEW BUBBLE")
 	#print(lava_can_kill)
+	var stage = get_tree().current_scene.name
+	var world_number = int(stage.split()[0])
+	if world_number == 5:
+		ooze_particle = $MoozheParticle
+	
 	start_pos = position
 	
 	

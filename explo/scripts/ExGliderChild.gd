@@ -13,6 +13,9 @@ func _ready():
 	Events.pls_player_died.connect(poof_away)
 	Events.level_completed.connect(poof_away)
 	bubble = get_parent()
+	var stage = get_tree().current_scene.name
+	var world_number = int(stage.split()[0])
+	material.set("shader_parameter/parent_id", world_number)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

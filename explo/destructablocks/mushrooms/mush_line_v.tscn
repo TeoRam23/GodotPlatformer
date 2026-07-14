@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch67xau3w0kvx"]
+
+[ext_resource type="PackedScene" uid="uid://b3uet6ycg6xp3" path="res://explo/destructablocks/standard/standard_line_v.tscn" id="1_mk7qp"]
+[ext_resource type="Texture2D" uid="uid://bag3qk0syjqmr" path="res://assets/MushBlock.png" id="2_55vcd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvhby"]
+atlas = ExtResource("2_55vcd")
+region = Rect2(32, 0, 16, 32)
+
+[node name="MushLineV" type="Node2D"]
+
+[node name="StandardLineV" parent="." instance=ExtResource("1_mk7qp")]
+type_id = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_mvhby")

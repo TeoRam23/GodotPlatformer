@@ -30,6 +30,11 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[global_group]
+
+sprite_to_hide="used on sprites that will be hidden in world 5"
+sprite_to_show="used on sprites that will be shown in world 5"
+
 [gui]
 
 theme/custom_font="res://assets/nokiafc22.ttf"

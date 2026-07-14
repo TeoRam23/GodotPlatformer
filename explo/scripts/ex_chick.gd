@@ -1,10 +1,22 @@
 extends Area2D
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var sploot_particle = $SplootParticle
 var ye_am_done = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var stage = get_tree().current_scene.name
+	var world_number = int(stage.split()[0])
+	
+	if world_number == 5:
+		sprite_2d.visible = false
+		sprite_2d = $SpriteMush
+		sprite_2d.visible = true
+		
+		sploot_particle.color = Color(0.49, 0.443, 0.349)
+	
+	
 	bobble_animation()
 
 
@@ -38,7 +50,7 @@ func _on_body_entered(body):
 func bobble_animation():
 	#print("oop")
 	var tween = create_tween()
-	tween.tween_property($Sprite2D, "position", $Sprite2D.position + Vector2(0, 5), 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property($Sprite2D, "position", $Sprite2D.position + Vector2(0, 0), 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite_2d, "position", sprite_2d.position + Vector2(0, 5), 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite_2d, "position", sprite_2d.position + Vector2(0, 0), 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	bobble_animation()

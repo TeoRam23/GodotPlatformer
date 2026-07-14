@@ -10,6 +10,11 @@ func _ready():
 	swirl_mask.frame = 7
 	check_for_chicks()
 	Events.pls_activate_ender.connect(i_will_activate)
+	
+	
+	var stage = get_tree().current_scene.name
+	var world_number = int(stage.split()[0])
+	swirl_sprite.material.set("shader_parameter/parent_id", world_number)
 	#Events.level_completed.connect(animate_end)
 	
 

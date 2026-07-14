@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csiadbq6ohwff"]
 
-[ext_resource type="Script" path="res://explo/destructablocks/destruct_particles.gd" id="1_hix8b"]
+[ext_resource type="Script" uid="uid://cs2gwll55uqil" path="res://explo/destructablocks/destruct_particles.gd" id="1_hix8b"]
 
 [node name="RegenParticles" type="CPUParticles2D"]
 z_index = -1
@@ -16,5 +16,5 @@ initial_velocity_min = 200.0
 initial_velocity_max = 250.0
 scale_amount_min = 4.0
 scale_amount_max = 8.0
-color = Color(0.756863, 0.298039, 0.286275, 1)
+color = Color(0.7411765, 0.33333334, 0.27450982, 1)
 script = ExtResource("1_hix8b")

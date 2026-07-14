@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dljxxl585036o"]
+[gd_scene load_steps=9 format=3 uid="uid://dljxxl585036o"]
 
-[ext_resource type="Script" path="res://explo/scripts/arrow_hazard.gd" id="1_ycjon"]
+[ext_resource type="Script" uid="uid://bombm7gm0ha8e" path="res://explo/scripts/arrow_hazard.gd" id="1_ycjon"]
 [ext_resource type="Texture2D" uid="uid://ddu0klt0uovyp" path="res://assets/arrow.png" id="2_e4r20"]
-[ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="3_mlk2w"]
+[ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="2_qi37s"]
+[ext_resource type="Script" uid="uid://0enu3glx1box" path="res://explo/scripts/single_particle.gd" id="3_mlk2w"]
+[ext_resource type="Texture2D" uid="uid://dt2g6epjpwhq7" path="res://assets/arrow_mush.png" id="4_0xrx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evl7g"]
 size = Vector2(5, 2)
@@ -34,9 +36,16 @@ collision_mask = 0
 position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_a7fis")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="W5SpriteSwapper" parent="." instance=ExtResource("2_qi37s")]
+
+[node name="Sprite2D" type="Sprite2D" parent="W5SpriteSwapper" groups=["sprite_to_hide"]]
 position = Vector2(-8, 0)
 texture = ExtResource("2_e4r20")
+
+[node name="SpriteMush" type="Sprite2D" parent="W5SpriteSwapper" groups=["sprite_to_show"]]
+visible = false
+position = Vector2(-8, 0)
+texture = ExtResource("4_0xrx3")
 
 [node name="BreakParticle" type="CPUParticles2D" parent="."]
 z_index = -5
@@ -54,4 +63,22 @@ scale_amount_min = 3.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_kwexm")
 color = Color(0.796078, 0.647059, 0.262745, 1)
+script = ExtResource("3_mlk2w")
+
+[node name="BreakParticleMush" type="CPUParticles2D" parent="."]
+z_index = -5
+position = Vector2(-16, 0)
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 10.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 50.0
+initial_velocity_max = 125.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_kwexm")
+color = Color(0.49019608, 0.44313726, 0.34901962, 1)
 script = ExtResource("3_mlk2w")

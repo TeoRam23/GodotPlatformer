@@ -1,20 +1,34 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh6m2h30sfekn"]
+[gd_scene load_steps=17 format=3 uid="uid://bh6m2h30sfekn"]
 
+[ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_5yb2j"]
 [ext_resource type="Script" uid="uid://cs6x4cql3s8g0" path="res://explo/scripts/ex_glider_floating.gd" id="1_vptjr"]
+[ext_resource type="Texture2D" uid="uid://ctpyyg65turgq" path="res://assets/color_maps/glider_main.png" id="2_1qy1k"]
 [ext_resource type="Texture2D" uid="uid://dvc00v4uacm4v" path="res://assets/GlideBubble.png" id="2_qwdoq"]
 [ext_resource type="Script" uid="uid://dlbmvlnwr6xju" path="res://explo/scripts/ExGliderChild.gd" id="2_v7b7n"]
 [ext_resource type="Texture2D" uid="uid://de3cwdglk75vo" path="res://assets/Glider.png" id="3_71mp3"]
+[ext_resource type="Texture2D" uid="uid://bacqlob4l2x1s" path="res://assets/color_maps/glider_mush.png" id="3_548gm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojc3p"]
+shader = ExtResource("1_5yb2j")
+shader_parameter/parent_id = 1
+shader_parameter/epsilon = 0.001
+shader_parameter/fyll_inn_ALLE_fargene = true
+shader_parameter/imageGRASS_MAIN = ExtResource("2_1qy1k")
+shader_parameter/imageFALL = ExtResource("2_1qy1k")
+shader_parameter/imageLAVA = ExtResource("2_1qy1k")
+shader_parameter/imageSPACE = ExtResource("2_1qy1k")
+shader_parameter/imageFIVE = ExtResource("3_548gm")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub5ya"]
 radius = 15.0
 
 [sub_resource type="Curve" id="Curve_vegot"]
-_data = [Vector2(0.194805, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.406593), -2.22418, 0.0, 0, 0]
+_data = [Vector2(0.59925103, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.1965003, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_fg0xg"]
-offsets = PackedFloat32Array(0.746032, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rq27"]
 atlas = ExtResource("3_71mp3")
@@ -39,14 +53,15 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_yvson"]
-_data = [Vector2(0.318182, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494505), -2.06838, 0.0, 0, 0]
+_data = [Vector2(0.681648, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -9.235043, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_3l5e8"]
-offsets = PackedFloat32Array(0.690476, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.690476)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [node name="ExGliderFloating" type="Area2D"]
+material = SubResource("ShaderMaterial_ojc3p")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_vptjr")
@@ -55,10 +70,13 @@ script = ExtResource("1_vptjr")
 shape = SubResource("CircleShape2D_ub5ya")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, -2)
 texture = ExtResource("2_qwdoq")
 
 [node name="BubPoof" type="CPUParticles2D" parent="."]
+modulate = Color(0.8901961, 0.87058824, 0.84705883, 1)
+use_parent_material = true
 emitting = false
 amount = 14
 lifetime = 0.3
@@ -73,17 +91,20 @@ scale_amount_curve = SubResource("Curve_vegot")
 color_ramp = SubResource("Gradient_fg0xg")
 
 [node name="ExGliderChild" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_ojc3p")
 position = Vector2(0, -18)
 script = ExtResource("2_v7b7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ExGliderChild"]
 visible = false
 z_index = 1
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_djuvh")
 autoplay = "default"
 frame_progress = 0.0944647
 
 [node name="PoofParticle" type="CPUParticles2D" parent="ExGliderChild"]
+use_parent_material = true
 emitting = false
 amount = 10
 lifetime = 0.2

@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfo7eb6nw82jq"]
+
+[ext_resource type="Texture2D" uid="uid://b637n5a1toiqh" path="res://assets/mush_fire.png" id="1_yrvy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbg22"]
+size = Vector2(16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umfn7"]
+atlas = ExtResource("1_yrvy7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8217s"]
+atlas = ExtResource("1_yrvy7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uppcw"]
+atlas = ExtResource("1_yrvy7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omj06"]
+atlas = ExtResource("1_yrvy7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82m47"]
+atlas = ExtResource("1_yrvy7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omw0p"]
+atlas = ExtResource("1_yrvy7")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrp5r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umfn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8217s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uppcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omj06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82m47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omw0p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="MainFire" type="StaticBody2D"]
+collision_layer = 772
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_jbg22")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hrp5r")
+autoplay = "default"
+frame_progress = 0.81772447

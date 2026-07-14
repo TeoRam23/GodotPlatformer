@@ -9,6 +9,10 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var stage = get_tree().current_scene.name
+	var world_number = int(stage.split()[0])
+	if world_number == 5:
+		particles_2d.modulate = Color(0.455, 1.0, 0.914)
 	set_particle_vars()
 
 

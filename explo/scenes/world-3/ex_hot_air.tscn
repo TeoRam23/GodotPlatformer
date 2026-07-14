@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyq1jil1do57l"]
 
-[ext_resource type="Script" path="res://explo/scripts/world-3/ex_hot_air.gd" id="1_e43lp"]
+[ext_resource type="Script" uid="uid://b5d4rdoyf0rkv" path="res://explo/scripts/world-3/ex_hot_air.gd" id="1_e43lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7q4m"]
 size = Vector2(192, 128)
@@ -11,7 +11,7 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_rwvd8"]
 offsets = PackedFloat32Array(0.813, 1)
-colors = PackedColorArray(0.45098, 0.317647, 0.545098, 1, 0.45098, 0.317647, 0.545098, 0.352941)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.352941)
 
 [node name="ExHotAir" type="Area2D"]
 process_physics_priority = -1
@@ -42,6 +42,7 @@ offset_bottom = 256.0
 color = Color(0.76383, 0.5022, 0.81, 0.623529)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0.451, 0.318, 0.545, 1)
 position = Vector2(328, 256)
 emitting = false
 amount = 150

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bflgygrmh01rj"]
+[gd_scene load_steps=42 format=3 uid="uid://bflgygrmh01rj"]
 
 [ext_resource type="PackedScene" uid="uid://cigdcpwal2jej" path="res://explo/hazards/spike_directions/long_spike_down.tscn" id="1_8pwis"]
 [ext_resource type="PackedScene" uid="uid://c50ud60vlnrxj" path="res://explo/hazards/spike_directions/long_spike_up.tscn" id="2_l3ixs"]
@@ -20,13 +20,19 @@
 [ext_resource type="PackedScene" uid="uid://dlt2p8xv8rs6g" path="res://explo/hazards/ex_kill_box.tscn" id="18_xgthb"]
 [ext_resource type="PackedScene" uid="uid://h0hxqn0deycg" path="res://explo/scenes/world-3/ex_fraggle_block.tscn" id="19_b8ts6"]
 [ext_resource type="PackedScene" uid="uid://dbn8bqmhjs1g3" path="res://explo/destructablocks/lava/lava_block.tscn" id="20_mg6ff"]
+[ext_resource type="PackedScene" uid="uid://dfo7eb6nw82jq" path="res://explo/hazards/fire/fire_down.tscn" id="20_o1uvp"]
 [ext_resource type="PackedScene" uid="uid://c844wey0x2tu7" path="res://explo/destructablocks/lava/lava_line_h.tscn" id="21_fwuc3"]
+[ext_resource type="PackedScene" uid="uid://sn00euqi6v8p" path="res://explo/hazards/fire/fire_up.tscn" id="21_pobbq"]
 [ext_resource type="PackedScene" uid="uid://ch2sqnn4e5n66" path="res://explo/destructablocks/lava/lava_line_v.tscn" id="22_8gfws"]
 [ext_resource type="PackedScene" uid="uid://ceacl1vad2pd6" path="res://explo/destructablocks/lava/lava_big_block.tscn" id="23_ontd3"]
 [ext_resource type="PackedScene" uid="uid://bh1xb8ii6qk4t" path="res://explo/destructablocks/space/space_block.tscn" id="24_wl8jk"]
 [ext_resource type="PackedScene" uid="uid://c0h3m5ie802kc" path="res://explo/destructablocks/space/space_line_h.tscn" id="25_2uqsk"]
 [ext_resource type="PackedScene" uid="uid://tfea4h6eq2fo" path="res://explo/destructablocks/space/space_line_v.tscn" id="26_rgy1y"]
 [ext_resource type="PackedScene" uid="uid://cwvmlhf85wfsd" path="res://explo/destructablocks/space/space_big_block.tscn" id="27_720de"]
+[ext_resource type="PackedScene" uid="uid://qa1krb6d1plx" path="res://explo/destructablocks/mushrooms/mush_block.tscn" id="30_84lrn"]
+[ext_resource type="PackedScene" uid="uid://u4h824d1hlc7" path="res://explo/destructablocks/mushrooms/mush_line_h.tscn" id="31_pruge"]
+[ext_resource type="PackedScene" uid="uid://ch67xau3w0kvx" path="res://explo/destructablocks/mushrooms/mush_line_v.tscn" id="32_rqqqm"]
+[ext_resource type="PackedScene" uid="uid://brnwutcyppcmd" path="res://explo/destructablocks/mushrooms/mush_big_block.tscn" id="33_8bgtq"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s7f3i"]
 resource_name = "Spikes"
@@ -58,6 +64,8 @@ resource_name = "Div"
 scenes/1/scene = ExtResource("17_w4ncl")
 scenes/2/scene = ExtResource("18_xgthb")
 scenes/3/scene = ExtResource("19_b8ts6")
+scenes/4/scene = ExtResource("20_o1uvp")
+scenes/5/scene = ExtResource("21_pobbq")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ega7l"]
 resource_name = "LavaBlocks"
@@ -73,6 +81,13 @@ scenes/2/scene = ExtResource("25_2uqsk")
 scenes/3/scene = ExtResource("26_rgy1y")
 scenes/4/scene = ExtResource("27_720de")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_t2qjs"]
+resource_name = "MushBlocks"
+scenes/1/scene = ExtResource("30_84lrn")
+scenes/2/scene = ExtResource("31_pruge")
+scenes/3/scene = ExtResource("32_rqqqm")
+scenes/4/scene = ExtResource("33_8bgtq")
+
 [sub_resource type="TileSet" id="TileSet_a1uwm"]
 sources/3 = SubResource("TileSetScenesCollectionSource_s7f3i")
 sources/4 = SubResource("TileSetScenesCollectionSource_jffwl")
@@ -80,6 +95,7 @@ sources/5 = SubResource("TileSetScenesCollectionSource_vp5n3")
 sources/6 = SubResource("TileSetScenesCollectionSource_kv1ea")
 sources/7 = SubResource("TileSetScenesCollectionSource_ega7l")
 sources/8 = SubResource("TileSetScenesCollectionSource_6vfhx")
+sources/9 = SubResource("TileSetScenesCollectionSource_t2qjs")
 
 [node name="ExObjectTilemap" type="TileMap"]
 tile_set = SubResource("TileSet_a1uwm")
@@ -87,7 +103,5 @@ format = 2
 layer_0/name = "Main"
 layer_1/name = "Below"
 layer_1/z_index = -1
-layer_1/tile_data = PackedInt32Array()
 layer_2/name = "Above"
 layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array()

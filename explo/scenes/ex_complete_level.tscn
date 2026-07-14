@@ -1,9 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bk0ej2eqbj74w"]
+[gd_scene load_steps=32 format=3 uid="uid://bk0ej2eqbj74w"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_complete_level.gd" id="1_81sdl"]
+[ext_resource type="Script" uid="uid://djie1cvl1dhpp" path="res://explo/scripts/ex_complete_level.gd" id="1_81sdl"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="2_43vsv"]
 [ext_resource type="Texture2D" uid="uid://bdtf7tvjg7mdi" path="res://assets/level_end.png" id="2_nsal0"]
 [ext_resource type="Texture2D" uid="uid://ppoofthc4rve" path="res://assets/level_end_activate.png" id="2_p423u"]
+[ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="3_s83nw"]
+[ext_resource type="Texture2D" uid="uid://bx2hlv7kl1hum" path="res://assets/color_maps/complete_mush.png" id="4_i5xa4"]
+[ext_resource type="Texture2D" uid="uid://bujwyk6sjd518" path="res://assets/color_maps/complete_main.png" id="5_0rtwf"]
+[ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="7_20ff0"]
+[ext_resource type="Texture2D" uid="uid://cpvcm3k6di2v6" path="res://assets/level_end_mush.png" id="9_0g1fy"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_grret"]
 
@@ -72,6 +77,17 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n73wb"]
+shader = ExtResource("3_s83nw")
+shader_parameter/parent_id = 0
+shader_parameter/epsilon = 0.001
+shader_parameter/fyll_inn_ALLE_fargene = true
+shader_parameter/imageGRASS_MAIN = ExtResource("5_0rtwf")
+shader_parameter/imageFALL = ExtResource("5_0rtwf")
+shader_parameter/imageLAVA = ExtResource("5_0rtwf")
+shader_parameter/imageSPACE = ExtResource("5_0rtwf")
+shader_parameter/imageFIVE = ExtResource("4_i5xa4")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fukx"]
 atlas = ExtResource("2_43vsv")
@@ -175,13 +191,21 @@ frame_progress = 1.0
 
 [node name="SwirlSprite" type="AnimatedSprite2D" parent="SwirlMask"]
 modulate = Color(1, 1, 1, 0.992157)
+material = SubResource("ShaderMaterial_n73wb")
 sprite_frames = SubResource("SpriteFrames_ktu3w")
 autoplay = "default"
 frame_progress = 0.643155
 
-[node name="GateSprite" type="Sprite2D" parent="."]
+[node name="W5SpriteSwapper" parent="." instance=ExtResource("7_20ff0")]
+
+[node name="GateSprite" type="Sprite2D" parent="W5SpriteSwapper" groups=["sprite_to_hide"]]
 position = Vector2(0, -24)
 texture = ExtResource("2_nsal0")
+
+[node name="GateSprite2" type="Sprite2D" parent="W5SpriteSwapper" groups=["sprite_to_show"]]
+visible = false
+position = Vector2(0, -24)
+texture = ExtResource("9_0g1fy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -18)

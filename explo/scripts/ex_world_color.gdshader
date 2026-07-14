@@ -43,8 +43,9 @@ void fragment() {
 				//}
 				//loop_done = true;
 				
+				// denne var på 0.05, så jeg skrev det nedenfor... det førte til problemer så jeg endret den
 				// jeg vet ikke hvorfor 0.05 ikke bare kan være 0.01, kanskje jeg har et problem?
-				if (distance(that_color, COLOR.rgba)<0.05){
+				if (distance(that_color, COLOR.rgba)<0.01){
 				if (parent_id == 2) {
 					COLOR = texture(imageFALL, uv);
 				} else if (parent_id == 3) {

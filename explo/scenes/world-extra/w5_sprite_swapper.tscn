@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dub814s0tcuyi"]
+
+[ext_resource type="Script" uid="uid://c48q7y03clfvr" path="res://explo/scripts/world-extra/w_5_sprite_swapper.gd" id="1_g0764"]
+
+[node name="W5SpriteSwapper" type="Node2D"]
+script = ExtResource("1_g0764")
