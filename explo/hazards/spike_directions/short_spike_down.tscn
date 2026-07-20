@@ -3,6 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://q2mmfq63yv30" path="res://explo/hazards/short_spike.tscn" id="1_onwq8"]
 
 [node name="ShortSpikeDown" type="Node2D"]
-modulate = Color(1, 1, 1, 0.956863)
 
 [node name="ShortSpike" parent="." instance=ExtResource("1_onwq8")]

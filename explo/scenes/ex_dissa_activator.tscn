@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc2amnlofb31d"]
+[gd_scene load_steps=18 format=3 uid="uid://dc2amnlofb31d"]
 
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_p42ow"]
 [ext_resource type="Script" uid="uid://770wvu517e3g" path="res://explo/scripts/ex_dissa_activator.gd" id="1_wx8i4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvlkjcmc6coh0" path="res://assets/color_maps/dissablocks/dissablock_color3.png" id="4_j3842"]
 [ext_resource type="Texture2D" uid="uid://dowst0b3gyyt1" path="res://assets/color_maps/dissablocks/dissablock_color2.png" id="5_aqjnp"]
 [ext_resource type="Texture2D" uid="uid://dhsv2e211favg" path="res://assets/color_maps/dissablocks/dissablock_color4.png" id="6_q0pp4"]
+[ext_resource type="Texture2D" uid="uid://cfc34dcuqwg4b" path="res://assets/DissaActiMush.png" id="8_d13uv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0uo50"]
 shader = ExtResource("1_p42ow")
@@ -44,6 +45,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rogn"]
+atlas = ExtResource("8_d13uv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e5rs"]
+atlas = ExtResource("8_d13uv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b014p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rogn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e5rs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Curve" id="Curve_rad3j"]
 _data = [Vector2(0, 1), 0.0, 0.49531, 0, 0, Vector2(0.584416, 1), -1.41936, -1.41936, 0, 0, Vector2(1, 0), -2.5698, 0.0, 0, 0]
 point_count = 3
@@ -60,6 +83,11 @@ shape = SubResource("RectangleShape2D_f8xfv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_md1bo")
+
+[node name="AnimatedMush2D" type="AnimatedSprite2D" parent="."]
+visible = false
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_b014p")
 
 [node name="ShplippParticle" type="CPUParticles2D" parent="."]
 use_parent_material = true

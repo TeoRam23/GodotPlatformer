@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy23m13kvq4od"
-path="res://.godot/imported/level_end_mush.png-50d29af6d52ed35968c5974f00a332b5.ctex"
+uid="uid://nen3u2qy4x4o"
+path="res://.godot/imported/DissaBlockMush.png-36d3918d4ba3da4ab5a33f4ed3f317cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/level_end_mush.png"
-dest_files=["res://.godot/imported/level_end_mush.png-50d29af6d52ed35968c5974f00a332b5.ctex"]
+source_file="res://assets/DissaBlockMush.png"
+dest_files=["res://.godot/imported/DissaBlockMush.png-36d3918d4ba3da4ab5a33f4ed3f317cc.ctex"]
 
 [params]
 

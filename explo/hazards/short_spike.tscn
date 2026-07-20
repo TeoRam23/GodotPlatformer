@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://q2mmfq63yv30"]
+[gd_scene load_steps=12 format=3 uid="uid://q2mmfq63yv30"]
 
-[ext_resource type="Shader" path="res://explo/scripts/ex_world_color.gdshader" id="1_sfecr"]
+[ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_sfecr"]
 [ext_resource type="Texture2D" uid="uid://kvaakg1jc6jo" path="res://assets/SpikesTiles.png" id="1_v6835"]
 [ext_resource type="Texture2D" uid="uid://npc6v27umnf4" path="res://assets/color_maps/spikes/spike_color2.png" id="2_8lgy8"]
 [ext_resource type="Texture2D" uid="uid://c2tpqexvs85x8" path="res://assets/color_maps/spikes/spike_color1.png" id="2_cntjq"]
 [ext_resource type="Texture2D" uid="uid://dimttjahrhqvl" path="res://assets/color_maps/spikes/spike_color4.png" id="3_5ljkq"]
-[ext_resource type="Script" path="res://explo/hazards/spike_directions/spike_script.gd" id="3_k4mrf"]
+[ext_resource type="Texture2D" uid="uid://cyc706ubykb2s" path="res://assets/color_maps/spikes/spike_color5.png" id="3_d1esb"]
+[ext_resource type="Script" uid="uid://dsq4teipln14u" path="res://explo/hazards/spike_directions/spike_script.gd" id="3_k4mrf"]
 [ext_resource type="Texture2D" uid="uid://mcj3soub0dpk" path="res://assets/color_maps/spikes/spike_color3.png" id="4_8qhj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ih6pp"]
@@ -13,14 +14,14 @@ size = Vector2(16, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qahuj"]
 shader = ExtResource("1_sfecr")
-shader_parameter/parent_id = null
+shader_parameter/parent_id = 0
 shader_parameter/epsilon = 0.0001
 shader_parameter/fyll_inn_ALLE_fargene = true
 shader_parameter/imageGRASS_MAIN = ExtResource("2_cntjq")
 shader_parameter/imageFALL = ExtResource("2_8lgy8")
 shader_parameter/imageLAVA = ExtResource("4_8qhj7")
 shader_parameter/imageSPACE = ExtResource("3_5ljkq")
-shader_parameter/imageFIVE = ExtResource("2_cntjq")
+shader_parameter/imageFIVE = ExtResource("3_d1esb")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxbfh"]
 atlas = ExtResource("1_v6835")

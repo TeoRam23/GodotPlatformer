@@ -14,6 +14,13 @@ func _ready():
 	var world_number = stage.split()[0]
 	
 	material.set("shader_parameter/parent_id", int(world_number))
+	
+	if world_number == "5":
+		animated_sprite.visible = false
+		animated_sprite = $AnimatedMush2D
+		animated_sprite.visible = true
+		
+		shplipp_particle.color = Color(0.455, 1.0, 0.914)
 	#shplipp_particle.material.set("shader_parameter/parent_id", int(world_number))
 
 

@@ -1,9 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://h0hxqn0deycg"]
+[gd_scene load_steps=12 format=3 uid="uid://h0hxqn0deycg"]
 
+[ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_dc0xb"]
 [ext_resource type="Script" uid="uid://ds8hwxck2qq65" path="res://explo/scripts/world-3/ex_fraggle_block.gd" id="1_jch23"]
+[ext_resource type="Texture2D" uid="uid://ckro4dorpxiqi" path="res://assets/color_maps/fraggle_main.png" id="2_dc0xb"]
 [ext_resource type="Texture2D" uid="uid://cviyq21peqi6e" path="res://assets/FraggleBlock.png" id="2_fl7ut"]
+[ext_resource type="Texture2D" uid="uid://b2vsh85prlf8y" path="res://assets/color_maps/fraggle_mush.png" id="3_b5s4f"]
 [ext_resource type="Texture2D" uid="uid://dw2yykc1r4inj" path="res://assets/LavaBlocks.png" id="3_nn11x"]
 [ext_resource type="Script" uid="uid://cs2gwll55uqil" path="res://explo/destructablocks/destruct_particles.gd" id="3_te5ap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmurb"]
+shader = ExtResource("1_dc0xb")
+shader_parameter/parent_id = 0
+shader_parameter/epsilon = 0.001
+shader_parameter/fyll_inn_ALLE_fargene = true
+shader_parameter/imageGRASS_MAIN = ExtResource("2_dc0xb")
+shader_parameter/imageFALL = ExtResource("2_dc0xb")
+shader_parameter/imageLAVA = ExtResource("2_dc0xb")
+shader_parameter/imageSPACE = ExtResource("2_dc0xb")
+shader_parameter/imageFIVE = ExtResource("3_b5s4f")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x81j2"]
 size = Vector2(16, 8)
@@ -18,6 +32,7 @@ region = Rect2(0, 0, 16, 16)
 [node name="ExFraggleBlock" type="StaticBody2D"]
 process_priority = -1
 process_physics_priority = -1
+material = SubResource("ShaderMaterial_dmurb")
 collision_layer = 65
 collision_mask = 0
 script = ExtResource("1_jch23")
@@ -36,10 +51,10 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_wkyp1")
 
 [node name="SpriteReal" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_fl7ut")
 
 [node name="SpriteReal2" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = SubResource("AtlasTexture_ee0xt")
 
 [node name="FragTimer" type="Timer" parent="."]
@@ -47,6 +62,7 @@ wait_time = 0.53
 
 [node name="StandardParticles" type="CPUParticles2D" parent="."]
 z_index = -1
+use_parent_material = true
 position = Vector2(0, -8)
 emitting = false
 amount = 12

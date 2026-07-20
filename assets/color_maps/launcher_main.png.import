@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy23m13kvq4od"
-path="res://.godot/imported/level_end_mush.png-50d29af6d52ed35968c5974f00a332b5.ctex"
+uid="uid://c24x0mg3lvkfw"
+path="res://.godot/imported/launcher_main.png-8a7cd1e254fed1dbf1c4e3e65794a412.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/level_end_mush.png"
-dest_files=["res://.godot/imported/level_end_mush.png-50d29af6d52ed35968c5974f00a332b5.ctex"]
+source_file="res://assets/color_maps/launcher_main.png"
+dest_files=["res://.godot/imported/launcher_main.png-8a7cd1e254fed1dbf1c4e3e65794a412.ctex"]
 
 [params]
 

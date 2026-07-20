@@ -11,7 +11,12 @@ var booliah = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var stage = get_tree().current_scene.name
+	var world_number = int(stage.split()[0])
+	material.set("shader_parameter/parent_id", world_number)
+	
+	if world_number == 5:
+		particles.color = Color(0.753, 0.733, 0.675)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

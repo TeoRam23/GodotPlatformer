@@ -24,6 +24,9 @@ func _ready():
 	launch_timer.wait_time = launch_seconds
 	launch_timer.start()
 	
+	if world_number == 5:
+		material.set("shader_parameter/parent_id", world_number)
+	
 	
 	#print("YEP ", launch_seconds)
 	pass # Replace with function body.

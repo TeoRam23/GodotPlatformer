@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bx2hlv7kl1hum" path="res://assets/color_maps/complete_mush.png" id="4_i5xa4"]
 [ext_resource type="Texture2D" uid="uid://bujwyk6sjd518" path="res://assets/color_maps/complete_main.png" id="5_0rtwf"]
 [ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="7_20ff0"]
-[ext_resource type="Texture2D" uid="uid://cpvcm3k6di2v6" path="res://assets/level_end_mush.png" id="9_0g1fy"]
+[ext_resource type="Texture2D" uid="uid://cy23m13kvq4od" path="res://assets/level_end_mush.png" id="9_0g1fy"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_grret"]
 

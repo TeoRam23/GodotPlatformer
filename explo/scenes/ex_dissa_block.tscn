@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://coeb0svmejo85"]
+[gd_scene load_steps=34 format=3 uid="uid://coeb0svmejo85"]
 
 [ext_resource type="Script" uid="uid://cr60eteia4fm" path="res://explo/scripts/dissa_block.gd" id="1_i6w2j"]
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_sw604"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvlkjcmc6coh0" path="res://assets/color_maps/dissablocks/dissablock_color3.png" id="4_nestp"]
 [ext_resource type="Texture2D" uid="uid://dowst0b3gyyt1" path="res://assets/color_maps/dissablocks/dissablock_color2.png" id="5_xfqe6"]
 [ext_resource type="Texture2D" uid="uid://dhsv2e211favg" path="res://assets/color_maps/dissablocks/dissablock_color4.png" id="6_av4dr"]
+[ext_resource type="Texture2D" uid="uid://nen3u2qy4x4o" path="res://assets/DissaBlockMush.png" id="8_ej5hh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlkvy"]
 shader = ExtResource("1_sw604")
@@ -104,6 +105,82 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4c4y"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta28l"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df40b"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhngk"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dck67"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkfw6"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7bme"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qnaq"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1rqx"]
+atlas = ExtResource("8_ej5hh")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v68xe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4c4y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta28l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df40b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhngk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dck67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkfw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7bme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qnaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1rqx")
+}],
+"loop": false,
+"name": &"dissapump",
+"speed": 30.0
+}]
+
 [sub_resource type="Curve" id="Curve_oxkfl"]
 _data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.961039, 0.241758), -3.02198, 0.0, 0, 0]
 point_count = 2
@@ -130,6 +207,11 @@ shape = SubResource("RectangleShape2D_t7lqv")
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_utx5q")
 
+[node name="AnimatedMush2D" type="AnimatedSprite2D" parent="."]
+visible = false
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_v68xe")
+
 [node name="PumpParticle" type="CPUParticles2D" parent="."]
 use_parent_material = true
 emitting = false
@@ -154,5 +236,7 @@ one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="animation_finished" from="AnimatedMush2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedMush2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="finished" from="PumpParticle" to="." method="_on_pump_particle_finished"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
