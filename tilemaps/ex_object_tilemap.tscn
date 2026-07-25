@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bflgygrmh01rj"]
+[gd_scene load_steps=43 format=3 uid="uid://bflgygrmh01rj"]
 
 [ext_resource type="PackedScene" uid="uid://cigdcpwal2jej" path="res://explo/hazards/spike_directions/long_spike_down.tscn" id="1_8pwis"]
 [ext_resource type="PackedScene" uid="uid://c50ud60vlnrxj" path="res://explo/hazards/spike_directions/long_spike_up.tscn" id="2_l3ixs"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c844wey0x2tu7" path="res://explo/destructablocks/lava/lava_line_h.tscn" id="21_fwuc3"]
 [ext_resource type="PackedScene" uid="uid://sn00euqi6v8p" path="res://explo/hazards/fire/fire_up.tscn" id="21_pobbq"]
 [ext_resource type="PackedScene" uid="uid://ch2sqnn4e5n66" path="res://explo/destructablocks/lava/lava_line_v.tscn" id="22_8gfws"]
+[ext_resource type="PackedScene" uid="uid://c0k2fw6ivxi04" path="res://explo/hazards/fire/fire_right.tscn" id="22_pruge"]
 [ext_resource type="PackedScene" uid="uid://ceacl1vad2pd6" path="res://explo/destructablocks/lava/lava_big_block.tscn" id="23_ontd3"]
 [ext_resource type="PackedScene" uid="uid://bh1xb8ii6qk4t" path="res://explo/destructablocks/space/space_block.tscn" id="24_wl8jk"]
 [ext_resource type="PackedScene" uid="uid://c0h3m5ie802kc" path="res://explo/destructablocks/space/space_line_h.tscn" id="25_2uqsk"]
@@ -66,6 +67,7 @@ scenes/2/scene = ExtResource("18_xgthb")
 scenes/3/scene = ExtResource("19_b8ts6")
 scenes/4/scene = ExtResource("20_o1uvp")
 scenes/5/scene = ExtResource("21_pobbq")
+scenes/6/scene = ExtResource("22_pruge")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ega7l"]
 resource_name = "LavaBlocks"

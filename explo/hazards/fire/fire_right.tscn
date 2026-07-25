@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0k2fw6ivxi04"]
+
+[ext_resource type="PackedScene" uid="uid://dfo7eb6nw82jq" path="res://explo/hazards/fire/fire_down.tscn" id="1_vllo4"]
+
+[node name="FireUp" type="Node2D"]
+
+[node name="MainFire" parent="." instance=ExtResource("1_vllo4")]
+rotation = 4.712389

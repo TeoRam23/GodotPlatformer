@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var gravity_scale = 0.69
 @export var max_down_velocity = 300
 @export var show_particles = true
+@export var float_on_spawn = true
 
 var lava_can_kill = false
 
@@ -157,7 +158,7 @@ func launch_bubble():
 		ooze_particle.visible = false
 	
 	#print("ma jump: ",jump_velocity)
-	if jump_velocity == 0:
+	if jump_velocity == 0 and float_on_spawn == true:
 		float_timer.start()
 		timer_started = true
 

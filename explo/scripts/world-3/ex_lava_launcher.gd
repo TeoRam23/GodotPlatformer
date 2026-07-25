@@ -10,6 +10,7 @@ extends Node2D
 @export var spawn_delay = 2.0
 @export var starts_in_lava = false
 @export var show_particles = true
+@export var float_on_spawn = true
 
 var jump_velocity = 0
 
@@ -64,6 +65,7 @@ func create_bubble():
 	new_bubble.max_down_velocity = max_down_velocity
 	new_bubble.lava_can_kill = !starts_in_lava
 	new_bubble.show_particles = show_particles
+	new_bubble.float_on_spawn = float_on_spawn
 	#print("Launcher: ",new_bubble.show_particles)
 	
 	# den trenger å launches her, gjør man edt i ready() vil den ikke ha variablene over!
