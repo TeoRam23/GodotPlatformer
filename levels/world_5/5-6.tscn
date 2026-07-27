@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxshnnaacvmfi"]
+[gd_scene load_steps=9 format=3 uid="uid://dxshnnaacvmfi"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_l1ex1"]
+[ext_resource type="PackedScene" uid="uid://cbq3ogwob1u0c" path="res://levels/world_5/5-7.tscn" id="2_2qeiq"]
 [ext_resource type="Texture2D" uid="uid://bjuw1f1r3lldp" path="res://assets/baksplodder/verd 5/5-6.png" id="2_e5ssh"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="3_2qeiq"]
 [ext_resource type="PackedScene" uid="uid://ca3ji6x6to3r0" path="res://explo/scenes/ex_chick.tscn" id="4_pd7nb"]
@@ -12,6 +13,7 @@ size = Vector2(1235, 360)
 
 [node name="5-6" instance=ExtResource("1_l1ex1")]
 title = "Btw, the chickens are also mushrooms!"
+next_level = ExtResource("2_2qeiq")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

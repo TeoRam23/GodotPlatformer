@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbmw4ulyatl2j"]
+[gd_scene load_steps=17 format=3 uid="uid://bbmw4ulyatl2j"]
 
 [ext_resource type="Script" uid="uid://c3lphpiiln2i6" path="res://explo/scripts/world-3/ex_lava_bubble.gd" id="1_iqf1n"]
 [ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="2_fk4wj"]
 [ext_resource type="Texture2D" uid="uid://divv63jcrh16p" path="res://assets/LavaBush.png" id="2_m3vib"]
 [ext_resource type="Texture2D" uid="uid://de6r2vveh87ey" path="res://assets/LavaMush.png" id="4_p0qrc"]
+[ext_resource type="PackedScene" uid="uid://cinjw0pef2fl3" path="res://explo/scenes/world-4/ex_tele_child.tscn" id="5_m6wjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rljki"]
 size = Vector2(14, 14)
@@ -150,6 +151,8 @@ color_ramp = SubResource("Gradient_urmno")
 process_mode = 1
 wait_time = 0.043
 one_shot = true
+
+[node name="ExTeleChild" parent="." instance=ExtResource("5_m6wjj")]
 
 [connection signal="area_entered" from="LavaDetector" to="." method="_on_lava_detector_area_entered"]
 [connection signal="body_entered" from="LavaDetector" to="." method="_on_lava_detector_body_entered"]

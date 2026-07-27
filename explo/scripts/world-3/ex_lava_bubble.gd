@@ -71,11 +71,17 @@ func _physics_process(delta):
 	if !activated:
 		velocity = Vector2.ZERO
 	
+
+	
 	var collision = move_and_slide()
 	
 	if collision:
 		if is_on_wall():
 			velocity.x = abs(speed) * get_wall_normal().x
+		if is_on_ceiling():
+			print("woop cell ", velocity.y)
+			velocity.y = abs(last_vel_check.y)
+			
 
 	update_face()
 	# Add the gravity.
@@ -87,7 +93,7 @@ func _physics_process(delta):
 			if velocity.y < max_down_velocity:
 				velocity.y = max_down_velocity
 	
-	if (!is_on_floor() and last_floor_check) or (last_vel_check.y < 0 and velocity.y >= 0):
+	if (!is_on_floor() and last_floor_check) or (last_vel_check.y < 0 and velocity.y == 0):
 		#print("HEY---")
 		#print(last_vel_check.y)
 		#if last_vel_check.y < 0:
@@ -95,6 +101,7 @@ func _physics_process(delta):
 		#print("starting timer")
 		float_timer.start()
 		timer_started = true
+		#print("skjekker bare alle muligheter")
 	
 	if float_timer.time_left > 0 and velocity.y > 0 and timer_started:
 		#print(float_timer.time_left)
