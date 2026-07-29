@@ -27,6 +27,8 @@ static var pausing_disabled = false
 
 static var world_we_entered = "1"
 
+static var saved_cursor_position = Vector2(75, 0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

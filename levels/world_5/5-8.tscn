@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://boh0c6npnkk7q"]
+[gd_scene load_steps=7 format=3 uid="uid://boh0c6npnkk7q"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_p0ytn"]
+[ext_resource type="PackedScene" uid="uid://hy5nyd4eb8n4" path="res://levels/world_5/5-9.tscn" id="2_4g2qk"]
 [ext_resource type="Texture2D" uid="uid://b7uvbe7y3yxu2" path="res://assets/baksplodder/verd 5/5-8.png" id="2_7cacb"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="3_4g2qk"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_3bua6"]
@@ -10,6 +11,7 @@ size = Vector2(1295, 360)
 
 [node name="5-8" instance=ExtResource("1_p0ytn")]
 title = "Tricky Gliding"
+next_level = ExtResource("2_4g2qk")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

@@ -17,6 +17,7 @@ var no_walking = false
 var constant_throwing = false
 var zero_gravity = false
 
+var remember_cursor_position = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -47,6 +48,8 @@ func save_settings():
 	file.store_var(no_walking)
 	file.store_var(constant_throwing)
 	file.store_var(zero_gravity)
+	
+	file.store_var(remember_cursor_position)
 		
 	print("###########HOOOOOOOOOOOOOOOO saved this setting i think! #####################")
 	
@@ -65,6 +68,8 @@ func load_settings():
 		no_walking = file.get_var()
 		constant_throwing = file.get_var()
 		zero_gravity = file.get_var()
+		
+		remember_cursor_position = file.get_var()
 		
 		file.close()
 	else:

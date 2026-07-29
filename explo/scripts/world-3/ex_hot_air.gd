@@ -31,31 +31,32 @@ func give_air(delta):
 		for bod in bodies:
 			if bod.is_in_group("moved_by_air"):
 				if bod.is_in_group("player"):
-					# vet ikke om dette blir rett, eller om det virker på projectile og busker
-					# lykke til fremtidsmeg...
-					# takk... dette blir ikke rett, når man drar opp og ned skal man ikke komme lenger opp eller ned, men med dette gjør man det
-					# ??? er kommentaren over utdatert? det ser ut til å virke som det skal tror jeg???
-					# hei, jeg er tilbake. det er ett sted hvor det er mismatch mellom referansen og explo, men rett ved siden er de helt likkens
-					# så, det kan hende det er noe feil? men jeg aner ikke :(
-					# hei, jeg er fra 10 sekunder frem i tid. jeg hadde bare feil størrelse på hot air, alt er bra!
-					print("giving to player")
-					bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
-					bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
-					#bod.prevelocity.y -= 1500 * delta #dette var en test
-					#print("play: ",(gravity * bod.movement_data.gravity_scale) + air_strength_p)
-					#bod.prevelocity.y -= 1100 * delta
-					bod.hot_air = true
-					#if bod.prevelocity.y > 0 or 1==1:
-						#bod.prevelocity.y -= 1600 * delta
-					#else:
-						#bod.prevelocity.y -= 1250 * delta
-						
-						
-					#if bod.prevelocity.y > 0:
-						#bod.prevelocity.y -= 2200 * delta
-					#else:
-						#bod.prevelocity.y -= 1250 * delta
-						
+					if bod.hot_air == false:
+						# vet ikke om dette blir rett, eller om det virker på projectile og busker
+						# lykke til fremtidsmeg...
+						# takk... dette blir ikke rett, når man drar opp og ned skal man ikke komme lenger opp eller ned, men med dette gjør man det
+						# ??? er kommentaren over utdatert? det ser ut til å virke som det skal tror jeg???
+						# hei, jeg er tilbake. det er ett sted hvor det er mismatch mellom referansen og explo, men rett ved siden er de helt likkens
+						# så, det kan hende det er noe feil? men jeg aner ikke :(
+						# hei, jeg er fra 10 sekunder frem i tid. jeg hadde bare feil størrelse på hot air, alt er bra!
+						print("giving to player")
+						bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
+						bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
+						#bod.prevelocity.y -= 1500 * delta #dette var en test
+						#print("play: ",(gravity * bod.movement_data.gravity_scale) + air_strength_p)
+						#bod.prevelocity.y -= 1100 * delta
+						bod.hot_air = true
+						#if bod.prevelocity.y > 0 or 1==1:
+							#bod.prevelocity.y -= 1600 * delta
+						#else:
+							#bod.prevelocity.y -= 1250 * delta
+							
+							
+						#if bod.prevelocity.y > 0:
+							#bod.prevelocity.y -= 2200 * delta
+						#else:
+							#bod.prevelocity.y -= 1250 * delta
+							
 				else:
 					# dette er et forsøk på å gjøre projectile likt splodey, men jeg ga opp, bra nok
 					#if bod.is_in_group("projectile"):

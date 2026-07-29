@@ -130,7 +130,6 @@ size = Vector2(488, 272)
 [node name="Explo-1" instance=ExtResource("1_2y7hc")]
 title = "Explo!"
 next_level = ExtResource("2_5k66i")
-show_mouse = true
 
 [node name="ParallaxBackground" parent="." index="0"]
 scroll_offset = Vector2(-299.087, 422.677)

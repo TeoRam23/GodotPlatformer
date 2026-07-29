@@ -39,9 +39,17 @@ func _ready():
 	Events.level_completed.connect(disable_me)
 	Events.pls_enter_extra.connect(disable_me)
 	Events.pls_low_gravity.connect(lower_gravity)
+	#disse vil lagre cursor pos til neste gang! trenger kanskje bare den siste, men jaja
+	Events.pls_general_leaving.connect(save_position_for_later)
+	Events.pls_resetting_level.connect(save_position_for_later)
+	Events.pls_finished_hide_level_particles.connect(save_position_for_later)
+	
 	settings_locked_cursor = Settings.locked_cursor
 	if Settings.touch_mode:
 		touch_control.visible = true
+	
+	if Settings.remember_cursor_position:
+		mouse_tracker.position = VariableManager.saved_cursor_position
 	
 	new_projectile()
 
@@ -147,7 +155,8 @@ func disable_me():
 	set_process(false)
 	set_physics_process(false)
 	polygon_arrow.visible = false
-	mouse_is_locked = false
+	if Settings.remember_cursor_position == false:
+		mouse_is_locked = false
 	
 	
 	
@@ -246,3 +255,7 @@ func snap_mouse_tracker():
 
 func lower_gravity():
 	low_gravity = true
+
+func save_position_for_later():
+	if Settings.remember_cursor_position:
+		VariableManager.saved_cursor_position = mouse_tracker.position
