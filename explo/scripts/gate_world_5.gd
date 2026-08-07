@@ -20,7 +20,7 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 
 
 func animate_opening():
-	var keys_collected = VariableManager.keys_collected
+	var keys_collected = VariableManager.level_keys.size()
 	#keys_collected = 16
 	var will_open = true
 	

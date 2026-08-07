@@ -5,6 +5,7 @@ var save_path = "user://variable.save"
 static var all_time = 0.0
 static var deaths = 0
 static var johnnies = 0
+# jeg bruker ikke denne, men jeg er redd for å fjerne den fra save :(
 static var keys_collected = 0
 # array med id-en til alle banene hvor key er blitt collected
 var level_keys = []
@@ -114,7 +115,7 @@ func up_the_keys(level_id: String):
 		print("key er tatt, gjør ingenting")
 	else:
 		print("dette er en ny key, la oss lagre den!")
-		keys_collected += 1
+		#keys_collected += 1
 		level_keys.append(level_id)
 
 

@@ -1,10 +1,75 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgxdyo211rl52"]
+[gd_scene load_steps=26 format=3 uid="uid://bgxdyo211rl52"]
 
 [ext_resource type="Script" uid="uid://drafawka35ky0" path="res://explo/scripts/world-extra/extra_key.gd" id="1_7yge3"]
+[ext_resource type="Texture2D" uid="uid://bm337rgf7kpqh" path="res://assets/extraKey.png" id="2_y207y"]
 [ext_resource type="Texture2D" uid="uid://b4c8effcns18i" path="res://assets/extraKey2.png" id="3_y207y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyxsa"]
 size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28cym"]
+atlas = ExtResource("2_y207y")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mofd"]
+atlas = ExtResource("2_y207y")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u5q5"]
+atlas = ExtResource("2_y207y")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tqxo"]
+atlas = ExtResource("2_y207y")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkekr"]
+atlas = ExtResource("2_y207y")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpr7u"]
+atlas = ExtResource("2_y207y")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioud6"]
+atlas = ExtResource("2_y207y")
+region = Rect2(60, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afvci"]
+atlas = ExtResource("2_y207y")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpsco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28cym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mofd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u5q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tqxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkekr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpr7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioud6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afvci")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pyxsa"]
 atlas = ExtResource("3_y207y")
@@ -104,12 +169,12 @@ offset_bottom = 8.0
 color = Color(0.86, 0.72068, 0.3956, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 1
-sprite_frames = SubResource("SpriteFrames_0mofd")
+sprite_frames = SubResource("SpriteFrames_cpsco")
 autoplay = "default"
 
 [node name="AnimatedSpriteoutlined" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_0mofd")
 autoplay = "default"

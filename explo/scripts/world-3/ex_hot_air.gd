@@ -39,9 +39,15 @@ func give_air(delta):
 						# hei, jeg er tilbake. det er ett sted hvor det er mismatch mellom referansen og explo, men rett ved siden er de helt likkens
 						# så, det kan hende det er noe feil? men jeg aner ikke :(
 						# hei, jeg er fra 10 sekunder frem i tid. jeg hadde bare feil størrelse på hot air, alt er bra!
-						print("giving to player")
-						bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
-						bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
+						
+						# Dårlig kode for at hot air virker i anti gravity :/
+						if bod.gravity_direction == 180:
+							#bod.prevelocity.y += gravity * bod.movement_data.gravity_scale * delta
+							bod.prevelocity.y += air_strength_p * delta
+						else:
+							#print("giving to player")
+							bod.prevelocity.y -= gravity * bod.movement_data.gravity_scale * delta # dette virker ikke
+							bod.prevelocity.y -= air_strength_p * delta # dette virker ikke
 						#bod.prevelocity.y -= 1500 * delta #dette var en test
 						#print("play: ",(gravity * bod.movement_data.gravity_scale) + air_strength_p)
 						#bod.prevelocity.y -= 1100 * delta

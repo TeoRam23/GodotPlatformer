@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d28tllddn4yd5"]
+[gd_scene load_steps=14 format=3 uid="uid://d28tllddn4yd5"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_n00ob"]
 [ext_resource type="Texture2D" uid="uid://bslfm8kki2cs4" path="res://assets/baksplodder/verd 5/5-13.png" id="2_68fqa"]
+[ext_resource type="PackedScene" uid="uid://6rr2ufudigoc" path="res://levels/world_5/5-14.tscn" id="2_83lfg"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="3_7batg"]
 [ext_resource type="PackedScene" uid="uid://dyq1jil1do57l" path="res://explo/scenes/world-3/ex_hot_air.tscn" id="3_guhb5"]
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="5_e67yn"]
@@ -23,6 +24,7 @@ size = Vector2(240, 416)
 
 [node name="5-13" instance=ExtResource("1_n00ob")]
 title = "Hazardous Dungeon"
+next_level = ExtResource("2_83lfg")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false
