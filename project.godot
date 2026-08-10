@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
 config/icon="res://assets/JeffreySprites.png"
 
+[audio]
+
+buses/default_bus_layout="res://assets/Sounds/default_bus_layout.tres"
+
 [autoload]
 
 Events="*res://scripts/Events.gd"

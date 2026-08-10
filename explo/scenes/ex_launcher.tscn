@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsv4eyc7ju17a"]
+[gd_scene load_steps=23 format=3 uid="uid://dsv4eyc7ju17a"]
 
 [ext_resource type="Script" uid="uid://8w65ma2c0r0k" path="res://explo/scripts/ex_launcher2.gd" id="1_n86jj"]
 [ext_resource type="Texture2D" uid="uid://bn6apfnknivyl" path="res://assets/cursor.png" id="2_dfr5a"]
 [ext_resource type="Texture2D" uid="uid://dqn2fyhiwa7j1" path="res://assets/arrow_size.png" id="3_ch44n"]
+[ext_resource type="AudioStream" uid="uid://spyefu0k3inw" path="res://assets/Sounds/throw-4.wav" id="5_72r3h"]
 [ext_resource type="Texture2D" uid="uid://dtjngorkt6v44" path="res://assets/TouchButtons.png" id="5_q68ay"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_74d7i"]
@@ -203,3 +204,8 @@ texture = SubResource("AtlasTexture_j575l")
 position = Vector2(32, 24)
 shape = SubResource("RectangleShape2D_ub48g")
 action = "cancel"
+
+[node name="AudioThrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_72r3h")
+volume_db = -4.853
+bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://h0hxqn0deycg"]
+[gd_scene load_steps=15 format=3 uid="uid://h0hxqn0deycg"]
 
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_dc0xb"]
 [ext_resource type="Script" uid="uid://ds8hwxck2qq65" path="res://explo/scripts/world-3/ex_fraggle_block.gd" id="1_jch23"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://b2vsh85prlf8y" path="res://assets/color_maps/fraggle_mush.png" id="3_b5s4f"]
 [ext_resource type="Texture2D" uid="uid://dw2yykc1r4inj" path="res://assets/LavaBlocks.png" id="3_nn11x"]
 [ext_resource type="Script" uid="uid://cs2gwll55uqil" path="res://explo/destructablocks/destruct_particles.gd" id="3_te5ap"]
+[ext_resource type="PackedScene" uid="uid://cidyuu3mjm0ys" path="res://explo/destructablocks/audio_crack_2d.tscn" id="8_b5s4f"]
+[ext_resource type="PackedScene" uid="uid://c8ww5ij3x8m3c" path="res://explo/scenes/audio_positional_2d.tscn" id="9_dmurb"]
+[ext_resource type="AudioStream" uid="uid://cljg6g1mi01lv" path="res://assets/Sounds/shake-1.wav" id="10_yhfie"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dmurb"]
 shader = ExtResource("1_dc0xb")
@@ -78,6 +81,12 @@ scale_amount_min = 3.0
 scale_amount_max = 5.0
 color = Color(0.46666667, 0.50980395, 0.31764707, 1)
 script = ExtResource("3_te5ap")
+
+[node name="AudioCrack2D" parent="." instance=ExtResource("8_b5s4f")]
+
+[node name="AudioShake2D" parent="." instance=ExtResource("9_dmurb")]
+stream = ExtResource("10_yhfie")
+volume_db = -3.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="FragTimer" to="." method="_on_frag_timer_timeout"]

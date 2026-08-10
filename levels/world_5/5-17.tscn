@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://fi146lsksm3o"]
+[gd_scene load_steps=9 format=3 uid="uid://fi146lsksm3o"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_r2401"]
+[ext_resource type="PackedScene" uid="uid://bcs6jh1p8ami8" path="res://levels/world_5/5-18.tscn" id="2_7jbue"]
 [ext_resource type="Texture2D" uid="uid://c8ywsqw1fuy1n" path="res://assets/baksplodder/verd 5/5-17.png" id="2_mknhx"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="3_7jbue"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="4_e8b1l"]
@@ -12,6 +13,7 @@ size = Vector2(1055, 360)
 
 [node name="5-17" instance=ExtResource("1_r2401")]
 title = "A Technically Long Fall"
+next_level = ExtResource("2_7jbue")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=58 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" uid="uid://bhj5j4a8ju0rv" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bro2sgpd7ra1r" path="res://assets/color_maps/jeffrey.png" id="6_8m52n"]
 [ext_resource type="PackedScene" uid="uid://dsv4eyc7ju17a" path="res://explo/scenes/ex_launcher.tscn" id="6_y3t0q"]
 [ext_resource type="PackedScene" uid="uid://cinjw0pef2fl3" path="res://explo/scenes/world-4/ex_tele_child.tscn" id="10_kxkxs"]
+[ext_resource type="AudioStream" uid="uid://wpade40052qq" path="res://assets/Sounds/death-1.wav" id="13_jej6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyipa"]
 atlas = ExtResource("3_v30qj")
@@ -380,7 +381,7 @@ material = SubResource("ShaderMaterial_pdh2k")
 use_parent_material = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_lgw7j")
-animation = &"idle"
+animation = &"run"
 
 [node name="ExpoCamera" type="Camera2D" parent="SpriteHolder"]
 process_mode = 3
@@ -640,6 +641,11 @@ one_shot = true
 [node name="start_delay" type="Timer" parent="."]
 process_mode = 3
 one_shot = true
+
+[node name="AudioDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_jej6c")
+volume_db = -6.24
+bus = &"SFX"
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]

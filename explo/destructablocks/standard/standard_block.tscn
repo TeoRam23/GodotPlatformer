@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ja1xhimefqtm"]
+[gd_scene load_steps=7 format=3 uid="uid://ja1xhimefqtm"]
 
 [ext_resource type="Script" uid="uid://bixws2f5w0p77" path="res://explo/destructablocks/standard/ex_dectruct_standard.gd" id="1_ngcff"]
 [ext_resource type="Texture2D" uid="uid://beydgw6a34327" path="res://assets/StandardBlocks.png" id="2_i4rjy"]
 [ext_resource type="PackedScene" uid="uid://cm6gweh1jujll" path="res://explo/destructablocks/standard/standard_particles.tscn" id="3_gspir"]
+[ext_resource type="PackedScene" uid="uid://cidyuu3mjm0ys" path="res://explo/destructablocks/audio_crack_2d.tscn" id="4_1df14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pmwb"]
 size = Vector2(16, 16)
@@ -29,3 +30,6 @@ texture = SubResource("AtlasTexture_boykl")
 [node name="Particles" parent="." instance=ExtResource("3_gspir")]
 position = Vector2(8, -8)
 color = Color(0.29803923, 0.6901961, 0, 1)
+
+[node name="AudioCrack2D" parent="." instance=ExtResource("4_1df14")]
+position = Vector2(8, -8)

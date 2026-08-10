@@ -23,6 +23,7 @@ extends Node2D
 @onready var stick_base = $CanvasLayer/TouchControl/StickBase
 @onready var touch_stick_node = $CanvasLayer/TouchControl/StickBase/TouchStickNode
 @onready var touch_stick_sprite = $CanvasLayer/TouchControl/StickBase/TouchStickSprite
+@onready var audio_throw: AudioStreamPlayer = $AudioThrow
 
 var low_gravity = false
 var mouse_is_locked = true
@@ -89,6 +90,8 @@ func eject_proj():
 	
 	proj_timer.start()
 	new_projectile()
+	
+	audio_throw.playing = true
 
 
 func new_projectile():

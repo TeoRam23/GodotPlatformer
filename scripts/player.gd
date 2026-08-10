@@ -62,6 +62,8 @@ var prevelocity = Vector2(0.0, 0.0)
 @onready var launch_delay: Timer = $LaunchDelay
 @onready var start_delay: Timer = $start_delay
 
+@onready var audio_death: AudioStreamPlayer = $AudioDeath
+
 var first_frame = true
 
 var hot_air = false
@@ -382,6 +384,7 @@ func i_died(truly):
 		return
 	if is_physics_processing():
 		disable_player(true)
+		audio_death.playing = true
 		#get_tree().paused = true
 		Events.player_died()
 		#get_tree().reload_current_scene()

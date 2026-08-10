@@ -3,6 +3,7 @@ extends StaticBody2D
 @onready var standard_sprite = $Sprite2D
 
 @onready var particles = $Particles
+@onready var audio_crack_2d: AudioStreamPlayer2D = $AudioCrack2D
 
 var gonna_free = false
 
@@ -34,6 +35,11 @@ func _physics_process(delta):
 			get_parent().get_parent().add_child(particles)
 			particles.global_position = particle_position
 			particles.emitting = true
+			
+			audio_crack_2d.pitch_scale = randf_range(0.9,1.1)
+			audio_crack_2d.playing = true
+			audio_crack_2d.reparent(get_parent().get_parent())
+			
 			get_parent().free()
 		else:
 			var particle_position = particles.global_position
@@ -41,6 +47,11 @@ func _physics_process(delta):
 			get_parent().add_child(particles)
 			particles.global_position = particle_position
 			particles.emitting = true
+			
+			audio_crack_2d.pitch_scale = randf_range(0.9,1.1)
+			audio_crack_2d.playing = true
+			audio_crack_2d.reparent(get_parent())
+			
 			free()
 
 

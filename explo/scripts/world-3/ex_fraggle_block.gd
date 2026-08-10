@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var frag_timer = $FragTimer
 @onready var particles = $StandardParticles
 @onready var sprite_real = $SpriteReal2
+@onready var audio_crack_2d: AudioStreamPlayer2D = $AudioCrack2D
+@onready var audio_shake_2d: AudioStreamPlayer2D = $AudioShake2D
 
 var gonna_free = false
 var shaking = false
@@ -32,6 +34,11 @@ func _physics_process(delta):
 		get_parent().add_child(particles)
 		particles.global_position = particle_position
 		particles.emitting = true
+		
+		audio_crack_2d.pitch_scale = randf_range(0.9,1.1)
+		audio_crack_2d.playing = true
+		audio_crack_2d.reparent(get_parent())
+		
 		free()
 		
 
@@ -39,6 +46,7 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	frag_timer.start()
 	shaking = true
+	audio_shake_2d.playing = true
 
 
 func _on_frag_timer_timeout():

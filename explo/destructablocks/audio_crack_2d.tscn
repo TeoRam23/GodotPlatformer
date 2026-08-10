@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cidyuu3mjm0ys"]
+
+[ext_resource type="PackedScene" uid="uid://c8ww5ij3x8m3c" path="res://explo/scenes/audio_positional_2d.tscn" id="1_ttadr"]
+[ext_resource type="AudioStream" uid="uid://ch0i3mgxo3sd8" path="res://assets/Sounds/crack-1.wav" id="2_ilfam"]
+[ext_resource type="Script" uid="uid://ca20fyke3rfyj" path="res://explo/scripts/single_audio_2d.gd" id="3_0k41h"]
+
+[node name="AudioCrack2D" instance=ExtResource("1_ttadr")]
+stream = ExtResource("2_ilfam")
+script = ExtResource("3_0k41h")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

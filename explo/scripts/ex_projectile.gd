@@ -33,6 +33,7 @@ var mouse_tracker
 @onready var particle_holder = $ParticleHolder
 @onready var gone_timer = $GoneTimer
 @onready var area_detection = $AreaDetection
+@onready var audio_explode_2d: AudioStreamPlayer2D = $AudioExplode2D
 
 const EX_PNG = preload("res://explo/scenes/ex_png.tscn")
 
@@ -263,6 +264,14 @@ func explode_pls():
 	#print("area: ",explosion_area.global_position, ", bod: ", explosion_body.global_position)
 	#print("Mus: ", get_global_mouse_position())
 	my_root.add_child(explod)
+	
+	#audio_explode.pitch_scale = randf_range(1,1.3)
+	#audio_explode.playing = true
+	#audio_explode.reparent(get_parent())
+	
+	audio_explode_2d.pitch_scale = randf_range(1,1.3)
+	audio_explode_2d.playing = true
+	audio_explode_2d.reparent(get_parent())
 	
 	remove_me()
 	first_frame = true
