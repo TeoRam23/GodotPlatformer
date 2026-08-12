@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://berdu01dkuuqx"]
+[gd_scene load_steps=7 format=3 uid="uid://berdu01dkuuqx"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_ltqvo"]
+[ext_resource type="PackedScene" uid="uid://csc0478jssaug" path="res://levels/world_5/5-22.tscn" id="2_3dth5"]
 [ext_resource type="Texture2D" uid="uid://2sycgeh6rpig" path="res://assets/baksplodder/verd 5/5-21.png" id="2_4sovs"]
 [ext_resource type="PackedScene" uid="uid://cpbfqml7h216p" path="res://explo/scenes/ex_johnny_collectable.tscn" id="3_3dth5"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_81p01"]
@@ -9,7 +10,8 @@
 size = Vector2(640, 1440)
 
 [node name="5-21" instance=ExtResource("1_ltqvo")]
-title = "Precarious Climb"
+title = "Precarious Climb 2"
+next_level = ExtResource("2_3dth5")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

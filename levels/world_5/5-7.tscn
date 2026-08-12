@@ -55,21 +55,27 @@ position = Vector2(288, -512)
 
 [node name="ExArrowLauncher" parent="ObjectHolder" index="1" instance=ExtResource("4_dlkn0")]
 position = Vector2(56, -184)
+arrow_speed = -240.0
 
 [node name="ExArrowLauncher2" parent="ObjectHolder" index="2" instance=ExtResource("4_dlkn0")]
 position = Vector2(56, -168)
+arrow_speed = -240.0
 
 [node name="ExArrowLauncher3" parent="ObjectHolder" index="3" instance=ExtResource("4_dlkn0")]
 position = Vector2(56, -152)
+arrow_speed = -240.0
 
 [node name="ExArrowLauncher4" parent="ObjectHolder" index="4" instance=ExtResource("4_dlkn0")]
 position = Vector2(56, -136)
+arrow_speed = -240.0
 
 [node name="ExArrowLauncher5" parent="ObjectHolder" index="5" instance=ExtResource("4_dlkn0")]
 position = Vector2(56, -120)
+arrow_speed = -240.0
 
 [node name="ExArrowLauncher6" parent="ObjectHolder" index="6" instance=ExtResource("4_dlkn0")]
 position = Vector2(56, -104)
+arrow_speed = -240.0
 
 [node name="ExLavaLauncher" parent="ObjectHolder" index="7" instance=ExtResource("5_ps37r")]
 position = Vector2(280, -472)

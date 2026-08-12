@@ -43,6 +43,7 @@ position = Vector2(528, -304)
 position = Vector2(72, -296)
 rotation = -3.1415882
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 0.833
 
 [node name="ExChick" parent="ObjectHolder" index="3" instance=ExtResource("5_4ye5l")]

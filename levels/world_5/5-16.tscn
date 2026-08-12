@@ -93,42 +93,49 @@ shape = SubResource("RectangleShape2D_x0inw")
 position = Vector2(-520, -56)
 rotation = 3.1415882
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 1.417
 
 [node name="ExArrowLauncher2" parent="ObjectHolder" index="9" instance=ExtResource("8_a8ock")]
 position = Vector2(-520, -104)
 rotation = 3.1415882
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 1.417
 
 [node name="ExArrowLauncher3" parent="ObjectHolder" index="10" instance=ExtResource("8_a8ock")]
 position = Vector2(-520, -152)
 rotation = 3.1415882
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 1.417
 
 [node name="ExArrowLauncher4" parent="ObjectHolder" index="11" instance=ExtResource("8_a8ock")]
 position = Vector2(-376, -312)
 rotation = 4.7123823
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 0.833
 
 [node name="ExArrowLauncher5" parent="ObjectHolder" index="12" instance=ExtResource("8_a8ock")]
 position = Vector2(-360, -312)
 rotation = 4.7123823
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 0.833
 
 [node name="ExArrowLauncher6" parent="ObjectHolder" index="13" instance=ExtResource("8_a8ock")]
 position = Vector2(-280, -312)
 rotation = 4.7123823
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 0.833
 
 [node name="ExArrowLauncher7" parent="ObjectHolder" index="14" instance=ExtResource("8_a8ock")]
 position = Vector2(-264, -312)
 rotation = 4.7123823
 scale = Vector2(1, -1)
+arrow_speed = -240.0
 launch_seconds = 0.833
 
 [node name="ExCompleteLevel" parent="ObjectHolder" index="15" instance=ExtResource("9_dewk4")]

@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://crm68xm7taioa" path="res://assets/teleport_sheen.png" id="5_7js8a"]
 [ext_resource type="AudioStream" uid="uid://c2e3uwgkkuvm6" path="res://assets/Sounds/teleport-1.wav" id="6_sbjr2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0lyub"]
-radius = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbjr2"]
+size = Vector2(22, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4xxfh"]
 animations = [{
@@ -73,8 +73,7 @@ scale_amount_max = 3.5
 color = Color(0.235294, 0.898039, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_0lyub")
+shape = SubResource("RectangleShape2D_sbjr2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

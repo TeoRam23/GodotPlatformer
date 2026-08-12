@@ -74,16 +74,19 @@ shape = SubResource("RectangleShape2D_tw2sm")
 [node name="ExArrowLauncher" parent="ObjectHolder" index="4" instance=ExtResource("5_e67yn")]
 position = Vector2(216, 392)
 rotation = 1.5707941
+arrow_speed = -240.0
 launch_seconds = 2.2
 
 [node name="ExArrowLauncher2" parent="ObjectHolder" index="5" instance=ExtResource("5_e67yn")]
 position = Vector2(232, 392)
 rotation = 1.5707941
+arrow_speed = -240.0
 launch_seconds = 2.2
 
 [node name="ExArrowLauncher3" parent="ObjectHolder" index="6" instance=ExtResource("5_e67yn")]
 position = Vector2(248, 392)
 rotation = 1.5707941
+arrow_speed = -240.0
 launch_seconds = 2.2
 
 [node name="ExLavaLauncher" parent="ObjectHolder" index="7" instance=ExtResource("6_h8adv")]
