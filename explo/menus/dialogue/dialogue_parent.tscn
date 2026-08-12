@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbrkt4idiqbya"]
+[gd_scene load_steps=5 format=3 uid="uid://cbrkt4idiqbya"]
 
 [ext_resource type="Script" uid="uid://b4kkl8cg8ixa8" path="res://explo/menus/dialogue/dialogue_parent.gd" id="1_3g6fq"]
 [ext_resource type="Theme" uid="uid://cci7qdm1rnxr4" path="res://explo/menus/pause_theme_johnny2.tres" id="2_3g6fq"]
+[ext_resource type="AudioStream" uid="uid://dskjn0qc5gpqx" path="res://assets/Sounds/talk-1.wav" id="3_7qe46"]
+[ext_resource type="AudioStream" uid="uid://dla21bs4t2rni" path="res://assets/Sounds/talk-2.wav" id="4_bova1"]
 
 [node name="DialogueParent" type="CanvasLayer"]
 process_mode = 3
@@ -49,6 +51,18 @@ offset_top = 32.5
 offset_right = 512.0
 offset_bottom = 80.5
 text = "NO"
+
+[node name="AudioJohnny" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7qe46")
+bus = &"SFX"
+
+[node name="AudioBushy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bova1")
+bus = &"SFX"
+
+[node name="TalkTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonYes" to="." method="_on_button_yes_pressed"]
 [connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonNo" to="." method="_on_button_no_pressed"]

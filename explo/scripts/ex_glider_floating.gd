@@ -6,6 +6,8 @@ extends Area2D
 @onready var collision_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
 
+@onready var audio_pop: AudioStreamPlayer = $AudioPop
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	bobble_animation()
@@ -33,10 +35,12 @@ func _on_body_entered(body):
 	collision_shape.set_deferred("disabled", true)
 	sprite.visible = false
 	#queue_free()
+	audio_pop.playing = true
 
 func reemerge():
 	collision_shape.set_deferred("disabled", false)
 	sprite.visible = true
+	audio_pop.playing = true
 
 func bobble_animation():
 	#print("oop")

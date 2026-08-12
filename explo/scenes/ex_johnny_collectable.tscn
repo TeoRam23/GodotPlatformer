@@ -1,10 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://cpbfqml7h216p"]
+[gd_scene load_steps=26 format=3 uid="uid://cpbfqml7h216p"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_johnny_collectable.gd" id="1_8q400"]
+[ext_resource type="Script" uid="uid://c5qpeejghg3tb" path="res://explo/scripts/ex_johnny_collectable.gd" id="1_8q400"]
 [ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="1_b7q6n"]
 [ext_resource type="Texture2D" uid="uid://dji3brtp1oqbq" path="res://assets/JohnnyFire.png" id="2_crbl8"]
 [ext_resource type="Texture2D" uid="uid://bikjp2hqaw643" path="res://assets/JohnnyDanceTiny.png" id="3_devpy"]
-[ext_resource type="Script" path="res://explo/scripts/single_particle.gd" id="3_xfcbq"]
+[ext_resource type="Script" uid="uid://0enu3glx1box" path="res://explo/scripts/single_particle.gd" id="3_xfcbq"]
+[ext_resource type="AudioStream" uid="uid://cgw2xe7dq0rfb" path="res://assets/Sounds/johnny-get.wav" id="6_e1fxf"]
+[ext_resource type="Script" uid="uid://b0bairyagg8r5" path="res://explo/scripts/single_audio.gd" id="7_tr1rt"]
+[ext_resource type="AudioStream" uid="uid://cabssrgsrnetg" path="res://assets/Sounds/collect-1.wav" id="8_er3a3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8txv"]
 radius = 14.0
@@ -190,4 +193,16 @@ color = Color(0.3825, 0.553917, 0.85, 1)
 color_ramp = SubResource("Gradient_dgrfa")
 script = ExtResource("3_xfcbq")
 
+[node name="AudioJohnnyGet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e1fxf")
+bus = &"SFX"
+script = ExtResource("7_tr1rt")
+
+[node name="AudioCollect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_er3a3")
+volume_db = -6.0
+script = ExtResource("7_tr1rt")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioJohnnyGet" to="AudioJohnnyGet" method="_on_finished"]
+[connection signal="finished" from="AudioCollect" to="AudioCollect" method="_on_finished"]

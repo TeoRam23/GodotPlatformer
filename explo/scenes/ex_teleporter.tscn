@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8hm8tnj2kh47"]
+[gd_scene load_steps=13 format=3 uid="uid://c8hm8tnj2kh47"]
 
-[ext_resource type="Script" path="res://explo/scripts/ex_teleporter.gd" id="1_w21gq"]
+[ext_resource type="Script" uid="uid://5res3d316oc" path="res://explo/scripts/ex_teleporter.gd" id="1_w21gq"]
 [ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_7t6ot"]
 [ext_resource type="Texture2D" uid="uid://dbyg8v7x7o707" path="res://assets/teleport.png" id="3_6glli"]
 [ext_resource type="Texture2D" uid="uid://bvkcxqi1slih6" path="res://assets/teleport_new.png" id="4_v0xyl"]
 [ext_resource type="Texture2D" uid="uid://crm68xm7taioa" path="res://assets/teleport_sheen.png" id="5_7js8a"]
+[ext_resource type="AudioStream" uid="uid://c2e3uwgkkuvm6" path="res://assets/Sounds/teleport-1.wav" id="6_sbjr2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lyub"]
 radius = 14.0
@@ -40,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_xn8na"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 7.69231), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -97,6 +98,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Porting" type="CPUParticles2D" parent="."]
+visible = false
 emitting = false
 amount = 30
 lifetime = 0.3
@@ -115,6 +117,9 @@ scale_amount_max = 3.5
 scale_amount_curve = SubResource("Curve_t1u8o")
 color = Color(0.72, 0.962667, 1, 1)
 color_ramp = SubResource("Gradient_r1p6a")
+
+[node name="AudioTeleport" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_sbjr2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

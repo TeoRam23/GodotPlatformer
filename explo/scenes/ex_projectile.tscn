@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ch4oivkfwwrty"]
+[gd_scene load_steps=21 format=3 uid="uid://ch4oivkfwwrty"]
 
 [ext_resource type="Script" uid="uid://dwjsilttu573e" path="res://explo/scripts/ex_projectile.gd" id="1_fehis"]
 [ext_resource type="Texture2D" uid="uid://cpw1ojb4xdf7o" path="res://assets/ExProjectile.png" id="2_8voqe"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bhh1nusigrknk" path="res://assets/Sounds/explode-4.wav" id="8_bp8ir"]
 [ext_resource type="PackedScene" uid="uid://c8ww5ij3x8m3c" path="res://explo/scenes/audio_positional_2d.tscn" id="9_bp8ir"]
 [ext_resource type="Script" uid="uid://ca20fyke3rfyj" path="res://explo/scripts/single_audio_2d.gd" id="10_6arr2"]
+[ext_resource type="AudioStream" uid="uid://sxllqhpv0tjd" path="res://assets/Sounds/lavaleave-2.wav" id="11_b1f4m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3r4n"]
 radius = 0.0
@@ -86,7 +87,7 @@ launch_power = -411
 collision_layer = 0
 collision_mask = 256
 
-[node name="ProjectileShape" type="CollisionShape2D" parent="KillDetection"]
+[node name="KillShape" type="CollisionShape2D" parent="KillDetection"]
 shape = SubResource("CircleShape2D_l3r4n")
 
 [node name="AreaDetection" type="Area2D" parent="."]
@@ -193,6 +194,10 @@ stream = ExtResource("8_bp8ir")
 volume_db = -3.0
 script = ExtResource("10_6arr2")
 
+[node name="AudioKilled2D" parent="." instance=ExtResource("9_bp8ir")]
+stream = ExtResource("11_b1f4m")
+script = ExtResource("10_6arr2")
+
 [connection signal="area_entered" from="KillDetection" to="." method="_on_area_detection_area_entered"]
 [connection signal="body_entered" from="KillDetection" to="." method="_on_area_detection_body_entered"]
 [connection signal="finished" from="ParticleHolder/ThrowDust" to="ParticleHolder" method="_on_throw_dust_finished"]
@@ -200,3 +205,4 @@ script = ExtResource("10_6arr2")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="GoneTimer" to="." method="_on_gone_timer_timeout"]
 [connection signal="finished" from="AudioExplode2D" to="AudioExplode2D" method="_on_finished"]
+[connection signal="finished" from="AudioKilled2D" to="AudioKilled2D" method="_on_finished"]

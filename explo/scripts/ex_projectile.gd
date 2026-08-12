@@ -25,6 +25,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var my_root
 var mouse_tracker
 
+var we_are_killed = false
+
 @onready var projectile_shape = $ProjectileShape
 @onready var explosion_body = $ExplosionBody
 @onready var explosion_area = $ExplosionBody/explosion_area
@@ -34,6 +36,7 @@ var mouse_tracker
 @onready var gone_timer = $GoneTimer
 @onready var area_detection = $AreaDetection
 @onready var audio_explode_2d: AudioStreamPlayer2D = $AudioExplode2D
+@onready var audio_killed_2d: AudioStreamPlayer2D = $AudioKilled2D
 
 const EX_PNG = preload("res://explo/scenes/ex_png.tscn")
 
@@ -273,15 +276,21 @@ func explode_pls():
 	audio_explode_2d.playing = true
 	audio_explode_2d.reparent(get_parent())
 	
-	remove_me()
+	remove_me(false)
 	first_frame = true
 	
-func remove_me():
+func remove_me(kill_sound: bool):
+		#illsplode = true
+	if kill_sound:
+		audio_killed_2d.pitch_scale = randf_range(0.9,1.1)
+		audio_killed_2d.playing = true
+		audio_killed_2d.reparent(get_parent())
+		
 	if particle_holder.get_parent() == self:
 		remove_child(particle_holder)
 		get_parent().add_child(particle_holder)
 		particle_holder.un_emit()
-		#illsplode = true
+		# jeg husker ikke hvorfor queue free er inni denne if-en, men ¯\_(ツ)_/¯
 		queue_free()
 	
 
@@ -302,18 +311,21 @@ func _on_gone_timer_timeout():
 	#print("It's goning time!")
 	#print("*gones all over the place* *pow*")
 	#queue_free()
-	remove_me()
+	remove_me(false)
 	
 
 
 func _on_area_detection_area_entered(area):
-	if has_launched:
-		remove_me()
+	if has_launched and not we_are_killed:
+		we_are_killed = true
+		remove_me(true)
 
 
 func _on_area_detection_body_entered(body):
-	if has_launched:
-		remove_me()
+	# skjekker for  om vi er killed for å fikse en bug som oppstår når projectile er borti to killere samtidig
+	if has_launched and not we_are_killed:
+		we_are_killed = true
+		remove_me(true)
 
 func lower_gravity():
 	print("gravity lowered")

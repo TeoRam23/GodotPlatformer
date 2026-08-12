@@ -5,6 +5,8 @@ extends Area2D
 @onready var fire_sprite = $FireSprite
 @onready var johnny_tiny_sprite = $JohnnyTinySprite
 @onready var collision_shape_box = $CollisionShapeBox
+@onready var audio_johnny_get: AudioStreamPlayer = $AudioJohnnyGet
+@onready var audio_collect: AudioStreamPlayer = $AudioCollect
 
 var im_taken = false
 
@@ -27,13 +29,19 @@ func _process(delta):
 
 func _on_body_entered(body):
 	#print("look im shouldnt be here")
-	if !im_taken:
+	if not im_taken:
 		Events.johnny_collected()
+	
+	audio_johnny_get.playing = true
+	audio_johnny_get.reparent(get_parent())
+	audio_collect.playing = true
+	audio_collect.reparent(get_parent())
 	
 	remove_child(sploot_particle)
 	get_parent().add_child(sploot_particle)
 	sploot_particle.global_position = global_position
 	sploot_particle.emitting = true
+	
 	
 	queue_free()
 

@@ -12,6 +12,7 @@ var port_amount = 0
 @onready var sheen_sprite = $SheenSprite
 
 @onready var porting = $Porting
+@onready var audio_teleport: AudioStreamPlayer = $AudioTeleport
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,6 +51,7 @@ func _on_body_entered(body):
 		porting.emitting = true
 		body.global_position = porter_crime.global_position
 		porter_crime.break_porter()
+		audio_teleport.playing = true
 
 func _on_death_timer_timeout():
 	wait_timer.start()

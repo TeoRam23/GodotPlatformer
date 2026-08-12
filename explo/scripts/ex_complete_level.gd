@@ -4,6 +4,10 @@ extends Area2D
 @onready var sprite_2d = $Sprite2D
 @onready var swirl_mask = $SwirlMask
 @onready var swirl_sprite = $SwirlMask/SwirlSprite
+@onready var audio_jingle: AudioStreamPlayer = $AudioJingle
+@onready var audio_mushroom: AudioStreamPlayer = $AudioMushroom
+
+var world_number = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +17,7 @@ func _ready():
 	
 	
 	var stage = get_tree().current_scene.name
-	var world_number = int(stage.split()[0])
+	world_number = int(stage.split()[0])
 	swirl_sprite.material.set("shader_parameter/parent_id", world_number)
 	#Events.level_completed.connect(animate_end)
 	
@@ -27,6 +31,10 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	if world_number == 5:
+		audio_mushroom.playing = true
+	else:
+		audio_jingle.playing = true
 	Events.level_completed.emit()
 
 func check_for_chicks():

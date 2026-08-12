@@ -22,6 +22,9 @@ var last_vel_check = Vector2.ZERO
 @onready var float_timer = $FloatTimer
 @onready var collision_shape_2d = $CollisionShape2D
 
+@onready var audio_appear: AudioStreamPlayer2D = $AudioHolder/AudioAppear
+@onready var audio_leave: AudioStreamPlayer2D = $AudioHolder/AudioLeave
+
 var timer_started = false
 # -142.0 for 1 block
 # -323.5 for 5 block
@@ -79,7 +82,7 @@ func _physics_process(delta):
 		if is_on_wall():
 			velocity.x = abs(speed) * get_wall_normal().x
 		if is_on_ceiling():
-			print("woop cell ", velocity.y)
+			#print("woop cell ", velocity.y)
 			velocity.y = abs(last_vel_check.y)
 			
 
@@ -142,6 +145,8 @@ func _physics_process(delta):
 
 
 func reset_bubble():
+	audio_leave.global_position = global_position
+	audio_leave.playing = true
 	#print("Killed... right?")
 	position = start_pos
 	# stop partikler
@@ -154,6 +159,8 @@ func reset_bubble():
 
 
 func launch_bubble():
+	audio_appear.global_position = global_position
+	audio_appear.playing = true
 	#print("Let's-a go! ", randi_range(1, 20))
 	velocity.y = jump_velocity
 	velocity.x = speed
@@ -168,6 +175,7 @@ func launch_bubble():
 	if jump_velocity == 0 and float_on_spawn == true:
 		float_timer.start()
 		timer_started = true
+	
 
 
 func _on_lava_detector_body_entered(body):

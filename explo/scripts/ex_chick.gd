@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var sploot_particle = $SplootParticle
+@onready var audio_collect: AudioStreamPlayer = $AudioCollect
 var ye_am_done = false
 
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +41,9 @@ func _on_body_entered(body):
 		Events.activate_ender()
 	#if chicks.size() == 1:
 		#Events.activate_ender()
+	
+	audio_collect.playing = true
+	audio_collect.reparent(get_parent())
 	
 	remove_child(sploot_particle)
 	get_parent().add_child(sploot_particle)

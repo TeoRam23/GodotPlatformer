@@ -381,7 +381,7 @@ material = SubResource("ShaderMaterial_pdh2k")
 use_parent_material = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_lgw7j")
-animation = &"run"
+animation = &"idle"
 
 [node name="ExpoCamera" type="Camera2D" parent="SpriteHolder"]
 process_mode = 3

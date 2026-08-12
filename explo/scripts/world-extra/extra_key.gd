@@ -3,6 +3,7 @@ extends Area2D
 var root_name
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var audio_jingle: AudioStreamPlayer = $AudioJingle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,7 @@ func _process(delta):
 func _on_body_entered(body: Node2D):
 	#Events.level_completed.emit()
 	visible = false
+	audio_jingle.playing = true
 	#print(current_level_id)
 	#print(VariableManager.keys_collected)
 	#print(VariableManager.level_keys)

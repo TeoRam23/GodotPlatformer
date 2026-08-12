@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://csj4poy8ufqb5"]
+[gd_scene load_steps=15 format=3 uid="uid://csj4poy8ufqb5"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_3qvod"]
 [ext_resource type="Texture2D" uid="uid://b446fsr7ibcw" path="res://assets/baksplodder/verd 5/5-20.png" id="2_cfxnk"]
+[ext_resource type="PackedScene" uid="uid://berdu01dkuuqx" path="res://levels/world_5/5-21.tscn" id="2_wcp7w"]
 [ext_resource type="PackedScene" uid="uid://dyq1jil1do57l" path="res://explo/scenes/world-3/ex_hot_air.tscn" id="3_wcp7w"]
 [ext_resource type="PackedScene" uid="uid://c8hm8tnj2kh47" path="res://explo/scenes/ex_teleporter.tscn" id="4_mnsrf"]
 [ext_resource type="PackedScene" uid="uid://bh6m2h30sfekn" path="res://explo/scenes/ex_glider_floating.tscn" id="5_gwdv2"]
@@ -26,6 +27,7 @@ size = Vector2(192, 320)
 
 [node name="5-20" instance=ExtResource("1_3qvod")]
 title = "A Spore's Flight"
+next_level = ExtResource("2_wcp7w")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

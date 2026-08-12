@@ -5,6 +5,8 @@ extends StaticBody2D
 @onready var player_detector = $PlayerDetector
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var regen_timer = $RegenTimer
+@onready var audio_crack_2d: AudioStreamPlayer2D = $AudioCrack2D
+@onready var audio_bite_2d: AudioStreamPlayer2D = $AudioBite2D
 
 
 func _ready() -> void:
@@ -29,6 +31,7 @@ func explode():
 	particles.emitting = true
 	collision_shape_2d.disabled = true
 	animated_sprite_2d.visible = false
+	audio_crack_2d.playing = true
 	
 	regen_timer.start()
 	
@@ -39,6 +42,7 @@ func _on_regen_timer_timeout():
 	animated_sprite_2d.visible = true
 	animated_sprite_2d.play("default")
 	animated_sprite_2d.play_backwards("default")
+	audio_bite_2d.playing = true
 	
 	var bodies = player_detector.get_overlapping_bodies()
 	#print(bodies)

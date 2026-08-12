@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8ww5ij3x8m3c"]
 
 [node name="AudioPositional2D" type="AudioStreamPlayer2D"]
-max_distance = 359.0
-attenuation = 0.16961862
+max_distance = 370.0
+attenuation = 0.17
 bus = &"SFX"
 area_mask = 0

@@ -4,6 +4,9 @@ extends CanvasLayer
 @onready var dialogue_box: Panel = $DialogueBox
 @onready var dialogue_label: Label = $DialogueBox/DialogueLabel
 @onready var button_label: Label = $DialogueBox/ButtonLabel
+@onready var audio_johnny: AudioStreamPlayer = $AudioJohnny
+@onready var audio_bushy: AudioStreamPlayer = $AudioBushy
+@onready var talk_timer: Timer = $TalkTimer
 
 const THEME_JEFFREY = preload("uid://cfuoqyle7q3jc")
 const THEME_JOHNNY = preload("uid://cci7qdm1rnxr4")
@@ -11,6 +14,8 @@ const THEME_JOHNNY = preload("uid://cci7qdm1rnxr4")
 var dialogue_boxes = []
 var dialogue_size = 0
 var length_read = 0
+
+var voice_length = 1
 
 var running = false
 
@@ -91,7 +96,9 @@ func continue_box():
 	elif dig.color == 1:
 		dialogue_box.theme = THEME_JOHNNY
 	
-	
+	# Jeg deler på 3 fordi det høres ut som en riktig mengde hå-er
+	voice_length = int(dig.text.length()/3)
+	talk(dig.color)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("start") or event.is_action_pressed("musL"):
@@ -107,3 +114,21 @@ func _on_button_yes_pressed() -> void:
 
 func _on_button_no_pressed() -> void:
 	finish_dialogue(false)
+
+
+
+func talk(voice):
+	if voice_length > 0:
+		if voice == 1:
+			audio_johnny.pitch_scale = randf_range(0.95, 1.05)
+			audio_johnny.playing = true
+		elif voice == 2:
+			audio_bushy.pitch_scale = randf_range(0.95, 1.05)
+			audio_bushy.playing = true
+		else:
+			return
+		voice_length -= 1
+		talk_timer.start()
+		await talk_timer.timeout
+		talk(voice)
+	

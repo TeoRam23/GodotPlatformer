@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bk0ej2eqbj74w"]
+[gd_scene load_steps=34 format=3 uid="uid://bk0ej2eqbj74w"]
 
 [ext_resource type="Script" uid="uid://djie1cvl1dhpp" path="res://explo/scripts/ex_complete_level.gd" id="1_81sdl"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="2_43vsv"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bujwyk6sjd518" path="res://assets/color_maps/complete_main.png" id="5_0rtwf"]
 [ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="7_20ff0"]
 [ext_resource type="Texture2D" uid="uid://cy23m13kvq4od" path="res://assets/level_end_mush.png" id="9_0g1fy"]
+[ext_resource type="AudioStream" uid="uid://5nmjbi2fmn5d" path="res://assets/Sounds/win-jingle.wav" id="10_i5xa4"]
+[ext_resource type="AudioStream" uid="uid://rglny52lifny" path="res://assets/Sounds/win-mushroom.wav" id="11_0rtwf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_grret"]
 
@@ -210,6 +212,13 @@ texture = ExtResource("9_0g1fy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_uju4v")
+
+[node name="AudioJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_i5xa4")
+
+[node name="AudioMushroom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_0rtwf")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_looped" from="SwirlMask/SwirlSprite" to="." method="_on_swirl_sprite_animation_looped"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bh6m2h30sfekn"]
+[gd_scene load_steps=18 format=3 uid="uid://bh6m2h30sfekn"]
 
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_5yb2j"]
 [ext_resource type="Script" uid="uid://cs6x4cql3s8g0" path="res://explo/scripts/ex_glider_floating.gd" id="1_vptjr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dlbmvlnwr6xju" path="res://explo/scripts/ExGliderChild.gd" id="2_v7b7n"]
 [ext_resource type="Texture2D" uid="uid://de3cwdglk75vo" path="res://assets/Glider.png" id="3_71mp3"]
 [ext_resource type="Texture2D" uid="uid://bacqlob4l2x1s" path="res://assets/color_maps/glider_mush.png" id="3_548gm"]
+[ext_resource type="AudioStream" uid="uid://bvg0grjbrq3p" path="res://assets/Sounds/pop-1.wav" id="8_1qy1k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojc3p"]
 shader = ExtResource("1_5yb2j")
@@ -121,5 +122,9 @@ scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_yvson")
 color = Color(0.890196, 0.870588, 0.847059, 1)
 color_ramp = SubResource("Gradient_3l5e8")
+
+[node name="AudioPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1qy1k")
+volume_db = -8.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

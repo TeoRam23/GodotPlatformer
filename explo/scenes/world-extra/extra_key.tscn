@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bgxdyo211rl52"]
+[gd_scene load_steps=27 format=3 uid="uid://bgxdyo211rl52"]
 
 [ext_resource type="Script" uid="uid://drafawka35ky0" path="res://explo/scripts/world-extra/extra_key.gd" id="1_7yge3"]
 [ext_resource type="Texture2D" uid="uid://bm337rgf7kpqh" path="res://assets/extraKey.png" id="2_y207y"]
 [ext_resource type="Texture2D" uid="uid://b4c8effcns18i" path="res://assets/extraKey2.png" id="3_y207y"]
+[ext_resource type="AudioStream" uid="uid://rglny52lifny" path="res://assets/Sounds/win-mushroom.wav" id="4_x0wfd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyxsa"]
 size = Vector2(16, 16)
@@ -191,5 +192,8 @@ scale_amount_min = 0.1
 scale_amount_max = 0.25
 scale_amount_curve = SubResource("Curve_pyxsa")
 color = Color(0.45490196, 1, 0.9137255, 1)
+
+[node name="AudioJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x0wfd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

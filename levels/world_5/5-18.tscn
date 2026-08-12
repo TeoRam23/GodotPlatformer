@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcs6jh1p8ami8"]
+[gd_scene load_steps=9 format=3 uid="uid://bcs6jh1p8ami8"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_roial"]
 [ext_resource type="Texture2D" uid="uid://bjh58ibpe1bmk" path="res://assets/baksplodder/verd 5/5-18.png" id="2_7q1np"]
+[ext_resource type="PackedScene" uid="uid://dxchc51vwh8ec" path="res://levels/world_5/5-19.tscn" id="2_ydr4y"]
 [ext_resource type="PackedScene" uid="uid://dc2amnlofb31d" path="res://explo/scenes/ex_dissa_activator.tscn" id="3_ydr4y"]
 [ext_resource type="PackedScene" uid="uid://coeb0svmejo85" path="res://explo/scenes/ex_dissa_block.tscn" id="4_o4xj8"]
 [ext_resource type="PackedScene" uid="uid://cf0nuvju10v1h" path="res://explo/scenes/world-3/ex_lava_launcher.tscn" id="5_efkbl"]
@@ -10,6 +11,7 @@
 
 [node name="5-18" instance=ExtResource("1_roial")]
 title = "Spiral Fungus"
+next_level = ExtResource("2_ydr4y")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

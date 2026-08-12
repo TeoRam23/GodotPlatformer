@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca3ji6x6to3r0"]
+[gd_scene load_steps=11 format=3 uid="uid://ca3ji6x6to3r0"]
 
 [ext_resource type="Script" uid="uid://baosjnuvha4v8" path="res://explo/scripts/ex_chick.gd" id="1_fwdli"]
 [ext_resource type="Texture2D" uid="uid://b2r8fd5a4226" path="res://assets/Kylling.png" id="1_wn00a"]
 [ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="2_o4ndy"]
 [ext_resource type="Script" uid="uid://0enu3glx1box" path="res://explo/scripts/single_particle.gd" id="3_1ade4"]
 [ext_resource type="Texture2D" uid="uid://duli7kvbpyiha" path="res://assets/KyllingMush.png" id="4_bvm15"]
+[ext_resource type="AudioStream" uid="uid://cabssrgsrnetg" path="res://assets/Sounds/collect-1.wav" id="6_bvm15"]
+[ext_resource type="Script" uid="uid://b0bairyagg8r5" path="res://explo/scripts/single_audio.gd" id="7_p6pr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86273"]
 radius = 8.0
@@ -56,4 +58,10 @@ color = Color(0.8039216, 0.56078434, 0.42745098, 1)
 color_ramp = SubResource("Gradient_erd2h")
 script = ExtResource("3_1ade4")
 
+[node name="AudioCollect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bvm15")
+volume_db = -2.0
+script = ExtResource("7_p6pr0")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioCollect" to="AudioCollect" method="_on_finished"]
