@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var launch_timer = $LaunchTimer
+@onready var wait_timer: Timer = $WaitTimer
 @onready var shoop_particle_1: CPUParticles2D = $Particles/ShoopParticle1
 @onready var shoop_particle_2: CPUParticles2D = $Particles/ShoopParticle2
 @onready var shoop_particle_3: CPUParticles2D = $Particles/ShoopParticle3
@@ -9,6 +10,7 @@ extends StaticBody2D
 const ARROW_HAZARD = preload("res://explo/hazards/arrow_hazard.tscn")
 @export var arrow_speed = -180.0
 @export var launch_seconds = 1.0
+@export var wait_seconds = 0.0
 var world_number = 1
 
 @export var launch_on_start = true
@@ -19,13 +21,20 @@ var picked_particle = 1
 func _ready():
 	var stage = get_tree().current_scene.name
 	world_number = int(stage.split()[0])
+	if world_number == 5:
+		material.set("shader_parameter/parent_id", world_number)
+	
 	if launch_on_start:
 		launch_arrow()
 	launch_timer.wait_time = launch_seconds
-	launch_timer.start()
+		
+	if wait_seconds > 0:
+		wait_timer.wait_time = wait_seconds
+		wait_timer.start()
+	else:
+		launch_timer.start()
+		
 	
-	if world_number == 5:
-		material.set("shader_parameter/parent_id", world_number)
 	
 	
 	#print("YEP ", launch_seconds)
@@ -60,3 +69,8 @@ func launch_arrow():
 		
 	
 	add_child(new_arrow)
+
+
+func _on_wait_timer_timeout() -> void:
+	launch_arrow()
+	launch_timer.start()

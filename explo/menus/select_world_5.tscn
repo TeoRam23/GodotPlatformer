@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://cth0xwr0erfu4"]
+
+[ext_resource type="PackedScene" uid="uid://bpc3x7u4c7gs4" path="res://explo/menus/select_world.tscn" id="1_dl2je"]
+[ext_resource type="PackedScene" uid="uid://8tbh5ungpgk5" path="res://explo/menus/select_level_button.tscn" id="2_stu3p"]
+
+[node name="SelectWorld" instance=ExtResource("1_dl2je")]
+
+[node name="SelectLevel" parent="Control/GridContainer" index="0" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "1"
+the_level = "res://levels/world_5/5-1.tscn"
+title_override = "Into the Shroomverse"
+canceled = false
+
+[node name="SelectLevel2" parent="Control/GridContainer" index="1" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "2"
+the_level = "res://levels/world_5/5-2.tscn"
+
+[node name="SelectLevel3" parent="Control/GridContainer" index="2" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "3"
+the_level = "res://levels/world_5/5-3.tscn"
+
+[node name="SelectLevel4" parent="Control/GridContainer" index="3" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "4"
+the_level = "res://levels/world_5/5-4.tscn"
+
+[node name="SelectLevel5" parent="Control/GridContainer" index="4" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "5"
+the_level = "res://levels/world_5/5-5.tscn"
+
+[node name="SelectLevel6" parent="Control/GridContainer" index="5" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "6"
+the_level = "res://levels/world_5/5-6.tscn"
+
+[node name="SelectLevel7" parent="Control/GridContainer" index="6" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "7"
+the_level = "res://levels/world_5/5-7.tscn"
+
+[node name="SelectLevel8" parent="Control/GridContainer" index="7" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "8"
+the_level = "res://levels/world_5/5-8.tscn"
+
+[node name="SelectLevel9" parent="Control/GridContainer" index="8" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "9"
+the_level = "res://levels/world_5/5-9.tscn"
+
+[node name="SelectLevel10" parent="Control/GridContainer" index="9" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "10"
+the_level = "res://levels/world_5/5-10.tscn"
+
+[node name="SelectLevel11" parent="Control/GridContainer" index="10" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "11"
+the_level = "res://levels/world_5/5-11.tscn"
+
+[node name="SelectLevel12" parent="Control/GridContainer" index="11" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "12"
+the_level = "res://levels/world_5/5-12.tscn"
+
+[node name="SelectLevel13" parent="Control/GridContainer" index="12" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "13"
+the_level = "res://levels/world_5/5-13.tscn"
+
+[node name="SelectLevel14" parent="Control/GridContainer" index="13" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "14"
+the_level = "res://levels/world_5/5-14.tscn"
+
+[node name="SelectLevel15" parent="Control/GridContainer" index="14" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "15"
+the_level = "res://levels/world_5/5-15.tscn"
+
+[node name="SelectLevel16" parent="Control/GridContainer" index="15" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "16"
+the_level = "res://levels/world_5/5-16.tscn"
+
+[node name="SelectLevel17" parent="Control/GridContainer" index="16" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "17"
+the_level = "res://levels/world_5/5-17.tscn"
+
+[node name="SelectLevel18" parent="Control/GridContainer" index="17" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "18"
+the_level = "res://levels/world_5/5-18.tscn"
+
+[node name="SelectLevel19" parent="Control/GridContainer" index="18" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "19"
+the_level = "res://levels/world_5/5-19.tscn"
+
+[node name="SelectLevel20" parent="Control/GridContainer" index="19" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "20"
+the_level = "res://levels/world_5/5-20.tscn"
+
+[node name="SelectLevel21" parent="Control/GridContainer" index="20" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "21"
+the_level = "res://levels/world_5/5-21.tscn"
+
+[node name="SelectLevel22" parent="Control/GridContainer" index="21" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "22"
+the_level = "res://levels/world_5/5-22.tscn"
+
+[node name="SelectLevel23" parent="Control/GridContainer" index="22" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "23"
+the_level = "res://levels/world_5/5-23.tscn"
+
+[node name="SelectLevel24" parent="Control/GridContainer" index="23" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "24"
+the_level = "res://levels/world_5/5-24.tscn"
+
+[node name="SelectLevel25" parent="Control/GridContainer" index="24" instance=ExtResource("2_stu3p")]
+layout_mode = 2
+text = "25"
+the_level = "res://levels/world_5/5-25.tscn"

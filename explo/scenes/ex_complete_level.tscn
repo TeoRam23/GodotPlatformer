@@ -192,7 +192,6 @@ frame = 7
 frame_progress = 1.0
 
 [node name="SwirlSprite" type="AnimatedSprite2D" parent="SwirlMask"]
-modulate = Color(1, 1, 1, 0.992157)
 material = SubResource("ShaderMaterial_n73wb")
 sprite_frames = SubResource("SpriteFrames_ktu3w")
 autoplay = "default"

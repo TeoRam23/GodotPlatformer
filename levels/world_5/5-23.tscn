@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://kqpffs52jqe3"]
+[gd_scene load_steps=6 format=3 uid="uid://kqpffs52jqe3"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_xxaf2"]
+[ext_resource type="PackedScene" uid="uid://cgfvu47xx7rm2" path="res://levels/world_5/5-24.tscn" id="2_6hoyk"]
 [ext_resource type="Texture2D" uid="uid://du3sydvhl51jx" path="res://assets/baksplodder/verd 5/5-23.png" id="2_f8yty"]
 [ext_resource type="PackedScene" uid="uid://cb44pakjgey22" path="res://explo/scenes/ex_arrow_launcher.tscn" id="3_6hoyk"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_6s1pl"]
 
 [node name="5-23" instance=ExtResource("1_xxaf2")]
 title = "Spiral out of Madness"
+next_level = ExtResource("2_6hoyk")
 
 [node name="REFFERECNE" parent="." index="1"]
 visible = false

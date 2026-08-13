@@ -1,8 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4p6gfoiyp5fk"]
+[gd_scene load_steps=19 format=3 uid="uid://c4p6gfoiyp5fk"]
 
 [ext_resource type="Script" uid="uid://6e6llsejhck" path="res://explo/menus/level_entrance.gd" id="1_hdmr7"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="1_rg3fe"]
 [ext_resource type="Texture2D" uid="uid://bdtf7tvjg7mdi" path="res://assets/level_end.png" id="2_8dmga"]
+[ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="2_633t5"]
+[ext_resource type="Texture2D" uid="uid://bujwyk6sjd518" path="res://assets/color_maps/complete_main.png" id="3_jseh0"]
+[ext_resource type="Texture2D" uid="uid://bx2hlv7kl1hum" path="res://assets/color_maps/complete_mush.png" id="4_nyv3s"]
+[ext_resource type="Texture2D" uid="uid://cy23m13kvq4od" path="res://assets/level_end_mush.png" id="7_bqsqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fukx"]
 atlas = ExtResource("1_rg3fe")
@@ -68,6 +72,17 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vuxk"]
+shader = ExtResource("2_633t5")
+shader_parameter/parent_id = 5
+shader_parameter/epsilon = 0.001
+shader_parameter/fyll_inn_ALLE_fargene = true
+shader_parameter/imageGRASS_MAIN = ExtResource("3_jseh0")
+shader_parameter/imageFALL = ExtResource("3_jseh0")
+shader_parameter/imageLAVA = ExtResource("3_jseh0")
+shader_parameter/imageSPACE = ExtResource("3_jseh0")
+shader_parameter/imageFIVE = ExtResource("4_nyv3s")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhs6d"]
 size = Vector2(14, 36)
 
@@ -84,12 +99,26 @@ sprite_frames = SubResource("SpriteFrames_foaxf")
 autoplay = "default"
 frame_progress = 0.100854
 
+[node name="AnimatedSpriteMushroom" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_3vuxk")
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_foaxf")
+autoplay = "default"
+frame_progress = 0.100854
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
 texture = ExtResource("2_8dmga")
+
+[node name="SpriteMushroom" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -24)
+texture = ExtResource("7_bqsqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_uhs6d")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="animation_looped" from="AnimatedSpriteMushroom" to="." method="_on_animated_sprite_2d_animation_looped"]

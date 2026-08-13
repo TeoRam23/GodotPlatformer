@@ -41,6 +41,10 @@ texture = ExtResource("2_pnjks")
 [node name="LaunchTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
 [node name="Particles" type="Node2D" parent="."]
 
 [node name="ShoopParticle1" type="CPUParticles2D" parent="Particles"]
@@ -108,3 +112,4 @@ scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_u0d7i")
 
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

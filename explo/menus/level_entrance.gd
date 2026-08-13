@@ -2,10 +2,13 @@ extends Area2D
 
 #@export var world_select: PackedScene
 @export var worl: String
+@export var world_5 = false
 var WORLY
 var is_active = false
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_mushroom: Sprite2D = $SpriteMushroom
 
 const some_particles = preload("res://explo/scenes/poof_level_animation.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +17,14 @@ func _ready():
 		WORLY = load(worl).instantiate()
 		add_child(WORLY)
 		WORLY.visible = false
+	
+	if world_5:
+		sprite_2d.visible = false
+		sprite_mushroom.visible = true
+		animated_sprite_2d.visible = false
+		animated_sprite_2d = $AnimatedSpriteMushroom
+		animated_sprite_2d.visible = true
+		
 
 
 

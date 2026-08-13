@@ -157,9 +157,10 @@ func _physics_process(delta):
 	just_wall_jumped = false
 	just_launched = false
 	
-	if position.y > 2500:
-		position = starting_position
-		prevelocity = Vector2(0, 0)
+	# gammel kode for å teleportere player når han datt ned for alltid
+	#if position.y > 2500:
+		#position = starting_position
+		#prevelocity = Vector2(0, 0)
 	
 	
 	#print(timer.time_left)
