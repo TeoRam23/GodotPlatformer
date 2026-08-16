@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bh6m2h30sfekn"]
+[gd_scene load_steps=19 format=3 uid="uid://bh6m2h30sfekn"]
 
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_5yb2j"]
 [ext_resource type="Script" uid="uid://cs6x4cql3s8g0" path="res://explo/scripts/ex_glider_floating.gd" id="1_vptjr"]
@@ -22,6 +22,9 @@ shader_parameter/imageFIVE = ExtResource("3_548gm")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub5ya"]
 radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qy1k"]
+size = Vector2(32, 32)
 
 [sub_resource type="Curve" id="Curve_vegot"]
 _data = [Vector2(0.59925103, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.1965003, 0.0, 0, 0]
@@ -67,8 +70,13 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_vptjr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShapeOld" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_ub5ya")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1qy1k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 use_parent_material = true

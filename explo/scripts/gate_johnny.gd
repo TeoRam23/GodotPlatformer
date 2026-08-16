@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var collision_gate: CollisionShape2D = $CollisionGate
 @onready var collision_area: CollisionShape2D = $PlayerArea/CollisionArea
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var poof_particle: CPUParticles2D = $PoofParticle
 
 var all_johnnies = 20
 
@@ -37,4 +39,7 @@ func fill_up():
 		await get_tree().create_timer(0.333).timeout
 		collision_gate.disabled = true
 		collision_area.disabled = true
-		visible = false
+		#visible = false
+		sprite_2d.visible = false
+		progress_bar.visible = false
+		poof_particle.emitting = true

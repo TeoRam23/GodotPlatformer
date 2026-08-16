@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drgpe22740ci0"]
+[gd_scene load_steps=10 format=3 uid="uid://drgpe22740ci0"]
 
 [ext_resource type="Script" uid="uid://ml0lgqtc5a2t" path="res://explo/scripts/gate_johnny.gd" id="1_anj2o"]
+[ext_resource type="Texture2D" uid="uid://2rovqbe86h46" path="res://assets/JohnnyGate.png" id="2_8qlk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qlk7"]
 size = Vector2(32, 64)
@@ -12,7 +13,23 @@ size = Vector2(1, 64)
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmxg1"]
-bg_color = Color(0.262745, 0.482353, 0.85098, 1)
+bg_color = Color(0.56078434, 0.38431373, 0.7058824, 1)
+
+[sub_resource type="Gradient" id="Gradient_8qlk7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7508197)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3h2u"]
+gradient = SubResource("Gradient_8qlk7")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_hmuir"]
+_data = [Vector2(0, 0.865244), 0.0, 1.1108887, 0, 0, Vector2(0.39449543, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.10533888, 0.0, 0, 0]
+point_count = 3
 
 [node name="GateJohnny" type="StaticBody2D"]
 process_mode = 1
@@ -33,6 +50,7 @@ position = Vector2(-0.5, 32)
 shape = SubResource("RectangleShape2D_f3h2u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 32.0
 offset_bottom = 64.0
 color = Color(0.85882354, 0.72156864, 0.39607844, 1)
@@ -48,5 +66,28 @@ max_value = 40.0
 step = 1.0
 fill_mode = 3
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 32)
+texture = ExtResource("2_8qlk7")
+
+[node name="PoofParticle" type="CPUParticles2D" parent="."]
+position = Vector2(16, 32)
+emitting = false
+amount = 100
+texture = SubResource("GradientTexture2D_f3h2u")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(16, 32)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 12.0
+scale_amount_min = 0.5
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_hmuir")
+color = Color(0.2627451, 0.48235294, 0.8509804, 1)
 
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]

@@ -101,10 +101,10 @@ sources/1 = SubResource("TileSetAtlasSource_oauxa")
 size = Vector2(224, 152)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwwg7"]
-size = Vector2(368, 336)
+size = Vector2(384, 336)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vklbd"]
-size = Vector2(496, 360)
+size = Vector2(512, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xntls"]
 size = Vector2(480, 128)
@@ -157,10 +157,10 @@ position = Vector2(2504, -816)
 texture = ExtResource("4_taiag")
 
 [node name="REMOVE ExCameraZone" parent="." index="6" instance=ExtResource("3_e2hif")]
+visible = false
 position = Vector2(2320, -460)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="REMOVE ExCameraZone" index="1"]
-visible = false
 position = Vector2(-8, -0.5)
 shape = SubResource("RectangleShape2D_6qoqd")
 
@@ -344,11 +344,10 @@ position = Vector2(112, 76)
 shape = SubResource("RectangleShape2D_pifgm")
 
 [node name="ExCameraZone" parent="ObjectHolder" index="36" instance=ExtResource("3_e2hif")]
-visible = false
 position = Vector2(1280, -220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectHolder/ExCameraZone" index="1"]
-position = Vector2(-8, -12)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_xwwg7")
 
 [node name="ExCameraZone2" parent="ObjectHolder" index="37" instance=ExtResource("3_e2hif")]
@@ -356,7 +355,7 @@ visible = false
 position = Vector2(1824, -492)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectHolder/ExCameraZone2" index="1"]
-position = Vector2(-104, 0)
+position = Vector2(-96, 0)
 shape = SubResource("RectangleShape2D_vklbd")
 
 [node name="ExHotAir3" parent="ObjectHolder" index="38" instance=ExtResource("21_jyw3a")]

@@ -22,6 +22,9 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	if body.is_on_floor():
+		print("yup, thats a floor alright")
+		return
 	#print("doin it twice?")
 	remove_child(ex_glider_child)
 	body.add_child(ex_glider_child)

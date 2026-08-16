@@ -106,6 +106,7 @@ position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_foaxf")
 autoplay = "default"
 frame_progress = 0.100854
+speed_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -24)

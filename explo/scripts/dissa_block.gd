@@ -8,6 +8,7 @@ extends StaticBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var pump_particle = $PumpParticle
+@onready var audio_poof: AudioStreamPlayer2D = $AudioPoof
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,7 @@ func _ready():
 func activate_dissablock(new_time):
 	delay_timer.wait_time = new_time
 	delay_timer.start()
+	
 
 
 func _on_delay_timer_timeout():
@@ -45,6 +47,8 @@ func _on_delay_timer_timeout():
 func animate_dissing():
 	collision_shape.disabled = true
 	animated_sprite.play("dissapump")
+	#audio_poof.pitch_scale = randf_range(0.8,1.2)
+	audio_poof.playing = true
 
 
 

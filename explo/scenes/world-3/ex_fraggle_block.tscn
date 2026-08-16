@@ -54,6 +54,7 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_wkyp1")
 
 [node name="SpriteReal" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_fl7ut")
 
 [node name="SpriteReal2" type="Sprite2D" parent="."]

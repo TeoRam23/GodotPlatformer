@@ -22,8 +22,10 @@ func _ready():
 		sprite_2d.visible = false
 		sprite_mushroom.visible = true
 		animated_sprite_2d.visible = false
+		animated_sprite_2d.speed_scale = 0
 		animated_sprite_2d = $AnimatedSpriteMushroom
 		animated_sprite_2d.visible = true
+		animated_sprite_2d.speed_scale = 1
 		
 
 

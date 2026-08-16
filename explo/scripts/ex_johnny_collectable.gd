@@ -34,8 +34,8 @@ func _on_body_entered(body):
 	
 	audio_johnny_get.playing = true
 	audio_johnny_get.reparent(get_parent())
-	audio_collect.playing = true
-	audio_collect.reparent(get_parent())
+	#audio_collect.playing = true
+	#audio_collect.reparent(get_parent())
 	
 	remove_child(sploot_particle)
 	get_parent().add_child(sploot_particle)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://coeb0svmejo85"]
+[gd_scene load_steps=36 format=3 uid="uid://coeb0svmejo85"]
 
 [ext_resource type="Script" uid="uid://cr60eteia4fm" path="res://explo/scripts/dissa_block.gd" id="1_i6w2j"]
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_sw604"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dowst0b3gyyt1" path="res://assets/color_maps/dissablocks/dissablock_color2.png" id="5_xfqe6"]
 [ext_resource type="Texture2D" uid="uid://dhsv2e211favg" path="res://assets/color_maps/dissablocks/dissablock_color4.png" id="6_av4dr"]
 [ext_resource type="Texture2D" uid="uid://nen3u2qy4x4o" path="res://assets/DissaBlockMush.png" id="8_ej5hh"]
+[ext_resource type="PackedScene" uid="uid://c8ww5ij3x8m3c" path="res://explo/scenes/audio_positional_2d.tscn" id="9_ta28l"]
+[ext_resource type="AudioStream" uid="uid://bg7bstghhtgln" path="res://assets/Sounds/dissapoof-2.wav" id="10_ta28l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xlkvy"]
 shader = ExtResource("1_sw604")
@@ -234,9 +236,13 @@ color = Color(0.32941177, 0.5254902, 0.92941177, 1)
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AudioPoof" parent="." instance=ExtResource("9_ta28l")]
+stream = ExtResource("10_ta28l")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="animation_finished" from="AnimatedMush2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedMush2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="finished" from="PumpParticle" to="." method="_on_pump_particle_finished"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
+[connection signal="finished" from="AudioPoof" to="AudioPoof" method="_on_finished"]
