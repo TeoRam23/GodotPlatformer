@@ -40,7 +40,7 @@ func _on_body_entered(body):
 	if !broken and porter_crime:
 		if !death_timer.time_left:
 			if port_amount > 40:
-				body.i_died()
+				body.i_died(true)
 				Events.reset_teleporters()
 				return
 

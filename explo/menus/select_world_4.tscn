@@ -5,6 +5,15 @@
 
 [node name="SelectWorld" instance=ExtResource("1_nrfuw")]
 
+[node name="WorldTitle" parent="." index="1"]
+text = "Space"
+
+[node name="AmountContainer" parent="." index="2"]
+world_number = "4"
+
+[node name="Control" parent="." index="3"]
+world_number = 4
+
 [node name="SelectLevel" parent="Control/GridContainer" index="0" instance=ExtResource("2_r51g0")]
 layout_mode = 2
 text = "1"

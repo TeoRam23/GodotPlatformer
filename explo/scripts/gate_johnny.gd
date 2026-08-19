@@ -8,9 +8,20 @@ extends StaticBody2D
 
 var all_johnnies = 20
 
+@export var always_closed = false
+@export var force_full = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if always_closed:
+		VariableManager.opened_johnny_gate = false
+		VariableManager.save_variables()
+		
+	if VariableManager.opened_johnny_gate:
+		collision_gate.disabled = true
+		collision_area.disabled = true
+		sprite_2d.visible = false
+		progress_bar.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +36,10 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 
 func fill_up():
 	var johnny_count = VariableManager.johnnies
-	johnny_count = 41
+	print(johnny_count)
+	
+	if force_full:
+		johnny_count = 41
 	
 	for j in johnny_count:
 		await get_tree().process_frame
@@ -37,9 +51,13 @@ func fill_up():
 	
 	if johnny_count >= all_johnnies:
 		await get_tree().create_timer(0.333).timeout
+		#visible = false
 		collision_gate.disabled = true
 		collision_area.disabled = true
-		#visible = false
 		sprite_2d.visible = false
 		progress_bar.visible = false
 		poof_particle.emitting = true
+		
+		VariableManager.opened_johnny_gate = true
+		
+		VariableManager.save_variables()

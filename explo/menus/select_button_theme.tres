@@ -1,0 +1,73 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://0lenmdwkxqhq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjs4e"]
+bg_color = Color(0.270222, 0.270222, 0.270222, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.57254905, 0.57254905, 0.57254905, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjs4e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr7p3"]
+bg_color = Color(0.780392, 0.0901961, 0.239216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6ols"]
+bg_color = Color(0.270222, 0.270222, 0.270222, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.780392, 0.0901961, 0.239216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5ajv"]
+bg_color = Color(0.580392, 0.054902, 0.305882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.780392, 0.0901961, 0.239216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4fic"]
+bg_color = Color(0.05882353, 0.05882353, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78039217, 0.09019608, 0.23921569, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_kjs4e")
+Button/styles/focus = SubResource("StyleBoxEmpty_kjs4e")
+Button/styles/hover = SubResource("StyleBoxFlat_vr7p3")
+Button/styles/normal = SubResource("StyleBoxFlat_t6ols")
+Button/styles/pressed = SubResource("StyleBoxFlat_w5ajv")
+Panel/styles/panel = SubResource("StyleBoxFlat_n4fic")

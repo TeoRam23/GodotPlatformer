@@ -1,63 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://8tbh5ungpgk5"]
+[gd_scene load_steps=3 format=3 uid="uid://8tbh5ungpgk5"]
 
+[ext_resource type="Theme" uid="uid://0lenmdwkxqhq" path="res://explo/menus/select_button_theme.tres" id="1_pti8l"]
 [ext_resource type="Script" uid="uid://ddluj1gqib2jd" path="res://explo/menus/select_level_button.gd" id="1_ylyyi"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm8sc"]
-bg_color = Color(0.18, 0.18, 0.18, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.26, 0.26, 0.26, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_scj1g"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t074"]
-bg_color = Color(0.72, 0.288, 0.288, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmdam"]
-bg_color = Color(0.270222, 0.270222, 0.270222, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.72, 0.288, 0.288, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy130"]
-bg_color = Color(0.57, 0.2679, 0.2679, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.717647, 0.286275, 0.286275, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_by1t7"]
-Button/font_sizes/font_size = 16
-Button/styles/disabled = SubResource("StyleBoxFlat_bm8sc")
-Button/styles/focus = SubResource("StyleBoxEmpty_scj1g")
-Button/styles/hover = SubResource("StyleBoxFlat_3t074")
-Button/styles/normal = SubResource("StyleBoxFlat_xmdam")
-Button/styles/pressed = SubResource("StyleBoxFlat_qy130")
 
 [node name="SelectLevel" type="Button" groups=["level_button_group"]]
 process_priority = -1
@@ -69,7 +13,7 @@ anchor_bottom = 0.567
 offset_right = -170.16
 offset_bottom = -170.12
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_by1t7")
+theme = ExtResource("1_pti8l")
 action_mode = 0
 text = "0"
 script = ExtResource("1_ylyyi")

@@ -348,6 +348,13 @@ func update_animation(input_axis, real_axis):
 	
 	if (Input.is_action_pressed("down") and is_on_floor()) or gonnadash:
 		animated_sprite_2d.play("crouch")
+	
+	# kode for å få spriten til å locke til griden, men det ser ikke bra ut i høy fart...
+	#animated_sprite_2d.global_position.x = int(global_position.x + ((0.5 - 0.001) * sign(global_position.x)))
+	#animated_sprite_2d.global_position.y = int(global_position.y-3 + ((0.5 - 0.001) * sign(global_position.y)))
+	#print("spri: ", animated_sprite_2d.global_position.x)
+	#print("play: ", global_position.x+0.5)
+	#print("newy: ", int(global_position.x+0.5 - (0.001 * sign(global_position.x))))
 
 
 func _on_hazard_detector_area_entered(area):

@@ -5,6 +5,8 @@ extends Button
 @export var canceled = true
 @export var bonus = false
 
+const bonus_theme = preload("uid://300y7tk047ts")
+
 var level_vars: Dictionary
 var level_world
 
@@ -23,6 +25,9 @@ func _ready():
 	level_part = level_part.substr(0, level_part.rfind("."))
 	level_vars = VariableManager.find_level(level_part)
 	level_world = level_part.split()[0]
+	
+	if bonus:
+		theme = bonus_theme
 	
 	
 	if level_vars or !canceled:
@@ -66,7 +71,6 @@ func cancel_me():
 	
 	if bonus:
 		visible = false
-	#canceled = true
 
 
 func _on_mouse_entered():

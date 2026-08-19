@@ -5,6 +5,15 @@
 
 [node name="SelectWorld" instance=ExtResource("1_6d785")]
 
+[node name="WorldTitle" parent="." index="1"]
+text = "Apple Season"
+
+[node name="AmountContainer" parent="." index="2"]
+world_number = "2"
+
+[node name="Control" parent="." index="3"]
+world_number = 2
+
 [node name="SelectLevel" parent="Control/GridContainer" index="0" instance=ExtResource("2_mdibk")]
 layout_mode = 2
 text = "1"

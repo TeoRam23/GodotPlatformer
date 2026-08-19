@@ -30,6 +30,9 @@ static var world_we_entered = "1"
 
 static var saved_cursor_position = Vector2(75, 0)
 
+static var opened_johnny_gate = false
+static var opened_w5_gate = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -131,6 +134,8 @@ func save_variables():
 	file.store_var(character_id)
 	file.store_var(johnny_activated)
 	file.store_var(levels_completed)
+	file.store_var(opened_johnny_gate)
+	file.store_var(opened_w5_gate)
 	file.close()
 	#print(levels_completed)
 
@@ -147,6 +152,8 @@ func load_variables():
 		character_id = file.get_var()
 		johnny_activated = file.get_var()
 		levels_completed = file.get_var()
+		opened_johnny_gate = file.get_var()
+		opened_w5_gate = file.get_var()
 		#print(levels_completed)
 		file.close()
 	else:

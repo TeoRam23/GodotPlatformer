@@ -79,3 +79,5 @@ func swap_johnny():
 		Events.swap_character(0)
 		johnny_play_sprite.use_parent_material = false
 		johnny_particle.emitting = true
+	
+	VariableManager.save_variables()

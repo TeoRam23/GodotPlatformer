@@ -8,7 +8,8 @@ extends StaticBody2D
 @onready var shoop_particle_4: CPUParticles2D = $Particles/ShoopParticle4
 
 const ARROW_HAZARD = preload("res://explo/hazards/arrow_hazard.tscn")
-@export var arrow_speed = -180.0
+# arrow speed var -180, men ble endret til -240 for å matche liknende spill
+@export var arrow_speed = -240.0
 @export var launch_seconds = 1.0
 @export var wait_seconds = 0.0
 var world_number = 1

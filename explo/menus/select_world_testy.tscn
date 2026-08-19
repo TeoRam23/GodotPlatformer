@@ -1,10 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://0sx6utjq7rwu"]
+[gd_scene load_steps=14 format=3 uid="uid://0sx6utjq7rwu"]
 
 [ext_resource type="Texture2D" uid="uid://be6v5uor2avxq" path="res://assets/baksplodder/select.png" id="1_lvyi1"]
 [ext_resource type="Script" uid="uid://cx08altr45ro1" path="res://explo/menus/select_world.gd" id="2_pd8kq"]
 [ext_resource type="PackedScene" uid="uid://8tbh5ungpgk5" path="res://explo/menus/select_level_button.tscn" id="3_16bxd"]
+[ext_resource type="Texture2D" uid="uid://cr062qmcyxjmr" path="res://assets/Johnny.png" id="3_j4f4t"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="3_njxuv"]
+[ext_resource type="Texture2D" uid="uid://bm337rgf7kpqh" path="res://assets/extraKey.png" id="4_6ej7g"]
 [ext_resource type="Texture2D" uid="uid://cuy00u6l7o7rv" path="res://assets/completionBonus2X.png" id="4_vjah4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ej7g"]
+atlas = ExtResource("3_j4f4t")
+region = Rect2(0, 0, 16, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6elnp"]
+atlas = ExtResource("4_6ej7g")
+region = Rect2(20, 20, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52jj5"]
 atlas = ExtResource("4_vjah4")
@@ -30,6 +40,63 @@ visible = false
 position = Vector2(320, 180)
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("1_lvyi1")
+
+[node name="WorldTitle" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 16.0
+offset_right = 166.0
+offset_bottom = 48.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_njxuv")
+theme_override_font_sizes/font_size = 24
+text = "World"
+horizontal_alignment = 1
+
+[node name="AmountContainer" type="HBoxContainer" parent="."]
+offset_left = 248.0
+offset_top = 46.0
+offset_right = 392.0
+offset_bottom = 66.0
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="JohnnyContainer" type="HBoxContainer" parent="AmountContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="JohnnyTexture" type="TextureRect" parent="AmountContainer/JohnnyContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_6ej7g")
+
+[node name="JohnnyLabel" type="Label" parent="AmountContainer/JohnnyContainer"]
+layout_mode = 2
+theme = ExtResource("3_njxuv")
+theme_override_colors/font_color = Color(0.2627451, 0.48235294, 0.8509804, 1)
+theme_override_font_sizes/font_size = 16
+text = "0/8"
+
+[node name="KeyContainer" type="HBoxContainer" parent="AmountContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="KeyTexture" type="TextureRect" parent="AmountContainer/KeyContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_6elnp")
+
+[node name="KeyLabel" type="Label" parent="AmountContainer/KeyContainer"]
+layout_mode = 2
+theme = ExtResource("3_njxuv")
+theme_override_colors/font_color = Color(0, 0.92156863, 0.7607843, 1)
+theme_override_font_sizes/font_size = 16
+text = "0/8"
 
 [node name="Control" type="HBoxContainer" parent="."]
 anchors_preset = 8

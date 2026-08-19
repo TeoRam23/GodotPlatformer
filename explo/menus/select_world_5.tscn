@@ -5,6 +5,15 @@
 
 [node name="SelectWorld" instance=ExtResource("1_dl2je")]
 
+[node name="WorldTitle" parent="." index="1"]
+text = "The Shroomverse"
+
+[node name="AmountContainer" parent="." index="2"]
+world_number = "5"
+
+[node name="Control" parent="." index="3"]
+world_number = 5
+
 [node name="SelectLevel" parent="Control/GridContainer" index="0" instance=ExtResource("2_stu3p")]
 layout_mode = 2
 text = "1"

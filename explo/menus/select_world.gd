@@ -24,6 +24,8 @@ extends HBoxContainer
 
 var world_is_enabled = false
 
+@export var world_number = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +44,9 @@ func _ready():
 			
 			if butt.disabled == false:
 				world_is_enabled = true
+			
+			if world_number == 5:
+				butt.theme = butt.bonus_theme
 			
 	if world_is_enabled == false:
 		# scummy code, but whatever

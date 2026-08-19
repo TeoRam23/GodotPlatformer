@@ -383,6 +383,16 @@ position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_lgw7j")
 animation = &"idle"
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SpriteHolder"]
+visible = false
+modulate = Color(3.4751832, 3.4751832, 3.4751832, 0.44700003)
+z_index = 1
+material = SubResource("ShaderMaterial_pdh2k")
+use_parent_material = true
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_lgw7j")
+animation = &"idle"
+
 [node name="ExpoCamera" type="Camera2D" parent="SpriteHolder"]
 process_mode = 3
 process_priority = 1
