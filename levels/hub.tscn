@@ -435,47 +435,104 @@ z_index = -1
 position = Vector2(-32, 24)
 shape = SubResource("RectangleShape2D_r78kj")
 
-[node name="JohnnyGetAnimation" type="AnimatedSprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="1"]
+[node name="JohnnyNpcArea2" type="Area2D" parent="BuiltInObjects/JohnnyNpcArea" index="1"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="JohnnyNpcCollision2" type="CollisionShape2D" parent="BuiltInObjects/JohnnyNpcArea/JohnnyNpcArea2" index="0"]
+z_index = -1
+position = Vector2(16, 24)
+shape = SubResource("RectangleShape2D_r78kj")
+
+[node name="JohnnyGetAnimation" type="AnimatedSprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="2"]
 visible = false
 position = Vector2(62, 12.5)
 sprite_frames = SubResource("SpriteFrames_11x7m")
 
-[node name="JohnnyGetSprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="2"]
+[node name="JohnnyGetSprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="3"]
 z_index = -1
 position = Vector2(-31.999979, 24)
 scale = Vector2(2.2500021, 3)
 texture = ExtResource("8_fiilc")
 
-[node name="JohnnyGetDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="3" instance=ExtResource("9_kqnn8")]
+[node name="JohnnyGetDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="4" instance=ExtResource("9_kqnn8")]
 layer = 4
 
 [node name="DialogueStandard" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="1" instance=ExtResource("10_7iaxr")]
-text = "Hallo."
+text = "Hey, Jeffrey! Thank you for saving me!"
 top = true
 
 [node name="DialogueStandard2" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="2" instance=ExtResource("10_7iaxr")]
-text = "Dette er bare en test."
+text = "I recently got split up, and all the tiny me's got spread around this land."
 top = true
 
 [node name="DialogueStandard3" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="3" instance=ExtResource("10_7iaxr")]
-text = "Verden eller noe sånt."
+text = "As you have been collecting the little me's, more and more of me has been put back together!"
+top = true
+
+[node name="DialogueStandard4" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="4" instance=ExtResource("10_7iaxr")]
+text = "You haven't found all of them yet, so I am still missing some organs... but I have enough to be up and running again!"
+top = true
+
+[node name="DialogueStandard5" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="5" instance=ExtResource("10_7iaxr")]
+text = "You know, if you can get the last smol me's, I might have a little surprise for you upstairs..."
+top = true
+
+[node name="DialogueStandard6" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogue" index="6" instance=ExtResource("10_7iaxr")]
+text = "But in any case, whaddaya say? Want to hit the showers and let me take over for a while?"
 top = true
 yes_or_no = true
 
-[node name="JohnnyPlaySprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="4"]
+[node name="JohnnyGetDialogueFull" parent="BuiltInObjects/JohnnyNpcArea" index="5" instance=ExtResource("9_kqnn8")]
+layer = 4
+
+[node name="DialogueStandard" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogueFull" index="1" instance=ExtResource("10_7iaxr")]
+text = "Hey, Jeffrey! Thank you for saving me!"
+top = true
+
+[node name="DialogueStandard2" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogueFull" index="2" instance=ExtResource("10_7iaxr")]
+text = "I recently got split up, and all the tiny me's got spread around this land."
+top = true
+
+[node name="DialogueStandard3" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogueFull" index="3" instance=ExtResource("10_7iaxr")]
+text = "As you have been collecting the little me's, more and more of me has been put back together!"
+top = true
+
+[node name="DialogueStandard4" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogueFull" index="4" instance=ExtResource("10_7iaxr")]
+text = "And... wow! You got all of them! I am whole again! Thank you so much, that must've been so hard!"
+top = true
+
+[node name="DialogueStandard5" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogueFull" index="5" instance=ExtResource("10_7iaxr")]
+text = "I have a little surprise for you because you have been so awesome! It's upstairs, you just have to press space at that sign."
+top = true
+
+[node name="DialogueStandard6" parent="BuiltInObjects/JohnnyNpcArea/JohnnyGetDialogueFull" index="6" instance=ExtResource("10_7iaxr")]
+text = "But you must be so tired! Want to hit the showers and let me take over for a while?"
+top = true
+yes_or_no = true
+
+[node name="JohnnyPlaySprite" type="Sprite2D" parent="BuiltInObjects/JohnnyNpcArea" index="6"]
 visible = false
 material = SubResource("ShaderMaterial_11x7m")
 position = Vector2(16, 40)
 texture = SubResource("AtlasTexture_op6bl")
 
-[node name="JohnnyPlayDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="5" instance=ExtResource("9_kqnn8")]
+[node name="JohnnyPlayDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="7" instance=ExtResource("9_kqnn8")]
 
 [node name="DialogueStandard" parent="BuiltInObjects/JohnnyNpcArea/JohnnyPlayDialogue" index="1" instance=ExtResource("10_7iaxr")]
-text = "Hey, bro! Wanna switch?"
+text = "Hey, bro! Want me to take over?"
 top = true
 yes_or_no = true
 
-[node name="JohnnyParticle" type="CPUParticles2D" parent="BuiltInObjects/JohnnyNpcArea" index="6"]
+[node name="JeffreyPlayDialogue" parent="BuiltInObjects/JohnnyNpcArea" index="8" instance=ExtResource("9_kqnn8")]
+
+[node name="DialogueStandard" parent="BuiltInObjects/JohnnyNpcArea/JeffreyPlayDialogue" index="1" instance=ExtResource("10_7iaxr")]
+text = "..."
+color = 0
+top = true
+yes_or_no = true
+
+[node name="JohnnyParticle" type="CPUParticles2D" parent="BuiltInObjects/JohnnyNpcArea" index="9"]
 process_mode = 1
 position = Vector2(16, 40)
 emitting = false
@@ -496,7 +553,7 @@ scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_3uarx")
 color = Color(0.2627451, 0.48235294, 0.8509804, 1)
 
-[node name="JeffreyParticle" type="CPUParticles2D" parent="BuiltInObjects/JohnnyNpcArea" index="7"]
+[node name="JeffreyParticle" type="CPUParticles2D" parent="BuiltInObjects/JohnnyNpcArea" index="10"]
 process_mode = 1
 position = Vector2(16, 40)
 emitting = false

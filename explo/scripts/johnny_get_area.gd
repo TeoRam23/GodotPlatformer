@@ -5,12 +5,16 @@ extends Area2D
 @onready var johnny_get_animation: AnimatedSprite2D = $JohnnyGetAnimation
 @onready var johnny_get_sprite: Sprite2D = $JohnnyGetSprite
 @onready var johnny_get_dialogue: CanvasLayer = $JohnnyGetDialogue
+@onready var johnny_get_dialogue_full: CanvasLayer = $JohnnyGetDialogueFull
 
 @onready var johnny_play_sprite: Sprite2D = $JohnnyPlaySprite
 @onready var johnny_play_dialogue: CanvasLayer = $JohnnyPlayDialogue
+@onready var jeffrey_play_dialogue: CanvasLayer = $JeffreyPlayDialogue
 
 @onready var johnny_particle: CPUParticles2D = $JohnnyParticle
 @onready var jeffrey_particle: CPUParticles2D = $JeffreyParticle
+
+@onready var johnny_npc_area_2: Area2D = $JohnnyNpcArea2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,11 +31,11 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("start"):
-		if get_overlapping_bodies():
-			if !VariableManager.johnny_activated:
-				activate_johnny()
-			else:
-				play_johnny()
+		if get_overlapping_bodies() and not VariableManager.johnny_activated:
+			activate_johnny()
+		elif johnny_npc_area_2.get_overlapping_bodies() and VariableManager.johnny_activated:
+			print("muahahahah!")
+			play_johnny()
 
 func activate_johnny():
 	get_tree().paused = true
@@ -47,14 +51,21 @@ func _on_johnny_get_animation_animation_finished() -> void:
 	set_up_johnny_npc()
 	
 	get_tree().paused = false
-	johnny_get_dialogue.start()
+	
+	if VariableManager.johnnies < 40:
+		johnny_get_dialogue.start()
+	else:
+		johnny_get_dialogue_full.start()
 	var do_swap = await Events.pls_dialogue_finished
 	if do_swap:
 		swap_johnny()
 	
 
 func play_johnny():
-	johnny_play_dialogue.start()
+	if VariableManager.character_id != 1:
+		johnny_play_dialogue.start()
+	else:
+		jeffrey_play_dialogue.start()
 	
 	var do_swap = await Events.pls_dialogue_finished
 	if do_swap:
@@ -67,7 +78,7 @@ func set_up_johnny_npc():
 	johnny_get_animation.visible = false
 	johnny_get_sprite.visible = false
 	johnny_play_sprite.visible = true
-	johnny_npc_collision.position.x = 16.0 # plassen der den går over play johnny
+	#johnny_npc_collision.position.x = 16.0 # plassen der den går over play johnny
 
 
 func swap_johnny():

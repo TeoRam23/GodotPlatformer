@@ -7,6 +7,7 @@
 
 [node name="DialogueParent" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 script = ExtResource("1_3g6fq")
 
 [node name="DialogueBox" type="Panel" parent="."]
