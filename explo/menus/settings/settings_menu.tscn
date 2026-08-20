@@ -1,9 +1,24 @@
-[gd_scene load_steps=35 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=38 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" uid="uid://b5cmxn8y3gr13" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
 [ext_resource type="Theme" uid="uid://rtc8pddds3ew" path="res://explo/menus/pause_theme.tres" id="3_llriq"]
 [ext_resource type="Script" uid="uid://c831c4mthw8nf" path="res://explo/menus/settings/settings_check_button.gd" id="3_lsjbt"]
+[ext_resource type="Script" uid="uid://cw1cqsxq0cual" path="res://explo/menus/settings/settings_slider.gd" id="4_jqsgv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbxmn"]
+bg_color = Color(0.92941177, 0.11764706, 0.14117648, 1)
+border_width_left = 7
+border_color = Color(0.05882353, 0.05882353, 0.101960786, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqsgv"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+border_width_right = 7
+border_color = Color(0.05882353, 0.05882353, 0.101960786, 1)
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhoj3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -12,6 +27,9 @@ border_color = Color(0.780392, 0.0901961, 0.239216, 1)
 
 [sub_resource type="Theme" id="Theme_rdlvj"]
 CheckButton/constants/h_separation = 4
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_mbxmn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_mbxmn")
+HSlider/styles/slider = SubResource("StyleBoxFlat_jqsgv")
 Label/colors/font_color = Color(0.929412, 0.117647, 0.141176, 1)
 Label/styles/normal = SubResource("StyleBoxFlat_mhoj3")
 
@@ -149,7 +167,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.109804, 0.109804, 0.12549, 1)
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
 
 [node name="Settings" type="Sprite2D" parent="."]
 visible = false
@@ -178,7 +196,6 @@ offset_bottom = 99.0
 text = "denne settingen"
 
 [node name="ScrollVideo" type="ScrollContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -220,24 +237,66 @@ custom_minimum_size = Vector2(393, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="LabelSomeSettings" type="Label" parent="ScrollAudio/BoxAudio"]
+[node name="LabelAudioSettings" type="Label" parent="ScrollAudio/BoxAudio"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-text = "Some Settings"
+text = "Audio Settings"
 
-[node name="BoxSomeSettings" type="VBoxContainer" parent="ScrollAudio/BoxAudio"]
+[node name="BoxAudioSettings" type="VBoxContainer" parent="ScrollAudio/BoxAudio"]
 custom_minimum_size = Vector2(379.22, 0)
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="some_setting" type="CheckButton" parent="ScrollAudio/BoxAudio/BoxSomeSettings"]
+[node name="LabelGeneralAudio" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+text = "General"
+
+[node name="general_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-button_pressed = true
-text = "Some setting"
-script = ExtResource("3_lsjbt")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 9
+ticks_position = 3
+script = ExtResource("4_jqsgv")
+
+[node name="LabelPadding1" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+
+[node name="LabelMusicAudio" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+text = "Music"
+
+[node name="music_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 9
+ticks_position = 3
+script = ExtResource("4_jqsgv")
+
+[node name="LabelPadding2" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+
+[node name="LabelSfxAudio" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+text = "SFX"
+
+[node name="sfx_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 9
+ticks_position = 3
+script = ExtResource("4_jqsgv")
 
 [node name="ScrollGameplay" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0

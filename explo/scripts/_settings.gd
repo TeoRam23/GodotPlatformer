@@ -3,6 +3,11 @@ extends Node
 #jeg tror jeg lagrer til settings så jeg kanskje kan ha flere filer for savefiles men ha samme settings, for nå
 var save_path = "user://settings.save"
 
+# Audio behandles av settings her
+var general_bus = AudioServer.get_bus_index("Master")
+var music_bus = AudioServer.get_bus_index("Music")
+var sfx_bus = AudioServer.get_bus_index("SFX")
+
 
 # HUSK å legge nye settinger til i SAVE og LOAD func-ene!
 var show_game_timer = true
@@ -18,6 +23,11 @@ var constant_throwing = false
 var zero_gravity = false
 
 var remember_cursor_position = false
+
+
+var general_audio = 50
+var music_audio = 50
+var sfx_audio = 50
 
 
 # Called when the node enters the scene tree for the first time.
@@ -50,8 +60,14 @@ func save_settings():
 	file.store_var(zero_gravity)
 	
 	file.store_var(remember_cursor_position)
+	
+	file.store_var(general_audio)
+	file.store_var(music_audio)
+	file.store_var(sfx_audio)
 		
 	print("###########HOOOOOOOOOOOOOOOO saved this setting i think! #####################")
+	
+	update_audio()
 	
 func load_settings():
 	if FileAccess.file_exists(save_path):
@@ -71,9 +87,15 @@ func load_settings():
 		
 		remember_cursor_position = file.get_var()
 		
+		general_audio = file.get_var()
+		music_audio = file.get_var()
+		sfx_audio = file.get_var()
+		
 		file.close()
 	else:
 		print("no savefile for settings, whoops :o")
+	
+	update_audio()
 	
 	#if FileAccess.file_exists(save_path):
 		#var file = FileAccess.open(save_path, FileAccess.READ)
@@ -87,3 +109,8 @@ func load_settings():
 	#else:
 		#print('Welp, no save here ¯\\_ツ)_/¯')
 		#return
+
+func update_audio():
+	AudioServer.set_bus_volume_linear(general_bus, Settings.general_audio)
+	AudioServer.set_bus_volume_linear(music_bus, Settings.music_audio)
+	AudioServer.set_bus_volume_linear(sfx_bus, Settings.sfx_audio)

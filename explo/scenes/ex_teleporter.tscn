@@ -119,6 +119,7 @@ color_ramp = SubResource("Gradient_r1p6a")
 
 [node name="AudioTeleport" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_sbjr2")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

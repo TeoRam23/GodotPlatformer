@@ -134,5 +134,6 @@ color_ramp = SubResource("Gradient_3l5e8")
 [node name="AudioPop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_1qy1k")
 volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

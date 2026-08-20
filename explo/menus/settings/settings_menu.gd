@@ -22,6 +22,8 @@ var locked_cursor = false
 @onready var scroll_gameplay = $ScrollGameplay
 @onready var scroll_controls = $ScrollControls
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_saved_settings() # denne tenker jeg å kutte ut og erstatte med script i selve knappen
@@ -63,6 +65,7 @@ func _input(_event):
 func save_settings():
 	Events.save_settings_yall(true)
 	Settings.call_deferred("save_settings")
+	
 	
 	#Settings.locked_cursor = butt_locked_cursor.is_pressed()
 	pass

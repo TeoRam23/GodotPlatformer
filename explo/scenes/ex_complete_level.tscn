@@ -214,6 +214,7 @@ shape = SubResource("RectangleShape2D_uju4v")
 
 [node name="AudioJingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_i5xa4")
+bus = &"SFX"
 
 [node name="AudioMushroom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_0rtwf")
