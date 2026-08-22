@@ -29,6 +29,8 @@ var general_audio = 50
 var music_audio = 50
 var sfx_audio = 50
 
+var screen_size = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,10 +66,13 @@ func save_settings():
 	file.store_var(general_audio)
 	file.store_var(music_audio)
 	file.store_var(sfx_audio)
+	
+	file.store_var(screen_size)
 		
 	print("###########HOOOOOOOOOOOOOOOO saved this setting i think! #####################")
 	
 	update_audio()
+	update_screen_size()
 	
 func load_settings():
 	if FileAccess.file_exists(save_path):
@@ -91,11 +96,14 @@ func load_settings():
 		music_audio = file.get_var()
 		sfx_audio = file.get_var()
 		
+		screen_size = file.get_var()
+		
 		file.close()
 	else:
 		print("no savefile for settings, whoops :o")
 	
 	update_audio()
+	update_screen_size()
 	
 	#if FileAccess.file_exists(save_path):
 		#var file = FileAccess.open(save_path, FileAccess.READ)
@@ -114,3 +122,19 @@ func update_audio():
 	AudioServer.set_bus_volume_linear(general_bus, Settings.general_audio)
 	AudioServer.set_bus_volume_linear(music_bus, Settings.music_audio)
 	AudioServer.set_bus_volume_linear(sfx_bus, Settings.sfx_audio)
+
+func update_screen_size():
+	#screen_size = Vector2i(640, 360)
+	#screen_size = Vector2i(640*3, 360*3)
+	if screen_size == 0:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		print("huh")
+	elif screen_size == 1:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1920, 1080))
+	elif screen_size == 2:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+	elif screen_size == 3:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(640, 360))

@@ -6,6 +6,7 @@ extends StaticBody2D
 @onready var shoop_particle_2: CPUParticles2D = $Particles/ShoopParticle2
 @onready var shoop_particle_3: CPUParticles2D = $Particles/ShoopParticle3
 @onready var shoop_particle_4: CPUParticles2D = $Particles/ShoopParticle4
+@onready var audio_launch: AudioStreamPlayer2D = $AudioLaunch
 
 const ARROW_HAZARD = preload("res://explo/hazards/arrow_hazard.tscn")
 # arrow speed var -180, men ble endret til -240 for å matche liknende spill
@@ -70,6 +71,9 @@ func launch_arrow():
 		
 	
 	add_child(new_arrow)
+	
+	#audio_launch.play()
+	SfxDeconflicter.play(audio_launch)
 
 
 func _on_wait_timer_timeout() -> void:

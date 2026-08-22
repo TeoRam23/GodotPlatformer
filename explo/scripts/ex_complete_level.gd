@@ -32,9 +32,9 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if world_number == 5:
-		audio_mushroom.playing = true
+		audio_mushroom.play()
 	else:
-		audio_jingle.playing = true
+		audio_jingle.play()
 	Events.level_completed.emit()
 
 func check_for_chicks():

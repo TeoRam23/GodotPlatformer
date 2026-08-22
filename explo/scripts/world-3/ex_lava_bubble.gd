@@ -146,7 +146,7 @@ func _physics_process(delta):
 
 func reset_bubble():
 	audio_leave.global_position = global_position
-	audio_leave.playing = true
+	SfxDeconflicter.play(audio_leave)
 	#print("Killed... right?")
 	position = start_pos
 	# stop partikler
@@ -160,7 +160,7 @@ func reset_bubble():
 
 func launch_bubble():
 	audio_appear.global_position = global_position
-	audio_appear.playing = true
+	SfxDeconflicter.play(audio_appear)
 	#print("Let's-a go! ", randi_range(1, 20))
 	velocity.y = jump_velocity
 	velocity.x = speed

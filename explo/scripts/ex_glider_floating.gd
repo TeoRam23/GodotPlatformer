@@ -38,12 +38,12 @@ func _on_body_entered(body):
 	collision_shape.set_deferred("disabled", true)
 	sprite.visible = false
 	#queue_free()
-	audio_pop.playing = true
+	audio_pop.play()
 
 func reemerge():
 	collision_shape.set_deferred("disabled", false)
 	sprite.visible = true
-	audio_pop.playing = true
+	audio_pop.play()
 
 func bobble_animation():
 	#print("oop")

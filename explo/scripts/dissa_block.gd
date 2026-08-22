@@ -48,7 +48,7 @@ func animate_dissing():
 	collision_shape.disabled = true
 	animated_sprite.play("dissapump")
 	#audio_poof.pitch_scale = randf_range(0.8,1.2)
-	audio_poof.playing = true
+	audio_poof.play()
 
 
 

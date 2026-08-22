@@ -3,6 +3,7 @@ extends CharacterBody2D
 var break_particle: CPUParticles2D
 @onready var break_particle_main: CPUParticles2D = $BreakParticle
 @onready var break_particle_mush: CPUParticles2D = $BreakParticleMush
+@onready var audio_crack_2d: AudioStreamPlayer2D = $AudioCrack2D
 var world_number = 1
 
 func _ready() -> void:
@@ -21,4 +22,8 @@ func _physics_process(delta):
 		get_parent().add_child(break_particle)
 		break_particle.global_position = part_pos
 		break_particle.emitting = true
+		
+		SfxDeconflicter.play(audio_crack_2d)
+		audio_crack_2d.reparent(get_parent())
+		
 		queue_free()

@@ -25,7 +25,7 @@ func _process(delta):
 func _on_body_entered(body: Node2D):
 	#Events.level_completed.emit()
 	visible = false
-	audio_jingle.playing = true
+	audio_jingle.play()
 	#print(current_level_id)
 	#print(VariableManager.keys_collected)
 	#print(VariableManager.level_keys)

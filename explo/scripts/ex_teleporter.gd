@@ -51,7 +51,7 @@ func _on_body_entered(body):
 		porting.emitting = true
 		body.global_position = porter_crime.global_position
 		porter_crime.break_porter()
-		audio_teleport.playing = true
+		audio_teleport.play()
 
 func _on_death_timer_timeout():
 	wait_timer.start()

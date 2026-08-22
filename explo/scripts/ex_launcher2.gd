@@ -91,7 +91,7 @@ func eject_proj():
 	proj_timer.start()
 	new_projectile()
 	
-	audio_throw.playing = true
+	audio_throw.play()
 
 
 func new_projectile():

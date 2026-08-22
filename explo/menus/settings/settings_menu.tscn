@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=49 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" uid="uid://b5cmxn8y3gr13" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bl00wpml745ls" path="res://assets/CheckButtonUnchecked.png" id="4_2fjbd"]
 [ext_resource type="Script" uid="uid://cw1cqsxq0cual" path="res://explo/menus/settings/settings_slider.gd" id="4_jqsgv"]
 [ext_resource type="Texture2D" uid="uid://dc30p64qv514i" path="res://assets/SliderTick.png" id="6_o435n"]
+[ext_resource type="Script" uid="uid://dcq1spygb4b17" path="res://explo/menus/settings/settings_option_button.gd" id="8_2fjbd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isgqd"]
 
@@ -31,6 +32,59 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 2
 border_color = Color(0.780392, 0.0901961, 0.239216, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1w3u"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qm7s"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.929412, 0.117647, 0.141176, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fjbd"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c22rk"]
+bg_color = Color(0.929412, 0.117647, 0.141176, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o435n"]
+bg_color = Color(0.3, 0.3, 0.3, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.929412, 0.117647, 0.141176, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
 [sub_resource type="Theme" id="Theme_rdlvj"]
 CheckButton/colors/font_color = Color(1, 1, 1, 1)
 CheckButton/constants/h_separation = 4
@@ -46,6 +100,19 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_mbxmn")
 HSlider/styles/slider = SubResource("StyleBoxFlat_jqsgv")
 Label/colors/font_color = Color(0.929412, 0.117647, 0.141176, 1)
 Label/styles/normal = SubResource("StyleBoxFlat_mhoj3")
+OptionButton/colors/font_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_focus_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_hover_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+OptionButton/styles/focus = SubResource("StyleBoxFlat_j1w3u")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_6qm7s")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_2fjbd")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_2fjbd")
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_hover_color = Color(1, 1, 1, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_c22rk")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_o435n")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkdn3"]
 
@@ -210,7 +277,6 @@ offset_bottom = 99.0
 text = "denne settingen"
 
 [node name="ScrollVideo" type="ScrollContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -222,24 +288,42 @@ custom_minimum_size = Vector2(393, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="LabelSomeSettings" type="Label" parent="ScrollVideo/BoxVideo"]
+[node name="LabelVideoSettings" type="Label" parent="ScrollVideo/BoxVideo"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-text = " Some Settings"
+text = "Display"
 
-[node name="BoxSomeSettings" type="VBoxContainer" parent="ScrollVideo/BoxVideo"]
+[node name="BoxVideoSettings" type="VBoxContainer" parent="ScrollVideo/BoxVideo"]
 custom_minimum_size = Vector2(379.22, 0)
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="some_setting" type="CheckButton" parent="ScrollVideo/BoxVideo/BoxSomeSettings"]
+[node name="HBoxScreenSize" type="HBoxContainer" parent="ScrollVideo/BoxVideo/BoxVideoSettings"]
+layout_mode = 2
+
+[node name="LabelScreenSize" type="Label" parent="ScrollVideo/BoxVideo/BoxVideoSettings/HBoxScreenSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Screen Size"
+
+[node name="screen_size" type="OptionButton" parent="ScrollVideo/BoxVideo/BoxVideoSettings/HBoxScreenSize"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-button_pressed = true
-text = "Some setting"
-script = ExtResource("3_lsjbt")
+selected = 1
+item_count = 4
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed: 1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed: 1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "Windowed: 640x360"
+popup/item_3/id = 3
+script = ExtResource("8_2fjbd")
 
 [node name="ScrollAudio" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -254,7 +338,7 @@ theme_override_constants/separation = 10
 [node name="LabelAudioSettings" type="Label" parent="ScrollAudio/BoxAudio"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-text = " Audio Settings"
+text = " Audio Level"
 
 [node name="BoxAudioSettings" type="VBoxContainer" parent="ScrollAudio/BoxAudio"]
 custom_minimum_size = Vector2(379.22, 0)
@@ -337,7 +421,7 @@ theme_override_constants/separation = 10
 [node name="LabelStatsSettings" type="Label" parent="ScrollGameplay/BoxGameplay"]
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")
-text = " Stats Settings"
+text = " Stats"
 
 [node name="BoxStatsSettings" type="VBoxContainer" parent="ScrollGameplay/BoxGameplay"]
 custom_minimum_size = Vector2(379.22, 0)

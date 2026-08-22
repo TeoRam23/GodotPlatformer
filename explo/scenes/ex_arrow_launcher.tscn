@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb44pakjgey22"]
+[gd_scene load_steps=11 format=3 uid="uid://cb44pakjgey22"]
 
 [ext_resource type="Shader" uid="uid://kyb5h1fsso21" path="res://explo/scripts/ex_world_color.gdshader" id="1_3ebo8"]
 [ext_resource type="Script" uid="uid://dd03shb320nsa" path="res://explo/scripts/ex_arrow_launcher.gd" id="1_noktc"]
 [ext_resource type="Texture2D" uid="uid://c24x0mg3lvkfw" path="res://assets/color_maps/launcher_main.png" id="2_fmdoe"]
 [ext_resource type="Texture2D" uid="uid://3mb18jaw3dse" path="res://assets/dispenser.png" id="2_pnjks"]
 [ext_resource type="Texture2D" uid="uid://c6dwikbn3l6x6" path="res://assets/color_maps/launcher_mush.png" id="3_njmlo"]
+[ext_resource type="PackedScene" uid="uid://c8ww5ij3x8m3c" path="res://explo/scenes/audio_positional_2d.tscn" id="6_njmlo"]
+[ext_resource type="AudioStream" uid="uid://ra28s5no73g4" path="res://assets/Sounds/arrowlaunch-1.wav" id="7_4qmbn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4qmbn"]
 shader = ExtResource("1_3ebo8")
@@ -110,6 +112,9 @@ initial_velocity_max = 51.68
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_u0d7i")
+
+[node name="AudioLaunch" parent="." instance=ExtResource("6_njmlo")]
+stream = ExtResource("7_4qmbn")
 
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

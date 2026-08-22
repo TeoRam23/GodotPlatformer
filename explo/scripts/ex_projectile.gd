@@ -269,11 +269,11 @@ func explode_pls():
 	my_root.add_child(explod)
 	
 	#audio_explode.pitch_scale = randf_range(1,1.3)
-	#audio_explode.playing = true
+	#audio_explode.play()
 	#audio_explode.reparent(get_parent())
 	
 	audio_explode_2d.pitch_scale = randf_range(1,1.3)
-	audio_explode_2d.playing = true
+	audio_explode_2d.play()
 	audio_explode_2d.reparent(get_parent())
 	
 	remove_me(false)
@@ -283,7 +283,7 @@ func remove_me(kill_sound: bool):
 		#illsplode = true
 	if kill_sound:
 		audio_killed_2d.pitch_scale = randf_range(0.9,1.1)
-		audio_killed_2d.playing = true
+		audio_killed_2d.play()
 		audio_killed_2d.reparent(get_parent())
 		
 	if particle_holder.get_parent() == self:

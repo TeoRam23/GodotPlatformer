@@ -253,7 +253,7 @@ position = Vector2(-224, 32)
 position = Vector2(-126, -50)
 
 [node name="ExArrowLauncher" parent="ObjectHolder" index="14" instance=ExtResource("24_1i840")]
-position = Vector2(-171, -81)
+position = Vector2(-172.00002, -80.00001)
 rotation = -0.00506725
 
 [node name="ExArrowLauncher2" parent="ObjectHolder" index="15" instance=ExtResource("24_1i840")]

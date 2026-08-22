@@ -25,11 +25,13 @@ buses/default_bus_layout="res://assets/Sounds/default_bus_layout.tres"
 Events="*res://scripts/Events.gd"
 VariableManager="*res://explo/scripts/_variable_manager.gd"
 Settings="*res://explo/scripts/_settings.gd"
+SfxDeconflicter="*res://explo/scripts/_sfx-deconflicter.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"

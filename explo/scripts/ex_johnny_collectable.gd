@@ -32,9 +32,9 @@ func _on_body_entered(body):
 	if not im_taken:
 		Events.johnny_collected()
 	
-	audio_johnny_get.playing = true
+	audio_johnny_get.play()
 	audio_johnny_get.reparent(get_parent())
-	#audio_collect.playing = true
+	#audio_collect.play()
 	#audio_collect.reparent(get_parent())
 	
 	remove_child(sploot_particle)

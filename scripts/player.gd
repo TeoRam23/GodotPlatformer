@@ -392,7 +392,7 @@ func i_died(truly):
 		return
 	if is_physics_processing():
 		disable_player(true)
-		audio_death.playing = true
+		audio_death.play()
 		#get_tree().paused = true
 		Events.player_died()
 		#get_tree().reload_current_scene()

@@ -42,7 +42,7 @@ func _on_body_entered(body):
 	#if chicks.size() == 1:
 		#Events.activate_ender()
 	
-	audio_collect.playing = true
+	audio_collect.play()
 	audio_collect.reparent(get_parent())
 	
 	remove_child(sploot_particle)

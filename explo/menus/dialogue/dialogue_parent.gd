@@ -121,10 +121,10 @@ func talk(voice):
 	if voice_length > 0:
 		if voice == 1:
 			audio_johnny.pitch_scale = randf_range(0.95, 1.05)
-			audio_johnny.playing = true
+			audio_johnny.play()
 		elif voice == 2:
 			audio_bushy.pitch_scale = randf_range(0.95, 1.05)
-			audio_bushy.playing = true
+			audio_bushy.play()
 		else:
 			return
 		voice_length -= 1

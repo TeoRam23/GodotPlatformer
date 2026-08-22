@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dljxxl585036o"]
+[gd_scene load_steps=12 format=3 uid="uid://dljxxl585036o"]
 
 [ext_resource type="Script" uid="uid://bombm7gm0ha8e" path="res://explo/scripts/arrow_hazard.gd" id="1_ycjon"]
 [ext_resource type="Texture2D" uid="uid://ddu0klt0uovyp" path="res://assets/arrow.png" id="2_e4r20"]
 [ext_resource type="PackedScene" uid="uid://dub814s0tcuyi" path="res://explo/scenes/world-extra/w5_sprite_swapper.tscn" id="2_qi37s"]
 [ext_resource type="Script" uid="uid://0enu3glx1box" path="res://explo/scripts/single_particle.gd" id="3_mlk2w"]
 [ext_resource type="Texture2D" uid="uid://dt2g6epjpwhq7" path="res://assets/arrow_mush.png" id="4_0xrx3"]
+[ext_resource type="PackedScene" uid="uid://c8ww5ij3x8m3c" path="res://explo/scenes/audio_positional_2d.tscn" id="6_vv0d1"]
+[ext_resource type="AudioStream" uid="uid://bcohcb7c4ukxf" path="res://assets/Sounds/arrowcrack-2.wav" id="7_vv0d1"]
+[ext_resource type="Script" uid="uid://ca20fyke3rfyj" path="res://explo/scripts/single_audio_2d.gd" id="8_g5cqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evl7g"]
 size = Vector2(5, 2)
@@ -82,3 +85,9 @@ scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_kwexm")
 color = Color(0.5176471, 0.4745098, 0.36862746, 1)
 script = ExtResource("3_mlk2w")
+
+[node name="AudioCrack2D" parent="." instance=ExtResource("6_vv0d1")]
+stream = ExtResource("7_vv0d1")
+script = ExtResource("8_g5cqs")
+
+[connection signal="finished" from="AudioCrack2D" to="AudioCrack2D" method="_on_finished"]

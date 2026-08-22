@@ -31,7 +31,7 @@ func explode():
 	particles.emitting = true
 	collision_shape_2d.disabled = true
 	animated_sprite_2d.visible = false
-	audio_crack_2d.playing = true
+	SfxDeconflicter.play(audio_crack_2d)
 	
 	regen_timer.start()
 	
@@ -42,7 +42,7 @@ func _on_regen_timer_timeout():
 	animated_sprite_2d.visible = true
 	animated_sprite_2d.play("default")
 	animated_sprite_2d.play_backwards("default")
-	audio_bite_2d.playing = true
+	SfxDeconflicter.play(audio_bite_2d)
 	
 	var bodies = player_detector.get_overlapping_bodies()
 	#print(bodies)

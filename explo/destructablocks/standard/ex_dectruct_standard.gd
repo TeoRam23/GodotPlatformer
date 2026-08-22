@@ -37,7 +37,7 @@ func _physics_process(delta):
 			particles.emitting = true
 			
 			audio_crack_2d.pitch_scale = randf_range(0.9,1.1)
-			audio_crack_2d.playing = true
+			SfxDeconflicter.play(audio_crack_2d)
 			audio_crack_2d.reparent(get_parent().get_parent())
 			
 			get_parent().free()
@@ -49,7 +49,7 @@ func _physics_process(delta):
 			particles.emitting = true
 			
 			audio_crack_2d.pitch_scale = randf_range(0.9,1.1)
-			audio_crack_2d.playing = true
+			SfxDeconflicter.play(audio_crack_2d)
 			audio_crack_2d.reparent(get_parent())
 			
 			free()

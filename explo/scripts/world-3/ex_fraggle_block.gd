@@ -36,7 +36,7 @@ func _physics_process(delta):
 		particles.emitting = true
 		
 		audio_crack_2d.pitch_scale = randf_range(0.9,1.1)
-		audio_crack_2d.playing = true
+		SfxDeconflicter.play(audio_crack_2d)
 		audio_crack_2d.reparent(get_parent())
 		
 		free()
@@ -46,7 +46,7 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	frag_timer.start()
 	shaking = true
-	audio_shake_2d.playing = true
+	audio_shake_2d.play()
 
 
 func _on_frag_timer_timeout():
