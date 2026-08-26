@@ -7,6 +7,9 @@ extends Area2D
 @onready var audio_jingle: AudioStreamPlayer = $AudioJingle
 @onready var audio_mushroom: AudioStreamPlayer = $AudioMushroom
 
+@export var final_level = false
+@export var final_final_level = false
+
 var world_number = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -35,7 +38,17 @@ func _on_body_entered(body):
 		audio_mushroom.play()
 	else:
 		audio_jingle.play()
+	
+	
 	Events.level_completed.emit()
+	
+	if final_level and VariableManager.end_time == 0.0:
+		VariableManager.end_time = VariableManager.all_time
+		VariableManager.end_deaths = VariableManager.deaths
+	elif final_final_level and VariableManager.all_levels_time == 0.0:
+		VariableManager.all_levels_time = VariableManager.all_time
+		VariableManager.all_levels_deaths = VariableManager.deaths
+		
 
 func check_for_chicks():
 	var chicks = get_tree().get_nodes_in_group("ex_chocks")
@@ -48,7 +61,7 @@ func check_for_chicks():
 		#sprite_2d.modulate = Color(0.55, 0.55, 0.55)
 
 func i_will_activate():
-	print("I did it!")
+	#print("I did it!")
 	collision_shape_2d.set_deferred("disabled", false)
 	#swirl_sprite.modulate = Color(1, 1, 1)
 	

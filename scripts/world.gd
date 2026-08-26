@@ -130,7 +130,7 @@ func _input(event):
 		level_overlay.show_rest(true)
 		
 		VariableManager.pausing_disabled = true
-		print("denne kjører jo")
+		#print("denne kjører jo")
 		get_tree().paused = true
 	
 	

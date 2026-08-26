@@ -24,7 +24,7 @@ func _ready() -> void:
 	for key in var_keys:
 		if key[0] == world_number:
 			keys += 1
-			print(key)
+			#print(key)
 	
 	if keys != 0:
 		key_container.visible = true

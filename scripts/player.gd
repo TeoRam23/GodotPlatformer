@@ -365,7 +365,7 @@ func _on_hazard_detector_area_entered(area):
 	
 func _on_hazard_detector_body_entered(body):
 	if body.is_in_group("ForegroundGroup"):
-		print("WE GOT THE MAP")
+		#print("WE GOT THE MAP")
 		body.fade_away()
 		return
 	if body.is_in_group("truly_kill"):
@@ -375,7 +375,7 @@ func _on_hazard_detector_body_entered(body):
 
 
 func disable_player(do_particles: bool):
-	print("did get disabled...")
+	#print("did get disabled...")
 	set_physics_process(false)
 	animated_sprite_2d.visible = false
 	launch_particle.emitting = false

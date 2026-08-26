@@ -82,5 +82,5 @@ func _on_timer_timeout():
 	level_title_box.visible = false
 
 func update_global_title_timer():
-	print("HEAVE")
+	#print("HEAVE")
 	VariableManager.current_title_time = title_timer.time_left

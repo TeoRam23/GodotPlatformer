@@ -35,7 +35,7 @@ func reset_level():
 	black_screen.visible = true
 	get_tree().paused = false
 	Events.resetting_level()
-	print("HOOOOOOOOOOOOOOOOOOOOOO")
+	#print("HOOOOOOOOOOOOOOOOOOOOOO")
 	get_tree().reload_current_scene()
 
 func do_timer(seconds):

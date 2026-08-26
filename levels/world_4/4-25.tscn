@@ -62,3 +62,4 @@ shape = SubResource("RectangleShape2D_8fyqi")
 
 [node name="ExCompleteLevel" parent="." index="12" instance=ExtResource("4_agx7e")]
 position = Vector2(15840, -32)
+final_level = true

@@ -32,6 +32,12 @@ static var saved_cursor_position = Vector2(75, 0)
 
 static var opened_johnny_gate = false
 static var opened_w5_gate = false
+static var opened_speed_gate = false
+
+static var end_time = 0.0
+static var end_deaths = 0
+static var all_levels_time = 0.0
+static var all_levels_deaths = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -136,6 +142,11 @@ func save_variables():
 	file.store_var(levels_completed)
 	file.store_var(opened_johnny_gate)
 	file.store_var(opened_w5_gate)
+	file.store_var(opened_speed_gate)
+	file.store_var(end_time)
+	file.store_var(end_deaths)
+	file.store_var(all_levels_time)
+	file.store_var(all_levels_deaths)
 	file.close()
 	#print(levels_completed)
 
@@ -154,6 +165,12 @@ func load_variables():
 		levels_completed = file.get_var()
 		opened_johnny_gate = file.get_var()
 		opened_w5_gate = file.get_var()
+		opened_speed_gate = file.get_var()
+		end_time = file.get_var()
+		end_deaths = file.get_var()
+		all_levels_time = file.get_var()
+		all_levels_deaths = file.get_var()
+		
 		#print(levels_completed)
 		file.close()
 	else:

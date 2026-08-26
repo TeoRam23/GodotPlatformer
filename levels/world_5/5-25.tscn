@@ -165,21 +165,18 @@ position = Vector2(400, 2576)
 position = Vector2(232, 2792)
 rotation = -1.5707941
 scale = Vector2(1, -1)
-arrow_speed = -240.0
 launch_seconds = 1.083
 
 [node name="ExArrowLauncher2" parent="ObjectHolder" index="23" instance=ExtResource("8_ahtcu")]
 position = Vector2(248, 2792)
 rotation = -1.5707941
 scale = Vector2(1, -1)
-arrow_speed = -240.0
 launch_seconds = 1.083
 
 [node name="ExArrowLauncher3" parent="ObjectHolder" index="24" instance=ExtResource("8_ahtcu")]
 position = Vector2(264, 2792)
 rotation = -1.5707941
 scale = Vector2(1, -1)
-arrow_speed = -240.0
 launch_seconds = 1.083
 
 [node name="ExAntiGravity" parent="ObjectHolder" index="25" instance=ExtResource("10_qevg8")]
@@ -233,3 +230,4 @@ texture = ExtResource("13_yqg4n")
 
 [node name="ExCompleteLevel" parent="ObjectHolder" index="33" instance=ExtResource("9_wmt2a")]
 position = Vector2(272, 7232)
+final_final_level = true

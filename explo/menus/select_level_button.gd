@@ -82,7 +82,6 @@ func _on_mouse_entered():
 			label.text = "?????"
 	
 	if time_label is Label:
-		print(level_vars)
 		if level_vars and level_vars.completed:
 			time_label.text = format_time(level_vars.best_time)
 		else:
@@ -99,7 +98,7 @@ func _on_mouse_entered():
 		tin_zero_gravity.visible = false
 
 	if level_vars:
-		print("vi kommer oss hit...")
+		#print("vi kommer oss hit...")
 		#print(level_vars)
 		# burde sjekke om de eksisterer, men jeg gidder ikke, det går nok bra...
 		if level_vars.no_walking and tin_no_walking is TextureRect:
@@ -109,7 +108,7 @@ func _on_mouse_entered():
 		if level_vars.perfection and tin_perfection is TextureRect:
 			tin_perfection.visible = true
 		if level_vars.zero_gravity and tin_zero_gravity is TextureRect:
-			print("og hit...")
+			#print("og hit...")
 			tin_zero_gravity.visible = true
 
 

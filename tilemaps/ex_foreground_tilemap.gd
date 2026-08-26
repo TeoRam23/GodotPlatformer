@@ -14,7 +14,7 @@ func _process(delta):
 
 # Player forteller oss om å kjøre dette
 func fade_away():
-	print("hvordan starter denne???")
+	#print("hvordan starter denne???")
 	#print("hmm: ", tile_set.get_physics_layer_collision_layer(0))
 	tile_set.set_physics_layer_collision_layer(0, 0)
 	
