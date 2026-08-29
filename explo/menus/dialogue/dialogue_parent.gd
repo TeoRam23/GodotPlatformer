@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var dialogue_box: Panel = $DialogueBox
 @onready var dialogue_label: Label = $DialogueBox/DialogueLabel
 @onready var button_label: Label = $DialogueBox/ButtonLabel
+@onready var audio_proceed: AudioStreamPlayer = $AudioProceed
 @onready var audio_johnny: AudioStreamPlayer = $AudioJohnny
 @onready var audio_bushy: AudioStreamPlayer = $AudioBushy
 @onready var talk_timer: Timer = $TalkTimer
@@ -68,6 +69,7 @@ func finish_dialogue(extra_info: bool):
 
 
 func continue_box():
+	#audio_proceed.play()
 	if length_read >= dialogue_size:
 		finish_dialogue(false)
 		return

@@ -18,6 +18,8 @@ var tin_constant_throwing: TextureRect
 var tin_perfection: TextureRect
 var tin_zero_gravity: TextureRect
 
+@onready var button_audio_parent: Node2D = $ButtonAudioParent
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -110,6 +112,9 @@ func _on_mouse_entered():
 		if level_vars.zero_gravity and tin_zero_gravity is TextureRect:
 			#print("og hit...")
 			tin_zero_gravity.visible = true
+	
+	if not disabled:
+		button_audio_parent._on_mouse_entered()
 
 
 func format_time(time_elapsed):

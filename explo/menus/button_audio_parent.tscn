@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx46b5orfgs0"]
+
+[ext_resource type="Script" uid="uid://mi73tuaflrg0" path="res://explo/menus/button_audio_parent.gd" id="1_u3ter"]
+[ext_resource type="AudioStream" uid="uid://spyefu0k3inw" path="res://assets/Sounds/throw-4.wav" id="2_qmr1b"]
+[ext_resource type="AudioStream" uid="uid://bhh1nusigrknk" path="res://assets/Sounds/explode-4.wav" id="3_xgubk"]
+
+[node name="ButtonAudioParent" type="Node2D"]
+script = ExtResource("1_u3ter")
+
+[node name="AudioHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qmr1b")
+volume_db = -4.853
+bus = &"SFX"
+
+[node name="AudioPressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xgubk")
+volume_db = -8.032
+bus = &"SFX"

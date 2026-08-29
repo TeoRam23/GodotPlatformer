@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4v32h58y4ln7"]
+[gd_scene load_steps=7 format=3 uid="uid://b4v32h58y4ln7"]
 
-[ext_resource type="Script" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
+[ext_resource type="Script" uid="uid://dybfaacu0tgum" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
 [ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="1_y5tdk"]
 [ext_resource type="Theme" uid="uid://cfuoqyle7q3jc" path="res://explo/menus/pause_theme2.tres" id="3_u7mx0"]
+[ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="4_33e1m"]
 [ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings/settings_menu.tscn" id="4_lffss"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
 
@@ -37,11 +38,15 @@ theme = ExtResource("3_u7mx0")
 text = "Start
 "
 
+[node name="ButtonAudioParent" parent="MainCanvas/Control/VBoxContainer/ButtonStart" instance=ExtResource("4_33e1m")]
+
 [node name="ButtonSettings" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_u7mx0")
 text = "Settings
 "
+
+[node name="ButtonAudioParent" parent="MainCanvas/Control/VBoxContainer/ButtonSettings" instance=ExtResource("4_33e1m")]
 
 [node name="ButtonCredits" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
@@ -49,11 +54,15 @@ theme = ExtResource("3_u7mx0")
 text = "Credits
 "
 
+[node name="ButtonAudioParent" parent="MainCanvas/Control/VBoxContainer/ButtonCredits" instance=ExtResource("4_33e1m")]
+
 [node name="ButtonQuit" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_u7mx0")
 text = "Quit
 "
+
+[node name="ButtonAudioParent" parent="MainCanvas/Control/VBoxContainer/ButtonQuit" instance=ExtResource("4_33e1m")]
 
 [node name="SettingsMenu" parent="." instance=ExtResource("4_lffss")]
 visible = false
@@ -197,7 +206,15 @@ One More Person Probably
 Godot Engine Contributors
 "
 
+[connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="MainCanvas/Control/VBoxContainer/ButtonStart/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="MainCanvas/Control/VBoxContainer/ButtonStart/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonSettings" to="MainCanvas/Control/VBoxContainer/ButtonSettings/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonSettings" to="MainCanvas/Control/VBoxContainer/ButtonSettings/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonCredits" to="MainCanvas/Control/VBoxContainer/ButtonCredits/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonCredits" to="MainCanvas/Control/VBoxContainer/ButtonCredits/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="MainCanvas/Control/VBoxContainer/ButtonQuit/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="MainCanvas/Control/VBoxContainer/ButtonQuit/ButtonAudioParent" method="_on_pressed"]

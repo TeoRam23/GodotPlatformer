@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqgfhbrla7xcn"]
+[gd_scene load_steps=6 format=3 uid="uid://bqgfhbrla7xcn"]
 
 [ext_resource type="Texture2D" uid="uid://chq7s31pk3ah0" path="res://assets/baksplodder/paas.png" id="1_eehvo"]
 [ext_resource type="Script" uid="uid://cjo2jvn7obadh" path="res://explo/menus/pause_menu.gd" id="1_f4jpt"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="3_o0lm2"]
 [ext_resource type="Theme" uid="uid://cfuoqyle7q3jc" path="res://explo/menus/pause_theme2.tres" id="4_krnv1"]
+[ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="5_aj2d6"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -100,23 +101,39 @@ layout_mode = 2
 theme = ExtResource("4_krnv1")
 text = "Continue"
 
+[node name="ButtonAudioParent" parent="PauseControl/VBoxContainer/Continue" instance=ExtResource("5_aj2d6")]
+
 [node name="Restart" type="Button" parent="PauseControl/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme = ExtResource("4_krnv1")
 text = "Restart"
 
+[node name="ButtonAudioParent" parent="PauseControl/VBoxContainer/Restart" instance=ExtResource("5_aj2d6")]
+
 [node name="BackToHub" type="Button" parent="PauseControl/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_krnv1")
 text = "Back to Hub"
+
+[node name="ButtonAudioParent" parent="PauseControl/VBoxContainer/BackToHub" instance=ExtResource("5_aj2d6")]
 
 [node name="MainMenu" type="Button" parent="PauseControl/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_krnv1")
 text = "Main Menu"
 
+[node name="ButtonAudioParent" parent="PauseControl/VBoxContainer/MainMenu" instance=ExtResource("5_aj2d6")]
+
+[connection signal="mouse_entered" from="PauseControl/VBoxContainer/Continue" to="PauseControl/VBoxContainer/Continue/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseControl/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseControl/VBoxContainer/Continue" to="PauseControl/VBoxContainer/Continue/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseControl/VBoxContainer/Restart" to="PauseControl/VBoxContainer/Restart/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseControl/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseControl/VBoxContainer/Restart" to="PauseControl/VBoxContainer/Restart/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseControl/VBoxContainer/BackToHub" to="PauseControl/VBoxContainer/BackToHub/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseControl/VBoxContainer/BackToHub" to="." method="_on_back_to_hub_pressed"]
+[connection signal="pressed" from="PauseControl/VBoxContainer/BackToHub" to="PauseControl/VBoxContainer/BackToHub/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="PauseControl/VBoxContainer/MainMenu" to="PauseControl/VBoxContainer/MainMenu/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="PauseControl/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseControl/VBoxContainer/MainMenu" to="PauseControl/VBoxContainer/MainMenu/ButtonAudioParent" method="_on_pressed"]

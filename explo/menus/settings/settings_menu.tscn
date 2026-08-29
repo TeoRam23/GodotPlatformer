@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=50 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" uid="uid://b5cmxn8y3gr13" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cw1cqsxq0cual" path="res://explo/menus/settings/settings_slider.gd" id="4_jqsgv"]
 [ext_resource type="Texture2D" uid="uid://dc30p64qv514i" path="res://assets/SliderTick.png" id="6_o435n"]
 [ext_resource type="Script" uid="uid://dcq1spygb4b17" path="res://explo/menus/settings/settings_option_button.gd" id="8_2fjbd"]
+[ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="10_o435n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isgqd"]
 
@@ -566,6 +567,8 @@ theme = SubResource("Theme_3u6ux")
 text = "    Cancel   "
 alignment = 0
 
+[node name="ButtonAudioParent" parent="ButtCancel" instance=ExtResource("10_o435n")]
+
 [node name="ButtSave" type="Button" parent="."]
 offset_left = -13.0
 offset_top = 309.0
@@ -574,6 +577,8 @@ offset_bottom = 335.0
 theme = SubResource("Theme_sklc0")
 text = "Save   "
 alignment = 2
+
+[node name="ButtonAudioParent" parent="ButtSave" instance=ExtResource("10_o435n")]
 
 [node name="SureControl" type="Control" parent="."]
 visible = false
@@ -724,8 +729,12 @@ action_mode = 0
 text = "Challenges "
 
 [connection signal="pressed" from="ButtSave2" to="." method="save_settings"]
+[connection signal="mouse_entered" from="ButtCancel" to="ButtCancel/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="ButtCancel" to="." method="close_screen"]
+[connection signal="pressed" from="ButtCancel" to="ButtCancel/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="ButtSave" to="ButtSave/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="ButtSave" to="." method="_on_butt_save_pressed"]
+[connection signal="pressed" from="ButtSave" to="ButtSave/ButtonAudioParent" method="_on_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureYesButton" to="." method="_on_sure_yes_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureButtonContainer/SureNoButton" to="." method="_on_sure_no_button_pressed"]
 [connection signal="pressed" from="SureControl/SurePanel/SureExButton" to="." method="_on_sure_ex_button_pressed"]

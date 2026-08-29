@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://x02gp7koalk8"]
+[gd_scene load_steps=15 format=3 uid="uid://x02gp7koalk8"]
 
 [ext_resource type="Script" uid="uid://dyomdx0t44brm" path="res://explo/scripts/world-extra/ex_extra_entrance.gd" id="1_a2y4c"]
 [ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_8tkcf"]
@@ -14,9 +14,40 @@ size = Vector2(20, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuhm0"]
 size = Vector2(20, 2)
 
-[sub_resource type="Curve" id="Curve_2uxok"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.06, 1), 0.0, 0.0, 0, 0, Vector2(0.113, 0.005), -8.97881, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_ffnsc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.051987767, 1), 0.0, 0.0, 0, 0, Vector2(0.11620795, 0), -8.97881, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Curve" id="Curve_2uxok"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2324159, 1), 0.0, 0.0, 0, 0, Vector2(0.45565748, 0), -8.97881, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ltwub"]
+offsets = PackedFloat32Array(0.698225, 0.704918)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ffnsc"]
+gradient = SubResource("Gradient_ltwub")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_h85dd"]
+_data = [Vector2(0, 0), 0.0, 3.7385678, 0, 0, Vector2(0.7584098, 1), 0.31739643, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ffnsc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.75409836)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h85dd"]
+gradient = SubResource("Gradient_ffnsc")
+width = 8
+height = 12
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="ExExtraEntrance" type="Node2D"]
 script = ExtResource("1_a2y4c")
@@ -56,7 +87,7 @@ position = Vector2(24, -26)
 emitting = false
 amount = 268
 lifetime = 4.0
-one_shot = true
+speed_scale = 1.74
 emission_shape = 3
 emission_rect_extents = Vector2(6, 1)
 direction = Vector2(0, -1)
@@ -64,6 +95,26 @@ spread = 35.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 92.23
 initial_velocity_max = 92.23
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ffnsc")
+color = Color(0, 0.92156863, 0.7607843, 1)
+
+[node name="NewParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(24, -26)
+emitting = false
+amount = 128
+speed_scale = 1.74
+randomness = 1.0
+emission_shape = 5
+emission_points = PackedVector2Array(-9, 0, -6, 0, -3, 0, 0, 0, 3, 0, 6, 0, 9, 0)
+emission_normals = PackedVector2Array(-0.6, -0.6, -0.4, -0.8, -0.2, -1, 0, -1, 0.2, -1, 0.4, -0.8, 0.6, -0.6)
+emission_colors = PackedColorArray()
+direction = Vector2(0, 0)
+spread = 16.38
+gravity = Vector2(0, 151.725)
+initial_velocity_min = 97.99
+initial_velocity_max = 143.96
 scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_2uxok")
@@ -78,6 +129,55 @@ texture = ExtResource("4_ffnsc")
 wait_time = 3.0
 one_shot = true
 
+[node name="TransitionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SHHPPFFTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="HideExtras" type="CPUParticles2D" parent="CanvasLayer"]
+position = Vector2(320, 180)
+emitting = false
+amount = 50
+texture = SubResource("GradientTexture2D_ffnsc")
+lifetime = 2.0
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(320, 180)
+gravity = Vector2(0, 0)
+scale_amount_min = 1.25
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_h85dd")
+color = Color(0, 0.92156863, 0.7607843, 1)
+
+[node name="SHHPPFFRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 9.0
+offset_top = -385.0
+offset_right = 39.0
+offset_bottom = -25.0
+color = Color(0, 0.92156863, 0.7607843, 1)
+
+[node name="SHHPPFFParticle" type="CPUParticles2D" parent="."]
+position = Vector2(24, -24)
+emitting = false
+amount = 64
+texture = SubResource("GradientTexture2D_h85dd")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 467.76
+initial_velocity_max = 467.76
+color = Color(0.45490196, 1, 0.9137255, 1)
+
 [connection signal="body_entered" from="SoupArea" to="." method="_on_soup_area_body_entered"]
 [connection signal="finished" from="Particles2D" to="." method="_on_particles_2d_finished"]
+[connection signal="finished" from="NewParticles2D" to="." method="_on_particles_2d_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="SHHPPFFTimer" to="." method="_on_shhppff_timer_timeout"]

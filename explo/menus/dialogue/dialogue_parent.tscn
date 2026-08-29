@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbrkt4idiqbya"]
+[gd_scene load_steps=7 format=3 uid="uid://cbrkt4idiqbya"]
 
 [ext_resource type="Script" uid="uid://b4kkl8cg8ixa8" path="res://explo/menus/dialogue/dialogue_parent.gd" id="1_3g6fq"]
 [ext_resource type="Theme" uid="uid://cci7qdm1rnxr4" path="res://explo/menus/pause_theme_johnny2.tres" id="2_3g6fq"]
+[ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="3_4odgm"]
 [ext_resource type="AudioStream" uid="uid://dskjn0qc5gpqx" path="res://assets/Sounds/talk-1.wav" id="3_7qe46"]
+[ext_resource type="AudioStream" uid="uid://spyefu0k3inw" path="res://assets/Sounds/throw-4.wav" id="4_4odgm"]
 [ext_resource type="AudioStream" uid="uid://dla21bs4t2rni" path="res://assets/Sounds/talk-2.wav" id="4_bova1"]
 
 [node name="DialogueParent" type="CanvasLayer"]
@@ -45,6 +47,8 @@ offset_right = 512.0
 offset_bottom = 30.5
 text = "YES"
 
+[node name="ButtonAudioParent" parent="DialogueBox/ButtonLabel/ButtonYes" instance=ExtResource("3_4odgm")]
+
 [node name="ButtonNo" type="Button" parent="DialogueBox/ButtonLabel"]
 layout_mode = 0
 offset_left = 376.0
@@ -52,6 +56,13 @@ offset_top = 32.5
 offset_right = 512.0
 offset_bottom = 80.5
 text = "NO"
+
+[node name="ButtonAudioParent" parent="DialogueBox/ButtonLabel/ButtonNo" instance=ExtResource("3_4odgm")]
+
+[node name="AudioProceed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4odgm")
+volume_db = -4.853
+bus = &"SFX"
 
 [node name="AudioJohnny" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_7qe46")
@@ -65,5 +76,9 @@ bus = &"SFX"
 wait_time = 0.1
 one_shot = true
 
+[connection signal="mouse_entered" from="DialogueBox/ButtonLabel/ButtonYes" to="DialogueBox/ButtonLabel/ButtonYes/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonYes" to="." method="_on_button_yes_pressed"]
+[connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonYes" to="DialogueBox/ButtonLabel/ButtonYes/ButtonAudioParent" method="_on_pressed"]
+[connection signal="mouse_entered" from="DialogueBox/ButtonLabel/ButtonNo" to="DialogueBox/ButtonLabel/ButtonNo/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonNo" to="." method="_on_button_no_pressed"]
+[connection signal="pressed" from="DialogueBox/ButtonLabel/ButtonNo" to="DialogueBox/ButtonLabel/ButtonNo/ButtonAudioParent" method="_on_pressed"]
