@@ -22,6 +22,7 @@ signal pls_swap_character
 signal pls_play_hide_level_particles
 signal pls_finished_hide_level_particles
 signal pls_tp_player
+signal pls_send_camera_node
 
 func projectile_hit():
 	pls_shake.emit()
@@ -83,3 +84,6 @@ func finished_hide_level_particles():
 
 func tp_player(cords):
 	pls_tp_player.emit(cords)
+
+func send_camera_node(camera: Camera2D):
+	pls_send_camera_node.emit(camera)

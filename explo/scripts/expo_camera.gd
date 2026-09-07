@@ -21,6 +21,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 	
+	Events.send_camera_node(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

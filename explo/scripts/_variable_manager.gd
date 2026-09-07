@@ -54,7 +54,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func up_the_death():
-	print("UPDATED")
 	deaths += 1
 
 func up_the_johnnies():

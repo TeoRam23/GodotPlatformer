@@ -908,6 +908,9 @@ func _input(_event):
 			get_tree().reload_current_scene()
 		else:
 			call_deferred("i_died", true)
+	if Input.is_action_just_pressed("down"):
+		var a 
+		print()
 
 #func _on_timer_timeout():
 	#print("BOTT!")
