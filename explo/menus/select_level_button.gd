@@ -18,6 +18,8 @@ var tin_constant_throwing: TextureRect
 var tin_perfection: TextureRect
 var tin_zero_gravity: TextureRect
 
+var any_vars = false
+
 @onready var button_audio_parent: Node2D = $ButtonAudioParent
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +38,8 @@ func _ready():
 		#print("ye: ", level_id)
 		if !level_vars:
 			level_vars.completed = false
+		else:
+			any_vars = true
 		if title_override:
 			level_vars.title = title_override
 			
@@ -99,10 +103,12 @@ func _on_mouse_entered():
 	if tin_zero_gravity is TextureRect:
 		tin_zero_gravity.visible = false
 
-	if level_vars:
+	if any_vars:
+		print("the vars: ", level_vars)
 		#print("vi kommer oss hit...")
 		#print(level_vars)
 		# burde sjekke om de eksisterer, men jeg gidder ikke, det går nok bra...
+		# det gikk ikke bra, any_vars sjekker tidligere at vi har alle varene
 		if level_vars.no_walking and tin_no_walking is TextureRect:
 			tin_no_walking.visible = true
 		if level_vars.constant_throwing and tin_constant_throwing is TextureRect:
