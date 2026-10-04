@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://cleno16egsrqm"]
+
+[ext_resource type="Script" uid="uid://0d8b58v28hr" path="res://explo/menus/credits_scroll.gd" id="1_sfhf0"]
+[ext_resource type="PackedScene" uid="uid://b4v32h58y4ln7" path="res://explo/menus/start_screen.tscn" id="2_0op6b"]
+[ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="2_hpqrj"]
+[ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="3_0op6b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsyq8"]
+atlas = ExtResource("3_0op6b")
+region = Rect2(32, 41, 192, 68)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0op6b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsyq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c2c2v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa3m1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lme3d"]
+
+[sub_resource type="Theme" id="Theme_tnxpq"]
+Button/colors/font_color = Color(0.57254905, 0.57254905, 0.57254905, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_0op6b")
+Button/styles/focus = SubResource("StyleBoxEmpty_bsyq8")
+Button/styles/hover = SubResource("StyleBoxEmpty_c2c2v")
+Button/styles/normal = SubResource("StyleBoxEmpty_oa3m1")
+Button/styles/pressed = SubResource("StyleBoxEmpty_lme3d")
+
+[node name="CreditsScroll" type="Node2D"]
+script = ExtResource("1_sfhf0")
+next_screen = ExtResource("2_0op6b")
+
+[node name="CreditsContainer" type="VBoxContainer" parent="."]
+offset_top = 360.0
+offset_right = 640.0
+offset_bottom = 720.0
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="PadderStart" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme = ExtResource("2_hpqrj")
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CreditsContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bsyq8")
+stretch_mode = 3
+
+[node name="Padder" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme = ExtResource("2_hpqrj")
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="AutoContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PadderEnd" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme = ExtResource("2_hpqrj")
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="."]
+theme = ExtResource("2_hpqrj")
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="."]
+offset_right = 116.0
+offset_bottom = 20.0
+theme = ExtResource("2_hpqrj")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="PadSmall" type="Label" parent="."]
+theme = ExtResource("2_hpqrj")
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 3
+horizontal_alignment = 1
+
+[node name="PadBig" type="Label" parent="."]
+theme = ExtResource("2_hpqrj")
+theme_override_colors/font_color = Color(0.780392, 0.0901961, 0.239216, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="SkipButton" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = 586.0
+offset_top = 329.0
+offset_right = 627.0
+offset_bottom = 347.0
+theme = SubResource("Theme_tnxpq")
+theme_override_font_sizes/font_size = 8
+text = "Skip ->"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

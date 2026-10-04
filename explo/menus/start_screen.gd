@@ -4,6 +4,7 @@ extends Node2D
 @onready var settings_menu = $SettingsMenu
 
 const HUB = preload("res://levels/hub.tscn")
+var credits = load("res://explo/menus/credits_scroll.tscn")
 
 var current_open_screen = ""
 
@@ -31,9 +32,10 @@ func _on_button_settings_pressed():
 
 
 func _on_button_credits_pressed():
-	if !current_open_screen:
-		credits_canvas.visible = true
-		current_open_screen = "credits"
+	#if !current_open_screen:
+		#credits_canvas.visible = true
+		#current_open_screen = "credits"
+	get_tree().change_scene_to_packed(credits)
 	
 
 
