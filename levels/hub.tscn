@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dehufyyw8gn2y"]
+[gd_scene load_steps=78 format=3 uid="uid://dehufyyw8gn2y"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_ep6w1"]
 [ext_resource type="Texture2D" uid="uid://dq2pd6qmqnolc" path="res://assets/baksplodder/hub1.png" id="2_7ettt"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://nnojjhrbugdp" path="res://assets/JeffreySprites.png" id="12_7iaxr"]
 [ext_resource type="Theme" uid="uid://cfuoqyle7q3jc" path="res://explo/menus/pause_theme2.tres" id="17_3uarx"]
 [ext_resource type="Script" uid="uid://bsuo4n7jepfjm" path="res://explo/scripts/speedrun_room.gd" id="17_j6q3f"]
+[ext_resource type="Script" uid="uid://o23qodplkvki" path="res://explo/scripts/bushy_get_area.gd" id="18_hfkr7"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="18_s4p4y"]
 [ext_resource type="Texture2D" uid="uid://bgr5nxmbb0wik" path="res://assets/JeffreyDeath.png" id="20_vxvuw"]
 [ext_resource type="PackedScene" uid="uid://ba106fkgblj1p" path="res://explo/scenes/gate_speed.tscn" id="22_vxvuw"]
@@ -362,6 +363,9 @@ point_count = 2
 _data = [Vector2(0.060728744, 1), 0.0, -6.009122e-07, 0, 0, Vector2(1, 0), 0.056946374, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfdxw"]
+size = Vector2(160, 128)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mk3al"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j437"]
@@ -657,7 +661,59 @@ scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_3uarx")
 color = Color(0.92941177, 0.11764706, 0.14117648, 1)
 
-[node name="SpeedrunRoomParent" type="Node2D" parent="BuiltInObjects" index="1"]
+[node name="BushyNpcArea" type="Area2D" parent="BuiltInObjects" index="1"]
+position = Vector2(480, -96)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("18_hfkr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuiltInObjects/BushyNpcArea" index="0"]
+position = Vector2(80, -64)
+shape = SubResource("RectangleShape2D_wfdxw")
+
+[node name="BushyParticle" type="CPUParticles2D" parent="BuiltInObjects/BushyNpcArea" index="1"]
+process_mode = 1
+position = Vector2(16, 40)
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_11x7m")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 3.731
+damping_max = 3.731
+damping_curve = SubResource("Curve_op6bl")
+scale_amount_min = 0.4
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_3uarx")
+color = Color(0.3764706, 0.6666667, 0, 1)
+
+[node name="JeffreyParticle" type="CPUParticles2D" parent="BuiltInObjects/BushyNpcArea" index="2"]
+process_mode = 1
+position = Vector2(16, 40)
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_11x7m")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 3.731
+damping_max = 3.731
+damping_curve = SubResource("Curve_op6bl")
+scale_amount_min = 0.4
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_3uarx")
+color = Color(0.92941177, 0.11764706, 0.14117648, 1)
+
+[node name="SpeedrunRoomParent" type="Node2D" parent="BuiltInObjects" index="2"]
 script = ExtResource("17_j6q3f")
 
 [node name="AnyPanel" type="Panel" parent="BuiltInObjects/SpeedrunRoomParent" index="0"]
@@ -796,3 +852,4 @@ worl = "res://explo/menus/select_world_5.tscn"
 world_5 = true
 
 [connection signal="animation_finished" from="BuiltInObjects/JohnnyNpcArea/JohnnyGetAnimation" to="BuiltInObjects/JohnnyNpcArea" method="_on_johnny_get_animation_animation_finished"]
+[connection signal="body_entered" from="BuiltInObjects/BushyNpcArea" to="BuiltInObjects/BushyNpcArea" method="_on_body_entered"]

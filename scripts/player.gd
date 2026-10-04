@@ -55,6 +55,7 @@ var prevelocity = Vector2(0.0, 0.0)
 
 @onready var johnny_particle: CPUParticles2D = $JohnnyParticle
 @onready var jeffrey_particle: CPUParticles2D = $JeffreyParticle
+@onready var bushy_particle: CPUParticles2D = $BushyParticle
 
 @export var debug = true
 
@@ -885,18 +886,34 @@ func _on_start_delay_timeout() -> void:
 
 
 func johnnify():
-	if VariableManager.character_id == 0:
+	if VariableManager.character_id == 0: # Jeffrey
+		animated_sprite_2d.visible = false
+		animated_sprite_2d = $SpriteHolder/AnimatedSprite2D
+		animated_sprite_2d.visible = true
 		animated_sprite_2d.use_parent_material = true
 		dead_particle.color = Color(0.929, 0.118, 0.141)
 		if show_switch_particles == true:
 			jeffrey_particle.emitting = true
+		invincible = false
 		#launch_particle.modulate = Color(0.839, 0.525, 0.502)
-	elif VariableManager.character_id == 1:
+	elif VariableManager.character_id == 1: # Johnny
+		animated_sprite_2d.visible = false
+		animated_sprite_2d = $SpriteHolder/AnimatedSprite2D
+		animated_sprite_2d.visible = true
 		animated_sprite_2d.use_parent_material = false
 		dead_particle.color = Color(0.263, 0.482, 0.851)
 		if show_switch_particles == true:
 			johnny_particle.emitting = true
+		invincible = false
 		#launch_particle.modulate = Color(0.504, 0.694, 0.84)
+	elif VariableManager.character_id == 2: # Bushy
+		animated_sprite_2d.visible = false
+		animated_sprite_2d = $SpriteHolder/AnimatedSpriteBushy
+		animated_sprite_2d.visible = true
+		dead_particle.color = Color(0.376, 0.667, 0.0, 1.0)
+		if show_switch_particles == true:
+			bushy_particle.emitting = true
+		invincible = true
 
 func _input(_event):
 	#if Input.is_action_just_pressed("musR"):
@@ -908,9 +925,9 @@ func _input(_event):
 			get_tree().reload_current_scene()
 		else:
 			call_deferred("i_died", true)
-	if Input.is_action_just_pressed("down"):
-		var a 
-		print()
+	#if Input.is_action_just_pressed("down"):
+		#var a 
+		#print()
 
 #func _on_timer_timeout():
 	#print("BOTT!")

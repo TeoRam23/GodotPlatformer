@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ngj3qa1yihrq"]
+[gd_scene load_steps=69 format=3 uid="uid://ngj3qa1yihrq"]
 
 [ext_resource type="Script" uid="uid://bhj5j4a8ju0rv" path="res://scripts/player.gd" id="1_7n2kp"]
 [ext_resource type="Resource" uid="uid://bfbrjpvgikey5" path="res://data/DeafultMovementData.tres" id="2_tf3sn"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cf4digijrb32k" path="res://scenes/Liner.tscn" id="5_fplat"]
 [ext_resource type="Texture2D" uid="uid://bro2sgpd7ra1r" path="res://assets/color_maps/jeffrey.png" id="6_8m52n"]
 [ext_resource type="PackedScene" uid="uid://dsv4eyc7ju17a" path="res://explo/scenes/ex_launcher.tscn" id="6_y3t0q"]
+[ext_resource type="Texture2D" uid="uid://bvpv6m8gb0yik" path="res://assets/BushySprites.png" id="8_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://cinjw0pef2fl3" path="res://explo/scenes/world-4/ex_tele_child.tscn" id="10_kxkxs"]
 [ext_resource type="AudioStream" uid="uid://wpade40052qq" path="res://assets/Sounds/death-1.wav" id="13_jej6c"]
 
@@ -266,6 +267,119 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("8_f1ej7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l71n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}],
+"loop": false,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}],
+"loop": false,
+"name": &"look_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}],
+"loop": true,
+"name": &"runner",
+"speed": 8.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71l0s"]
 size = Vector2(10, 12)
 
@@ -382,6 +496,17 @@ use_parent_material = true
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_lgw7j")
 animation = &"idle"
+
+[node name="AnimatedSpriteBushy" type="AnimatedSprite2D" parent="SpriteHolder"]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_pdh2k")
+use_parent_material = true
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"runner"
+frame = 2
+frame_progress = 0.76755536
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="SpriteHolder"]
 visible = false
@@ -643,6 +768,27 @@ scale_amount_min = 0.4
 scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_f1ej7")
 color = Color(0.92941177, 0.11764706, 0.14117648, 1)
+
+[node name="BushyParticle" type="CPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, -3)
+emitting = false
+amount = 16
+texture = SubResource("GradientTexture2D_3v2ag")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 45.0
+damping_min = 3.731
+damping_max = 3.731
+damping_curve = SubResource("Curve_jej6c")
+scale_amount_min = 0.4
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_f1ej7")
+color = Color(0.3764706, 0.6666667, 0, 1)
 
 [node name="LaunchDelay" type="Timer" parent="."]
 wait_time = 0.1

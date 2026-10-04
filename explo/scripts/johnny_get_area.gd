@@ -82,7 +82,7 @@ func set_up_johnny_npc():
 
 
 func swap_johnny():
-	if VariableManager.character_id == 0:
+	if VariableManager.character_id != 1:
 		Events.swap_character(1)
 		johnny_play_sprite.use_parent_material = true
 		jeffrey_particle.emitting = true

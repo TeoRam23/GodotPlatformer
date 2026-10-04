@@ -30,6 +30,13 @@ func _on_body_entered(body):
 	body.add_child(ex_glider_child)
 	ex_glider_child.glide_parent()
 	
+	# endrer posisjonen til chicken for å se bedre ut når man spiller som Bushy, som er litt lavere
+	if VariableManager.character_id == 2:
+		ex_glider_child.position.y = -16.0
+	else:
+		ex_glider_child.position.y = -18.0
+		
+	
 	#remove_child(bub_poof)
 	#get_tree().root.add_child(bub_poof)
 	#bub_poof.global_position = global_position
