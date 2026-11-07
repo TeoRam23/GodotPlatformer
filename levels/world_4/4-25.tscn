@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsoolniq0m00s"]
+[gd_scene load_steps=9 format=3 uid="uid://dsoolniq0m00s"]
 
 [ext_resource type="PackedScene" uid="uid://gvvlurri1oxg" path="res://scenes/world.tscn" id="1_0p4rq"]
 [ext_resource type="Texture2D" uid="uid://cs8s8gvlccqwg" path="res://assets/baksplodder/verd 4/4-25.png" id="2_0gxiw"]
+[ext_resource type="PackedScene" uid="uid://cleno16egsrqm" path="res://explo/menus/credits_scroll.tscn" id="2_fi48p"]
 [ext_resource type="PackedScene" uid="uid://dq4oxinxg0eju" path="res://gravity/scenes/ex_anti_gravity.tscn" id="3_mx46j"]
 [ext_resource type="PackedScene" uid="uid://bk0ej2eqbj74w" path="res://explo/scenes/ex_complete_level.tscn" id="4_agx7e"]
 
@@ -16,6 +17,7 @@ size = Vector2(4896, 424)
 
 [node name="4-25" instance=ExtResource("1_0p4rq")]
 title = "Gotta Go Fast! (Du-du-ru-du-du!)"
+next_level = ExtResource("2_fi48p")
 
 [node name="ParallaxBackground" parent="." index="0"]
 scroll_offset = Vector2(939.292, 228.76)

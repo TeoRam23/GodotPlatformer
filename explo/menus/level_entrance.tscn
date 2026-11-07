@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4p6gfoiyp5fk"]
+[gd_scene load_steps=20 format=3 uid="uid://c4p6gfoiyp5fk"]
 
 [ext_resource type="Script" uid="uid://6e6llsejhck" path="res://explo/menus/level_entrance.gd" id="1_hdmr7"]
 [ext_resource type="Texture2D" uid="uid://kxbnxk7ka1dw" path="res://assets/level_end_anim.png" id="1_rg3fe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bujwyk6sjd518" path="res://assets/color_maps/complete_main.png" id="3_jseh0"]
 [ext_resource type="Texture2D" uid="uid://bx2hlv7kl1hum" path="res://assets/color_maps/complete_mush.png" id="4_nyv3s"]
 [ext_resource type="Texture2D" uid="uid://cy23m13kvq4od" path="res://assets/level_end_mush.png" id="7_bqsqu"]
+[ext_resource type="PackedScene" uid="uid://de2c3h8bj4fn4" path="res://explo/menus/SpacebarIndicator.tscn" id="8_jseh0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fukx"]
 atlas = ExtResource("1_rg3fe")
@@ -88,7 +89,7 @@ size = Vector2(14, 36)
 
 [node name="LevelEntrance" type="Area2D"]
 process_mode = 3
-collision_layer = 0
+collision_layer = 1024
 collision_mask = 2
 script = ExtResource("1_hdmr7")
 worl = "res://explo/menus/select_world_two.tscn"
@@ -121,5 +122,10 @@ texture = ExtResource("7_bqsqu")
 position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_uhs6d")
 
+[node name="SpacebarIndicator" parent="." instance=ExtResource("8_jseh0")]
+position = Vector2(0, -49)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="animation_looped" from="AnimatedSpriteMushroom" to="." method="_on_animated_sprite_2d_animation_looped"]

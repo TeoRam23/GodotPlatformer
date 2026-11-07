@@ -11,6 +11,8 @@ extends Node2D
 @onready var shhppff_timer: Timer = $SHHPPFFTimer
 @onready var shhppff_rect: ColorRect = $SHHPPFFRect
 @onready var shhppff_particle: CPUParticles2D = $SHHPPFFParticle
+@onready var phase_one_audio: AudioStreamPlayer = $PhaseOneAudio
+@onready var phase_two_audio: AudioStreamPlayer = $PhaseTwoAudio
 
 var has_requested_hide_anim = false
 
@@ -25,6 +27,7 @@ func _on_soup_area_body_entered(body):
 		timer.start()
 		transition_timer.start()
 		shhppff_timer.start()
+		phase_one_audio.play()
 		#body.disable_player(false)
 	#change_to_extra_level(body)
 	#call_deferred("change_to_extra_level")
@@ -54,3 +57,4 @@ func _on_shhppff_timer_timeout() -> void:
 	shhppff_rect.visible = true
 	shhppff_particle.emitting = true
 	new_particles_2d.emitting = true
+	phase_two_audio.play()

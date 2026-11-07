@@ -16,6 +16,9 @@ extends Area2D
 
 @onready var johnny_npc_area_2: Area2D = $JohnnyNpcArea2
 
+@onready var spacebar_indicator: Node2D = $SpacebarIndicator
+@onready var spacebar_indicator2: Node2D = $JohnnyNpcArea2/SpacebarIndicator2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Events.pls_dialogue_finished.connect(swap_johnny)
@@ -49,6 +52,7 @@ func _on_johnny_get_animation_animation_finished() -> void:
 	VariableManager.johnny_activated = true
 	#VariableManager.save_variables()
 	set_up_johnny_npc()
+	spacebar_indicator.hide_icon()
 	
 	get_tree().paused = false
 	
@@ -92,3 +96,22 @@ func swap_johnny():
 		johnny_particle.emitting = true
 	
 	VariableManager.save_variables()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if not VariableManager.johnny_activated:
+		spacebar_indicator.show_icon()
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if not VariableManager.johnny_activated:
+		spacebar_indicator.hide_icon()
+
+
+func _on_body_entered_2(body: Node2D) -> void:
+	if VariableManager.johnny_activated:
+		spacebar_indicator2.show_icon()
+
+func _on_body_exited_2(body: Node2D) -> void:
+	if VariableManager.johnny_activated:
+		spacebar_indicator2.hide_icon()

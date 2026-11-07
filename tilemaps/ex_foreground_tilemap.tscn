@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cv0ofqbibxwkj"]
+[gd_scene load_steps=20 format=3 uid="uid://cv0ofqbibxwkj"]
 
 [ext_resource type="Texture2D" uid="uid://dygfqcv678tnf" path="res://assets/myupdatedtileset.png" id="1_q1oya"]
 [ext_resource type="Texture2D" uid="uid://4mu2ordkemgi" path="res://assets/mynewslopes.png" id="2_mbglr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cjotspqgjljxg" path="res://tilemaps/ex_foreground_tilemap.gd" id="6_y48w8"]
 [ext_resource type="Texture2D" uid="uid://cc4xfbhafe6v6" path="res://assets/myforthtileset.png" id="7_ih143"]
 [ext_resource type="Texture2D" uid="uid://dneoay2e1q4yq" path="res://assets/MyMushedTileset2.png" id="8_vpi6n"]
+[ext_resource type="AudioStream" uid="uid://dr0exv4y7cflr" path="res://assets/Sounds/fore-reveal-1.wav" id="10_4tm5j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_35n2b"]
 resource_name = "autotile"
@@ -1221,3 +1222,8 @@ layer_0/z_index = 10
 layer_1/name = "At ground"
 layer_1/z_index = 1
 script = ExtResource("6_y48w8")
+
+[node name="RevealAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4tm5j")
+volume_db = -15.097
+bus = &"SFX"

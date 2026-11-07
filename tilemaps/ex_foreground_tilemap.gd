@@ -1,5 +1,6 @@
 extends TileMap
 
+@onready var reveal_audio: AudioStreamPlayer = $RevealAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,4 +21,6 @@ func fade_away():
 	
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 1)
+	
+	reveal_audio.play()
 	

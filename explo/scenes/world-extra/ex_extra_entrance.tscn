@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://x02gp7koalk8"]
+[gd_scene load_steps=17 format=3 uid="uid://x02gp7koalk8"]
 
 [ext_resource type="Script" uid="uid://dyomdx0t44brm" path="res://explo/scripts/world-extra/ex_extra_entrance.gd" id="1_a2y4c"]
 [ext_resource type="PackedScene" uid="uid://dehufyyw8gn2y" path="res://levels/hub.tscn" id="2_8tkcf"]
 [ext_resource type="Texture2D" uid="uid://dagd1h08r2g3m" path="res://assets/extra_pot.png" id="2_a1wkh"]
 [ext_resource type="Texture2D" uid="uid://b365y6su7wlve" path="res://assets/extra_pot_overlay.png" id="4_ffnsc"]
+[ext_resource type="AudioStream" uid="uid://bbstj18f7jylh" path="res://assets/Sounds/pot-phase-one-2.wav" id="5_h85dd"]
+[ext_resource type="AudioStream" uid="uid://to6tvd2ptv30" path="res://assets/Sounds/pot-phase-two-2.wav" id="6_8xhgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddf5x"]
 size = Vector2(10, 29)
@@ -134,6 +136,7 @@ one_shot = true
 
 [node name="SHHPPFFTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -174,6 +177,16 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 467.76
 initial_velocity_max = 467.76
 color = Color(0.45490196, 1, 0.9137255, 1)
+
+[node name="PhaseOneAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_h85dd")
+volume_db = -4.473
+bus = &"SFX"
+
+[node name="PhaseTwoAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8xhgr")
+volume_db = -3.355
+bus = &"SFX"
 
 [connection signal="body_entered" from="SoupArea" to="." method="_on_soup_area_body_entered"]
 [connection signal="finished" from="Particles2D" to="." method="_on_particles_2d_finished"]

@@ -9,6 +9,7 @@ var is_active = false
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var sprite_mushroom: Sprite2D = $SpriteMushroom
+@onready var spacebar_indicator: Node2D = $SpacebarIndicator
 
 const some_particles = preload("res://explo/scenes/poof_level_animation.tscn")
 # Called when the node enters the scene tree for the first time.
@@ -67,3 +68,11 @@ func disable_me():
 
 func _on_animated_sprite_2d_animation_looped():
 	animated_sprite_2d.flip_h = !animated_sprite_2d.flip_h
+
+
+func _on_body_entered(body: Node2D) -> void:
+	spacebar_indicator.show_icon()
+
+
+func _on_body_exited(body: Node2D) -> void:
+	spacebar_indicator.hide_icon()

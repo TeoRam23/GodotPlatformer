@@ -5,6 +5,8 @@ extends StaticBody2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var poof_particle: CPUParticles2D = $PoofParticle
+@onready var timer: Timer = $Timer
+@onready var slide_bar_audio: AudioStreamPlayer = $SlideBarAudio
 
 var all_johnnies = 20
 
@@ -35,6 +37,7 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 
 
 func fill_up():
+	slide_bar_audio.play()
 	var johnny_count = VariableManager.johnnies
 	print(johnny_count)
 	
@@ -42,15 +45,18 @@ func fill_up():
 		johnny_count = 41
 	
 	for j in johnny_count:
-		await get_tree().process_frame
-		await get_tree().process_frame
-		await get_tree().process_frame
-		await get_tree().process_frame
+		timer.start()
+		await timer.timeout
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#await get_tree().process_frame
+		#await get_tree().process_frame
 		progress_bar.value += 2
 		if j >= 20: break
 	
 	if johnny_count >= all_johnnies:
 		await get_tree().create_timer(0.333).timeout
+		
 		#visible = false
 		collision_gate.disabled = true
 		collision_area.disabled = true
