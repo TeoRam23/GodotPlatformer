@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4v32h58y4ln7"]
+[gd_scene load_steps=8 format=3 uid="uid://b4v32h58y4ln7"]
 
 [ext_resource type="Script" uid="uid://dybfaacu0tgum" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
 [ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="1_y5tdk"]
@@ -6,13 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="4_33e1m"]
 [ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings/settings_menu.tscn" id="4_lffss"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
+[ext_resource type="Texture2D" uid="uid://brud0ncg04pii" path="res://assets/baksplodder/savefiles.png" id="7_aoaem"]
 
 [node name="StartScreen" type="Node2D" groups=["StartScreen"]]
 script = ExtResource("1_ftw5e")
-
-[node name="StartArt" type="Sprite2D" parent="."]
-position = Vector2(320, 180)
-texture = ExtResource("1_y5tdk")
 
 [node name="MainCanvas" type="CanvasLayer" parent="."]
 
@@ -23,6 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="StartArt" type="Sprite2D" parent="MainCanvas/Control"]
+position = Vector2(320, 180)
+texture = ExtResource("1_y5tdk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainCanvas/Control"]
 layout_mode = 0
@@ -206,6 +207,67 @@ One More Person Probably
 Godot Engine Contributors
 "
 
+[node name="SavesCanvas" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="SavesCanvas"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="SavesCanvas/Control"]
+visible = false
+position = Vector2(320, 180)
+texture = ExtResource("7_aoaem")
+
+[node name="Savefile1" type="Button" parent="SavesCanvas/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -120.0
+offset_right = -76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Savefile 1"
+
+[node name="Savefile2" type="Button" parent="SavesCanvas/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -120.0
+offset_right = 76.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Savefile 2"
+
+[node name="Savefile3" type="Button" parent="SavesCanvas/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 76.0
+offset_top = -120.0
+offset_right = 228.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Savefile 3"
+
 [connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="MainCanvas/Control/VBoxContainer/ButtonStart/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="MainCanvas/Control/VBoxContainer/ButtonStart/ButtonAudioParent" method="_on_pressed"]
@@ -218,3 +280,6 @@ Godot Engine Contributors
 [connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="MainCanvas/Control/VBoxContainer/ButtonQuit/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="MainCanvas/Control/VBoxContainer/ButtonQuit/ButtonAudioParent" method="_on_pressed"]
+[connection signal="pressed" from="SavesCanvas/Control/Savefile1" to="." method="_on_savefile_1_pressed"]
+[connection signal="pressed" from="SavesCanvas/Control/Savefile2" to="." method="_on_savefile_2_pressed"]
+[connection signal="pressed" from="SavesCanvas/Control/Savefile3" to="." method="_on_savefile_3_pressed"]

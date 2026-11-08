@@ -1,6 +1,12 @@
 extends Node
 
-var save_path = "user://variable.save"
+# får feilmelding ved bruk av variable.save, vet ikke hvorfor
+#var save_path = "user://variable.save"
+var save_path = "user://variable_1.save"
+var save_path_2 = "user://variable_2.save"
+var save_path_3 = "user://variable_3.save"
+
+var save_file_used := 3
 
 static var all_time = 0.0
 static var deaths = 0
@@ -129,7 +135,13 @@ func up_the_keys(level_id: String):
 
 # Saver variables til variable.save
 func save_variables():
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	var file
+	if save_file_used == 1:
+		file = FileAccess.open(save_path, FileAccess.WRITE)
+	if save_file_used == 2:
+		file = FileAccess.open(save_path_2, FileAccess.WRITE)
+	elif save_file_used == 3:
+		file = FileAccess.open(save_path_3, FileAccess.WRITE)
 	file.store_var(all_time)
 	file.store_var(deaths)
 	file.store_var(johnnies)
@@ -151,27 +163,44 @@ func save_variables():
 
 # Loader variables fra variable.save
 func load_variables():
-	if FileAccess.file_exists(save_path):
-		var file = FileAccess.open(save_path, FileAccess.READ)
-		all_time = file.get_var()
-		deaths = file.get_var()
-		johnnies = file.get_var()
-		keys_collected = file.get_var()
-		level_keys = file.get_var()
-		#johnny_mode = file.get_var()
-		character_id = file.get_var()
-		johnny_activated = file.get_var()
-		levels_completed = file.get_var()
-		opened_johnny_gate = file.get_var()
-		opened_w5_gate = file.get_var()
-		opened_speed_gate = file.get_var()
-		end_time = file.get_var()
-		end_deaths = file.get_var()
-		all_levels_time = file.get_var()
-		all_levels_deaths = file.get_var()
-		
-		#print(levels_completed)
-		file.close()
+	var file
+	if save_file_used == 2:
+		if not FileAccess.file_exists(save_path_2):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return
+		else:
+			file = FileAccess.open(save_path_2, FileAccess.READ)
+	elif save_file_used == 3:
+		if not FileAccess.file_exists(save_path_3):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return
+		else:
+			file = FileAccess.open(save_path_3, FileAccess.READ)
+	elif save_file_used == 1:
+		if not FileAccess.file_exists(save_path):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return
+		else:
+			file = FileAccess.open(save_path, FileAccess.READ)
 	else:
-		print('Welp, no save here ¯\\_ツ)_/¯')
 		return
+	
+	all_time = file.get_var()
+	deaths = file.get_var()
+	johnnies = file.get_var()
+	keys_collected = file.get_var()
+	level_keys = file.get_var()
+	#johnny_mode = file.get_var()
+	character_id = file.get_var()
+	johnny_activated = file.get_var()
+	levels_completed = file.get_var()
+	opened_johnny_gate = file.get_var()
+	opened_w5_gate = file.get_var()
+	opened_speed_gate = file.get_var()
+	end_time = file.get_var()
+	end_deaths = file.get_var()
+	all_levels_time = file.get_var()
+	all_levels_deaths = file.get_var()
+	
+	#print(levels_completed)
+	file.close()
