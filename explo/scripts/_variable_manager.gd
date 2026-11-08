@@ -133,6 +133,44 @@ func up_the_keys(level_id: String):
 		level_keys.append(level_id)
 
 
+func get_savefile_info(picked_file: int) -> Array:
+	var file
+	if picked_file == 1:
+		if not FileAccess.file_exists(save_path):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return [0, 0]
+		else:
+			file = FileAccess.open(save_path, FileAccess.READ)
+	elif picked_file == 2:
+		if not FileAccess.file_exists(save_path_2):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return [0, 0]
+		else:
+			file = FileAccess.open(save_path_2, FileAccess.READ)
+	elif picked_file == 3:
+		if not FileAccess.file_exists(save_path_3):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return [0, 0]
+		else:
+			file = FileAccess.open(save_path_3, FileAccess.READ)
+	else:
+		return [0, 0]
+	
+	var stored_all_time = all_time
+	all_time = file.get_var()
+	var gotten_all_time = all_time
+	all_time = stored_all_time
+	
+	var stored_deaths = deaths
+	deaths = file.get_var()
+	var gotten_deaths = deaths
+	deaths = stored_deaths
+	
+	return [gotten_all_time, gotten_deaths]
+	
+	
+
+
 # Saver variables til variable.save
 func save_variables():
 	var file

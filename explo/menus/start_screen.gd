@@ -8,6 +8,13 @@ extends Node2D
 @onready var v_box_container: VBoxContainer = $MainCanvas/Control/VBoxContainer
 @onready var start_art: Sprite2D = $MainCanvas/Control/StartArt
 
+@onready var time_label_1: Label = $SavesCanvas/Control/Savefile1/TimeLabel1
+@onready var deaths_label_1: Label = $SavesCanvas/Control/Savefile1/DeathsLabel1
+@onready var time_label_2: Label = $SavesCanvas/Control/Savefile2/TimeLabel2
+@onready var deaths_label_2: Label = $SavesCanvas/Control/Savefile2/DeathsLabel2
+@onready var time_label_3: Label = $SavesCanvas/Control/Savefile3/TimeLabel3
+@onready var deaths_label_3: Label = $SavesCanvas/Control/Savefile3/DeathsLabel3
+
 const HUB = preload("res://levels/hub.tscn")
 var credits = load("res://explo/menus/credits_scroll.tscn")
 
@@ -16,6 +23,7 @@ var current_open_screen = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.pls_save_settings_yall.connect(settings_closed)
+	setup_times_and_deaths()
 	pass # Replace with function body.
 
 
@@ -106,3 +114,26 @@ func _on_savefile_3_pressed() -> void:
 	VariableManager.save_file_used = 3
 	await VariableManager.load_variables()
 	go_to_hub()
+
+func setup_times_and_deaths():
+	var td_1 = VariableManager.get_savefile_info(1)
+	time_label_1.text = "Time: " + convert_time(td_1[0])
+	deaths_label_1.text = "Deaths: " + str(td_1[1])
+	var td_2 = VariableManager.get_savefile_info(2)
+	time_label_2.text = "Time: " + convert_time(td_2[0])
+	deaths_label_2.text = "Deaths: " + str(td_2[1])
+	var td_3 = VariableManager.get_savefile_info(3)
+	time_label_3.text = "Time: " + convert_time(td_3[0])
+	deaths_label_3.text = "Deaths: " + str(td_3[1])
+
+
+func convert_time(the_time: float) -> String:
+	var show_time = snappedf(the_time, 0.01666666666667)
+	var minutes = int(floor(show_time * 0.01666666666667)) % 60
+	var hours = int(floor(show_time / 3600))
+	var seconds = int(show_time) % 60
+	var millis = (show_time - floor(show_time)) * 1000
+	var time_text = "%02d:%02d.%03d" % [minutes, seconds, millis]
+	if hours:
+		time_text = str(hours)+":" + time_text
+	return str(time_text)
