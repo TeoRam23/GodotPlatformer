@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=53 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" uid="uid://b5cmxn8y3gr13" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bl00wpml745ls" path="res://assets/CheckButtonUnchecked.png" id="4_2fjbd"]
 [ext_resource type="Script" uid="uid://cw1cqsxq0cual" path="res://explo/menus/settings/settings_slider.gd" id="4_jqsgv"]
 [ext_resource type="Texture2D" uid="uid://dc30p64qv514i" path="res://assets/SliderTick.png" id="6_o435n"]
+[ext_resource type="Texture2D" uid="uid://7qo5v2h1kiiw" path="res://assets/MenuButtonChecked.png" id="7_c22rk"]
+[ext_resource type="Texture2D" uid="uid://dphos444bpxm0" path="res://assets/MenuArrow.png" id="7_j1w3u"]
 [ext_resource type="Script" uid="uid://dcq1spygb4b17" path="res://explo/menus/settings/settings_option_button.gd" id="8_2fjbd"]
+[ext_resource type="Texture2D" uid="uid://cfm5i6xg2jnra" path="res://assets/MenuButtonUnchecked.png" id="8_c22rk"]
 [ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="10_o435n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isgqd"]
@@ -106,12 +109,15 @@ OptionButton/colors/font_focus_color = Color(1, 1, 1, 1)
 OptionButton/colors/font_hover_color = Color(1, 1, 1, 1)
 OptionButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 OptionButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+OptionButton/icons/arrow = ExtResource("7_j1w3u")
 OptionButton/styles/focus = SubResource("StyleBoxFlat_j1w3u")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_6qm7s")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_2fjbd")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_2fjbd")
 PopupMenu/colors/font_color = Color(1, 1, 1, 1)
 PopupMenu/colors/font_hover_color = Color(1, 1, 1, 1)
+PopupMenu/icons/radio_checked = ExtResource("7_c22rk")
+PopupMenu/icons/radio_unchecked = ExtResource("8_c22rk")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_c22rk")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_o435n")
 

@@ -23,7 +23,8 @@ extends Area2D
 func _ready() -> void:
 	#Events.pls_dialogue_finished.connect(swap_johnny)
 	
-	#VariableManager.johnny_activated = false
+	VariableManager.johnny_activated = false
+	print("any johnny? ",VariableManager.johnny_activated)
 	if VariableManager.johnny_activated == true:
 		set_up_johnny_npc()
 
@@ -94,6 +95,8 @@ func swap_johnny():
 		Events.swap_character(0)
 		johnny_play_sprite.use_parent_material = false
 		johnny_particle.emitting = true
+	
+	print("Wait we johns? ", VariableManager.johnny_activated)
 	
 	VariableManager.save_variables()
 

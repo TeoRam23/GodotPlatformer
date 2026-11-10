@@ -5,6 +5,7 @@ extends Node
 var save_path = "user://variable_1.save"
 var save_path_2 = "user://variable_2.save"
 var save_path_3 = "user://variable_3.save"
+var save_path_default = "user://variable_default.save"
 
 var save_file_used := 3
 
@@ -48,7 +49,10 @@ static var all_levels_deaths = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#save_variables()
+	var starting_savefile = save_file_used
+	save_file_used = 4
+	save_variables()
+	save_file_used = starting_savefile
 	load_variables()
 	#print(levels_completed)
 	
@@ -137,19 +141,19 @@ func get_savefile_info(picked_file: int) -> Array:
 	var file
 	if picked_file == 1:
 		if not FileAccess.file_exists(save_path):
-			print('Welp, no save here ¯\\_ツ)_/¯')
+			print('Welp, no save when getting ¯\\_ツ)_/¯')
 			return [0, 0]
 		else:
 			file = FileAccess.open(save_path, FileAccess.READ)
 	elif picked_file == 2:
 		if not FileAccess.file_exists(save_path_2):
-			print('Welp, no save here ¯\\_ツ)_/¯')
+			print('Welp, no save when getting ¯\\_ツ)_/¯')
 			return [0, 0]
 		else:
 			file = FileAccess.open(save_path_2, FileAccess.READ)
 	elif picked_file == 3:
 		if not FileAccess.file_exists(save_path_3):
-			print('Welp, no save here ¯\\_ツ)_/¯')
+			print('Welp, no save when getting ¯\\_ツ)_/¯')
 			return [0, 0]
 		else:
 			file = FileAccess.open(save_path_3, FileAccess.READ)
@@ -168,7 +172,18 @@ func get_savefile_info(picked_file: int) -> Array:
 	
 	return [gotten_all_time, gotten_deaths]
 	
-	
+
+func delete_savefile(picked_file):
+	#if picked_file == 1 and FileAccess.file_exists(save_path):
+	save_file_used = 4
+	load_variables()
+	save_file_used = picked_file
+	save_variables()
+		#DirAccess.remove_absolute(save_path)
+	#elif picked_file == 2 and FileAccess.file_exists(save_path_2):
+		#DirAccess.remove_absolute(save_path_2)
+	#elif picked_file == 3 and FileAccess.file_exists(save_path_3):
+		#DirAccess.remove_absolute(save_path_3)
 
 
 # Saver variables til variable.save
@@ -180,6 +195,8 @@ func save_variables():
 		file = FileAccess.open(save_path_2, FileAccess.WRITE)
 	elif save_file_used == 3:
 		file = FileAccess.open(save_path_3, FileAccess.WRITE)
+	elif save_file_used == 4:
+		file = FileAccess.open(save_path_default, FileAccess.WRITE)
 	file.store_var(all_time)
 	file.store_var(deaths)
 	file.store_var(johnnies)
@@ -220,6 +237,12 @@ func load_variables():
 			return
 		else:
 			file = FileAccess.open(save_path, FileAccess.READ)
+	elif save_file_used == 4:
+		if not FileAccess.file_exists(save_path_default):
+			print('Welp, no save here ¯\\_ツ)_/¯')
+			return
+		else:
+			file = FileAccess.open(save_path_default, FileAccess.READ)
 	else:
 		return
 	

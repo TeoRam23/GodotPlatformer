@@ -24,7 +24,6 @@ var awaiting_answer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	VariableManager.johnny_activated = false
 	var children = get_children()
 	for child in children:
 		if child.is_in_group("dialogue_elements"):

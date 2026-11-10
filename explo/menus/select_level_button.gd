@@ -104,7 +104,7 @@ func _on_mouse_entered():
 		tin_zero_gravity.visible = false
 
 	if any_vars:
-		print("the vars: ", level_vars)
+		#print("the vars: ", level_vars)
 		#print("vi kommer oss hit...")
 		#print(level_vars)
 		# burde sjekke om de eksisterer, men jeg gidder ikke, det går nok bra...

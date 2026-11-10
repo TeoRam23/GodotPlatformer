@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba106fkgblj1p"]
+[gd_scene load_steps=9 format=3 uid="uid://ba106fkgblj1p"]
 
 [ext_resource type="Script" uid="uid://b41fmkabhqj3x" path="res://explo/scripts/gate_speed.gd" id="1_q6qnx"]
+[ext_resource type="Texture2D" uid="uid://b5053kl3x4yme" path="res://assets/SpeedrunGate2.png" id="2_uwr0q"]
+[ext_resource type="Texture2D" uid="uid://chwlnnp6flvql" path="res://assets/SpeedrunGateIcon2.png" id="3_tu2gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m04y"]
 size = Vector2(32, 64)
@@ -43,9 +45,19 @@ position = Vector2(-0.5, 32)
 shape = SubResource("RectangleShape2D_uwr0q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -32.0
 offset_bottom = 64.0
 color = Color(0.85882354, 0.72156864, 0.39607844, 1)
+
+[node name="SpriteGate" type="Sprite2D" parent="."]
+position = Vector2(-16, 32)
+texture = ExtResource("2_uwr0q")
+
+[node name="SpriteIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-16, 32)
+texture = ExtResource("3_tu2gh")
 
 [node name="PoofParticle" type="CPUParticles2D" parent="."]
 position = Vector2(-16, 32)
@@ -62,7 +74,7 @@ initial_velocity_min = 5.0
 initial_velocity_max = 12.0
 scale_amount_min = 0.7
 scale_amount_curve = SubResource("Curve_5m04y")
-color = Color(0.85882354, 0.72156864, 0.39607844, 1)
+color = Color(0.6627451, 0.5529412, 0.75686276, 1)
 
 [node name="TimerShort" type="Timer" parent="."]
 wait_time = 0.117

@@ -5,6 +5,8 @@ extends StaticBody2D
 @onready var collision_area: CollisionShape2D = $PlayerArea/CollisionArea
 @onready var color_rect: ColorRect = $ColorRect
 @onready var poof_particle: CPUParticles2D = $PoofParticle
+@onready var sprite_gate: Sprite2D = $SpriteGate
+@onready var sprite_icon: Sprite2D = $SpriteIcon
 
 @onready var timer_short: Timer = $TimerShort
 @onready var timer_long: Timer = $TimerLong
@@ -36,6 +38,7 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 	timer_short.start()
 	await timer_short.timeout
 	color_rect.color = Color(1.0, 1.0, 1.0, 1.0)
+	sprite_icon.visible = true
 	timer_long.start()
 	await timer_long.timeout
 	
@@ -44,6 +47,9 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 func open():
 	collision_gate.disabled = true
 	color_rect.visible = false
+	sprite_gate.visible = false
+	sprite_icon.visible = false
+	
 	
 	poof_particle.emitting = true
 	

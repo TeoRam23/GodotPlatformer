@@ -209,36 +209,33 @@ Godot Engine Contributors
 
 [node name="SavesCanvas" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="SavesCanvas"]
-visible = false
-modulate = Color(1, 1, 1, 0)
+[node name="SavesControl" type="Control" parent="SavesCanvas"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SavesCanvas/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="SavesCanvas/SavesControl"]
 visible = false
 position = Vector2(320, 180)
 texture = ExtResource("7_aoaem")
 
-[node name="Savefile1" type="Button" parent="SavesCanvas/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -120.0
-offset_right = -76.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SavefileBox" type="HBoxContainer" parent="SavesCanvas/SavesControl"]
+custom_minimum_size = Vector2(456, 164)
+layout_mode = 0
+offset_left = 92.0
+offset_top = 60.0
+offset_right = 548.0
+offset_bottom = 224.0
+theme_override_constants/separation = 0
+
+[node name="Savefile1" type="Button" parent="SavesCanvas/SavesControl/SavefileBox"]
+custom_minimum_size = Vector2(152, 164)
+layout_mode = 2
 text = "Savefile 1"
 
-[node name="TimeLabel1" type="Label" parent="SavesCanvas/Control/Savefile1"]
+[node name="TimeLabel1" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -251,11 +248,12 @@ offset_right = 40.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 8
 text = "Time: 00:00.000"
 horizontal_alignment = 1
 
-[node name="DeathsLabel1" type="Label" parent="SavesCanvas/Control/Savefile1"]
+[node name="DeathsLabel1" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,26 +266,17 @@ offset_right = 22.5
 offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 8
 text = "Deaths: 0"
 horizontal_alignment = 1
 
-[node name="Savefile2" type="Button" parent="SavesCanvas/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -120.0
-offset_right = 76.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Savefile2" type="Button" parent="SavesCanvas/SavesControl/SavefileBox"]
+custom_minimum_size = Vector2(152, 164)
+layout_mode = 2
 text = "Savefile 2"
 
-[node name="TimeLabel2" type="Label" parent="SavesCanvas/Control/Savefile2"]
+[node name="TimeLabel2" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -300,11 +289,12 @@ offset_right = 39.5
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 8
 text = "Time: 00:00.000"
 horizontal_alignment = 1
 
-[node name="DeathsLabel2" type="Label" parent="SavesCanvas/Control/Savefile2"]
+[node name="DeathsLabel2" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -317,26 +307,17 @@ offset_right = 22.5
 offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 8
 text = "Deaths: 0"
 horizontal_alignment = 1
 
-[node name="Savefile3" type="Button" parent="SavesCanvas/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 76.0
-offset_top = -120.0
-offset_right = 228.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Savefile3" type="Button" parent="SavesCanvas/SavesControl/SavefileBox"]
+custom_minimum_size = Vector2(152, 164)
+layout_mode = 2
 text = "Savefile 3"
 
-[node name="TimeLabel3" type="Label" parent="SavesCanvas/Control/Savefile3"]
+[node name="TimeLabel3" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -349,11 +330,12 @@ offset_right = 39.5
 offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 8
 text = "Time: 00:00.000"
 horizontal_alignment = 1
 
-[node name="DeathsLabel3" type="Label" parent="SavesCanvas/Control/Savefile3"]
+[node name="DeathsLabel3" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -366,9 +348,100 @@ offset_right = 22.5
 offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 1
 theme_override_font_sizes/font_size = 8
 text = "Deaths: 0"
 horizontal_alignment = 1
+
+[node name="ConfirmBox" type="VBoxContainer" parent="SavesCanvas/SavesControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 47.0
+offset_right = 75.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 9
+
+[node name="ButtonContinue" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox"]
+layout_mode = 2
+theme = ExtResource("3_u7mx0")
+text = "Continue"
+
+[node name="ButtonDelete" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox"]
+layout_mode = 2
+theme = ExtResource("3_u7mx0")
+text = "Delete"
+
+[node name="DeleteControl" type="Control" parent="SavesCanvas/SavesControl"]
+visible = false
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ColorRect" type="ColorRect" parent="SavesCanvas/SavesControl/DeleteControl"]
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
+
+[node name="DeletePanel" type="Panel" parent="SavesCanvas/SavesControl/DeleteControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -77.0
+offset_right = 149.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_u7mx0")
+
+[node name="Label" type="Label" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 296.0
+offset_bottom = 122.0
+text = "Woah there! Do you ACTUALLY want to delete your save file? The delete button is pretty close to continue..."
+autowrap_mode = 3
+
+[node name="ButtonYes" type="Button" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_u7mx0")
+text = "YES DELETE!!!"
+
+[node name="ButtonNo" type="Button" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 150.0
+grow_vertical = 0
+theme = ExtResource("3_u7mx0")
+text = "Actally, no."
 
 [connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="MainCanvas/Control/VBoxContainer/ButtonStart/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
@@ -382,6 +455,10 @@ horizontal_alignment = 1
 [connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="MainCanvas/Control/VBoxContainer/ButtonQuit/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonQuit" to="MainCanvas/Control/VBoxContainer/ButtonQuit/ButtonAudioParent" method="_on_pressed"]
-[connection signal="pressed" from="SavesCanvas/Control/Savefile1" to="." method="_on_savefile_1_pressed"]
-[connection signal="pressed" from="SavesCanvas/Control/Savefile2" to="." method="_on_savefile_2_pressed"]
-[connection signal="pressed" from="SavesCanvas/Control/Savefile3" to="." method="_on_savefile_3_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/SavefileBox/Savefile1" to="." method="_on_savefile_1_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/SavefileBox/Savefile2" to="." method="_on_savefile_2_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/SavefileBox/Savefile3" to="." method="_on_savefile_3_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/ConfirmBox/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/ConfirmBox/ButtonDelete" to="." method="_on_button_delete_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/DeleteControl/DeletePanel/ButtonYes" to="." method="_on_button_yes_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/DeleteControl/DeletePanel/ButtonNo" to="." method="_on_button_no_pressed"]
