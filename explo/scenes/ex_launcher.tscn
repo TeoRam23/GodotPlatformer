@@ -208,4 +208,4 @@ action = "cancel"
 [node name="AudioThrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_72r3h")
 volume_db = -4.853
-bus = &"SFX"
+bus = &"Pellet"

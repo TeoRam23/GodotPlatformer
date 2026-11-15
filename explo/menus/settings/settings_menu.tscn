@@ -284,6 +284,7 @@ offset_bottom = 99.0
 text = "denne settingen"
 
 [node name="ScrollVideo" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -330,7 +331,6 @@ popup/item_3/id = 3
 script = ExtResource("8_2fjbd")
 
 [node name="ScrollAudio" type="ScrollContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -402,6 +402,46 @@ size_flags_horizontal = 3
 text = " SFX"
 
 [node name="sfx_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerSfxAudio"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_position = 3
+script = ExtResource("4_jqsgv")
+
+[node name="ContainerDeathAudio" type="HBoxContainer" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelDeathAudio" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerDeathAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Death"
+
+[node name="death_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerDeathAudio"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = SubResource("Theme_rdlvj")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_position = 3
+script = ExtResource("4_jqsgv")
+
+[node name="ContainerPelletAudio" type="HBoxContainer" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelPelletAudio" type="Label" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerPelletAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Pellet"
+
+[node name="pellet_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerPelletAudio"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = SubResource("Theme_rdlvj")

@@ -7,6 +7,8 @@ var save_path = "user://settings.save"
 var general_bus = AudioServer.get_bus_index("Master")
 var music_bus = AudioServer.get_bus_index("Music")
 var sfx_bus = AudioServer.get_bus_index("SFX")
+var death_bus = AudioServer.get_bus_index("Death")
+var pellet_bus = AudioServer.get_bus_index("Pellet")
 
 
 # HUSK å legge nye settinger til i SAVE og LOAD func-ene!
@@ -25,9 +27,11 @@ var zero_gravity = false
 var remember_cursor_position = false
 
 
-var general_audio = 50
-var music_audio = 50
-var sfx_audio = 50
+var general_audio := 1.0
+var music_audio := 1.0
+var sfx_audio := 1.0
+var death_audio := 1.0
+var pellet_audio := 1.0
 
 var screen_size = 0
 
@@ -66,6 +70,8 @@ func save_settings():
 	file.store_var(general_audio)
 	file.store_var(music_audio)
 	file.store_var(sfx_audio)
+	file.store_var(death_audio)
+	file.store_var(pellet_audio)
 	
 	file.store_var(screen_size)
 		
@@ -95,6 +101,8 @@ func load_settings():
 		general_audio = file.get_var()
 		music_audio = file.get_var()
 		sfx_audio = file.get_var()
+		death_audio = file.get_var()
+		pellet_audio = file.get_var()
 		
 		screen_size = file.get_var()
 		
@@ -122,6 +130,9 @@ func update_audio():
 	AudioServer.set_bus_volume_linear(general_bus, Settings.general_audio)
 	AudioServer.set_bus_volume_linear(music_bus, Settings.music_audio)
 	AudioServer.set_bus_volume_linear(sfx_bus, Settings.sfx_audio)
+	AudioServer.set_bus_volume_linear(death_bus, Settings.death_audio)
+	AudioServer.set_bus_volume_linear(pellet_bus, Settings.pellet_audio)
+	
 
 func update_screen_size():
 	#screen_size = Vector2i(640, 360)

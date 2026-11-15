@@ -801,7 +801,7 @@ one_shot = true
 [node name="AudioDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_jej6c")
 volume_db = -6.24
-bus = &"SFX"
+bus = &"Death"
 
 [connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]

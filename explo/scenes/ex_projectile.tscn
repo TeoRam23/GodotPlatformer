@@ -192,10 +192,12 @@ wait_time = 45.0
 [node name="AudioExplode2D" parent="." instance=ExtResource("9_bp8ir")]
 stream = ExtResource("8_bp8ir")
 volume_db = -3.0
+bus = &"Pellet"
 script = ExtResource("10_6arr2")
 
 [node name="AudioKilled2D" parent="." instance=ExtResource("9_bp8ir")]
 stream = ExtResource("11_b1f4m")
+bus = &"Pellet"
 script = ExtResource("10_6arr2")
 
 [connection signal="area_entered" from="KillDetection" to="." method="_on_area_detection_area_entered"]

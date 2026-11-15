@@ -81,6 +81,7 @@ animation = &"close"
 
 [node name="AudioHold" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_lgh4l")
+bus = &"SFX"
 
 [node name="AudioTimer" type="Timer" parent="."]
 wait_time = 0.5

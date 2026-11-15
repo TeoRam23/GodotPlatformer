@@ -195,5 +195,6 @@ color = Color(0.45490196, 1, 0.9137255, 1)
 
 [node name="AudioJingle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_x0wfd")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
