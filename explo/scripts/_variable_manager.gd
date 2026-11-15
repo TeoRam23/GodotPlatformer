@@ -184,6 +184,13 @@ func delete_savefile(picked_file):
 		#DirAccess.remove_absolute(save_path_2)
 	#elif picked_file == 3 and FileAccess.file_exists(save_path_3):
 		#DirAccess.remove_absolute(save_path_3)
+	
+func copy_savefile(doubler_file: int, gonner_file: int):
+	save_file_used = doubler_file
+	load_variables()
+	save_file_used = gonner_file
+	save_variables()
+	
 
 
 # Saver variables til variable.save

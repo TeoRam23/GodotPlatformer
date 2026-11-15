@@ -8,10 +8,13 @@ extends Node2D
 @onready var savefile_box: HBoxContainer = $SavesCanvas/SavesControl/SavefileBox
 @onready var confirm_box: VBoxContainer = $SavesCanvas/SavesControl/ConfirmBox
 @onready var delete_control: Control = $SavesCanvas/SavesControl/DeleteControl
+@onready var copy_control: Control = $SavesCanvas/SavesControl/CopyControl
 @onready var v_box_container: VBoxContainer = $MainCanvas/Control/VBoxContainer
 @onready var start_art: Sprite2D = $MainCanvas/Control/StartArt
 @onready var button_continue: Button = $SavesCanvas/SavesControl/ConfirmBox/ButtonContinue
-@onready var button_delete: Button = $SavesCanvas/SavesControl/ConfirmBox/ButtonDelete
+@onready var cop_del_box: HBoxContainer = $SavesCanvas/SavesControl/ConfirmBox/CopDelBox
+@onready var button_delete: Button = $SavesCanvas/SavesControl/ConfirmBox/HBoxContainer/ButtonDelete
+@onready var copy_label: Label = $SavesCanvas/SavesControl/CopyControl/CopyPanel/CopyLabel
 
 @onready var time_label_1: Label = $SavesCanvas/SavesControl/SavefileBox/Savefile1/TimeLabel1
 @onready var deaths_label_1: Label = $SavesCanvas/SavesControl/SavefileBox/Savefile1/DeathsLabel1
@@ -24,6 +27,9 @@ const HUB = preload("res://levels/hub.tscn")
 var credits = load("res://explo/menus/credits_scroll.tscn")
 
 var current_open_screen = ""
+
+var gonna_copy = false
+var copying_file = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -76,10 +82,10 @@ func hide_saves_menu():
 func show_confirm_buttons():
 	if VariableManager.get_savefile_info(VariableManager.save_file_used)[0] == 0.0:
 		button_continue.text = "Start new file"
-		button_delete.visible = false
+		cop_del_box.visible = false
 	else:
 		button_continue.text = "Continue"
-		button_delete.visible = true
+		cop_del_box.visible = true
 		
 	var tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(savefile_box, "position:y", 20.0, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -136,17 +142,32 @@ func _input(event):
 		elif current_open_screen == "delete":
 			current_open_screen = "confirm"
 			delete_control.visible = false
+		elif current_open_screen == "copy":
+			current_open_screen = "confirm"
+			copy_control.visible = false
 
 
 func _on_savefile_1_pressed() -> void:
+	if gonna_copy and VariableManager.save_file_used != 1:
+		copying_file = 1
+		show_copy_control()
+		return
 	VariableManager.save_file_used = 1
 	show_confirm_buttons()
 
 func _on_savefile_2_pressed() -> void:
+	if gonna_copy and VariableManager.save_file_used != 2:
+		copying_file = 2
+		show_copy_control()
+		return
 	VariableManager.save_file_used = 2
 	show_confirm_buttons()
 
 func _on_savefile_3_pressed() -> void:
+	if gonna_copy and VariableManager.save_file_used != 3:
+		copying_file = 3
+		show_copy_control()
+		return
 	VariableManager.save_file_used = 3
 	show_confirm_buttons()
 
@@ -160,6 +181,8 @@ func setup_times_and_deaths():
 	else:
 		time_label_1.text = "Time: " + convert_time(td_1[0])
 		deaths_label_1.text = "Deaths: " + str(td_1[1])
+		time_label_1.visible = true
+		deaths_label_1.visible = true
 	var td_2 = VariableManager.get_savefile_info(2)
 	if td_2[0] == 0.0:
 		time_label_2.visible = false
@@ -167,6 +190,8 @@ func setup_times_and_deaths():
 	else:
 		time_label_2.text = "Time: " + convert_time(td_2[0])
 		deaths_label_2.text = "Deaths: " + str(td_2[1])
+		time_label_2.visible = true
+		deaths_label_2.visible = true
 	var td_3 = VariableManager.get_savefile_info(3)
 	if td_3[0] == 0.0:
 		time_label_3.visible = false
@@ -174,6 +199,8 @@ func setup_times_and_deaths():
 	else:
 		time_label_3.text = "Time: " + convert_time(td_3[0])
 		deaths_label_3.text = "Deaths: " + str(td_3[1])
+		time_label_3.visible = true
+		deaths_label_3.visible = true
 
 
 func convert_time(the_time: float) -> String:
@@ -196,13 +223,41 @@ func _on_button_delete_pressed() -> void:
 	delete_control.visible = true
 	current_open_screen = "delete"
 
-func _on_button_yes_pressed() -> void:
+func _on_button_copy_pressed() -> void:
+	print("copy that, over")
+	gonna_copy = true
+	pass # Replace with function body.
+
+
+
+func _on_button_yes_delete_pressed() -> void:
 	current_open_screen = "confirm"
 	delete_control.visible = false
 	VariableManager.delete_savefile(VariableManager.save_file_used)
 	setup_times_and_deaths()
 	show_confirm_buttons()
 
-func _on_button_no_pressed() -> void:
+func _on_button_no_delete_pressed() -> void:
 	current_open_screen = "confirm"
 	delete_control.visible = false
+
+
+
+func show_copy_control():
+	copy_label.text = "Are you sure you want to copy data from Savefile "+str(VariableManager.save_file_used)+" over to Savefile "+str(copying_file)+"?"
+	current_open_screen = "copy"
+	copy_control.visible = true
+	gonna_copy = false
+
+func _on_button_copy_yes_pressed() -> void:
+	current_open_screen = "confirm"
+	copy_control.visible = false
+	VariableManager.copy_savefile(VariableManager.save_file_used, copying_file)
+	gonna_copy = false
+	setup_times_and_deaths()
+	show_confirm_buttons()
+
+
+func _on_button_copy_no_pressed() -> void:
+	current_open_screen = "confirm"
+	copy_control.visible = false

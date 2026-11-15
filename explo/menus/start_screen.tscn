@@ -217,7 +217,6 @@ offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="SavesCanvas/SavesControl"]
-visible = false
 position = Vector2(320, 180)
 texture = ExtResource("7_aoaem")
 
@@ -373,7 +372,18 @@ layout_mode = 2
 theme = ExtResource("3_u7mx0")
 text = "Continue"
 
-[node name="ButtonDelete" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox"]
+[node name="CopDelBox" type="HBoxContainer" parent="SavesCanvas/SavesControl/ConfirmBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ButtonCopy" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox/CopDelBox"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme = ExtResource("3_u7mx0")
+text = "Copy"
+
+[node name="ButtonDelete" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox/CopDelBox"]
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 theme = ExtResource("3_u7mx0")
 text = "Delete"
@@ -418,7 +428,7 @@ offset_bottom = 122.0
 text = "Woah there! Do you ACTUALLY want to delete your save file? The delete button is pretty close to continue..."
 autowrap_mode = 3
 
-[node name="ButtonYes" type="Button" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
+[node name="ButtonYesDelete" type="Button" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -432,7 +442,7 @@ grow_vertical = 0
 theme = ExtResource("3_u7mx0")
 text = "YES DELETE!!!"
 
-[node name="ButtonNo" type="Button" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
+[node name="ButtonNoDelete" type="Button" parent="SavesCanvas/SavesControl/DeleteControl/DeletePanel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -442,6 +452,71 @@ offset_right = 150.0
 grow_vertical = 0
 theme = ExtResource("3_u7mx0")
 text = "Actally, no."
+
+[node name="CopyControl" type="Control" parent="SavesCanvas/SavesControl"]
+visible = false
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ColorRect" type="ColorRect" parent="SavesCanvas/SavesControl/CopyControl"]
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05882353, 0.05882353, 0.101960786, 1)
+
+[node name="CopyPanel" type="Panel" parent="SavesCanvas/SavesControl/CopyControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -77.0
+offset_right = 149.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_u7mx0")
+
+[node name="CopyLabel" type="Label" parent="SavesCanvas/SavesControl/CopyControl/CopyPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 296.0
+offset_bottom = 122.0
+text = "Are you sure you want to copy data from Savefile X over to Savefile X?"
+autowrap_mode = 3
+
+[node name="ButtonCopyYes" type="Button" parent="SavesCanvas/SavesControl/CopyControl/CopyPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_u7mx0")
+text = "Yes, copy that"
+
+[node name="ButtonCopyNo" type="Button" parent="SavesCanvas/SavesControl/CopyControl/CopyPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 150.0
+grow_vertical = 0
+theme = ExtResource("3_u7mx0")
+text = "No, copy not"
 
 [connection signal="mouse_entered" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="MainCanvas/Control/VBoxContainer/ButtonStart/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="MainCanvas/Control/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
@@ -459,6 +534,9 @@ text = "Actally, no."
 [connection signal="pressed" from="SavesCanvas/SavesControl/SavefileBox/Savefile2" to="." method="_on_savefile_2_pressed"]
 [connection signal="pressed" from="SavesCanvas/SavesControl/SavefileBox/Savefile3" to="." method="_on_savefile_3_pressed"]
 [connection signal="pressed" from="SavesCanvas/SavesControl/ConfirmBox/ButtonContinue" to="." method="_on_button_continue_pressed"]
-[connection signal="pressed" from="SavesCanvas/SavesControl/ConfirmBox/ButtonDelete" to="." method="_on_button_delete_pressed"]
-[connection signal="pressed" from="SavesCanvas/SavesControl/DeleteControl/DeletePanel/ButtonYes" to="." method="_on_button_yes_pressed"]
-[connection signal="pressed" from="SavesCanvas/SavesControl/DeleteControl/DeletePanel/ButtonNo" to="." method="_on_button_no_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/ConfirmBox/CopDelBox/ButtonCopy" to="." method="_on_button_copy_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/ConfirmBox/CopDelBox/ButtonDelete" to="." method="_on_button_delete_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/DeleteControl/DeletePanel/ButtonYesDelete" to="." method="_on_button_yes_delete_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/DeleteControl/DeletePanel/ButtonNoDelete" to="." method="_on_button_no_delete_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/CopyControl/CopyPanel/ButtonCopyYes" to="." method="_on_button_copy_yes_pressed"]
+[connection signal="pressed" from="SavesCanvas/SavesControl/CopyControl/CopyPanel/ButtonCopyNo" to="." method="_on_button_copy_no_pressed"]
