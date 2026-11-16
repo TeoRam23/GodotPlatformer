@@ -217,6 +217,7 @@ offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="SavesCanvas/SavesControl"]
+visible = false
 position = Vector2(320, 180)
 texture = ExtResource("7_aoaem")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dpo2jb0120xxp"]
+[gd_scene load_steps=55 format=3 uid="uid://dpo2jb0120xxp"]
 
 [ext_resource type="Script" uid="uid://b5cmxn8y3gr13" path="res://explo/menus/settings/settings_menu.gd" id="1_2i17m"]
 [ext_resource type="Texture2D" uid="uid://dtj85unf52raa" path="res://assets/baksplodder/settings.png" id="2_aonyn"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://dcq1spygb4b17" path="res://explo/menus/settings/settings_option_button.gd" id="8_2fjbd"]
 [ext_resource type="Texture2D" uid="uid://cfm5i6xg2jnra" path="res://assets/MenuButtonUnchecked.png" id="8_c22rk"]
 [ext_resource type="PackedScene" uid="uid://bx46b5orfgs0" path="res://explo/menus/button_audio_parent.tscn" id="10_o435n"]
+[ext_resource type="AudioStream" uid="uid://bhh1nusigrknk" path="res://assets/Sounds/explode-4.wav" id="12_nmny1"]
+[ext_resource type="AudioStream" uid="uid://wpade40052qq" path="res://assets/Sounds/death-1.wav" id="13_qgcgv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isgqd"]
 
@@ -284,7 +286,6 @@ offset_bottom = 99.0
 text = "denne settingen"
 
 [node name="ScrollVideo" type="ScrollContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -331,6 +332,7 @@ popup/item_3/id = 3
 script = ExtResource("8_2fjbd")
 
 [node name="ScrollAudio" type="ScrollContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(416, 140)
 offset_left = 112.0
 offset_top = 56.0
@@ -372,6 +374,10 @@ tick_count = 5
 ticks_position = 3
 script = ExtResource("4_jqsgv")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerGeneralAudio/general_audio" groups=["slider_audio"]]
+stream = ExtResource("12_nmny1")
+volume_db = -8.032
+
 [node name="ContainerMusicAudio" type="HBoxContainer" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
 layout_mode = 2
 alignment = 1
@@ -391,6 +397,11 @@ value = 1.0
 tick_count = 5
 ticks_position = 3
 script = ExtResource("4_jqsgv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerMusicAudio/music_audio" groups=["slider_audio"]]
+stream = ExtResource("12_nmny1")
+volume_db = -8.032
+bus = &"Music"
 
 [node name="ContainerSfxAudio" type="HBoxContainer" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
 layout_mode = 2
@@ -412,6 +423,11 @@ tick_count = 5
 ticks_position = 3
 script = ExtResource("4_jqsgv")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerSfxAudio/sfx_audio" groups=["slider_audio"]]
+stream = ExtResource("12_nmny1")
+volume_db = -8.032
+bus = &"SFX"
+
 [node name="ContainerDeathAudio" type="HBoxContainer" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
 layout_mode = 2
 alignment = 1
@@ -432,6 +448,11 @@ tick_count = 5
 ticks_position = 3
 script = ExtResource("4_jqsgv")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerDeathAudio/death_audio" groups=["slider_audio"]]
+stream = ExtResource("13_qgcgv")
+volume_db = -6.24
+bus = &"Death"
+
 [node name="ContainerPelletAudio" type="HBoxContainer" parent="ScrollAudio/BoxAudio/BoxAudioSettings"]
 layout_mode = 2
 alignment = 1
@@ -451,6 +472,11 @@ value = 1.0
 tick_count = 5
 ticks_position = 3
 script = ExtResource("4_jqsgv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerPelletAudio/pellet_audio" groups=["slider_audio"]]
+stream = ExtResource("12_nmny1")
+volume_db = -8.032
+bus = &"Pellet"
 
 [node name="ScrollGameplay" type="ScrollContainer" parent="."]
 visible = false
@@ -774,6 +800,11 @@ toggle_mode = true
 action_mode = 0
 text = "Challenges "
 
+[connection signal="drag_ended" from="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerGeneralAudio/general_audio" to="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerGeneralAudio/general_audio" method="_on_drag_ended"]
+[connection signal="drag_ended" from="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerMusicAudio/music_audio" to="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerMusicAudio/music_audio" method="_on_drag_ended"]
+[connection signal="drag_ended" from="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerSfxAudio/sfx_audio" to="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerSfxAudio/sfx_audio" method="_on_drag_ended"]
+[connection signal="drag_ended" from="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerDeathAudio/death_audio" to="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerDeathAudio/death_audio" method="_on_drag_ended"]
+[connection signal="drag_ended" from="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerPelletAudio/pellet_audio" to="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerPelletAudio/pellet_audio" method="_on_drag_ended"]
 [connection signal="pressed" from="ButtSave2" to="." method="save_settings"]
 [connection signal="mouse_entered" from="ButtCancel" to="ButtCancel/ButtonAudioParent" method="_on_mouse_entered"]
 [connection signal="pressed" from="ButtCancel" to="." method="close_screen"]

@@ -13,7 +13,7 @@ extends Node2D
 @onready var start_art: Sprite2D = $MainCanvas/Control/StartArt
 @onready var button_continue: Button = $SavesCanvas/SavesControl/ConfirmBox/ButtonContinue
 @onready var cop_del_box: HBoxContainer = $SavesCanvas/SavesControl/ConfirmBox/CopDelBox
-@onready var button_delete: Button = $SavesCanvas/SavesControl/ConfirmBox/HBoxContainer/ButtonDelete
+@onready var button_delete: Button = $SavesCanvas/SavesControl/ConfirmBox/CopDelBox/ButtonDelete
 @onready var copy_label: Label = $SavesCanvas/SavesControl/CopyControl/CopyPanel/CopyLabel
 
 @onready var time_label_1: Label = $SavesCanvas/SavesControl/SavefileBox/Savefile1/TimeLabel1
