@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4v32h58y4ln7"]
+[gd_scene load_steps=12 format=3 uid="uid://b4v32h58y4ln7"]
 
 [ext_resource type="Script" uid="uid://dybfaacu0tgum" path="res://explo/menus/start_screen.gd" id="1_ftw5e"]
 [ext_resource type="Texture2D" uid="uid://dpgmioevs0ops" path="res://assets/baksplodder/start.png" id="1_y5tdk"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dpo2jb0120xxp" path="res://explo/menus/settings/settings_menu.tscn" id="4_lffss"]
 [ext_resource type="Theme" uid="uid://orfmj4nnrmfj" path="res://explo/menus/label_theme.tres" id="4_qbg5i"]
 [ext_resource type="Texture2D" uid="uid://brud0ncg04pii" path="res://assets/baksplodder/savefiles.png" id="7_aoaem"]
+[ext_resource type="Texture2D" uid="uid://b35apscsff3h1" path="res://assets/SavefileNormal.png" id="8_tlqkm"]
+[ext_resource type="Texture2D" uid="uid://bnqgvqkadpjdu" path="res://assets/SavefileHover.png" id="9_6ip36"]
+[ext_resource type="Texture2D" uid="uid://d3ukc2a62t2nj" path="res://assets/SavefileArrow.png" id="10_6ip36"]
+
+[sub_resource type="Theme" id="Theme_42bs3"]
 
 [node name="StartScreen" type="Node2D" groups=["StartScreen"]]
 script = ExtResource("1_ftw5e")
@@ -35,6 +40,7 @@ theme_override_constants/separation = 16
 
 [node name="ButtonStart" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Start
 "
@@ -43,6 +49,7 @@ text = "Start
 
 [node name="ButtonSettings" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Settings
 "
@@ -51,6 +58,7 @@ text = "Settings
 
 [node name="ButtonCredits" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Credits
 "
@@ -59,6 +67,7 @@ text = "Credits
 
 [node name="ButtonQuit" type="Button" parent="MainCanvas/Control/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Quit
 "
@@ -224,16 +233,22 @@ texture = ExtResource("7_aoaem")
 [node name="SavefileBox" type="HBoxContainer" parent="SavesCanvas/SavesControl"]
 custom_minimum_size = Vector2(456, 164)
 layout_mode = 0
-offset_left = 92.0
+offset_left = 95.0
 offset_top = 60.0
-offset_right = 548.0
+offset_right = 551.0
 offset_bottom = 224.0
 theme_override_constants/separation = 0
 
-[node name="Savefile1" type="Button" parent="SavesCanvas/SavesControl/SavefileBox"]
-custom_minimum_size = Vector2(152, 164)
+[node name="Savefile1" type="TextureButton" parent="SavesCanvas/SavesControl/SavefileBox"]
+custom_minimum_size = Vector2(150, 164)
 layout_mode = 2
-text = "Savefile 1"
+focus_mode = 0
+theme = SubResource("Theme_42bs3")
+texture_normal = ExtResource("8_tlqkm")
+texture_pressed = ExtResource("8_tlqkm")
+texture_hover = ExtResource("9_6ip36")
+texture_disabled = ExtResource("8_tlqkm")
+texture_focused = ExtResource("8_tlqkm")
 
 [node name="TimeLabel1" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile1"]
 layout_mode = 1
@@ -243,9 +258,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -39.0
-offset_top = 16.0
+offset_top = 26.0
 offset_right = 40.0
-offset_bottom = 26.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
@@ -261,9 +276,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -22.5
-offset_top = 28.0
+offset_top = 38.0
 offset_right = 22.5
-offset_bottom = 38.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
@@ -271,10 +286,49 @@ theme_override_font_sizes/font_size = 8
 text = "Deaths: 0"
 horizontal_alignment = 1
 
-[node name="Savefile2" type="Button" parent="SavesCanvas/SavesControl/SavefileBox"]
-custom_minimum_size = Vector2(152, 164)
+[node name="FileLabel3" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+theme_override_font_sizes/font_size = 16
+text = "Savefile 1"
+horizontal_alignment = 1
+
+[node name="Savefile2" type="TextureButton" parent="SavesCanvas/SavesControl/SavefileBox"]
+custom_minimum_size = Vector2(150, 164)
 layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("8_tlqkm")
+texture_pressed = ExtResource("8_tlqkm")
+texture_hover = ExtResource("9_6ip36")
+texture_disabled = ExtResource("8_tlqkm")
+texture_focused = ExtResource("8_tlqkm")
+
+[node name="FileLabel2" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+theme_override_font_sizes/font_size = 16
 text = "Savefile 2"
+horizontal_alignment = 1
 
 [node name="TimeLabel2" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile2"]
 layout_mode = 1
@@ -284,9 +338,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -39.5
-offset_top = 16.0
+offset_top = 26.0
 offset_right = 39.5
-offset_bottom = 26.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
@@ -302,9 +356,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -22.5
-offset_top = 28.0
+offset_top = 38.0
 offset_right = 22.5
-offset_bottom = 38.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
@@ -312,10 +366,33 @@ theme_override_font_sizes/font_size = 8
 text = "Deaths: 0"
 horizontal_alignment = 1
 
-[node name="Savefile3" type="Button" parent="SavesCanvas/SavesControl/SavefileBox"]
-custom_minimum_size = Vector2(152, 164)
+[node name="Savefile3" type="TextureButton" parent="SavesCanvas/SavesControl/SavefileBox"]
+custom_minimum_size = Vector2(150, 164)
 layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("8_tlqkm")
+texture_pressed = ExtResource("8_tlqkm")
+texture_hover = ExtResource("9_6ip36")
+texture_disabled = ExtResource("8_tlqkm")
+texture_focused = ExtResource("8_tlqkm")
+stretch_mode = 3
+
+[node name="FileLabel3" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+theme_override_font_sizes/font_size = 16
 text = "Savefile 3"
+horizontal_alignment = 1
 
 [node name="TimeLabel3" type="Label" parent="SavesCanvas/SavesControl/SavefileBox/Savefile3"]
 layout_mode = 1
@@ -325,9 +402,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -39.5
-offset_top = 16.0
+offset_top = 26.0
 offset_right = 39.5
-offset_bottom = 36.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
@@ -343,9 +420,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -22.5
-offset_top = 28.0
+offset_top = 38.0
 offset_right = 22.5
-offset_bottom = 38.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1
@@ -353,7 +430,13 @@ theme_override_font_sizes/font_size = 8
 text = "Deaths: 0"
 horizontal_alignment = 1
 
+[node name="SavefileArrow" type="Sprite2D" parent="SavesCanvas/SavesControl/SavefileBox"]
+visible = false
+position = Vector2(74, 179)
+texture = ExtResource("10_6ip36")
+
 [node name="ConfirmBox" type="VBoxContainer" parent="SavesCanvas/SavesControl"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -370,6 +453,7 @@ theme_override_constants/separation = 9
 
 [node name="ButtonContinue" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Continue"
 
@@ -380,12 +464,15 @@ theme_override_constants/separation = 6
 [node name="ButtonCopy" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox/CopDelBox"]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
+toggle_mode = true
 text = "Copy"
 
 [node name="ButtonDelete" type="Button" parent="SavesCanvas/SavesControl/ConfirmBox/CopDelBox"]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Delete"
 
@@ -440,6 +527,7 @@ offset_left = -150.0
 offset_top = -24.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "YES DELETE!!!"
 
@@ -451,6 +539,7 @@ anchor_bottom = 1.0
 offset_top = -24.0
 offset_right = 150.0
 grow_vertical = 0
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Actally, no."
 
@@ -505,6 +594,7 @@ offset_left = -150.0
 offset_top = -24.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "Yes, copy that"
 
@@ -516,6 +606,7 @@ anchor_bottom = 1.0
 offset_top = -24.0
 offset_right = 150.0
 grow_vertical = 0
+focus_mode = 0
 theme = ExtResource("3_u7mx0")
 text = "No, copy not"
 

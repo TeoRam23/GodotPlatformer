@@ -14,7 +14,9 @@ extends Node2D
 @onready var button_continue: Button = $SavesCanvas/SavesControl/ConfirmBox/ButtonContinue
 @onready var cop_del_box: HBoxContainer = $SavesCanvas/SavesControl/ConfirmBox/CopDelBox
 @onready var button_delete: Button = $SavesCanvas/SavesControl/ConfirmBox/CopDelBox/ButtonDelete
+@onready var button_copy: Button = $SavesCanvas/SavesControl/ConfirmBox/CopDelBox/ButtonCopy
 @onready var copy_label: Label = $SavesCanvas/SavesControl/CopyControl/CopyPanel/CopyLabel
+@onready var savefile_arrow: Sprite2D = $SavesCanvas/SavesControl/SavefileBox/SavefileArrow
 
 @onready var time_label_1: Label = $SavesCanvas/SavesControl/SavefileBox/Savefile1/TimeLabel1
 @onready var deaths_label_1: Label = $SavesCanvas/SavesControl/SavefileBox/Savefile1/DeathsLabel1
@@ -95,6 +97,7 @@ func show_confirm_buttons():
 	
 
 func hide_confirm_buttons():
+	savefile_arrow.visible = false
 	var tween = get_tree().create_tween().set_parallel(true)
 	tween.tween_property(savefile_box, "position:y", 60.0, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(confirm_box, "modulate:a", 0, 0.3)
@@ -153,6 +156,8 @@ func _on_savefile_1_pressed() -> void:
 		show_copy_control()
 		return
 	VariableManager.save_file_used = 1
+	savefile_arrow.position.x = 74.0
+	savefile_arrow.visible = true
 	show_confirm_buttons()
 
 func _on_savefile_2_pressed() -> void:
@@ -161,6 +166,8 @@ func _on_savefile_2_pressed() -> void:
 		show_copy_control()
 		return
 	VariableManager.save_file_used = 2
+	savefile_arrow.position.x = 225.0
+	savefile_arrow.visible = true
 	show_confirm_buttons()
 
 func _on_savefile_3_pressed() -> void:
@@ -169,6 +176,8 @@ func _on_savefile_3_pressed() -> void:
 		show_copy_control()
 		return
 	VariableManager.save_file_used = 3
+	savefile_arrow.position.x = 375.0
+	savefile_arrow.visible = true
 	show_confirm_buttons()
 
 	
@@ -222,11 +231,16 @@ func _on_button_continue_pressed() -> void:
 func _on_button_delete_pressed() -> void:
 	delete_control.visible = true
 	current_open_screen = "delete"
+	button_copy.button_pressed = false
+	gonna_copy = false
 
 func _on_button_copy_pressed() -> void:
 	print("copy that, over")
-	gonna_copy = true
-	pass # Replace with function body.
+	if button_copy.button_pressed:
+		gonna_copy = true
+	else:
+		gonna_copy = false
+	
 
 
 
@@ -252,7 +266,14 @@ func show_copy_control():
 func _on_button_copy_yes_pressed() -> void:
 	current_open_screen = "confirm"
 	copy_control.visible = false
+	button_copy.button_pressed = false
 	VariableManager.copy_savefile(VariableManager.save_file_used, copying_file)
+	if VariableManager.save_file_used == 1:
+		savefile_arrow.position.x = 74.0
+	elif VariableManager.save_file_used == 2:
+		savefile_arrow.position.x = 225.0
+	elif VariableManager.save_file_used == 3:
+		savefile_arrow.position.x = 375.0
 	gonna_copy = false
 	setup_times_and_deaths()
 	show_confirm_buttons()
@@ -261,3 +282,4 @@ func _on_button_copy_yes_pressed() -> void:
 func _on_button_copy_no_pressed() -> void:
 	current_open_screen = "confirm"
 	copy_control.visible = false
+	button_copy.button_pressed = false

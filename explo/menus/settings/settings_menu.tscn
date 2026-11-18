@@ -283,6 +283,7 @@ offset_left = 123.0
 offset_top = 71.0
 offset_right = 391.0
 offset_bottom = 99.0
+focus_mode = 0
 text = "denne settingen"
 
 [node name="ScrollVideo" type="ScrollContainer" parent="."]
@@ -318,6 +319,7 @@ text = " Screen Size"
 [node name="screen_size" type="OptionButton" parent="ScrollVideo/BoxVideo/BoxVideoSettings/HBoxScreenSize"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 selected = 1
 item_count = 4
@@ -366,6 +368,7 @@ text = " General"
 [node name="general_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerGeneralAudio"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 max_value = 1.0
 step = 0.01
@@ -390,6 +393,7 @@ text = " Music"
 [node name="music_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerMusicAudio"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 max_value = 1.0
 step = 0.01
@@ -415,6 +419,7 @@ text = " SFX"
 [node name="sfx_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerSfxAudio"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 max_value = 1.0
 step = 0.01
@@ -440,6 +445,7 @@ text = " Death"
 [node name="death_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerDeathAudio"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 max_value = 1.0
 step = 0.01
@@ -465,6 +471,7 @@ text = " Pellet"
 [node name="pellet_audio" type="HSlider" parent="ScrollAudio/BoxAudio/BoxAudioSettings/ContainerPelletAudio"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 max_value = 1.0
 step = 0.01
@@ -503,18 +510,21 @@ theme_override_constants/separation = -5
 
 [node name="show_game_timer" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxStatsSettings"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Show Game Timer"
 script = ExtResource("3_lsjbt")
 
 [node name="show_level_timer" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxStatsSettings"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Show Level Timer"
 script = ExtResource("3_lsjbt")
 
 [node name="show_death_counter" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxStatsSettings"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Show Death Counter"
 script = ExtResource("3_lsjbt")
@@ -531,12 +541,14 @@ theme_override_constants/separation = -5
 
 [node name="locked_cursor" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Lock cursor to player vicinity"
 script = ExtResource("3_lsjbt")
 
 [node name="remember_cursor_position" type="CheckButton" parent="ScrollGameplay/BoxGameplay/BoxMouseSettings"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Remember cursor position"
 script = ExtResource("3_lsjbt")
@@ -566,12 +578,14 @@ theme_override_constants/separation = -5
 
 [node name="no_walking" type="CheckButton" parent="ScrollControls/BoxControls/BoxControlChallenges"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "No walking"
 script = ExtResource("3_lsjbt")
 
 [node name="constant_throwing" type="CheckButton" parent="ScrollControls/BoxControls/BoxControlChallenges"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Constant Throwing"
 script = ExtResource("3_lsjbt")
@@ -588,6 +602,7 @@ theme_override_constants/separation = -5
 
 [node name="zero_gravity" type="CheckButton" parent="ScrollControls/BoxControls/BoxWorldChallenges"]
 layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_rdlvj")
 text = "Zero Gravity"
 script = ExtResource("3_lsjbt")
@@ -605,21 +620,25 @@ current_tab = 0
 
 [node name="Tabs er så vanskelig å style Æ" type="TabBar" parent="TabContainer"]
 layout_mode = 2
+focus_mode = 0
 metadata/_tab_index = 0
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 metadata/_tab_index = 1
 
 [node name="Audio" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 metadata/_tab_index = 2
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
+focus_mode = 0
 metadata/_tab_index = 3
 
 [node name="ButtSave2" type="Button" parent="."]
@@ -628,6 +647,7 @@ offset_left = 382.0
 offset_top = 300.0
 offset_right = 524.0
 offset_bottom = 328.0
+focus_mode = 0
 text = "Save Changes"
 
 [node name="ButtCancel" type="Button" parent="."]
@@ -635,6 +655,7 @@ offset_left = 520.0
 offset_top = 309.0
 offset_right = 653.0
 offset_bottom = 335.0
+focus_mode = 0
 theme = SubResource("Theme_3u6ux")
 text = "    Cancel   "
 alignment = 0
@@ -646,6 +667,7 @@ offset_left = -13.0
 offset_top = 309.0
 offset_right = 120.0
 offset_bottom = 335.0
+focus_mode = 0
 theme = SubResource("Theme_sklc0")
 text = "Save   "
 alignment = 2
@@ -755,6 +777,7 @@ offset_left = 102.0
 offset_top = 26.0
 offset_right = 208.0
 offset_bottom = 48.0
+focus_mode = 0
 theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
@@ -768,6 +791,7 @@ offset_left = 211.0
 offset_top = 26.0
 offset_right = 317.0
 offset_bottom = 48.0
+focus_mode = 0
 theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
@@ -780,6 +804,7 @@ offset_left = 320.0
 offset_top = 26.0
 offset_right = 426.0
 offset_bottom = 48.0
+focus_mode = 0
 theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
@@ -793,6 +818,7 @@ offset_left = 429.0
 offset_top = 26.0
 offset_right = 535.0
 offset_bottom = 48.0
+focus_mode = 0
 theme = SubResource("Theme_it2bb")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 8
